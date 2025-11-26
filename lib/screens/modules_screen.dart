@@ -1,8 +1,182 @@
 import 'package:flutter/material.dart';
+import '../backend/course_module_api.dart';
+import '../backend/course_module_management.dart';
 
-class ModulesScreen extends StatelessWidget {
+class ModulesScreen extends StatefulWidget {
   const ModulesScreen({super.key});
 
+  @override
+  State<ModulesScreen> createState() => _ModulesScreenState();
+}
+
+class _ModulesScreenState extends State<ModulesScreen> {
+  final CourseModuleAPI courseModuleAPI = CourseModuleAPI();
+
+  List<Course> courses = [];
+  List<Course> filteredCourses = [];
+  String searchKeyword = '';
+  String selectedLevel = 'All Levels';
+
+  @override
+  void initState() {
+    super.initState();
+    courses = courseModuleAPI.getCourses();
+    filteredCourses = courses;
+  }
+
+  void filterCourses() {
+    setState(() {
+      filteredCourses = courses.where((course) {
+        final term = searchKeyword.toLowerCase();
+        bool matchesSearch =
+            course.title.toLowerCase().contains(term) ||
+            course.description.toLowerCase().contains(term);
+
+        bool matchesLevel =
+            selectedLevel == 'All Levels' ||
+            course.difficultyLevel.toLowerCase() ==
+                selectedLevel.toLowerCase();
+
+        return matchesSearch && matchesLevel;
+      }).toList();
+    });
+  }
+
+  // -----------------------------
+  // FILTER CHIP
+  // -----------------------------
+  Widget _buildFilterChip(String label) {
+    bool isSelected = selectedLevel == label;
+
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          selectedLevel = label;
+          filterCourses();
+        });
+      },
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        decoration: BoxDecoration(
+          color: isSelected
+              ? const Color.fromRGBO(52, 141, 188, 1)
+              : const Color.fromRGBO(255, 255, 255, 1),
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(
+            color: const Color.fromRGBO(52, 141, 188, 1),
+            width: 1.5,
+          ),
+        ),
+        child: Text(
+          label,
+          style: TextStyle(
+            color: isSelected
+                ? Colors.white
+                : const Color.fromRGBO(52, 141, 188, 1),
+            fontSize: 14,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      ),
+    );
+  }
+
+  // -----------------------------
+  // MODULE CARD
+  // -----------------------------
+  Widget _buildModuleCard(Module module) {
+    Color levelColor = _getLevelColor(module.difficultyLevel);
+
+    return Container(
+      padding: const EdgeInsets.all(20),
+      margin: const EdgeInsets.only(bottom: 12),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 26),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Title Row
+          Row(
+            children: [
+              Expanded(
+                child: Text(
+                  module.title,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF1A1A1A),
+                  ),
+                ),
+              ),
+              const Icon(Icons.chevron_right, color: Color(0xFF666666)),
+            ],
+          ),
+
+          const SizedBox(height: 12),
+
+          // Difficulty + XP
+          Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                decoration: BoxDecoration(
+                  color: levelColor.withValues(alpha: 40),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Text(
+                  module.difficultyLevel,
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: levelColor,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 12),
+
+              const Icon(Icons.stars, size: 16, color: Colors.amber),
+              const SizedBox(width: 4),
+
+              const Text(
+                "+200 XP",
+                style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.amber,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Color _getLevelColor(String level) {
+    switch (level.toLowerCase()) {
+      case 'beginner':
+        return const Color(0xFF4CAF50);
+      case 'intermediate':
+        return const Color(0xFF3585B5);
+      case 'advanced':
+        return const Color(0xFF9C27B0);
+      default:
+        return Colors.grey;
+    }
+  }
+
+  // -----------------------------
+  // MAIN UI
+  // -----------------------------
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,16 +194,15 @@ class ModulesScreen extends StatelessWidget {
         child: SafeArea(
           child: Column(
             children: [
-              // Header
+              // -------------------------
+              // HEADER
+              // -------------------------
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(24),
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [
-                      Color(0xFF7EC8E3),
-                      Color(0xFF5AB4D8),
-                    ],
+                    colors: [Color(0xFF7EC8E3), Color(0xFF5AB4D8)],
                   ),
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(32),
@@ -47,41 +220,53 @@ class ModulesScreen extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
+
                     const SizedBox(height: 4),
+
                     Text(
                       'Mobile App Development',
                       style: TextStyle(
                         fontSize: 16,
-                        color: Colors.white.withValues(alpha: 0.9),
+                        color: Colors.white.withValues(alpha: 230),
                       ),
                     ),
+
                     const SizedBox(height: 20),
-                    
-                    // Search Bar
+
+                    // -------------------------
+                    // SEARCH BAR
+                    // -------------------------
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       decoration: BoxDecoration(
-                        color: Colors.white.withValues(alpha: 0.3),
+                        color: Colors.white,
                         borderRadius: BorderRadius.circular(16),
                       ),
                       child: Row(
                         children: [
                           const Icon(
                             Icons.search,
-                            color: Colors.white,
-                            size: 20,
+                            color: Color.fromRGBO(52, 141, 188, 1),
                           ),
                           const SizedBox(width: 12),
+
                           Expanded(
                             child: TextField(
-                              style: const TextStyle(color: Colors.white),
-                              decoration: InputDecoration(
+                              onChanged: (value) {
+                                setState(() {
+                                  searchKeyword = value;
+                                  filterCourses();
+                                });
+                              },
+                              style: const TextStyle(
+                                color: Color.fromRGBO(52, 141, 188, 1),
+                              ),
+                              decoration: const InputDecoration(
                                 hintText: 'Search modules...',
                                 hintStyle: TextStyle(
-                                  color: Colors.white.withValues(alpha: 0.7),
+                                  color: Color.fromRGBO(52, 141, 188, 0.7),
                                 ),
                                 border: InputBorder.none,
-                                contentPadding: const EdgeInsets.symmetric(vertical: 14),
                               ),
                             ),
                           ),
@@ -91,295 +276,101 @@ class ModulesScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              
-              // Filter Chips
+
+              // -------------------------
+              // FILTER CHIPS
+              // -------------------------
               Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(20),
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
-                      _buildFilterChip('All Levels', true),
+                      _buildFilterChip('All Levels'),
                       const SizedBox(width: 8),
-                      _buildFilterChip('Beginner', false),
+                      _buildFilterChip('Beginner'),
                       const SizedBox(width: 8),
-                      _buildFilterChip('Intermediate', false),
+                      _buildFilterChip('Intermediate'),
                       const SizedBox(width: 8),
-                      _buildFilterChip('Advanced', false),
+                      _buildFilterChip('Advanced'),
                     ],
                   ),
                 ),
               ),
-              
-              // Modules List
+
+              // -------------------------
+              // MODULE LIST
+              // -------------------------
               Expanded(
-                child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text(
-                            'Your Learning Path',
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
+                child: filteredCourses.isEmpty
+                    ? Center(
+                        child: Text(
+                          "No modules found.",
+                          style: TextStyle(
+                            color: Colors.white.withValues(alpha: 220),
+                            fontSize: 16,
                           ),
-                          TextButton.icon(
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.filter_list,
-                              color: Color.fromRGBO(52, 141, 188, 1),
-                              size: 18,
-                            ),
-                            label: const Text(
-                              'Filter',
-                              style: TextStyle(
-                                color: Color.fromRGBO(52, 141, 188, 1),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 12),
-                      
-                      Expanded(
-                        child: ListView(
-                          children: [
-                            _buildModuleCard(
-                              'Introduction to Mobile Development',
-                              'Beginner',
-                              200,
-                              1.0,
-                              const Color(0xFF4CAF50),
-                            ),
-                            const SizedBox(height: 12),
-                            _buildModuleCard(
-                              'React Native Fundamentals',
-                              'Beginner',
-                              250,
-                              0.65,
-                              const Color(0xFF4CAF50),
-                            ),
-                            const SizedBox(height: 12),
-                            _buildModuleCard(
-                              'Navigation & Routing',
-                              'Intermediate',
-                              300,
-                              0.3,
-                              const Color.fromRGBO(52, 141, 188, 1),
-                            ),
-                            const SizedBox(height: 12),
-                            _buildModuleCard(
-                              'State Management with Redux',
-                              'Intermediate',
-                              350,
-                              0.0,
-                              const Color.fromRGBO(52, 141, 188, 1),
-                            ),
-                            const SizedBox(height: 12),
-                            _buildModuleCard(
-                              'API Integration & Data Fetching',
-                              'Intermediate',
-                              300,
-                              0.0,
-                              const Color.fromRGBO(52, 141, 188, 1),
-                            ),
-                            const SizedBox(height: 12),
-                            _buildModuleCard(
-                              'Advanced Animations',
-                              'Advanced',
-                              400,
-                              0.0,
-                              const Color(0xFF9C27B0),
-                            ),
-                            const SizedBox(height: 12),
-                            _buildModuleCard(
-                              'Performance Optimization',
-                              'Advanced',
-                              450,
-                              0.0,
-                              const Color(0xFF9C27B0),
-                            ),
-                            const SizedBox(height: 12),
-                            _buildModuleCard(
-                              'Publishing to App Stores',
-                              'Advanced',
-                              500,
-                              0.0,
-                              const Color(0xFF9C27B0),
-                            ),
-                            const SizedBox(height: 80),
-                          ],
                         ),
+                      )
+                    : ListView.builder(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        itemCount: filteredCourses.length,
+                        itemBuilder: (context, index) {
+                          final course = filteredCourses[index];
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                course.title,
+                                style: const TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const SizedBox(height: 8),
+
+                              ...course.modules.map(_buildModuleCard),
+
+                              const SizedBox(height: 16),
+                            ],
+                          );
+                        },
                       ),
-                    ],
-                  ),
-                ),
               ),
             ],
           ),
         ),
       ),
+
       bottomNavigationBar: _buildBottomNavBar(context, 1),
     );
   }
 
-  Widget _buildFilterChip(String label, bool isSelected) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      decoration: BoxDecoration(
-        color: isSelected
-            ? const Color.fromRGBO(52, 141, 188, 1)
-            : Colors.white.withValues(alpha: 0.1),
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(
-          color: isSelected
-              ? const Color.fromRGBO(52, 141, 188, 1)
-              : Colors.white.withValues(alpha: 0.3),
-          width: 1.5,
-        ),
-      ),
-      child: Text(
-        label,
-        style: TextStyle(
-          fontSize: 14,
-          fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-          color: Colors.white,
-        ),
-      ),
-    );
-  }
-
-  Widget _buildModuleCard(
-    String title,
-    String level,
-    int xp,
-    double progress,
-    Color levelColor,
-  ) {
-    return Container(
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.1),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Expanded(
-                child: Text(
-                  title,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF1A1A1A),
-                  ),
-                ),
-              ),
-              const Icon(
-                Icons.chevron_right,
-                color: Color(0xFF666666),
-              ),
-            ],
-          ),
-          const SizedBox(height: 12),
-          Row(
-            children: [
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                decoration: BoxDecoration(
-                  color: levelColor.withValues(alpha: 0.1),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Text(
-                  level,
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                    color: levelColor,
-                  ),
-                ),
-              ),
-              const SizedBox(width: 12),
-              Icon(
-                Icons.stars,
-                color: Colors.amber.shade600,
-                size: 16,
-              ),
-              const SizedBox(width: 4),
-              Text(
-                '+$xp XP',
-                style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.amber.shade600,
-                ),
-              ),
-            ],
-          ),
-          if (progress > 0) ...[
-            const SizedBox(height: 12),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: LinearProgressIndicator(
-                value: progress,
-                backgroundColor: Colors.grey.shade200,
-                valueColor: AlwaysStoppedAnimation<Color>(levelColor),
-                minHeight: 6,
-              ),
-            ),
-            const SizedBox(height: 6),
-            Text(
-              '${(progress * 100).toInt()}% Complete',
-              style: const TextStyle(
-                fontSize: 12,
-                color: Color(0xFF666666),
-              ),
-            ),
-          ],
-        ],
-      ),
-    );
-  }
-
+  // -------------------------
+  // BOTTOM NAV BAR
+  // -------------------------
   Widget _buildBottomNavBar(BuildContext context, int currentIndex) {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.1),
+            color: Colors.black.withValues(alpha: 26),
             blurRadius: 10,
             offset: const Offset(0, -2),
           ),
         ],
       ),
       child: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              _buildNavItem(context, Icons.home, 'Home', 0, currentIndex),
-              _buildNavItem(context, Icons.book_outlined, 'Modules', 1, currentIndex),
-              _buildNavItem(context, Icons.trending_up, 'Progress', 2, currentIndex),
-              _buildNavItem(context, Icons.person_outline, 'Profile', 3, currentIndex),
-            ],
-          ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            _buildNavItem(context, Icons.home, 'Home', 0, currentIndex),
+            _buildNavItem(context, Icons.book_outlined, 'Modules', 1, currentIndex),
+            _buildNavItem(context, Icons.trending_up, 'Progress', 2, currentIndex),
+            _buildNavItem(context, Icons.person_outline, 'Profile', 3, currentIndex),
+          ],
         ),
       ),
     );
@@ -392,7 +383,8 @@ class ModulesScreen extends StatelessWidget {
     int index,
     int currentIndex,
   ) {
-    final isSelected = index == currentIndex;
+    bool isSelected = index == currentIndex;
+
     return GestureDetector(
       onTap: () {
         switch (index) {
@@ -428,7 +420,8 @@ class ModulesScreen extends StatelessWidget {
               color: isSelected
                   ? const Color.fromRGBO(52, 141, 188, 1)
                   : Colors.grey.shade400,
-              fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+              fontWeight:
+                  isSelected ? FontWeight.bold : FontWeight.normal,
             ),
           ),
         ],
