@@ -5,22 +5,22 @@ This document outlines the backend features and implementation steps needed for 
 ## 🔐 Authentication & User Management
 
 ### 1. User Authentication System
-- [ ] Set up Firebase Authentication or custom backend authentication
+<!-- - [ ] Set up Firebase Authentication or custom backend authentication
 - [ ] Implement email/password registration
 - [ ] Implement email/password login
 - [ ] Implement Google OAuth sign-in
 - [ ] Add password reset/forgot password functionality
 - [ ] Implement email verification for new accounts
 - [ ] Add session management and token refresh
-- [ ] Implement secure logout functionality
+- [ ] Implement secure logout functionality -->
 
 ### 2. User Profile Management
-- [ ] Create user profile database schema
-- [ ] Implement profile creation on first login
-- [ ] Add profile update API (name, email, avatar)
-- [ ] Store user preferences (notifications, sound effects, dark mode)
-- [ ] Implement profile picture upload and storage
-- [ ] Add user level and XP tracking
+- [x] Create user profile database schema
+- [x] Implement profile creation on first login
+- [x] Add profile update API (name, email, avatar)
+- [x] Store user preferences (notifications, sound effects, dark mode)
+- [x] Implement profile picture upload and storage
+- [x] Add user level and XP tracking
 
 ## 📚 Learning Content Management
 

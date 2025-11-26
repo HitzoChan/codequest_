@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import '../backend/user_profile_service.dart'; // Added
 import '../widgets/custom_text_field.dart';
 import '../widgets/gradient_button.dart';
 
@@ -13,6 +14,8 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  final UserProfileService _userProfileService = UserProfileService(); // Added
+
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _nameController = TextEditingController();
@@ -28,7 +31,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   // -------------------------------------------------------
-  // FIREBASE SIGN UP + SAVE USER TO FIRESTORE
+  // FIREBASE SIGN UP + SAVE USER TO FIRESTORE + USER PROFILE SERVICE
   // -------------------------------------------------------
   Future<void> _handleSignUp() async {
     final name = _nameController.text.trim();
@@ -59,6 +62,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
         "totalXP": 0,
         "createdAt": DateTime.now(),
       });
+
+      // Add user profile to UserProfileService local backend simulation
+      _userProfileService.createProfile(uid, name, email);
 
       _showMessage("Account created successfully!");
 
