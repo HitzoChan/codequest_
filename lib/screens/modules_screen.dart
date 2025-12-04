@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../backend/course_module_api.dart';
 import '../backend/course_module_management.dart';
+import 'module_detail_screen.dart';
 
 class ModulesScreen extends StatefulWidget {
   const ModulesScreen({super.key});
@@ -20,8 +21,42 @@ class _ModulesScreenState extends State<ModulesScreen> {
   @override
   void initState() {
     super.initState();
+    // Start with the local cached courses so UI shows modules immediately
     courses = courseModuleAPI.getCourses();
-    filteredCourses = courses;
+    filteredCourses = List.from(courses);
+    // Initialize backend and fetch courses (may come from Firestore) and refresh UI afterwards
+    _initCourses();
+  }
+
+  Future<void> _initCourses() async {
+    try {
+      // show the placeholder while fetching
+      setState(() => filteredCourses = []);
+      await courseModuleAPI.initialize();
+      final fetched = await courseModuleAPI.fetchCourses();
+      
+      // Debug: Print pdfUrl for SQL module
+      for (var course in fetched) {
+        for (var module in course.modules) {
+          if (module.moduleId == 'sql_intro_01') {
+            print('DEBUG: SQL Module pdfUrl from Firestore: ${module.pdfUrl}');
+          }
+        }
+      }
+      
+      setState(() {
+        courses = fetched.isNotEmpty ? fetched : courseModuleAPI.getCourses();
+        filteredCourses = List.from(courses);
+      });
+    } catch (e) {
+      // If remote fetch fails, fall back to the local seeded courses
+      setState(() {
+        courses = courseModuleAPI.getCourses();
+        filteredCourses = List.from(courses);
+      });
+      // ignore: avoid_print
+      print('Failed to fetch courses: $e');
+    }
   }
 
   void filterCourses() {
@@ -87,7 +122,20 @@ class _ModulesScreenState extends State<ModulesScreen> {
   Widget _buildModuleCard(Module module) {
     Color levelColor = _getLevelColor(module.difficultyLevel);
 
-    return Container(
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(20),
+        onTap: () {
+          // Navigate to Module Detail and pass the Module object
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ModuleDetailScreen(module: module),
+            ),
+          );
+        },
+        child: Container(
       padding: const EdgeInsets.all(20),
       margin: const EdgeInsets.only(bottom: 12),
       decoration: BoxDecoration(
@@ -158,7 +206,9 @@ class _ModulesScreenState extends State<ModulesScreen> {
           ),
         ],
       ),
-    );
+    ),
+  ),
+); 
   }
 
   Color _getLevelColor(String level) {

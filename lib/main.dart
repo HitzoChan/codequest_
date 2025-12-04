@@ -7,7 +7,12 @@ import 'screens/home_screen.dart';
 import 'screens/profile_screen.dart';
 import 'screens/progress_screen.dart';
 import 'screens/modules_screen.dart';
+import 'screens/module_detail_screen.dart';
+import 'backend/course_module_management.dart';
+import 'screens/quiz_screen.dart';
 import 'screens/sign_up_screen.dart';
+import 'screens/quiz_review_screen.dart';
+import 'screens/quiz_review_detail_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();             // ← Important for Firebase
@@ -43,7 +48,15 @@ class CodeQuestApp extends StatelessWidget {
         '/modules': (context) => const ModulesScreen(),
         '/progress': (context) => const ProgressScreen(),
         '/profile': (context) => const ProfileScreen(),
-        '/signup': (context) => const SignUpScreen(),
+          '/signup': (context) => const SignUpScreen(),
+          '/quiz': (context) => const QuizScreen(),
+          '/quiz-review': (context) => const QuizReviewScreen(),
+          '/quiz-review-detail': (context) => const QuizReviewDetailScreen(),
+        '/module': (context) {
+          final module = ModalRoute.of(context)?.settings.arguments as Module?;
+          if (module == null) return const ModulesScreen();
+          return ModuleDetailScreen(module: module);
+        },
       },
       home: const LoginScreen(),
     );

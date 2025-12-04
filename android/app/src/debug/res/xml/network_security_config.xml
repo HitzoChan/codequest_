@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Debug-only network security config.
+  Safe approach for local testing: this configuration trusts user-installed
+  certificate authorities for the specified host only. Replace
+  HOSTNAME_REPLACE_ME with your server hostname (e.g. api.example.com).
+
+  Do NOT include this in release builds.
+-->
+<network-security-config>
+  <domain-config>
+    <domain includeSubdomains="true">drive.google.com</domain>
+    <trust-anchors>
+      <!-- Trust system CAs and user-installed CAs (for debug only) -->
+      <certificates src="system" />
+      <certificates src="user" />
+    </trust-anchors>
+  </domain-config>
+</network-security-config>

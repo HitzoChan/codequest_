@@ -5,21 +5,21 @@ This document outlines the backend features and implementation steps needed for 
 ## 🔐 Authentication & User Management
 
 ### 1. User Authentication System
-<!-- - [ ] Set up Firebase Authentication or custom backend authentication
+- [ ] Set up Firebase Authentication or custom backend authentication
 - [ ] Implement email/password registration
 - [ ] Implement email/password login
 - [ ] Implement Google OAuth sign-in
 - [ ] Add password reset/forgot password functionality
 - [ ] Implement email verification for new accounts
 - [ ] Add session management and token refresh
-- [ ] Implement secure logout functionality -->
+- [ ] Implement secure logout functionality
 
 ### 2. User Profile Management
 - [x] Create user profile database schema
 - [x] Implement profile creation on first login
 - [x] Add profile update API (name, email, avatar)
 - [x] Store user preferences (notifications, sound effects, dark mode)
-- [x] Implement profile picture upload and storage
+- [x] Implement profile picture upload and storage — server-side Google Drive upload endpoint implemented (`/api/upload-avatar`), client integration required
 - [x] Add user level and XP tracking
 
 ## 📚 Learning Content Management
@@ -60,71 +60,84 @@ This document outlines the backend features and implementation steps needed for 
 - [ ] Implement streak notifications/reminders
 - [ ] Store streak history
 
-### 7. Levels & XP System
-- [ ] Define XP requirements for each level
-- [ ] Implement level-up logic
-- [ ] Create XP reward system for activities:
-  - Completing modules
-  - Passing quizzes
-  - Daily login
+### 1. User Authentication System
+- [x] Set up Firebase Authentication (see `main.dart` & Firebase initialization) — client-side implemented
+- [x] Implement email/password registration (`lib/screens/sign_up_screen.dart`)
+- [x] Implement email/password login (`lib/screens/login_screen.dart`)
+- [x] Implement Google OAuth sign-in (`lib/screens/login_screen.dart`) *client-side*
+- [x] Add password reset/forgot password functionality (`lib/screens/login_screen.dart`)
+- [ ] Implement email verification for new accounts (not implemented)
+- [x] Add session management and token refresh (handled by Firebase SDK; used in app)
+- [x] Implement secure logout functionality (`lib/screens/profile_screen.dart`)
   - Maintaining streaks
-- [ ] Add level progression API endpoints
-
-## 📝 Quiz & Assessment System
-
-### 8. Quiz Management
-- [ ] Design quiz database schema (questions, answers, correct options)
+### 2. User Profile Management
+- [x] Create user profile database schema (using Firestore `users` documents; see `lib/backend/firestore_service.dart` and `lib/screens/profile_screen.dart`)
+- [x] Implement profile creation on first login (Sign up writes the `users` doc; see `lib/screens/sign_up_screen.dart`)
+- [x] Add profile update API (name, email, avatar) — implemented server-side wrapper functions (`lib/backend/firestore_service.dart`), UI update endpoint not yet connected
+- [ ] Store user preferences (notifications, sound effects, dark mode) — UI toggles exist in `profile_screen.dart` but persistence is not implemented
+- [ ] Implement profile picture upload and storage — not implemented yet
+- [x] Add user level and XP tracking (partially: XP stored & incremented; leveling logic not implemented) — see `lib/backend/firestore_service.dart` and `course_module_management.dart`
 - [ ] Create API for fetching quiz questions
-- [ ] Implement quiz submission and grading
-- [ ] Track quiz attempts and scores
-- [ ] Calculate and store quiz statistics
-- [ ] Add quiz time limits (optional)
-- [ ] Implement different question types (multiple choice, true/false, code completion)
-
-### 9. Learning Analytics
+### 3. Course/Module System
+- [x] Design database schema for courses and modules (implemented with `Course`/`Module` model and `toMap`/`fromMap` methods in `lib/backend/course_module_management.dart`)
+- [x] Create API endpoints for fetching course list (in-app API: `CourseModuleAPI.getCourses()` and `fetchCourses()`; `lib/backend/course_module_api.dart`)
+- [x] Implement module content delivery (text, video, code examples) — see `lib/screens/module_detail_screen.dart` showing YouTube player, summary, and content -> PDF
+- [x] Add module difficulty levels — added to Module model and UI filtering (`modules_screen.dart`)
+- [x] Track module enrollment and completion status (in-memory + Firestore persistence via `firestore_service.dart` and `CourseModuleService.enrollUser`/`completeModule`)
+- [ ] Implement module prerequisites and learning paths (not implemented yet)
+- [x] Add search and filter functionality for modules (`lib/screens/modules_screen.dart`)
 - [ ] Track time spent on each module
-- [ ] Calculate completion rates
-- [ ] Generate learning insights and recommendations
-- [ ] Create dashboard analytics API
-
-## 🔔 Notifications & Engagement
-
-### 10. Notification System
-- [ ] Set up push notification service (Firebase Cloud Messaging)
+### 4. Progress Tracking
+- [x] Create progress tracking database schema (Firestore `user_progress` collection used in `lib/backend/firestore_service.dart`)
+- [x] Implement XP (Experience Points) increment on module completion (`incrementUserXp` in `firestore_service.dart`)
+- [x] Track modules completed per user (`user_progress` doc with `status: 'completed'`)
+- [ ] Calculate and store average quiz scores (not implemented)
+- [ ] Track total study time per user (not implemented)
+- [ ] Implement weekly XP tracking and statistics (not implemented)
+- [x] Add progress percentage calculations (we set completionPercentage to 100 for completed modules; finer-grained calculations not implemented)
+- [ ] Create API for fetching user progress data (read methods exist for user profile; explicit progress listing API is not yet implemented)
 - [ ] Implement notification preferences storage
-- [ ] Create notification triggers:
-  - Daily learning reminders
-  - Streak reminders
-  - Achievement unlocks
-  - New module releases
-- [ ] Add in-app notification center
-- [ ] Implement notification history
+### 8. Quiz Management
+- [x] Design quiz data object (client-side `lib/backend/quiz_data.dart` + `QuizScreen`) — server schema not yet implemented
+- [x] Create API for fetching quiz questions (client-side: `QuizScreen` uses `SqlIntroQuiz.questions`; `CourseModuleAPI.getQuizForModule` returns static map for seed module)
+- [x] Implement quiz submission and grading (client-side grading performed in `lib/screens/quiz_screen.dart`)
+- [ ] Track quiz attempts and scores in database (not implemented)
+- [ ] Calculate and store quiz statistics (not implemented)
+- [ ] Add quiz time limits (optional) (not implemented)
+- [x] Implement multiple-choice question type (implemented in `QuizScreen`)
 
 ### 11. Activity Feed
 - [ ] Create recent activity tracking
-- [ ] Implement activity feed API
-- [ ] Track activities:
-  - Quiz completions
-  - XP earned
   - Streaks maintained
+#### User_Preferences Table
+```
+- user_id (foreign key)
+- notifications_enabled
+- sound_effects_enabled
+- dark_mode_enabled
+```
   - Module completions
 
-## 🗄️ Database Design
-
-### 12. Core Database Tables/Collections
-
-#### Users Table
-```
-- user_id (primary key)
 - email
+#### Quiz_Attempts Table
+```
+- attempt_id (primary key)
+- user_id (foreign key)
+- quiz_id (foreign key)
+- score
+- passed
+- time_taken
+- attempted_at
+```
 - password_hash
-- display_name
-- avatar_url
-- level
-- total_xp
-- current_streak
-- longest_streak
-- created_at
+### 15. API Integration in Flutter
+- [ ] Set up HTTP client (Dio/http package) — Not implemented
+- [x] Implement API service layer (In-app `CourseModuleAPI` and `FirestoreService` wrappers)
+- [ ] Add error handling and retry logic (partially implemented in `profile_screen` and other UI components)
+- [ ] Implement token storage (secure_storage) — not implemented
+- [ ] Add offline data caching — not implemented
+- [ ] Implement state management (Provider/Riverpod/Bloc) — not implemented (app uses basic setState)
+- [x] Add loading states and error handling UI (Progress indicators & basic error SnackBars exist in several screens)
 - updated_at
 ```
 

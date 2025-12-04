@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:async';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -16,6 +17,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   User? user;
   Map<String, dynamic>? userData;
   bool _loading = true;
+  StreamSubscription<DocumentSnapshot<Map<String, dynamic>>>? _userSub;
 
   // Local UI toggles (not persisted here)
   bool _notifications = true;
@@ -27,35 +29,39 @@ class _ProfileScreenState extends State<ProfileScreen> {
     super.initState();
     user = _auth.currentUser;
     if (user != null) {
-      _loadUserData(user!.uid);
+      // listen to user document so UI updates immediately when XP changes
+      _userSub = _firestore.collection('users').doc(user!.uid).snapshots().listen((doc) {
+        if (doc.exists && doc.data() != null) {
+          setState(() {
+            userData = doc.data();
+            _loading = false;
+          });
+        } else {
+          setState(() {
+            userData = null;
+            _loading = false;
+          });
+        }
+      }, onError: (e) {
+        // ignore: avoid_print
+        print('User snapshot error: $e');
+        setState(() {
+          userData = null;
+          _loading = false;
+        });
+      });
     } else {
       setState(() => _loading = false);
     }
   }
 
-  Future<void> _loadUserData(String userId) async {
-    try {
-      final userDoc = await _firestore.collection('users').doc(userId).get();
-      if (userDoc.exists) {
-        setState(() {
-          userData = userDoc.data();
-          _loading = false;
-        });
-      } else {
-        setState(() {
-          userData = null;
-          _loading = false;
-        });
-      }
-    } catch (e) {
-      // ignore: avoid_print
-      print("Failed to load user data: $e");
-      setState(() {
-        userData = null;
-        _loading = false;
-      });
-    }
+  @override
+  void dispose() {
+    _userSub?.cancel();
+    super.dispose();
   }
+
+  
 
   Future<void> _handleLogout() async {
     try {
@@ -250,27 +256,74 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Container(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: screenWidth * 0.04 > 16 ? 16 : screenWidth * 0.04,
-                                vertical: screenWidth * 0.02 > 8 ? 8 : screenWidth * 0.02,
-                              ),
-                              decoration: BoxDecoration(
-                                color: Colors.white.withValues(alpha: 0.3),
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Text(
-                                'Level $level',
-                                style: TextStyle(
-                                  fontSize: screenWidth * 0.035 > 14 ? 14 : screenWidth * 0.035,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
+                            // Level with XP progress ring
+                            Column(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: screenWidth * 0.04 > 16 ? 16 : screenWidth * 0.04,
+                                    vertical: screenWidth * 0.02 > 8 ? 8 : screenWidth * 0.02,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white.withValues(alpha: 0.3),
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: Text(
+                                    'Level $level',
+                                    style: TextStyle(
+                                      fontSize: screenWidth * 0.035 > 14 ? 14 : screenWidth * 0.035,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                    ),
+                                  ),
                                 ),
-                              ),
+                                const SizedBox(height: 8),
+                                // XP progress ring (animated)
+                                Builder(builder: (context) {
+                                  // Simple level progression: base XP per level
+                                  const int baseXp = 1000;
+                                  final int startXp = ((level - 1) * baseXp).clamp(0, 1 << 30);
+                                  final int targetXp = (level * baseXp);
+                                  final int currentXp = xp.clamp(0, targetXp);
+                                  final double progress = targetXp > startXp ? ((currentXp - startXp) / (targetXp - startXp)).clamp(0.0, 1.0) : 0.0;
+
+                                  return TweenAnimationBuilder<double>(
+                                    tween: Tween(begin: 0.0, end: progress),
+                                    duration: const Duration(milliseconds: 700),
+                                    curve: Curves.easeOutCubic,
+                                    builder: (context, value, child) {
+                                      return SizedBox(
+                                        width: 72,
+                                        height: 72,
+                                        child: Stack(
+                                          alignment: Alignment.center,
+                                          children: [
+                                            CircularProgressIndicator(
+                                              value: value,
+                                              strokeWidth: 6.0,
+                                              backgroundColor: Colors.white.withOpacity(0.12),
+                                              valueColor: const AlwaysStoppedAnimation<Color>(Colors.white),
+                                            ),
+                                            Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                Text('${(value * 100).toInt()}%', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12)),
+                                                const SizedBox(height: 2),
+                                                Text('${currentXp}/${targetXp}', style: const TextStyle(color: Colors.white70, fontSize: 10)),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    },
+                                  );
+                                }),
+                              ],
                             ),
 
-                            SizedBox(width: screenWidth * 0.03),
+                            SizedBox(width: screenWidth * 0.04),
 
+                            // Hearts
                             Row(
                               children: List.generate(
                                 heartsToShow,
@@ -299,12 +352,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Row(
                         children: [
                           Expanded(
-                            child: _buildStatCard(
-                              Icons.emoji_events_outlined,
-                              xp.toString(),
-                              'Total XP',
-                              const Color.fromRGBO(52, 141, 188, 1),
-                            ),
+                            child: _buildXpCard(xp, level),
                           ),
                           const SizedBox(width: 12),
                           Expanded(
@@ -589,6 +637,81 @@ class _ProfileScreenState extends State<ProfileScreen> {
           Text(value, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: color)),
           const SizedBox(height: 4),
           Text(label, textAlign: TextAlign.center, style: const TextStyle(fontSize: 12, color: Color(0xFF666666))),
+        ],
+      ),
+    );
+  }
+
+  // XP progression helpers
+  // Simple XP curve: XP required for level n (the XP to go from level n to n+1) = n * 1000
+  // Total XP required to reach level n (1-based) = 1000 * (n-1) * (n) / 2
+  int _totalXpForLevel(int level) {
+    final n = level - 1;
+    return (1000 * n * (n + 1) ~/ 2);
+  }
+
+  double _xpProgressForLevel(int totalXp, int level) {
+    final base = _totalXpForLevel(level);
+    final needed = level * 1000;
+    if (needed <= 0) return 0.0;
+    final cur = (totalXp - base).clamp(0, needed).toDouble();
+    return (cur / needed).clamp(0.0, 1.0);
+  }
+
+  Widget _buildXpCard(int totalXp, int level) {
+    final progress = _xpProgressForLevel(totalXp, level);
+    final neededForNext = level * 1000;
+    final base = _totalXpForLevel(level);
+    final remaining = (neededForNext - (totalXp - base)).clamp(0, neededForNext);
+
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.05),
+            blurRadius: 10,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SizedBox(
+            height: 72,
+            width: 72,
+            child: TweenAnimationBuilder<double>(
+              tween: Tween(begin: 0.0, end: progress),
+              duration: const Duration(milliseconds: 800),
+              builder: (context, value, child) {
+                return Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    CircularProgressIndicator(
+                      value: value,
+                      strokeWidth: 8,
+                      backgroundColor: Colors.grey.shade200,
+                      valueColor: const AlwaysStoppedAnimation<Color>(Color.fromRGBO(52, 141, 188, 1)),
+                    ),
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text('Lv $level', style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Color(0xFF1A1A1A))),
+                        Text('${(progress * 100).toStringAsFixed(0)}%', style: const TextStyle(fontSize: 12, color: Color(0xFF666666))),
+                      ],
+                    ),
+                  ],
+                );
+              },
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(totalXp.toString(), style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color.fromRGBO(52, 141, 188, 1))),
+          const SizedBox(height: 4),
+          Text('$remaining XP to next level', style: const TextStyle(fontSize: 12, color: Color(0xFF666666))),
         ],
       ),
     );
