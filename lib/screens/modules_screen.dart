@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import '../backend/firestore_service.dart';
+import '../backend/quizzes.dart';
 import '../backend/course_module_api.dart';
-import '../backend/course_module_management.dart';
+import '../backend/course_models.dart';
 import 'module_detail_screen.dart';
+import '../utils/page_transitions.dart';
+import 'home_screen.dart';
+import 'progress_screen.dart';
+import 'profile_screen.dart';
 
 class ModulesScreen extends StatefulWidget {
   const ModulesScreen({super.key});
@@ -12,74 +19,157 @@ class ModulesScreen extends StatefulWidget {
 
 class _ModulesScreenState extends State<ModulesScreen> {
   final CourseModuleAPI courseModuleAPI = CourseModuleAPI();
+  final FirestoreService _firestore = FirestoreService();
+
+  // per-module quiz progress
+  final Map<String, double> _quizProgress = {};
+  final Map<String, int> _quizScore = {};
+  final Set<String> _quizPassed = {};
 
   List<Course> courses = [];
   List<Course> filteredCourses = [];
   String searchKeyword = '';
   String selectedLevel = 'All Levels';
+  final TextEditingController _searchController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    // Start with the local cached courses so UI shows modules immediately
     courses = courseModuleAPI.getCourses();
     filteredCourses = List.from(courses);
-    // Initialize backend and fetch courses (may come from Firestore) and refresh UI afterwards
     _initCourses();
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
   }
 
   Future<void> _initCourses() async {
     try {
-      // show the placeholder while fetching
-      setState(() => filteredCourses = []);
+      // Don't clear courses, keep showing the cached ones
       await courseModuleAPI.initialize();
       final fetched = await courseModuleAPI.fetchCourses();
-      
-      // Debug: Print pdfUrl for SQL module
-      for (var course in fetched) {
-        for (var module in course.modules) {
-          if (module.moduleId == 'sql_intro_01') {
-            print('DEBUG: SQL Module pdfUrl from Firestore: ${module.pdfUrl}');
+
+      if (fetched.isNotEmpty) {
+        setState(() {
+          courses = fetched;
+          filteredCourses = List.from(courses);
+        });
+      }
+
+      _loadQuizProgress();
+    } catch (e) {
+      // Keep existing courses if fetch fails
+    }
+  }
+
+  Future<void> _loadQuizProgress() async {
+    try {
+      final uid = FirebaseAuth.instance.currentUser?.uid;
+      if (uid == null) { return; }
+      final attempts = await _firestore.fetchQuizAttemptsForUser(uid);
+
+      // Track the most recent attempt per quizId using attemptedAt timestamp
+      final Map<String, DateTime> latestAttemptAt = {};
+      final Map<String, int> latestScore = {};
+      final Set<String> latestPassed = {};
+
+      for (final a in attempts) {
+        final quizId = a['quizId'] as String?;
+        if (quizId == null) { continue; }
+
+        final scoreVal = a['score'];
+        final passed = a['passed'] as bool? ?? false;
+
+        // parse attemptedAt robustly (Timestamp, DateTime, int millis)
+        DateTime? attemptedAt;
+        final attemptedRaw = a['attemptedAt'];
+        try {
+          if (attemptedRaw is DateTime) { attemptedAt = attemptedRaw; }
+          else if (attemptedRaw != null) {
+            // Some Firestore clients return a Timestamp-like object with toDate()
+            try {
+              attemptedAt = (attemptedRaw as dynamic).toDate() as DateTime;
+            } catch (_) {
+              if (attemptedRaw is int) { attemptedAt = DateTime.fromMillisecondsSinceEpoch(attemptedRaw); }
+              else if (attemptedRaw is String) { attemptedAt = DateTime.tryParse(attemptedRaw); }
+            }
           }
+        } catch (_) {
+          attemptedAt = null;
+        }
+
+        int scoreInt = scoreVal is int ? scoreVal : 0;
+
+        // If we don't have a recorded time for this quiz, or this attempt is newer, update
+        final existing = latestAttemptAt[quizId];
+        final shouldReplace = existing == null || (attemptedAt != null && attemptedAt.isAfter(existing));
+
+        if (shouldReplace) {
+          if (attemptedAt != null) { latestAttemptAt[quizId] = attemptedAt; }
+          latestScore[quizId] = scoreInt;
+          if (passed) { latestPassed.add(quizId); } else { latestPassed.remove(quizId); }
         }
       }
-      
-      setState(() {
-        courses = fetched.isNotEmpty ? fetched : courseModuleAPI.getCourses();
-        filteredCourses = List.from(courses);
+
+      // Build progress map from latestScore/latestPassed
+      final Map<String, double> map = {};
+      latestScore.forEach((quizId, scoreInt) {
+        int total = 0;
+        if (quizId == 'sql_intro_01') { total = SqlIntroQuiz.questions.length; }
+        else if (quizId == 'computing_intro_01') { total = ComputingIntroBeginnerQuiz.questions.length; }
+        else if (quizId == 'programming_fundamentals_01') { total = ProgrammingFundamentalsBeginnerQuiz.questions.length; }
+        else if (quizId == 'web_development_01') { total = WebDevIntermediateQuiz.questions.length; }
+        else if (quizId == 'data_structures_advanced_01') { total = DataStructuresAdvancedQuiz.questions.length; }
+
+        final passed = latestPassed.contains(quizId);
+        if (passed) { map[quizId] = 1.0; }
+        else { map[quizId] = total > 0 ? (scoreInt / total).clamp(0.0, 1.0) : 0.0; }
       });
-    } catch (e) {
-      // If remote fetch fails, fall back to the local seeded courses
+
       setState(() {
-        courses = courseModuleAPI.getCourses();
-        filteredCourses = List.from(courses);
+        _quizProgress.clear();
+        _quizProgress.addAll(map);
+        _quizScore.clear();
+        _quizScore.addAll(latestScore);
+        _quizPassed.clear();
+        _quizPassed.addAll(latestPassed);
       });
-      // ignore: avoid_print
-      print('Failed to fetch courses: $e');
-    }
+    } catch (_) {}
   }
 
   void filterCourses() {
     setState(() {
-      filteredCourses = courses.where((course) {
-        final term = searchKeyword.toLowerCase();
-        bool matchesSearch =
-            course.title.toLowerCase().contains(term) ||
-            course.description.toLowerCase().contains(term);
+      final term = searchKeyword.toLowerCase();
 
-        bool matchesLevel =
-            selectedLevel == 'All Levels' ||
-            course.difficultyLevel.toLowerCase() ==
-                selectedLevel.toLowerCase();
+      filteredCourses = courses.map((course) {
+        final matchingModules = course.modules.where((module) {
+          final matchSearch =
+              module.title.toLowerCase().contains(term) ||
+              module.content.toLowerCase().contains(term) ||
+              course.title.toLowerCase().contains(term) ||
+              course.description.toLowerCase().contains(term);
 
-        return matchesSearch && matchesLevel;
-      }).toList();
+          final matchLevel = selectedLevel == 'All Levels' ||
+              module.difficultyLevel.toLowerCase() ==
+                  selectedLevel.toLowerCase();
+
+          return matchSearch && matchLevel;
+        }).toList();
+
+        return Course(
+          courseId: course.courseId,
+          title: course.title,
+          description: course.description,
+          modules: matchingModules,
+          difficultyLevel: course.difficultyLevel,
+        );
+      }).where((c) => c.modules.isNotEmpty).toList();
     });
   }
 
-  // -----------------------------
-  // FILTER CHIP
-  // -----------------------------
   Widget _buildFilterChip(String label) {
     bool isSelected = selectedLevel == label;
 
@@ -87,6 +177,8 @@ class _ModulesScreenState extends State<ModulesScreen> {
       onTap: () {
         setState(() {
           selectedLevel = label;
+          searchKeyword = '';
+          _searchController.clear();
           filterCourses();
         });
       },
@@ -95,7 +187,7 @@ class _ModulesScreenState extends State<ModulesScreen> {
         decoration: BoxDecoration(
           color: isSelected
               ? const Color.fromRGBO(52, 141, 188, 1)
-              : const Color.fromRGBO(255, 255, 255, 1),
+              : Colors.white,
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
             color: const Color.fromRGBO(52, 141, 188, 1),
@@ -116,99 +208,156 @@ class _ModulesScreenState extends State<ModulesScreen> {
     );
   }
 
-  // -----------------------------
-  // MODULE CARD
-  // -----------------------------
+  // ---------------------------------------------------------
+  // MODULE CARD (WITH PILL PROGRESS INDICATOR)
+  // ---------------------------------------------------------
   Widget _buildModuleCard(Module module) {
     Color levelColor = _getLevelColor(module.difficultyLevel);
+    // Ensure we always have a visible difficulty label and pick a readable text color
+    final String difficultyLabel = module.difficultyLevel.trim().isEmpty ? 'Level' : module.difficultyLevel;
+    final Color chipTextColor = levelColor.computeLuminance() > 0.6 ? Colors.black : Colors.white;
+
+    // Compute quiz progress
+    int total = 0;
+    if (module.moduleId == 'sql_intro_01') {
+      total = SqlIntroQuiz.questions.length;
+    } else if (module.moduleId == 'computing_intro_01') {
+      total = ComputingIntroBeginnerQuiz.questions.length;
+    } else if (module.moduleId == 'programming_fundamentals_01') {
+      total = ProgrammingFundamentalsBeginnerQuiz.questions.length;
+    } else if (module.moduleId == 'web_development_01') {
+      total = WebDevIntermediateQuiz.questions.length;
+    } else if (module.moduleId == 'data_structures_advanced_01') {
+      total = DataStructuresAdvancedQuiz.questions.length;
+    }
+
+    final int score = _quizScore[module.moduleId] ?? 0;
+    final bool passed = _quizPassed.contains(module.moduleId);
+    final double pct = total > 0 ? (score / total).clamp(0.0, 1.0) : 0.0;
+    final Color progressColor = passed || pct == 1.0 ? Colors.green : levelColor;
 
     return Material(
       color: Colors.transparent,
       child: InkWell(
         borderRadius: BorderRadius.circular(20),
-        onTap: () {
-          // Navigate to Module Detail and pass the Module object
-          Navigator.push(
+        onTap: () async {
+          await Navigator.push(
             context,
             MaterialPageRoute(
               builder: (context) => ModuleDetailScreen(module: module),
             ),
           );
+          // Refresh quiz progress after returning from details/quiz so latest attempts show
+          await _loadQuizProgress();
         },
         child: Container(
-      padding: const EdgeInsets.all(20),
-      margin: const EdgeInsets.only(bottom: 12),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 26),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Title Row
-          Row(
-            children: [
-              Expanded(
-                child: Text(
-                  module.title,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF1A1A1A),
-                  ),
-                ),
-              ),
-              const Icon(Icons.chevron_right, color: Color(0xFF666666)),
-            ],
-          ),
-
-          const SizedBox(height: 12),
-
-          // Difficulty + XP
-          Row(
-            children: [
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                decoration: BoxDecoration(
-                  color: levelColor.withValues(alpha: 40),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Text(
-                  module.difficultyLevel,
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                    color: levelColor,
-                  ),
-                ),
-              ),
-              const SizedBox(width: 12),
-
-              const Icon(Icons.stars, size: 16, color: Colors.amber),
-              const SizedBox(width: 4),
-
-              const Text(
-                "+200 XP",
-                style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.amber,
-                ),
+          padding: const EdgeInsets.all(20),
+          margin: const EdgeInsets.only(bottom: 12),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(20),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withValues(alpha: 26),
+                blurRadius: 10,
+                offset: const Offset(0, 4),
               ),
             ],
           ),
-        ],
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              
+              // TITLE
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      module.title,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF1A1A1A),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+              const SizedBox(height: 12),
+
+              // DIFFICULTY + PROGRESS PILL
+              Row(
+                children: [
+                  // Difficulty chip
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 12, vertical: 6),
+                      decoration: BoxDecoration(
+                      color: levelColor.withValues(alpha: 38),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Text(
+                      difficultyLabel,
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                        color: chipTextColor,
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(width: 12),
+
+                  // PILL PROGRESS BAR
+                  Expanded(
+                    child: Stack(
+                      alignment: Alignment.centerLeft,
+                      children: [
+                        // Background pill
+                        Container(
+                          height: 24,
+                            decoration: BoxDecoration(
+                            color: Colors.grey.withValues(alpha: 51),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+
+                        // Progress fill
+                        FractionallySizedBox(
+                          widthFactor: pct,
+                          child: Container(
+                            height: 24,
+                            decoration: BoxDecoration(
+                              color: progressColor,
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
+                        ),
+
+                        // Text inside pill
+                        Positioned.fill(
+                          child: Center(
+                            child: Text(
+                              total == 0 ? "- / -" : "$score / $total",
+                              style: const TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
       ),
-    ),
-  ),
-); 
+    );
   }
 
   Color _getLevelColor(String level) {
@@ -223,10 +372,9 @@ class _ModulesScreenState extends State<ModulesScreen> {
         return Colors.grey;
     }
   }
-
-  // -----------------------------
+  // ---------------------------------------------------------
   // MAIN UI
-  // -----------------------------
+  // ---------------------------------------------------------
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -244,6 +392,7 @@ class _ModulesScreenState extends State<ModulesScreen> {
         child: SafeArea(
           child: Column(
             children: [
+              
               // -------------------------
               // HEADER
               // -------------------------
@@ -252,7 +401,10 @@ class _ModulesScreenState extends State<ModulesScreen> {
                 padding: const EdgeInsets.all(24),
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [Color(0xFF7EC8E3), Color(0xFF5AB4D8)],
+                    colors: [
+                      Color(0xFF7EC8E3),
+                      Color(0xFF5AB4D8),
+                    ],
                   ),
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(32),
@@ -302,6 +454,7 @@ class _ModulesScreenState extends State<ModulesScreen> {
 
                           Expanded(
                             child: TextField(
+                              controller: _searchController,
                               onChanged: (value) {
                                 setState(() {
                                   searchKeyword = value;
@@ -320,6 +473,22 @@ class _ModulesScreenState extends State<ModulesScreen> {
                               ),
                             ),
                           ),
+                          
+                          // Clear button
+                          if (searchKeyword.isNotEmpty)
+                            IconButton(
+                              icon: const Icon(
+                                Icons.clear,
+                                color: Color.fromRGBO(52, 141, 188, 1),
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  searchKeyword = '';
+                                  _searchController.clear();
+                                  filterCourses();
+                                });
+                              },
+                            ),
                         ],
                       ),
                     ),
@@ -331,9 +500,11 @@ class _ModulesScreenState extends State<ModulesScreen> {
               // FILTER CHIPS
               // -------------------------
               Padding(
-                padding: const EdgeInsets.all(20),
+                padding: const EdgeInsets.symmetric(vertical: 12),
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  clipBehavior: Clip.none,
                   child: Row(
                     children: [
                       _buildFilterChip('All Levels'),
@@ -357,35 +528,55 @@ class _ModulesScreenState extends State<ModulesScreen> {
                         child: Text(
                           "No modules found.",
                           style: TextStyle(
-                            color: Colors.white.withValues(alpha: 220),
+                            color: Colors.white.withValues(alpha: 217),
                             fontSize: 16,
                           ),
                         ),
                       )
-                    : ListView.builder(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        itemCount: filteredCourses.length,
-                        itemBuilder: (context, index) {
-                          final course = filteredCourses[index];
-                          return Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                course.title,
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
+                    : Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 8),
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                '${filteredCourses.fold<int>(0, (p, c) => p + c.modules.length)} module(s) found',
+                                style: const TextStyle(color: Colors.white70),
                               ),
-                              const SizedBox(height: 8),
+                            ),
+                          ),
 
-                              ...course.modules.map(_buildModuleCard),
+                          Expanded(
+                            child: ListView.builder(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 20),
+                              itemCount: filteredCourses.length,
+                              itemBuilder: (context, index) {
+                                final course = filteredCourses[index];
+                                return Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      course.title,
+                                      style: const TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                        color: Color.fromARGB(255, 247, 244, 244),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 8),
 
-                              const SizedBox(height: 16),
-                            ],
-                          );
-                        },
+                                    ...course.modules.map(_buildModuleCard),
+
+                                    const SizedBox(height: 16),
+                                  ],
+                                );
+                              },
+                            ),
+                          ),
+                        ],
                       ),
               ),
             ],
@@ -397,30 +588,33 @@ class _ModulesScreenState extends State<ModulesScreen> {
     );
   }
 
-  // -------------------------
+  // ---------------------------------------------------------
   // BOTTOM NAV BAR
-  // -------------------------
+  // ---------------------------------------------------------
   Widget _buildBottomNavBar(BuildContext context, int currentIndex) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: const Color.fromRGBO(30, 30, 30, 1),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 26),
-            blurRadius: 10,
-            offset: const Offset(0, -2),
+            color: Colors.black.withValues(alpha: 0.3),
+            blurRadius: 20,
+            offset: const Offset(0, -5),
           ),
         ],
       ),
       child: SafeArea(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            _buildNavItem(context, Icons.home, 'Home', 0, currentIndex),
-            _buildNavItem(context, Icons.book_outlined, 'Modules', 1, currentIndex),
-            _buildNavItem(context, Icons.trending_up, 'Progress', 2, currentIndex),
-            _buildNavItem(context, Icons.person_outline, 'Profile', 3, currentIndex),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              _buildNavItem(context, Icons.home, 'Home', 0, currentIndex),
+              _buildNavItem(context, Icons.book_outlined, 'Modules', 1, currentIndex),
+              _buildNavItem(context, Icons.trending_up, 'Progress', 2, currentIndex),
+              _buildNavItem(context, Icons.person_outline, 'Profile', 3, currentIndex),
+            ],
+          ),
         ),
       ),
     );
@@ -437,44 +631,56 @@ class _ModulesScreenState extends State<ModulesScreen> {
 
     return GestureDetector(
       onTap: () {
+        if (isSelected) return; // Don't navigate if already on current screen
         switch (index) {
           case 0:
-            Navigator.pushReplacementNamed(context, '/home');
+            Navigator.pushReplacement(context, SmoothPageRoute(page: HomeScreen()));
             break;
           case 1:
-            Navigator.pushReplacementNamed(context, '/modules');
-            break;
+            break; // Already on modules
           case 2:
-            Navigator.pushReplacementNamed(context, '/progress');
+            Navigator.pushReplacement(context, SmoothPageRoute(page: ProgressScreen()));
             break;
           case 3:
-            Navigator.pushReplacementNamed(context, '/profile');
+            Navigator.pushReplacement(context, SmoothPageRoute(page: ProfileScreen()));
             break;
         }
       },
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(
-            icon,
-            color: isSelected
-                ? const Color.fromRGBO(52, 141, 188, 1)
-                : Colors.grey.shade400,
-            size: 28,
-          ),
-          const SizedBox(height: 4),
-          Text(
-            label,
-            style: TextStyle(
-              fontSize: 12,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
+        padding: EdgeInsets.symmetric(
+          horizontal: isSelected ? 20 : 12,
+          vertical: 8,
+        ),
+        decoration: BoxDecoration(
+          color: isSelected
+              ? const Color.fromRGBO(52, 141, 188, 0.15)
+              : Colors.transparent,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              icon,
               color: isSelected
                   ? const Color.fromRGBO(52, 141, 188, 1)
-                  : Colors.grey.shade400,
-              fontWeight:
-                  isSelected ? FontWeight.bold : FontWeight.normal,
+                  : Colors.grey.shade500,
+              size: 26,
             ),
-          ),
-        ],
+            const SizedBox(height: 6),
+            Text(
+              label,
+              style: TextStyle(
+                fontSize: 11,
+                color: isSelected
+                    ? const Color.fromRGBO(52, 141, 188, 1)
+                    : Colors.grey.shade500,
+                fontWeight: isSelected ? FontWeight.bold : FontWeight.w500,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

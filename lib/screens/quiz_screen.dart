@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../backend/quiz_data.dart';
+import '../backend/quizzes.dart';
 import '../backend/firestore_service.dart';
-import '../widgets/xp_animation.dart';
 
 class QuizScreen extends StatefulWidget {
   const QuizScreen({super.key});
@@ -11,7 +10,7 @@ class QuizScreen extends StatefulWidget {
   State<QuizScreen> createState() => _QuizScreenState();
 }
 
-class _QuizScreenState extends State<QuizScreen> {
+class _QuizScreenState extends State<QuizScreen> with SingleTickerProviderStateMixin {
   List<QuizQuestion> questions = [];
   int currentIndex = 0;
   int score = 0;
@@ -20,6 +19,9 @@ class _QuizScreenState extends State<QuizScreen> {
   String moduleId = '';
   DateTime? startTime;
   List<int?> answers = [];
+  int? _userHearts;  
+  late final AnimationController _heartAnimController;
+  late final Animation<double> _scaleAnim;
 
   @override
   void didChangeDependencies() {
@@ -30,21 +32,190 @@ class _QuizScreenState extends State<QuizScreen> {
     startTime = DateTime.now();
 
     // For now, select the SQL quiz when moduleId matches 'sql_intro_01'
+    // Map known module IDs to their quiz data. Default to the SQL intro quiz
+    // to avoid showing an empty quiz screen for unknown modules.
     if (moduleId == 'sql_intro_01') {
       questions = SqlIntroQuiz.questions;
+    } else if (moduleId == 'computing_intro_01') {
+      questions = ComputingIntroBeginnerQuiz.questions;
+    } else if (moduleId == 'programming_fundamentals_01') {
+      questions = ProgrammingFundamentalsBeginnerQuiz.questions;
+    } else if (moduleId == 'web_development_01') {
+      questions = WebDevIntermediateQuiz.questions;
+    } else if (moduleId == 'data_structures_advanced_01') {
+      questions = DataStructuresAdvancedQuiz.questions;
     } else {
-      // Default to SQL quiz if we don't recognize the ID
       questions = SqlIntroQuiz.questions;
     }
     // initialize answers list to track per-question selections
     answers = List<int?>.filled(questions.length, null);
+    // load user hearts for UI and penalty logic
+    _loadUserHearts();
   }
 
-  void selectAnswer(int index) {
+  @override
+  void initState() {
+    super.initState();
+    // Larger single-scale animation for a prominent popup
+    _heartAnimController = AnimationController(vsync: this, duration: const Duration(milliseconds: 900));
+    _scaleAnim = Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(parent: _heartAnimController, curve: Curves.elasticOut));
+  }
+
+  @override
+  void dispose() {
+    _heartAnimController.dispose();
+    super.dispose();
+  }
+
+  Future<void> _showHeartBrokenAnimation(int remaining) async {
+    if (!mounted) return;
+    _heartAnimController.reset();
+
+    // Make the popup modal and clearly visible
+    showGeneralDialog(
+      context: context,
+      barrierDismissible: false,
+      barrierColor: Colors.black.withValues(alpha: 166),
+      transitionDuration: const Duration(milliseconds: 300),
+      pageBuilder: (context, a1, a2) {
+        return Center(
+          child: AnimatedBuilder(
+            animation: _heartAnimController,
+            builder: (context, child) {
+              final scale = _scaleAnim.value;
+              return Material(
+                color: Colors.transparent,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(22),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
+                        boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 12, offset: Offset(0, 6))],
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Transform.scale(
+                            scale: scale,
+                            child: Icon(
+                              Icons.heart_broken,
+                              size: 140,
+                              color: Colors.red.shade400,
+                            ),
+                          ),
+                          const SizedBox(height: 12),
+                          Text('Heart lost', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.black87)),
+                          const SizedBox(height: 6),
+                          Text('$remaining remaining', style: const TextStyle(color: Colors.black54)),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
+        );
+      },
+    );
+
+    try {
+      await _heartAnimController.forward().orCancel;
+    } catch (_) {}
+    // Hold visible for a short moment so user reads it
+    await Future.delayed(const Duration(milliseconds: 700));
+    if (!mounted) return;
+    Navigator.of(context, rootNavigator: true).pop();
+  }
+
+  Future<void> _loadUserHearts() async {
+    final uid = FirebaseAuth.instance.currentUser?.uid;
+    if (uid == null) return;
+    try {
+      final fs = FirestoreService();
+      // Ensure regeneration is applied first (may update hearts in Firestore)
+      final regen = await fs.ensureHeartsUpdated(uid);
+      if (regen != null) {
+        setState(() { _userHearts = regen; });
+        return;
+      }
+
+      // Fallback to reading profile directly
+      final snap = await fs.getUserProfile(uid);
+      if (snap.exists && snap.data() != null) {
+        final data = snap.data()!;
+        final val = data['hearts'];
+        int hearts = 5;
+        if (val is int) {
+          hearts = val;
+        } else if (val is num) {
+          hearts = val.toInt();
+        }
+        setState(() { _userHearts = hearts; });
+      } else {
+        setState(() { _userHearts = 5; });
+      }
+    } catch (_) {
+      setState(() { _userHearts = 5; });
+    }
+  }
+
+  Future<void> selectAnswer(int index) async {
     if (showResult) return;
 
     final isCorrect = questions[currentIndex].correctIndex == index;
-    if (isCorrect) score++;
+    if (isCorrect) {
+      score++;
+    } else {
+      // If hearts are loaded and zero, block answering
+      final uid = FirebaseAuth.instance.currentUser?.uid;
+      if (_userHearts != null && _userHearts! <= 0) {
+        if (mounted) {
+          showDialog(
+            context: context,
+            builder: (c) => AlertDialog(
+              title: const Text('No hearts left'),
+              content: const Text('You have no hearts left. Quiz ended.'),
+              actions: [
+                TextButton(onPressed: () { Navigator.of(c).pop(); Navigator.of(context).pop(); }, child: const Text('OK')),
+              ],
+            ),
+          );
+        }
+        return;
+      }
+
+      // Decrement one heart for every wrong answer (guarded by showResult to avoid rapid double taps)
+      if (uid != null) {
+        try {
+          final fs = FirestoreService();
+          final newHearts = await fs.decrementUserHearts(uid, 1);
+            if (mounted) {
+            setState(() { _userHearts = newHearts ?? _userHearts; });
+            // show broken heart animation with remaining count
+            _showHeartBrokenAnimation(newHearts ?? _userHearts ?? 0);
+            if (newHearts != null && newHearts <= 0) {
+              // show exhausted dialog and end quiz
+              showDialog(
+                context: context,
+                builder: (c) => AlertDialog(
+                  title: const Text('No hearts left'),
+                  content: const Text('You have no hearts left. Quiz ended.'),
+                  actions: [
+                    TextButton(onPressed: () { Navigator.of(c).pop(); Navigator.of(context).pop(); }, child: const Text('OK')),
+                  ],
+                ),
+              );
+            }
+          }
+        } catch (e) {
+          debugPrint('Failed to decrement heart: $e');
+        }
+      }
+    }
 
     // record answer locally for persistence
     if (answers.length > currentIndex) answers[currentIndex] = index;
@@ -84,11 +255,26 @@ class _QuizScreenState extends State<QuizScreen> {
       try {
         final fs = FirestoreService();
         await fs.recordQuizAttemptDetailed(uid, moduleId, score, passed, durationMs, answers);
-        // award XP: e.g., 10 XP per correct answer
-        final xp = score * 10;
+        // If the user passed, mark the module as completed in user_progress
+        if (passed) {
+          try {
+            await fs.completeModule(uid, moduleId);
+          } catch (e) {
+            // ignore but log
+            debugPrint('Failed to mark module completed: $e');
+          }
+        }
+        // Recalculate aggregated learning stats immediately so Profile reflects changes
+        try {
+          await fs.recalculateLearningStatsForUser(uid);
+        } catch (e) {
+          debugPrint('Failed to recalc learning stats: $e');
+        }
+        // award XP for passing quiz: flat +30 XP when passed
+        final xp = passed ? 30 : 0;
         int? newTotalXp;
         if (xp > 0) {
-          newTotalXp = await fs.incrementUserXp(uid, xp, 'quiz_attempt');
+          newTotalXp = await fs.addXp(uid, xp, source: 'quiz_pass', moduleId: moduleId);
         }
         saved = true;
         localAttempt = {
@@ -101,67 +287,76 @@ class _QuizScreenState extends State<QuizScreen> {
         if (newTotalXp != null) {
           localAttempt['earned_xp'] = xp;
           localAttempt['new_total_xp'] = newTotalXp;
-          // show XP animation
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            XpAnimation.show(context, xp);
-          });
         }
       } catch (e) {
-        // ignore errors for now but print
+        // ignore errors for now but log
         // ignore: avoid_print
-        print('Failed to record quiz attempt: $e');
+        debugPrint('Failed to record quiz attempt: $e');
       }
     }
-
-    // show score dialog
-    showDialog(
+    if (!mounted) return;
+    // show modern completion modal (centered)
+    if (!mounted) return;
+    showGeneralDialog(
       context: context,
       barrierDismissible: true,
-      builder: (context) {
-        return AlertDialog(
-          title: const Text('Quiz Completed'),
-          content: Text('Your score: $score / ${questions.length}'),
-          actions: [
-            TextButton(
-              child: const Text('Close'),
-              onPressed: () => Navigator.of(context).pop(),
-            ),
-            if (saved)
-              TextButton(
-                child: const Text('Review Attempt'),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                  // Navigate to the review detail with the local attempt data
-                  if (localAttempt != null) {
-                    Navigator.pushNamed(context, '/quiz-review-detail', arguments: localAttempt);
-                  }
-                },
+      barrierLabel: 'Quiz Completed',
+      barrierColor: Colors.black.withValues(alpha: 128),
+      transitionDuration: const Duration(milliseconds: 280),
+      pageBuilder: (context, a1, a2) {
+        return Center(
+          child: Material(
+            color: Colors.transparent,
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.86,
+              padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 22),
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(colors: [Color(0xFF5AB4D8), Color(0xFF3585B5)]),
+                borderRadius: BorderRadius.circular(16),
+                boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 12, offset: Offset(0, 6))],
               ),
-          ],
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Icon(Icons.emoji_events, size: 56, color: Colors.white),
+                  const SizedBox(height: 12),
+                  Text('Quiz Completed', style: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),
+                  const SizedBox(height: 8),
+                  Text('You scored', style: const TextStyle(color: Colors.white70)),
+                  const SizedBox(height: 6),
+                  Text('$score / ${questions.length}', style: const TextStyle(color: Colors.white, fontSize: 28, fontWeight: FontWeight.bold)),
+                  const SizedBox(height: 10),
+                  if (saved && localAttempt != null && localAttempt.containsKey('earned_xp'))
+                    Text('+${localAttempt['earned_xp']} XP awarded', style: const TextStyle(color: Colors.white70)),
+                  const SizedBox(height: 18),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(backgroundColor: Colors.white, foregroundColor: const Color(0xFF1A3A52)),
+                        onPressed: () => Navigator.of(context).pop(),
+                        child: const Text('Close'),
+                      ),
+                      const SizedBox(width: 12),
+                      if (saved)
+                        OutlinedButton(
+                          style: OutlinedButton.styleFrom(foregroundColor: Colors.white, side: const BorderSide(color: Colors.white70)),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                            if (localAttempt != null) Navigator.pushNamed(context, '/quiz-review-detail', arguments: localAttempt);
+                          },
+                          child: const Text('Review Attempt'),
+                        ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
         );
       },
     );
-
-    // Show confirmation Snackbar for saved attempts and awarded XP
-    if (saved) {
-      final earned = localAttempt != null && localAttempt.containsKey('earned_xp') ? localAttempt['earned_xp'] as int : null;
-      final newTotal = localAttempt != null && localAttempt.containsKey('new_total_xp') ? localAttempt['new_total_xp'] as int : null;
-      final snackText = earned != null
-          ? 'Quiz saved — +$earned XP (Total: ${newTotal ?? '—'})'
-          : 'Quiz attempt saved';
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(snackText),
-          action: SnackBarAction(
-            label: 'Review',
-            onPressed: () {
-              if (localAttempt != null) Navigator.pushNamed(context, '/quiz-review-detail', arguments: localAttempt);
-            },
-          ),
-        ),
-      );
-    }
   }
 
   @override
@@ -208,15 +403,41 @@ class _QuizScreenState extends State<QuizScreen> {
                 // Progress pill
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.08),
+                    decoration: BoxDecoration(
+                    color: Colors.white.withValues(alpha: 0.08),
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Text(
                     'Question ${currentIndex + 1} / ${questions.length}',
-                    style: TextStyle(color: Colors.white.withOpacity(0.95), fontWeight: FontWeight.w600),
+                    style: TextStyle(color: Colors.white.withValues(alpha: 0.95), fontWeight: FontWeight.w600),
                   ),
                 ),
+
+                const SizedBox(height: 8),
+                // Hearts row with animated switcher (centered)
+                if (_userHearts != null)
+                  AnimatedSwitcher(
+                    duration: const Duration(milliseconds: 300),
+                    transitionBuilder: (child, anim) => ScaleTransition(scale: anim, child: child),
+                    child: Center(
+                      key: ValueKey<int>(_userHearts!),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: List.generate(5, (i) {
+                          final filled = i < (_userHearts ?? 0);
+                          return Padding(
+                            padding: const EdgeInsets.only(right: 8.0),
+                            child: Icon(
+                              Icons.favorite,
+                              color: filled ? const Color(0xFFE53935) : const Color(0xFFBDBDBD),
+                              size: 22,
+                            ),
+                          );
+                        }),
+                      ),
+                    ),
+                  ),
 
                 const SizedBox(height: 14),
 
@@ -265,7 +486,7 @@ class _QuizScreenState extends State<QuizScreen> {
                               borderRadius: BorderRadius.circular(12),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.black.withOpacity(0.06),
+                                  color: Colors.black.withValues(alpha: 0.06),
                                   blurRadius: 8,
                                   offset: const Offset(0, 4),
                                 ),

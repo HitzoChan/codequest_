@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:async';
+import '../utils/page_transitions.dart';
+import 'home_screen.dart';
+import 'modules_screen.dart';
+import 'progress_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -19,10 +23,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   bool _loading = true;
   StreamSubscription<DocumentSnapshot<Map<String, dynamic>>>? _userSub;
 
-  // Local UI toggles (not persisted here)
-  bool _notifications = true;
-  bool _soundEffects = true;
-  bool _darkMode = false;
+  // (module XP UI removed per request)
 
   @override
   void initState() {
@@ -44,7 +45,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         }
       }, onError: (e) {
         // ignore: avoid_print
-        print('User snapshot error: $e');
+        debugPrint('User snapshot error: $e');
         setState(() {
           userData = null;
           _loading = false;
@@ -110,21 +111,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
     // Make avatarUrl non-nullable string (empty string = no avatar)
     final String avatarUrl = (userData?['avatarUrl'] as String?) ?? '';
 
-    // XP - some DBs might use totalXP or xp
-    final int xp = (userData?['xp'] is int)
-        ? userData!['xp'] as int
-        : (userData?['totalXP'] is int ? userData!['totalXP'] as int : 0);
-
-    final int level = (userData?['level'] as int?) ?? 1;
-    final int streak = (userData?['streak'] as int?) ??
-        (userData?['current_streak'] as int?) ??
-        0;
-
-    // hearts and badges with safe defaults
-    final int hearts = (userData?['hearts'] as int?) ?? 5;
-    final int badges =
-        (userData?['badges'] as int?) ?? (userData?['achievements_count'] as int?) ?? 0;
-
     // Learning stats
     final int modulesCompleted =
         (userData?['modulesCompleted'] as int?) ?? (userData?['modules_completed'] as int?) ?? 0;
@@ -132,15 +118,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
         (userData?['totalModules'] as int?) ?? (userData?['total_modules'] as int?) ?? 8;
     final int quizzesPassed = (userData?['quizzesPassed'] as int?) ?? 0;
     final String avgScore = (userData?['averageScore'] != null) ? "${userData!['averageScore']}" : '—';
-    final String studyTime = (userData?['studyTime'] as String?) ?? '0h 0m';
 
-    // Current subject
-    final String currentSubject = (userData?['currentSubject'] as String?) ??
-        (userData?['subject'] as String?) ??
-        'Mobile App Development';
-    final String currentSubjectDate = (userData?['currentSubjectDate'] as String?) ??
-        (userData?['subject_started_at'] as String?) ??
-        '';
+    // hearts with safe defaults
+    final int hearts = (userData?['hearts'] as int?) ?? 5;
 
     // clamp hearts to [0,5] and convert to int
     final int heartsToShow = hearts.clamp(0, 5).toInt();
@@ -174,29 +154,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     padding: EdgeInsets.all(screenWidth * 0.06),
                     child: Column(
                       children: [
-                        // settings icon
-                        Align(
-                          alignment: Alignment.topRight,
-                          child: InkWell(
-                            onTap: () {
-                              // place for settings action
-                            },
-                            borderRadius: BorderRadius.circular(10),
-                            child: Container(
-                              padding: EdgeInsets.all(screenWidth * 0.02),
-                              decoration: BoxDecoration(
-                                color: Colors.white.withValues(alpha: 0.3),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Icon(
-                                Icons.settings,
-                                color: Colors.white,
-                                size: screenWidth * 0.06 > 24 ? 24 : screenWidth * 0.06,
-                              ),
-                            ),
-                          ),
-                        ),
-
                         SizedBox(height: screenWidth * 0.04),
 
                         // avatar (if avatarUrl not empty show network image)
@@ -252,90 +209,37 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                         SizedBox(height: screenWidth * 0.04),
 
-                        // Level badge + hearts
+                        // Hearts only
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            // Level with XP progress ring
-                            Column(
+                            // Hearts (tappable to use, plus button to add)
+                            Row(
                               children: [
-                                Container(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: screenWidth * 0.04 > 16 ? 16 : screenWidth * 0.04,
-                                    vertical: screenWidth * 0.02 > 8 ? 8 : screenWidth * 0.02,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: Colors.white.withValues(alpha: 0.3),
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  child: Text(
-                                    'Level $level',
-                                    style: TextStyle(
-                                      fontSize: screenWidth * 0.035 > 14 ? 14 : screenWidth * 0.035,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white,
+                                ...List.generate(
+                                  heartsToShow,
+                                  (index) => Padding(
+                                    padding: EdgeInsets.only(left: screenWidth * 0.005 > 2 ? 2 : screenWidth * 0.005),
+                                    child: GestureDetector(
+                                      onTap: _useHeart,
+                                      child: Icon(
+                                        Icons.favorite,
+                                        color: Colors.red.shade400,
+                                        size: screenWidth * 0.05 > 20 ? 20 : screenWidth * 0.05,
+                                      ),
                                     ),
                                   ),
                                 ),
-                                const SizedBox(height: 8),
-                                // XP progress ring (animated)
-                                Builder(builder: (context) {
-                                  // Simple level progression: base XP per level
-                                  const int baseXp = 1000;
-                                  final int startXp = ((level - 1) * baseXp).clamp(0, 1 << 30);
-                                  final int targetXp = (level * baseXp);
-                                  final int currentXp = xp.clamp(0, targetXp);
-                                  final double progress = targetXp > startXp ? ((currentXp - startXp) / (targetXp - startXp)).clamp(0.0, 1.0) : 0.0;
-
-                                  return TweenAnimationBuilder<double>(
-                                    tween: Tween(begin: 0.0, end: progress),
-                                    duration: const Duration(milliseconds: 700),
-                                    curve: Curves.easeOutCubic,
-                                    builder: (context, value, child) {
-                                      return SizedBox(
-                                        width: 72,
-                                        height: 72,
-                                        child: Stack(
-                                          alignment: Alignment.center,
-                                          children: [
-                                            CircularProgressIndicator(
-                                              value: value,
-                                              strokeWidth: 6.0,
-                                              backgroundColor: Colors.white.withOpacity(0.12),
-                                              valueColor: const AlwaysStoppedAnimation<Color>(Colors.white),
-                                            ),
-                                            Column(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                Text('${(value * 100).toInt()}%', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12)),
-                                                const SizedBox(height: 2),
-                                                Text('${currentXp}/${targetXp}', style: const TextStyle(color: Colors.white70, fontSize: 10)),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      );
-                                    },
-                                  );
-                                }),
-                              ],
-                            ),
-
-                            SizedBox(width: screenWidth * 0.04),
-
-                            // Hearts
-                            Row(
-                              children: List.generate(
-                                heartsToShow,
-                                (index) => Padding(
-                                  padding: EdgeInsets.only(left: screenWidth * 0.005 > 2 ? 2 : screenWidth * 0.005),
-                                  child: Icon(
-                                    Icons.favorite,
-                                    color: Colors.red.shade400,
-                                    size: screenWidth * 0.05 > 20 ? 20 : screenWidth * 0.05,
+                                const SizedBox(width: 8),
+                                GestureDetector(
+                                  onTap: _addHeart,
+                                    child: Container(
+                                    padding: const EdgeInsets.all(6),
+                                    decoration: BoxDecoration(color: Colors.white.withValues(alpha: 0.06), borderRadius: BorderRadius.circular(8)),
+                                    child: Icon(Icons.add, color: Colors.white, size: screenWidth * 0.04 > 18 ? 18 : screenWidth * 0.04),
                                   ),
                                 ),
-                              ),
+                              ],
                             ),
                           ],
                         ),
@@ -352,89 +256,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Row(
                         children: [
                           Expanded(
-                            child: _buildXpCard(xp, level),
-                          ),
-                          const SizedBox(width: 12),
-                          Expanded(
-                            child: _buildStatCard(
-                              Icons.military_tech_outlined,
-                              badges.toString(),
-                              'Badges',
-                              const Color(0xFF4CAF50),
+                            child: GestureDetector(
+                              onTap: null,
+                              child: _buildStatCard(
+                                Icons.book_outlined,
+                                '$modulesCompleted',
+                                'Modules',
+                                const Color(0xFF4CAF50),
+                              ),
                             ),
                           ),
                           const SizedBox(width: 12),
                           Expanded(
-                            child: _buildStatCard(
-                              Icons.local_fire_department,
-                              streak.toString(),
-                              'Day Streak',
-                              const Color(0xFFFF6B9D),
+                            child: GestureDetector(
+                              onTap: null,
+                              child: _buildStatCard(
+                                Icons.check_circle_outline,
+                                quizzesPassed.toString(),
+                                'Quizzes',
+                                const Color(0xFFFF6B9D),
+                              ),
                             ),
                           ),
                         ],
-                      ),
-
-                      const SizedBox(height: 20),
-
-                      // Edit profile card
-                      Container(
-                        padding: const EdgeInsets.all(20),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withValues(alpha: 0.1),
-                              blurRadius: 10,
-                              offset: const Offset(0, 4),
-                            ),
-                          ],
-                        ),
-                        child: Row(
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.all(12),
-                              decoration: BoxDecoration(
-                                color: const Color.fromRGBO(52, 141, 188, 0.1),
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              child: const Icon(
-                                Icons.edit_outlined,
-                                color: Color.fromRGBO(52, 141, 188, 1),
-                                size: 24,
-                              ),
-                            ),
-                            const SizedBox(width: 16),
-                            const Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Edit Profile',
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                      color: Color(0xFF1A1A1A),
-                                    ),
-                                  ),
-                                  SizedBox(height: 4),
-                                  Text(
-                                    'Update your information',
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      color: Color(0xFF666666),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const Icon(
-                              Icons.chevron_right,
-                              color: Color(0xFF666666),
-                            ),
-                          ],
-                        ),
                       ),
 
                       const SizedBox(height: 20),
@@ -456,13 +300,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
-                              'Learning Stats',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFF1A1A1A),
-                              ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Text(
+                                  'Learning Stats',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xFF1A1A1A),
+                                  ),
+                                ),
+                                IconButton(
+                                  onPressed: _recalculateLearningStats,
+                                  icon: const Icon(Icons.refresh, color: Color(0xFF666666)),
+                                ),
+                              ],
                             ),
                             const SizedBox(height: 20),
                             _buildStatRow('Modules Completed', '$modulesCompleted/$totalModules', totalModules > 0 ? (modulesCompleted / totalModules) : 0.0),
@@ -470,109 +323,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             _buildStatRow('Quizzes Passed', quizzesPassed.toString(), null),
                             const SizedBox(height: 16),
                             _buildStatRow('Average Score', avgScore, null),
-                            const SizedBox(height: 16),
-                            _buildStatRow('Study Time', studyTime, null),
                           ],
                         ),
                       ),
 
                       const SizedBox(height: 20),
-
-                      // Current Subject card
-                      Container(
-                        padding: const EdgeInsets.all(20),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withValues(alpha: 0.1),
-                              blurRadius: 10,
-                              offset: const Offset(0, 4),
-                            ),
-                          ],
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              'Current Subject',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFF1A1A1A),
-                              ),
-                            ),
-                            const SizedBox(height: 12),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        currentSubject,
-                                        style: const TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w500,
-                                          color: Color(0xFF1A1A1A),
-                                        ),
-                                      ),
-                                      const SizedBox(height: 4),
-                                      Text(
-                                        currentSubjectDate.isNotEmpty ? currentSubjectDate : 'Enrolled on —',
-                                        style: const TextStyle(
-                                          fontSize: 14,
-                                          color: Color(0xFF666666),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                  padding: const EdgeInsets.all(8),
-                                  decoration: BoxDecoration(
-                                    color: const Color.fromRGBO(52, 141, 188, 0.1),
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: const Icon(
-                                    Icons.phone_android,
-                                    color: Color.fromRGBO(52, 141, 188, 1),
-                                    size: 24,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-
-                      const SizedBox(height: 20),
-
-                      // Settings toggles (local UI only)
-                      Container(
-                        padding: const EdgeInsets.all(20),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withValues(alpha: 0.1),
-                              blurRadius: 10,
-                              offset: const Offset(0, 4),
-                            ),
-                          ],
-                        ),
-                        child: Column(
-                          children: [
-                            _buildSettingToggle('Notifications', _notifications, (v) => setState(() => _notifications = v)),
-                            const Divider(height: 32),
-                            _buildSettingToggle('Sound Effects', _soundEffects, (v) => setState(() => _soundEffects = v)),
-                            const Divider(height: 32),
-                            _buildSettingToggle('Dark Mode', _darkMode, (v) => setState(() => _darkMode = v)),
-                          ],
-                        ),
-                      ),
 
                       const SizedBox(height: 20),
 
@@ -616,6 +371,132 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
+  // --- Profile actions: hearts, streak, learning stats ---
+  Future<void> _changeHearts(int delta) async {
+    if (user == null) return;
+    final messenger = ScaffoldMessenger.of(context);
+    final current = (userData?['hearts'] as int?) ?? 5;
+    var next = current + delta;
+    if (next < 0) next = 0;
+    if (next > 5) next = 5;
+    try {
+      await _firestore.collection('users').doc(user!.uid).update({'hearts': next});
+      if (mounted) setState(() => userData = {...?userData, 'hearts': next});
+    } catch (e) {
+      // ignore: avoid_print
+      debugPrint('Failed to update hearts: $e');
+      if (mounted) messenger.showSnackBar(const SnackBar(content: Text('Failed to update hearts')));
+    }
+  }
+
+  Future<void> _useHeart() async {
+    final current = (userData?['hearts'] as int?) ?? 0;
+    if (current <= 0) {
+      final messenger = ScaffoldMessenger.of(context);
+      if (mounted) messenger.showSnackBar(const SnackBar(content: Text('No hearts available')));
+      return;
+    }
+    await _changeHearts(-1);
+  }
+
+  Future<void> _addHeart() async {
+    await _changeHearts(1);
+  }
+
+  
+
+  /// Recalculate simple learning stats by querying Firestore and store back to user doc.
+  Future<void> _recalculateLearningStats() async {
+    if (user == null) return;
+    try {
+      // modules completed: count user_progress documents with completed == true
+      final upQuery = await _firestore.collection('user_progress').where('userId', isEqualTo: user!.uid).get();
+      int modulesCompleted = 0;
+      int totalStudyMinutes = 0;
+      for (final doc in upQuery.docs) {
+        final data = doc.data();
+        // user_progress previously used a boolean 'completed' field in older seeds,
+        // newer code uses a 'status' string (e.g. 'completed'). Accept both.
+        final bool isCompleted = (data['completed'] == true) || ((data['status'] as String?) == 'completed');
+        if (isCompleted) {
+          modulesCompleted++;
+        }
+        if (data['timeSpentMinutes'] is int) {
+          totalStudyMinutes += data['timeSpentMinutes'] as int;
+        }
+      }
+
+      // total modules: sum of modules arrays on courses
+      final courses = await _firestore.collection('courses').get();
+      int totalModules = 0;
+      for (final c in courses.docs) {
+        final m = c.data()['modules'];
+        if (m is List) totalModules += m.length;
+      }
+      if (totalModules == 0) totalModules = 8; // fallback
+
+      // quizzes passed and average score
+      final qa = await _firestore.collection('quiz_attempts').where('userId', isEqualTo: user!.uid).get();
+      int quizzesPassed = 0;
+      double scoreSum = 0.0;
+      int scoreCount = 0;
+      final passedQuizIds = <String>{};
+      
+      debugPrint('=== Processing ${qa.docs.length} quiz attempts ===');
+      
+      for (final q in qa.docs) {
+        final data = q.data();
+        if (data['passed'] == true && data['quizId'] is String) passedQuizIds.add(data['quizId'] as String);
+        
+        // Calculate percentage score: score is number of correct answers
+        final score = data['score'];
+        final answers = data['answers'];
+        
+        debugPrint('Quiz attempt: score=$score, answers=${answers is List ? answers.length : 'null'}');
+        
+        if (score is int && answers is List && answers.isNotEmpty) {
+          final correctAnswers = score;
+          final totalQuestions = answers.length;
+          final percentage = (correctAnswers / totalQuestions) * 100;
+          
+          debugPrint('  -> Calculated: $correctAnswers/$totalQuestions = ${percentage.toStringAsFixed(1)}%');
+          
+          scoreSum += percentage;
+          scoreCount++;
+        }
+      }
+      
+      debugPrint('Total: scoreSum=$scoreSum, scoreCount=$scoreCount');
+      
+      quizzesPassed = passedQuizIds.length;
+      final avgScore = scoreCount > 0 ? '${(scoreSum / scoreCount).round()}%' : '—';
+
+      // update user doc
+      await _firestore.collection('users').doc(user!.uid).update({
+        'modulesCompleted': modulesCompleted,
+        'totalModules': totalModules,
+        'quizzesPassed': quizzesPassed,
+        'averageScore': avgScore,
+        'studyTime': '${(totalStudyMinutes / 60).floor()}h ${(totalStudyMinutes % 60)}m',
+      });
+      if (mounted) {
+        setState(() {
+          userData = {...?userData, 'modulesCompleted': modulesCompleted, 'totalModules': totalModules, 'quizzesPassed': quizzesPassed, 'averageScore': avgScore, 'studyTime': '${(totalStudyMinutes / 60).floor()}h ${(totalStudyMinutes % 60)}m'};
+        });
+      }
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Learning stats updated')));
+    } catch (e) {
+      // ignore: avoid_print
+      debugPrint('Failed to recalc learning stats: $e');
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Failed to update learning stats')));
+    }
+  }
+
+  // Module XP loader removed.
+
+  // Small stat card used in the header row (XP, Badges, Streak)
   Widget _buildStatCard(IconData icon, String value, String label, Color color) {
     return Container(
       padding: const EdgeInsets.all(16),
@@ -642,80 +523,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  // XP progression helpers
-  // Simple XP curve: XP required for level n (the XP to go from level n to n+1) = n * 1000
-  // Total XP required to reach level n (1-based) = 1000 * (n-1) * (n) / 2
-  int _totalXpForLevel(int level) {
-    final n = level - 1;
-    return (1000 * n * (n + 1) ~/ 2);
-  }
-
-  double _xpProgressForLevel(int totalXp, int level) {
-    final base = _totalXpForLevel(level);
-    final needed = level * 1000;
-    if (needed <= 0) return 0.0;
-    final cur = (totalXp - base).clamp(0, needed).toDouble();
-    return (cur / needed).clamp(0.0, 1.0);
-  }
-
-  Widget _buildXpCard(int totalXp, int level) {
-    final progress = _xpProgressForLevel(totalXp, level);
-    final neededForNext = level * 1000;
-    final base = _totalXpForLevel(level);
-    final remaining = (neededForNext - (totalXp - base)).clamp(0, neededForNext);
-
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          SizedBox(
-            height: 72,
-            width: 72,
-            child: TweenAnimationBuilder<double>(
-              tween: Tween(begin: 0.0, end: progress),
-              duration: const Duration(milliseconds: 800),
-              builder: (context, value, child) {
-                return Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    CircularProgressIndicator(
-                      value: value,
-                      strokeWidth: 8,
-                      backgroundColor: Colors.grey.shade200,
-                      valueColor: const AlwaysStoppedAnimation<Color>(Color.fromRGBO(52, 141, 188, 1)),
-                    ),
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text('Lv $level', style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Color(0xFF1A1A1A))),
-                        Text('${(progress * 100).toStringAsFixed(0)}%', style: const TextStyle(fontSize: 12, color: Color(0xFF666666))),
-                      ],
-                    ),
-                  ],
-                );
-              },
-            ),
-          ),
-          const SizedBox(height: 8),
-          Text(totalXp.toString(), style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color.fromRGBO(52, 141, 188, 1))),
-          const SizedBox(height: 4),
-          Text('$remaining XP to next level', style: const TextStyle(fontSize: 12, color: Color(0xFF666666))),
-        ],
-      ),
-    );
-  }
+  
 
   Widget _buildStatRow(String label, String value, double? progress) {
     return Column(
@@ -744,33 +552,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  Widget _buildSettingToggle(String label, bool value, ValueChanged<bool> onChanged) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(label, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Color(0xFF1A1A1A))),
-        Switch(
-          value: value,
-          onChanged: onChanged,
-          activeThumbColor: const Color.fromRGBO(52, 141, 188, 1),
-        ),
-      ],
-    );
-  }
-
   Widget _buildBottomNavBar(BuildContext context, int currentIndex) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: const Color.fromRGBO(30, 30, 30, 1),
         boxShadow: [
-          BoxShadow(color: Colors.black.withValues(alpha: 0.1), blurRadius: 10, offset: const Offset(0, -2)),
+          BoxShadow(color: Colors.black.withValues(alpha: 0.3), blurRadius: 20),
         ],
       ),
       child: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               _buildNavItem(context, Icons.home, 'Home', 0, currentIndex),
               _buildNavItem(context, Icons.book_outlined, 'Modules', 1, currentIndex),
@@ -787,28 +581,50 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final isSelected = index == currentIndex;
     return GestureDetector(
       onTap: () {
+        if (isSelected) return; // Don't navigate if already on current screen
         switch (index) {
           case 0:
-            Navigator.pushReplacementNamed(context, '/home');
+            Navigator.pushReplacement(context, SmoothPageRoute(page: HomeScreen()));
             break;
           case 1:
-            Navigator.pushReplacementNamed(context, '/modules');
+            Navigator.pushReplacement(context, SmoothPageRoute(page: ModulesScreen()));
             break;
           case 2:
-            Navigator.pushReplacementNamed(context, '/progress');
+            Navigator.pushReplacement(context, SmoothPageRoute(page: ProgressScreen()));
             break;
           case 3:
-            Navigator.pushReplacementNamed(context, '/profile');
-            break;
+            break; // Already on profile
         }
       },
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(icon, color: isSelected ? const Color.fromRGBO(52, 141, 188, 1) : Colors.grey.shade400, size: 28),
-          const SizedBox(height: 4),
-          Text(label, style: TextStyle(fontSize: 12, color: isSelected ? const Color.fromRGBO(52, 141, 188, 1) : Colors.grey.shade400, fontWeight: isSelected ? FontWeight.bold : FontWeight.normal)),
-        ],
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
+        padding: EdgeInsets.symmetric(
+          horizontal: isSelected ? 20 : 12,
+          vertical: 8,
+        ),
+        decoration: BoxDecoration(
+          color: isSelected ? const Color.fromRGBO(52, 141, 188, 0.15) : Colors.transparent,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              icon,
+              color: isSelected ? const Color.fromRGBO(52, 141, 188, 1) : Colors.grey.shade500,
+              size: 26,
+            ),
+            const SizedBox(height: 6),
+            Text(
+              label,
+              style: TextStyle(
+                fontSize: 11,
+                color: isSelected ? const Color.fromRGBO(52, 141, 188, 1) : Colors.grey.shade500,
+                fontWeight: isSelected ? FontWeight.bold : FontWeight.w500,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

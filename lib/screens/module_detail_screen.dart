@@ -10,7 +10,7 @@ import 'package:pdf/widgets.dart' as pw;
 import 'package:http/http.dart' as http;
 
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
-import '../backend/course_module_management.dart';
+import '../backend/course_models.dart';
 
 class ModuleDetailScreen extends StatefulWidget {
   final Module module;
@@ -30,9 +30,9 @@ class _ModuleDetailScreenState extends State<ModuleDetailScreen> {
     super.initState();
 
     // Debug: Print module info
-    print('DEBUG ModuleDetailScreen: Module ID: ${widget.module.moduleId}');
-    print('DEBUG ModuleDetailScreen: Module Title: ${widget.module.title}');
-    print('DEBUG ModuleDetailScreen: pdfUrl: ${widget.module.pdfUrl}');
+    debugPrint('DEBUG ModuleDetailScreen: Module ID: ${widget.module.moduleId}');
+    debugPrint('DEBUG ModuleDetailScreen: Module Title: ${widget.module.title}');
+    debugPrint('DEBUG ModuleDetailScreen: pdfUrl: ${widget.module.pdfUrl}');
 
     final videoId = YoutubePlayer.convertUrlToId(widget.module.youtubeUrl);
 
@@ -65,15 +65,16 @@ class _ModuleDetailScreenState extends State<ModuleDetailScreen> {
   // DOWNLOAD PDF FROM GOOGLE DRIVE DIRECT LINK
   // ------------------------------------------------
   Future<void> downloadPdfFromDrive() async {
-    print('===== DOWNLOAD PDF DEBUG =====');
-    print('Module ID: ${widget.module.moduleId}');
-    print('Module Title: ${widget.module.title}');
-    print('pdfUrl value: ${widget.module.pdfUrl}');
-    print('pdfUrl is null: ${widget.module.pdfUrl == null}');
-    print('pdfUrl is empty: ${widget.module.pdfUrl?.isEmpty}');
-    print('===========================');
+    debugPrint('===== DOWNLOAD PDF DEBUG =====');
+    debugPrint('Module ID: ${widget.module.moduleId}');
+    debugPrint('Module Title: ${widget.module.title}');
+    debugPrint('pdfUrl value: ${widget.module.pdfUrl}');
+    debugPrint('pdfUrl is null: ${widget.module.pdfUrl == null}');
+    debugPrint('pdfUrl is empty: ${widget.module.pdfUrl?.isEmpty}');
+    debugPrint('===========================');
     
     if (widget.module.pdfUrl == null || widget.module.pdfUrl!.isEmpty) {
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text("No PDF URL available.")),
       );
@@ -84,19 +85,21 @@ class _ModuleDetailScreenState extends State<ModuleDetailScreen> {
       final url = widget.module.pdfUrl!;
       final response = await http.get(Uri.parse(url));
 
-      if (response.statusCode == 200) {
+        if (response.statusCode == 200) {
         final dir = await getDownloadsDirectory() ?? await getTemporaryDirectory();
         final filePath = "${dir.path}/${widget.module.title}.pdf";
 
         final file = File(filePath);
         await file.writeAsBytes(response.bodyBytes);
 
+        if (!mounted) return;
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text("PDF downloaded: $filePath")),
         );
 
         OpenFile.open(filePath);
       } else {
+        if (!mounted) return;
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text("Failed to download PDF.")),
         );
@@ -104,12 +107,18 @@ class _ModuleDetailScreenState extends State<ModuleDetailScreen> {
     } catch (e) {
       // Log detailed error for debugging
       // ignore: avoid_print
-      print('Error downloading PDF: $e');
+      debugPrint('Error downloading PDF: $e');
 
       // Provide actionable UI: allow opening the URL externally or copying it
+      if (!mounted) return;
       showDialog(
         context: context,
-        builder: (context) {
+        builder: (dialogContext) {
+          // Capture values that will be used after async gaps so we don't
+          // access `BuildContext` across await boundaries.
+          final messenger = ScaffoldMessenger.of(context);
+          final pdfUrl = widget.module.pdfUrl ?? '';
+
           return AlertDialog(
             title: const Text('Download failed'),
             content: Column(
@@ -118,42 +127,42 @@ class _ModuleDetailScreenState extends State<ModuleDetailScreen> {
               children: [
                 const Text('Could not download the PDF. This may be caused by a network or TLS error.'),
                 const SizedBox(height: 12),
-                Text('URL:\n${widget.module.pdfUrl}', style: const TextStyle(fontSize: 12)),
+                Text('URL:\n$pdfUrl', style: const TextStyle(fontSize: 12)),
               ],
             ),
             actions: [
               TextButton(
                 child: const Text('Copy URL'),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                  Clipboard.setData(ClipboardData(text: widget.module.pdfUrl ?? ''));
-                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('URL copied to clipboard')));
+                onPressed: () async {
+                  Navigator.of(dialogContext).pop();
+                  await Clipboard.setData(ClipboardData(text: pdfUrl));
+                  messenger.showSnackBar(const SnackBar(content: Text('URL copied to clipboard')));
                 },
               ),
               TextButton(
                 child: const Text('Open in Browser'),
                 onPressed: () async {
-                  Navigator.of(context).pop();
-                  final url = Uri.parse(widget.module.pdfUrl!);
+                  Navigator.of(dialogContext).pop();
+                  final url = Uri.parse(pdfUrl);
                   if (await canLaunchUrl(url)) {
                     await launchUrl(url, mode: LaunchMode.externalApplication);
                   } else {
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Unable to open URL')));
+                    messenger.showSnackBar(const SnackBar(content: Text('Unable to open URL')));
                   }
                 },
               ),
-              if (kDebugMode)
+                  if (kDebugMode)
                 TextButton(
                   child: const Text('Try Insecure (Debug)'),
                   onPressed: () async {
-                    Navigator.of(context).pop();
+                    Navigator.of(dialogContext).pop();
                     // Attempt insecure download only in debug builds
                     await _downloadPdfInsecurely();
                   },
                 ),
               TextButton(
                 child: const Text('Close'),
-                onPressed: () => Navigator.of(context).pop(),
+                onPressed: () => Navigator.of(dialogContext).pop(),
               ),
             ],
           );
@@ -178,14 +187,17 @@ class _ModuleDetailScreenState extends State<ModuleDetailScreen> {
         final filePath = "${dir.path}/${widget.module.title}.pdf";
         final file = File(filePath);
         await file.writeAsBytes(bytes);
+        if (!mounted) return;
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Insecure PDF downloaded: $filePath')));
         OpenFile.open(filePath);
       } else {
+        if (!mounted) return;
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Failed to download (insecure).')));
       }
     } catch (e) {
       // ignore: avoid_print
-      print('Insecure download failed: $e');
+      debugPrint('Insecure download failed: $e');
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Insecure download error: $e')));
     }
   }
@@ -258,11 +270,12 @@ class _ModuleDetailScreenState extends State<ModuleDetailScreen> {
     final openBtn = ElevatedButton.icon(
       onPressed: (widget.module.pdfUrl != null && widget.module.pdfUrl!.isNotEmpty)
           ? () async {
+              final messenger = ScaffoldMessenger.of(context);
               final url = Uri.parse(widget.module.pdfUrl!);
               if (await canLaunchUrl(url)) {
                 await launchUrl(url, mode: LaunchMode.externalApplication);
               } else {
-                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Unable to open PDF')));
+                messenger.showSnackBar(const SnackBar(content: Text('Unable to open PDF')));
               }
             }
           : null,
@@ -297,6 +310,8 @@ class _ModuleDetailScreenState extends State<ModuleDetailScreen> {
             SizedBox(width: double.infinity, child: downloadBtn),
             const SizedBox(height: 10),
             SizedBox(width: double.infinity, child: openBtn),
+            const SizedBox(height: 10),
+            SizedBox(width: double.infinity, child: quizBtn),
           ],
         );
       }

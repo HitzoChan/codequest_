@@ -8,7 +8,7 @@ import 'screens/profile_screen.dart';
 import 'screens/progress_screen.dart';
 import 'screens/modules_screen.dart';
 import 'screens/module_detail_screen.dart';
-import 'backend/course_module_management.dart';
+import 'backend/course_models.dart';
 import 'screens/quiz_screen.dart';
 import 'screens/sign_up_screen.dart';
 import 'screens/quiz_review_screen.dart';

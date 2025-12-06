@@ -1,11 +1,266 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import '../backend/firestore_service.dart';
+import '../backend/course_module_api.dart';
+import '../backend/course_models.dart';
+import '../backend/quizzes/beginner.dart';
+import '../backend/quizzes/intermediate.dart';
+import '../backend/quizzes/advanced.dart';
+import '../utils/page_transitions.dart';
+import 'modules_screen.dart';
+import 'progress_screen.dart';
+import 'profile_screen.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final FirestoreService _fs = FirestoreService();
+  final CourseModuleAPI _api = CourseModuleAPI();
+
+  int _modulesCompleted = 0;
+  int _totalModules = 0;
+  int _levelNumber = 1;
+  String _levelLabel = 'Beginner';
+  int _hearts = 5;
+  double _moduleProgress = 0.0;
+  String _displayName = 'Explorer';
+  String _continueTitle = 'Introduction to React Native';
+  double _continueProgress = 0.0;
+  Module? _continueModule;
+  int _quizzesDone = 0;
+  int _lessonsDone = 0;
+  String _totalProgressLabel = '0%';
+
+  @override
+  void initState() {
+    super.initState();
+    _loadLevel();
+    _loadHearts();
+    _loadUserName();
+    _loadContinueLesson();
+  }
+
+  Future<void> _loadContinueLesson() async {
+    // Default fallback
+    String title = 'Keep learning';
+    double pct = 0.0;
+    Module? selectedModule;
+    int attemptsCount = _quizzesDone;
+
+    final courses = _api.getCourses();
+
+    // If not signed in, pick the first module
+    final uid = FirebaseAuth.instance.currentUser?.uid;
+    if (uid == null) {
+      if (courses.isNotEmpty && courses.first.modules.isNotEmpty) {
+        title = courses.first.modules.first.title;
+        selectedModule = courses.first.modules.first;
+      }
+      setState(() {
+        _continueTitle = title;
+        _continueProgress = pct;
+        _continueModule = selectedModule;
+        _quizzesDone = attemptsCount;
+      });
+      return;
+    }
+
+    try {
+      final attempts = await _fs.fetchQuizAttemptsForUser(uid);
+      attemptsCount = attempts.length;
+
+      // Track latest score/passed per quizId
+      final Map<String, int> latestScore = {};
+      final Set<String> latestPassed = {};
+      final Map<String, DateTime?> latestAt = {};
+
+      for (final a in attempts) {
+        final quizId = a['quizId'] as String?;
+        if (quizId == null) continue;
+        final scoreVal = a['score'];
+        final passed = a['passed'] as bool? ?? false;
+        DateTime? attemptedAt;
+        final attemptedRaw = a['attemptedAt'];
+        try {
+          if (attemptedRaw is DateTime) {
+            attemptedAt = attemptedRaw;
+          } else if (attemptedRaw != null) {
+            try {
+              attemptedAt = (attemptedRaw as dynamic).toDate() as DateTime;
+            } catch (_) {
+              if (attemptedRaw is int) {
+                attemptedAt = DateTime.fromMillisecondsSinceEpoch(attemptedRaw);
+              } else if (attemptedRaw is String) {
+                attemptedAt = DateTime.tryParse(attemptedRaw);
+              }
+            }
+          }
+        } catch (_) {
+          attemptedAt = null;
+        }
+
+        final shouldReplace = latestAt[quizId] == null || (attemptedAt != null && latestAt[quizId] != null && attemptedAt.isAfter(latestAt[quizId]!)) || (attemptedAt != null && latestAt[quizId] == null);
+        if (shouldReplace) {
+          latestAt[quizId] = attemptedAt;
+          latestScore[quizId] = scoreVal is int ? scoreVal : (scoreVal is num ? scoreVal.toInt() : 0);
+          if (passed) {
+            latestPassed.add(quizId);
+          } else {
+            latestPassed.remove(quizId);
+          }
+        }
+      }
+
+      // helper: total questions per moduleId
+      int totalFor(String moduleId) {
+        if (moduleId == 'sql_intro_01') return SqlIntroQuiz.questions.length;
+        if (moduleId == 'computing_intro_01') return ComputingIntroBeginnerQuiz.questions.length;
+        if (moduleId == 'programming_fundamentals_01') return ProgrammingFundamentalsBeginnerQuiz.questions.length;
+        if (moduleId == 'web_development_01') return WebDevIntermediateQuiz.questions.length;
+        if (moduleId == 'data_structures_advanced_01') return DataStructuresAdvancedQuiz.questions.length;
+        return 0;
+      }
+
+      // Find first module not passed, in course order
+      bool found = false;
+      for (final course in courses) {
+        for (final module in course.modules) {
+          final id = module.moduleId;
+          final passed = latestPassed.contains(id);
+          final total = totalFor(id);
+          final score = latestScore[id] ?? 0;
+          final progress = total > 0 ? (score / total).clamp(0.0, 1.0) : 0.0;
+          if (!passed) {
+            title = module.title;
+            pct = progress;
+            selectedModule = module;
+            found = true;
+            break;
+          }
+        }
+        if (found) break;
+      }
+
+      // If all are passed, keep last progress as 1.0 on last module
+      if (!found) {
+        title = courses.isNotEmpty && courses.first.modules.isNotEmpty ? courses.first.modules.last.title : title;
+        selectedModule = courses.isNotEmpty && courses.first.modules.isNotEmpty ? courses.first.modules.last : selectedModule;
+        pct = 1.0;
+      }
+    } catch (_) {
+      // fallback keeps defaults
+    }
+
+    if (!mounted) return;
+    setState(() {
+      _continueTitle = title;
+      _continueProgress = pct.clamp(0.0, 1.0);
+      _continueModule = selectedModule;
+      _quizzesDone = attemptsCount;
+    });
+  }
+
+  Future<void> _loadUserName() async {
+    final authUser = FirebaseAuth.instance.currentUser;
+    final uid = authUser?.uid;
+    String name = authUser?.displayName ?? '';
+
+    if (uid != null) {
+      try {
+        final doc = await _fs.getUserProfile(uid);
+        final data = doc.data();
+        if (data != null) {
+          name = (data['name'] as String?) ?? (data['displayName'] as String?) ?? name;
+          if (name.isEmpty && data['email'] is String) {
+            name = (data['email'] as String).split('@').first;
+          }
+        }
+      } catch (_) {}
+    }
+
+    if (name.isEmpty && authUser?.email != null) {
+      name = authUser!.email!.split('@').first;
+    }
+
+    if (!mounted) return;
+    setState(() {
+      _displayName = name.isNotEmpty ? name : 'Explorer';
+    });
+  }
+
+  Future<void> _loadHearts() async {
+    final uid = FirebaseAuth.instance.currentUser?.uid;
+    if (uid == null) {
+      setState(() => _hearts = 5);
+      return;
+    }
+
+    try {
+      final regen = await _fs.ensureHeartsUpdated(uid);
+      if (!mounted) return;
+      final int value = (regen ?? 5).clamp(0, 5);
+      setState(() => _hearts = value);
+    } catch (_) {
+      if (!mounted) return;
+      setState(() => _hearts = 5);
+    }
+  }
+
+  Future<void> _loadLevel() async {
+    try {
+      final uid = FirebaseAuth.instance.currentUser?.uid;
+      Map<String, dynamic> stats = {};
+      if (uid != null) {
+        stats = await _fs.recalculateLearningStatsForUser(uid);
+      }
+
+      // fallback to local courses when firestore unavailable
+      final totalModules = (stats['totalModules'] is int)
+          ? stats['totalModules'] as int
+          : _api.getCourses().fold<int>(0, (p, c) => p + c.modules.length);
+      final modulesCompleted = (stats['modulesCompleted'] is int) ? stats['modulesCompleted'] as int : 0;
+      final quizzesPassed = (stats['quizzesPassed'] is int) ? stats['quizzesPassed'] as int : 0;
+
+      // Compute a simple label based on fraction completed
+      double frac = totalModules > 0 ? (modulesCompleted / totalModules) : 0.0;
+      String label = 'Beginner';
+      if (frac >= 0.66) {
+        label = 'Advanced';
+      } else if (frac >= 0.33) {
+        label = 'Intermediate';
+      }
+
+      // Calculate level dynamically based on progress (same as profile screen)
+      // Formula: 1 point per module completed, 2 points per quiz passed
+      // Every 5 points = 1 level
+      final int totalPoints = modulesCompleted + (quizzesPassed * 2);
+      final int calculatedLevel = (totalPoints / 5).floor() + 1; // Start at level 1
+      final int level = calculatedLevel.clamp(1, 100); // Cap at level 100
+
+      setState(() {
+        _modulesCompleted = modulesCompleted;
+        _totalModules = totalModules;
+        _levelNumber = level;
+        _levelLabel = label;
+        _moduleProgress = frac.clamp(0.0, 1.0);
+        _lessonsDone = modulesCompleted;
+        _totalProgressLabel = '${(frac * 100).clamp(0, 100).toStringAsFixed(0)}%';
+      });
+    } catch (e) {
+      // keep defaults on error
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
+    final basePadding = screenWidth * 0.05;
+    final bottomInset = MediaQuery.of(context).padding.bottom;
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -17,71 +272,51 @@ class HomeScreen extends StatelessWidget {
         ),
         child: SafeArea(
           child: SingleChildScrollView(
-            padding: EdgeInsets.all(screenWidth * 0.05),
+            padding: EdgeInsets.fromLTRB(
+              basePadding,
+              basePadding,
+              basePadding,
+              basePadding + bottomInset + 24,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Header with notification
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      'Hi, Alex! 👋',
-                      style: TextStyle(
-                        fontSize: screenWidth * 0.07 > 28
-                            ? 28
-                            : screenWidth * 0.07,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                    Stack(
-                      children: [
-                        Container(
-                          padding: EdgeInsets.all(screenWidth * 0.02),
-                          decoration: BoxDecoration(
-                            color: Colors.white.withValues(alpha: 0.1),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Icon(
-                            Icons.notifications_outlined,
-                            color: Colors.white,
-                            size: screenWidth * 0.05 > 24
-                                ? 24
-                                : screenWidth * 0.05,
-                          ),
-                        ),
-                        Positioned(
-                          right: screenWidth * 0.015,
-                          top: screenWidth * 0.015,
-                          child: Container(
-                            width: screenWidth * 0.02 > 10
-                                ? 10
-                                : screenWidth * 0.02,
-                            height: screenWidth * 0.02 > 10
-                                ? 10
-                                : screenWidth * 0.02,
-                            decoration: const BoxDecoration(
-                              color: Colors.red,
-                              shape: BoxShape.circle,
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Hi, ${_displayName.isNotEmpty ? _displayName : 'Explorer'}! 👋',
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              fontSize: screenWidth * 0.07 > 28 ? 28 : screenWidth * 0.07,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
                             ),
                           ),
-                        ),
-                      ],
+                          const SizedBox(height: 4),
+                          Text(
+                            'Welcome back and good luck today! 🎯',
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              fontSize: screenWidth * 0.04 > 16 ? 16 : screenWidth * 0.04,
+                              color: Colors.white.withValues(alpha: 0.9),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
-                SizedBox(height: screenWidth * 0.02),
-                Text(
-                  'Ready to code today?',
-                  style: TextStyle(
-                    fontSize: screenWidth * 0.04 > 16 ? 16 : screenWidth * 0.04,
-                    color: Colors.white.withValues(alpha: 0.8),
-                  ),
-                ),
-                SizedBox(height: screenWidth * 0.06),
 
-                // Level Card
+                const SizedBox(height: 20),
+
+                // Level + Hearts Card
                 Container(
                   padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
@@ -102,17 +337,14 @@ class HomeScreen extends StatelessWidget {
                         height: 60,
                         decoration: BoxDecoration(
                           gradient: const LinearGradient(
-                            colors: [
-                              Color.fromRGBO(52, 141, 188, 1),
-                              Color(0xFF5AB4D8),
-                            ],
+                            colors: [Color.fromRGBO(52, 141, 188, 1), Color(0xFF5AB4D8)],
                           ),
                           borderRadius: BorderRadius.circular(15),
                         ),
-                        child: const Center(
+                        child: Center(
                           child: Text(
-                            '12',
-                            style: TextStyle(
+                            '$_levelNumber',
+                            style: const TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
@@ -132,9 +364,11 @@ class HomeScreen extends StatelessWidget {
                                 color: Color(0xFF666666),
                               ),
                             ),
-                            const Text(
-                              'Intermediate',
-                              style: TextStyle(
+                            Text(
+                              _levelLabel,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
                                 color: Color(0xFF1A1A1A),
@@ -147,25 +381,32 @@ class HomeScreen extends StatelessWidget {
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(10),
                                     child: LinearProgressIndicator(
-                                      value: 0.82,
+                                      value: _moduleProgress,
                                       backgroundColor: Colors.grey.shade200,
-                                      valueColor:
-                                          const AlwaysStoppedAnimation<Color>(
-                                            Color.fromRGBO(52, 141, 188, 1),
-                                          ),
+                                      valueColor: const AlwaysStoppedAnimation<Color>(
+                                        Color.fromRGBO(52, 141, 188, 1),
+                                      ),
                                       minHeight: 8,
                                     ),
                                   ),
                                 ),
                                 const SizedBox(width: 8),
-                                const Text(
-                                  '2450 / 3000 XP',
-                                  style: TextStyle(
+                                Text(
+                                  '${(_moduleProgress * 100).clamp(0, 100).toStringAsFixed(0)}%',
+                                  style: const TextStyle(
                                     fontSize: 12,
                                     color: Color(0xFF666666),
                                   ),
                                 ),
                               ],
+                            ),
+                            const SizedBox(height: 6),
+                            Text(
+                              '$_modulesCompleted / $_totalModules modules',
+                              style: const TextStyle(
+                                fontSize: 12,
+                                color: Color(0xFF888888),
+                              ),
                             ),
                           ],
                         ),
@@ -178,9 +419,7 @@ class HomeScreen extends StatelessWidget {
                             padding: const EdgeInsets.only(left: 2),
                             child: Icon(
                               Icons.favorite,
-                              color: index < 5
-                                  ? Colors.red.shade400
-                                  : Colors.grey.shade300,
+                              color: index < _hearts ? Colors.red.shade400 : Colors.grey.shade300,
                               size: 20,
                             ),
                           ),
@@ -191,66 +430,79 @@ class HomeScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
 
-                // Streak Card
-                Container(
-                  padding: const EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    gradient: const LinearGradient(
-                      colors: [Color(0xFFFF6B9D), Color(0xFFFF8FAB)],
+                // Animated Robot Mascot
+                Center(
+                  child: Container(
+                    padding: const EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withValues(alpha: 0.1),
+                          blurRadius: 10,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
                     ),
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: [
-                      BoxShadow(
-                        color: const Color(0xFFFF6B9D).withValues(alpha: 0.3),
-                        blurRadius: 10,
-                        offset: const Offset(0, 4),
-                      ),
-                    ],
-                  ),
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 50,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: Colors.white.withValues(alpha: 0.3),
-                          borderRadius: BorderRadius.circular(12),
+                    child: Row(
+                      children: [
+                        TweenAnimationBuilder<double>(
+                          tween: Tween(begin: 0.0, end: 1.0),
+                          duration: const Duration(milliseconds: 1500),
+                          builder: (context, value, child) {
+                            return Transform.translate(
+                              offset: Offset(0, -10 * (0.5 - (value - 0.5).abs()) * 4),
+                              child: child,
+                            );
+                          },
+                          onEnd: () {
+                            // Restart animation
+                            setState(() {});
+                          },
+                          child: Image.asset(
+                            'assets/images/robot.png',
+                            width: 80,
+                            height: 80,
+                            fit: BoxFit.contain,
+                          ),
                         ),
-                        child: const Icon(
-                          Icons.local_fire_department,
-                          color: Colors.white,
-                          size: 30,
-                        ),
-                      ),
-                      const SizedBox(width: 16),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              '7 Day Streak',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
+                        const SizedBox(width: 16),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Text(
+                                'Keep Learning!',
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color(0xFF1A1A1A),
+                                ),
                               ),
-                            ),
-                            const Text(
-                              'Keep it up!',
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.white,
+                              const SizedBox(height: 4),
+                              Text(
+                                'Great progress, $_displayName! 🚀',
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  color: Color(0xFF666666),
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                      const Text('🔥', style: TextStyle(fontSize: 32)),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
                 const SizedBox(height: 20),
 
+                // Streak Card
                 // Continue Lesson Card
                 Container(
                   padding: const EdgeInsets.all(24),
@@ -299,15 +551,15 @@ class HomeScreen extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 16),
-                      const Text(
-                        'Introduction to React Native',
-                        style: TextStyle(fontSize: 16, color: Colors.white),
+                      Text(
+                        _continueTitle,
+                        style: const TextStyle(fontSize: 16, color: Colors.white),
                       ),
                       const SizedBox(height: 12),
                       ClipRRect(
                         borderRadius: BorderRadius.circular(10),
                         child: LinearProgressIndicator(
-                          value: 0.65,
+                          value: _continueProgress,
                           backgroundColor: Colors.white.withValues(alpha: 0.3),
                           valueColor: const AlwaysStoppedAnimation<Color>(
                             Colors.white,
@@ -316,15 +568,22 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 8),
-                      const Text(
-                        '65% Complete',
-                        style: TextStyle(fontSize: 14, color: Colors.white),
+                      Text(
+                        '${(_continueProgress * 100).clamp(0, 100).toStringAsFixed(0)}% Complete',
+                        style: const TextStyle(fontSize: 14, color: Colors.white),
                       ),
                       const SizedBox(height: 16),
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            final module = _continueModule;
+                            if (module != null) {
+                              Navigator.pushNamed(context, '/module', arguments: module);
+                            } else {
+                              Navigator.pushNamed(context, '/modules');
+                            }
+                          },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.white,
                             foregroundColor: const Color.fromRGBO(
@@ -352,95 +611,39 @@ class HomeScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
 
-                // Your Subject Card
-                Container(
-                  padding: const EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withValues(alpha: 0.1),
-                        blurRadius: 10,
-                        offset: const Offset(0, 4),
-                      ),
-                    ],
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        'Your Subject',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF1A1A1A),
-                        ),
-                      ),
-                      const SizedBox(height: 12),
-                      const Text(
-                        'Mobile App Development',
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Color(0xFF666666),
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-                      SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color.fromRGBO(
-                              52,
-                              141,
-                              188,
-                              1,
-                            ),
-                            padding: const EdgeInsets.symmetric(vertical: 14),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                          ),
-                          child: const Text(
-                            'Explore Modules',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 20),
-
                 // Stats Row
                 Row(
                   children: [
                     Expanded(
-                      child: _buildStatCard(
-                        '24',
-                        'Lessons\nDone',
-                        const Color.fromRGBO(52, 141, 188, 1),
+                      child: SizedBox(
+                        height: 110,
+                        child: _buildStatCard(
+                          _lessonsDone.toString(),
+                          'Lessons\nDone',
+                          const Color.fromRGBO(52, 141, 188, 1),
+                        ),
                       ),
                     ),
                     const SizedBox(width: 12),
                     Expanded(
-                      child: _buildStatCard(
-                        '2.4k',
-                        'Total XP',
-                        const Color(0xFF4CAF50),
+                      child: SizedBox(
+                        height: 110,
+                        child: _buildStatCard(
+                          _totalProgressLabel,
+                          'Total Progress',
+                          const Color(0xFF4CAF50),
+                        ),
                       ),
                     ),
                     const SizedBox(width: 12),
                     Expanded(
-                      child: _buildStatCard(
-                        '18',
-                        'Quizzes',
-                        const Color(0xFFFF6B9D),
+                      child: SizedBox(
+                        height: 110,
+                        child: _buildStatCard(
+                          _quizzesDone.toString(),
+                          'Quizzes',
+                          const Color(0xFFFF6B9D),
+                        ),
                       ),
                     ),
                   ],
@@ -470,23 +673,32 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            value,
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: color,
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              value,
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: color,
+              ),
             ),
           ),
-          const SizedBox(height: 4),
-          Text(
-            label,
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontSize: 12,
-              color: Color(0xFF666666),
-              height: 1.3,
+          const SizedBox(height: 6),
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              label,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontSize: 12,
+                color: Color(0xFF666666),
+                height: 1.3,
+              ),
             ),
           ),
         ],
@@ -497,20 +709,20 @@ class HomeScreen extends StatelessWidget {
   Widget _buildBottomNavBar(BuildContext context, int currentIndex) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: const Color.fromRGBO(30, 30, 30, 1),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.1),
-            blurRadius: 10,
-            offset: const Offset(0, -2),
+            color: Colors.black.withValues(alpha: 0.3),
+            blurRadius: 20,
+            offset: const Offset(0, -5),
           ),
         ],
       ),
       child: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               _buildNavItem(context, Icons.home, 'Home', 0, currentIndex),
               _buildNavItem(context, Icons.book_outlined, 'Modules', 1, currentIndex),
@@ -533,43 +745,56 @@ class HomeScreen extends StatelessWidget {
     final isSelected = index == currentIndex;
     return GestureDetector(
       onTap: () {
+        if (isSelected) return; // Don't navigate if already on current screen
         switch (index) {
           case 0:
-            Navigator.pushReplacementNamed(context, '/home');
-            break;
+            break; // Already on home
           case 1:
-            Navigator.pushReplacementNamed(context, '/modules');
+            Navigator.pushReplacement(context, SmoothPageRoute(page: ModulesScreen()));
             break;
           case 2:
-            Navigator.pushReplacementNamed(context, '/progress');
+            Navigator.pushReplacement(context, SmoothPageRoute(page: ProgressScreen()));
             break;
           case 3:
-            Navigator.pushReplacementNamed(context, '/profile');
+            Navigator.pushReplacement(context, SmoothPageRoute(page: ProfileScreen()));
             break;
         }
       },
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(
-            icon,
-            color: isSelected
-                ? const Color.fromRGBO(52, 141, 188, 1)
-                : Colors.grey.shade400,
-            size: 28,
-          ),
-          const SizedBox(height: 4),
-          Text(
-            label,
-            style: TextStyle(
-              fontSize: 12,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
+        padding: EdgeInsets.symmetric(
+          horizontal: isSelected ? 20 : 12,
+          vertical: 8,
+        ),
+        decoration: BoxDecoration(
+          color: isSelected
+              ? const Color.fromRGBO(52, 141, 188, 0.15)
+              : Colors.transparent,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              icon,
               color: isSelected
                   ? const Color.fromRGBO(52, 141, 188, 1)
-                  : Colors.grey.shade400,
-              fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                  : Colors.grey.shade500,
+              size: 26,
             ),
-          ),
-        ],
+            const SizedBox(height: 6),
+            Text(
+              label,
+              style: TextStyle(
+                fontSize: 11,
+                color: isSelected
+                    ? const Color.fromRGBO(52, 141, 188, 1)
+                    : Colors.grey.shade500,
+                fontWeight: isSelected ? FontWeight.bold : FontWeight.w500,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

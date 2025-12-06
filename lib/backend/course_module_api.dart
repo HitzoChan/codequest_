@@ -1,5 +1,6 @@
 // Simulated API endpoints for Course/Module System
 
+import 'course_models.dart';
 import 'course_module_management.dart';
 
 class CourseModuleAPI {

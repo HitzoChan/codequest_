@@ -52,14 +52,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
       final uid = credential.user!.uid;
 
-      // Save user data to Firestore
+      // Save user data to Firestore (do not create XP fields here)
       await FirebaseFirestore.instance.collection("users").doc(uid).set({
         "uid": uid,
         "name": name,
         "email": email,
         "photoUrl": "",
         "level": 1,
-        "totalXP": 0,
         "createdAt": DateTime.now(),
       });
 
