@@ -23,21 +23,15 @@ class QuizReviewDetailScreen extends StatelessWidget {
 
     // Map quizId to the appropriate question bank
     late final List<QuizQuestion> questions;
-    if (quizId == 'sql_intro_01') {
-      questions = SqlIntroQuiz.questions;
-    } else if (quizId == 'computing_intro_01') {
-      questions = ComputingIntroBeginnerQuiz.questions;
-    } else if (quizId == 'programming_fundamentals_01') {
-      questions = ProgrammingFundamentalsBeginnerQuiz.questions;
-    } else if (quizId == 'web_development_01') {
-      questions = WebDevIntermediateQuiz.questions;
-    } else if (quizId == 'sql_intermediate_01' || quizId == 'sql_intermediate') {
-      questions = SqlIntermediateQuiz.questions;
-    } else if (quizId == 'data_structures_advanced_01' || quizId == 'data_structures_advanced') {
-      questions = DataStructuresAdvancedQuiz.questions;
+    if (quizId == 'web_dev_ch1_pdf') {
+      questions = WebDevPdfQuiz.questions;
+    } else if (quizId == 'web_dev_intermediate_ch1') {
+      questions = IntermediateWebDevQuiz.questions;
+    } else if (quizId == 'web_dev_adv_from_pdf' || quizId == 'python_advanced_01' || quizId == 'data_structures_advanced') {
+      questions = AdvancedWebDevQuiz.questions;
     } else {
-      // Unknown quiz id: fall back to the intro SQL quiz and indicate unknown id in header
-      questions = SqlIntroQuiz.questions;
+      // Unknown quiz id: fall back to the beginner quiz and indicate unknown id in header
+      questions = WebDevPdfQuiz.questions;
     }
 
     // Theme-aligned readable colors
@@ -54,7 +48,18 @@ class QuizReviewDetailScreen extends StatelessWidget {
       },
       child: Scaffold(
         backgroundColor: bg,
-        appBar: AppBar(title: const Text('Attempt Review')),
+        appBar: AppBar(
+          title: const Text('Attempt Review'),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.close),
+              onPressed: () {
+                Navigator.pushReplacementNamed(context, '/modules');
+              },
+              tooltip: 'Close',
+            ),
+          ],
+        ),
         body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -63,11 +68,15 @@ class QuizReviewDetailScreen extends StatelessWidget {
             Text('Quiz: $quizId', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white)),
             const SizedBox(height: 8),
             Text('Score: $score / ${questions.length}', style: const TextStyle(color: Colors.white70)),
+            const SizedBox(height: 4),
+            Text('Answers received: ${answers.length} out of ${questions.length}', style: const TextStyle(color: Colors.white54, fontSize: 12)),
             const SizedBox(height: 12),
             ...List.generate(questions.length, (i) {
               final q = questions[i];
+              // Get the user's selected answer for this question (may be null)
               final userSel = i < answers.length ? answers[i] : null;
               final correct = q.correctIndex;
+              
               return Card(
                 margin: const EdgeInsets.symmetric(vertical: 8),
                 color: cardColor,
@@ -77,11 +86,17 @@ class QuizReviewDetailScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Q${i + 1}: ${q.question}', style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text('Q${i + 1}: ${q.question}', style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
+                          ),
+                        ],
+                      ),
                       const SizedBox(height: 12),
                       ...List.generate(q.choices.length, (ci) {
                         final isUser = userSel == ci;
-                        final isCorrect = correct == ci;
+                        final isCorrectChoice = correct == ci;
                         Color bgOpt = optionDefault;
                         Color textColor = Colors.white70;
                         BoxDecoration bd = BoxDecoration(
@@ -89,30 +104,49 @@ class QuizReviewDetailScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(8),
                           border: Border.all(color: Colors.white10),
                         );
-                        Widget? trailing;
-                        if (isCorrect) {
+                        String? badge;
+                        
+                        // Show correct answer in green
+                        if (isCorrectChoice) {
                           bd = BoxDecoration(color: correctColor, borderRadius: BorderRadius.circular(8));
                           textColor = Colors.white;
-                          trailing = const Icon(Icons.check, color: Colors.white);
-                        } else if (isUser && !isCorrect) {
+                          badge = '✓ Correct Answer';
+                        } 
+                        // Show user's wrong answer in red
+                        else if (isUser && userSel != null && !isCorrectChoice) {
                           bd = BoxDecoration(color: wrongColor, borderRadius: BorderRadius.circular(8));
                           textColor = Colors.white;
-                          trailing = const Icon(Icons.close, color: Colors.white);
+                          badge = '✗ Your Answer';
                         }
 
                         return Container(
                           margin: const EdgeInsets.symmetric(vertical: 6),
                           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
                           decoration: bd,
-                          child: Row(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Expanded(
-                                child: Text(
-                                  q.choices[ci],
-                                  style: TextStyle(color: textColor, fontSize: 15, fontWeight: isUser || isCorrect ? FontWeight.w700 : FontWeight.w500),
-                                ),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      q.choices[ci],
+                                      style: TextStyle(color: textColor, fontSize: 15, fontWeight: (isUser && userSel != null) || isCorrectChoice ? FontWeight.w700 : FontWeight.w500),
+                                    ),
+                                  ),
+                                ],
                               ),
-                              if (trailing != null) trailing,
+                              if (badge != null) ...[
+                                const SizedBox(height: 6),
+                                Text(
+                                  badge,
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
                             ],
                           ),
                         );

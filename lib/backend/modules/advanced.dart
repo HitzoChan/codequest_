@@ -2,39 +2,33 @@ import '../course_models.dart';
 
 final List<Course> advancedCourses = [
   Course(
-    courseId: 'mobile_dev_101_advanced',
-    title: 'Mobile Dev - Advanced',
-    description: 'Advanced modules for mobile development and algorithms.',
+    courseId: 'web_dev_advanced_pdf_v2',
+    title: 'Web Development – Advanced',
+    description:
+        'Advanced web development module based on the newly provided PDF: deepening understanding of modern web architecture, security, APIs, asynchronous behavior, and performance best practices.',
     difficultyLevel: 'Advanced',
     modules: [
       Module(
-        moduleId: 'data_structures_advanced_01',
-        title: 'Advanced Data Structures & Algorithms',
-        content: '''
-    This module explores advanced data structures and algorithmic techniques used in high-performance software, competitive programming, and technical interviews.
+        moduleId: 'web_dev_adv_from_pdf',
+        title: 'Advanced Web Dev Architecture, APIs, Security & Performance',
+        summary: '''
+This advanced module covers:
 
-    It covers the following advanced topics:
-
-    • Balanced Trees (AVL, Red–Black Trees, Splay Trees)
-    • Hashing: collision resolution, double hashing, perfect hashing
-    • Priority Queues & Heaps (binary, binomial, Fibonacci heaps)
-    • Advanced Graph Algorithms:
-        – Strongly Connected Components (Kosaraju / Tarjan)
-        – Topological Sorting (DFS & Kahn’s)
-        – Dijkstra, Bellman–Ford, Floyd–Warshall
-        – Minimum Spanning Trees (Kruskal, Prim)
-    • Dynamic Programming (tabulation, memoization, optimized DP)
-    • Tries, Suffix Trees, and Suffix Arrays
-    • Union-Find (Disjoint Set Union) with path compression + rank
-    • Advanced sorting and searching optimizations
-    • Time and space complexity analysis for large-scale systems
-    ''',
-        orderIndex: 7,
+• Modern Web Architecture (client-server, REST APIs, microservices)  
+• API Communication & Data Handling (JSON, HTTP methods, status codes)  
+• Asynchronous Web Programming (AJAX/fetch, promises, async/await, event loop)  
+• Web Security Fundamentals (HTTPS, CORS, authentication/authorization, secure headers)  
+• Performance & Optimization (minification, caching, lazy loading, efficient resource handling)  
+• Version Control & Collaboration (using Git / GitHub, branching, merging, pull requests)  
+• Best Practices for Production Web Apps (clean code, project structure, scalability, maintenance)  
+''',
+        content:
+            'An advanced-level walkthrough of how modern web applications are structured, how front-end and back-end communicate via APIs, principles of asynchronous operations, security considerations, and performance optimizations — equipping learners to build production-ready web applications.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=7YcW25PHnAA',
+        pdfUrl:
+            'https://drive.google.com/uc?export=download&id=1m045C2ZCIOVu4lW6ZLrMpPs7nKU2F7rd',
+        orderIndex: 1,
         difficultyLevel: 'Advanced',
-        youtubeUrl: 'https://youtu.be/ndg3nEVK3VM',
-        summary:
-            'This module covers advanced data structures, graph algorithms, dynamic programming, and optimization concepts.',
-        pdfUrl: 'https://drive.google.com/uc?export=download&id=YOUR_ADVANCED_DSA_PDF_ID',
       ),
     ],
   ),

@@ -83,6 +83,18 @@ class _ModulesScreenState extends State<ModulesScreen> {
         final scoreVal = a['score'];
         final passed = a['passed'] as bool? ?? false;
 
+        // Map old module IDs to new consolidated IDs
+        String normalizedQuizId = quizId;
+        if (quizId == 'sql_intro_01' || quizId == 'computing_intro_01' || quizId == 'programming_fundamentals_01' || quizId == 'programming_fundamentals_beginner_01' || quizId == 'intro_to_web_dev_01' || quizId == 'intro_to_python_01') {
+          normalizedQuizId = 'web_dev_ch1_pdf';
+        }
+        if (quizId == 'web_development_01' || quizId == 'python_intermediate_01') {
+          normalizedQuizId = 'web_dev_intermediate_ch1';
+        }
+        if (quizId == 'data_structures_advanced_01' || quizId == 'python_advanced_01') {
+          normalizedQuizId = 'web_dev_adv_from_pdf';
+        }
+
         // parse attemptedAt robustly (Timestamp, DateTime, int millis)
         DateTime? attemptedAt;
         final attemptedRaw = a['attemptedAt'];
@@ -104,13 +116,13 @@ class _ModulesScreenState extends State<ModulesScreen> {
         int scoreInt = scoreVal is int ? scoreVal : 0;
 
         // If we don't have a recorded time for this quiz, or this attempt is newer, update
-        final existing = latestAttemptAt[quizId];
+        final existing = latestAttemptAt[normalizedQuizId];
         final shouldReplace = existing == null || (attemptedAt != null && attemptedAt.isAfter(existing));
 
         if (shouldReplace) {
-          if (attemptedAt != null) { latestAttemptAt[quizId] = attemptedAt; }
-          latestScore[quizId] = scoreInt;
-          if (passed) { latestPassed.add(quizId); } else { latestPassed.remove(quizId); }
+          if (attemptedAt != null) { latestAttemptAt[normalizedQuizId] = attemptedAt; }
+          latestScore[normalizedQuizId] = scoreInt;
+          if (passed) { latestPassed.add(normalizedQuizId); } else { latestPassed.remove(normalizedQuizId); }
         }
       }
 
@@ -118,22 +130,29 @@ class _ModulesScreenState extends State<ModulesScreen> {
       final Map<String, double> map = {};
       latestScore.forEach((quizId, scoreInt) {
         int total = 0;
-        if (quizId == 'sql_intro_01') { total = SqlIntroQuiz.questions.length; }
-        else if (quizId == 'computing_intro_01') { total = ComputingIntroBeginnerQuiz.questions.length; }
-        else if (quizId == 'programming_fundamentals_01') { total = ProgrammingFundamentalsBeginnerQuiz.questions.length; }
-        else if (quizId == 'web_development_01') { total = WebDevIntermediateQuiz.questions.length; }
-        else if (quizId == 'data_structures_advanced_01') { total = DataStructuresAdvancedQuiz.questions.length; }
+        if (quizId == 'web_dev_ch1_pdf') { total = WebDevPdfQuiz.questions.length; }
+        else if (quizId == 'web_dev_intermediate_ch1') { total = IntermediateWebDevQuiz.questions.length; }
+        else if (quizId == 'web_dev_adv_from_pdf') { total = AdvancedWebDevQuiz.questions.length; }
 
+        // Clamp score to not exceed the total questions
+        final clampedScore = scoreInt.clamp(0, total);
         final passed = latestPassed.contains(quizId);
         if (passed) { map[quizId] = 1.0; }
-        else { map[quizId] = total > 0 ? (scoreInt / total).clamp(0.0, 1.0) : 0.0; }
+        else { map[quizId] = total > 0 ? (clampedScore / total).clamp(0.0, 1.0) : 0.0; }
       });
 
       setState(() {
         _quizProgress.clear();
         _quizProgress.addAll(map);
         _quizScore.clear();
-        _quizScore.addAll(latestScore);
+        // Store clamped scores
+        latestScore.forEach((quizId, scoreInt) {
+          int total = 0;
+          if (quizId == 'web_dev_ch1_pdf') { total = WebDevPdfQuiz.questions.length; }
+          else if (quizId == 'web_dev_intermediate_ch1') { total = IntermediateWebDevQuiz.questions.length; }
+          else if (quizId == 'web_dev_adv_from_pdf') { total = AdvancedWebDevQuiz.questions.length; }
+          _quizScore[quizId] = scoreInt.clamp(0, total);
+        });
         _quizPassed.clear();
         _quizPassed.addAll(latestPassed);
       });
@@ -142,15 +161,19 @@ class _ModulesScreenState extends State<ModulesScreen> {
 
   void filterCourses() {
     setState(() {
-      final term = searchKeyword.toLowerCase();
+      final term = searchKeyword.toLowerCase().trim();
 
       filteredCourses = courses.map((course) {
         final matchingModules = course.modules.where((module) {
-          final matchSearch =
-              module.title.toLowerCase().contains(term) ||
-              module.content.toLowerCase().contains(term) ||
-              course.title.toLowerCase().contains(term) ||
-              course.description.toLowerCase().contains(term);
+          // Check if search term matches title (exact or beginning match)
+          final moduleTitle = module.title.toLowerCase();
+          final courseTitle = course.title.toLowerCase();
+          final courseDesc = course.description.toLowerCase();
+          
+          final matchSearch = term.isEmpty ||
+              moduleTitle.contains(term) ||
+              courseTitle.contains(term) ||
+              courseDesc.contains(term);
 
           final matchLevel = selectedLevel == 'All Levels' ||
               module.difficultyLevel.toLowerCase() ==
@@ -213,25 +236,20 @@ class _ModulesScreenState extends State<ModulesScreen> {
   // ---------------------------------------------------------
   Widget _buildModuleCard(Module module) {
     Color levelColor = _getLevelColor(module.difficultyLevel);
-    // Ensure we always have a visible difficulty label and pick a readable text color
+    // Ensure we always have a visible difficulty label
     final String difficultyLabel = module.difficultyLevel.trim().isEmpty ? 'Level' : module.difficultyLevel;
-    final Color chipTextColor = levelColor.computeLuminance() > 0.6 ? Colors.black : Colors.white;
 
     // Compute quiz progress
     int total = 0;
-    if (module.moduleId == 'sql_intro_01') {
-      total = SqlIntroQuiz.questions.length;
-    } else if (module.moduleId == 'computing_intro_01') {
-      total = ComputingIntroBeginnerQuiz.questions.length;
-    } else if (module.moduleId == 'programming_fundamentals_01') {
-      total = ProgrammingFundamentalsBeginnerQuiz.questions.length;
-    } else if (module.moduleId == 'web_development_01') {
-      total = WebDevIntermediateQuiz.questions.length;
-    } else if (module.moduleId == 'data_structures_advanced_01') {
-      total = DataStructuresAdvancedQuiz.questions.length;
+    if (module.moduleId == 'web_dev_ch1_pdf') {
+      total = WebDevPdfQuiz.questions.length;
+    } else if (module.moduleId == 'web_dev_intermediate_ch1') {
+      total = IntermediateWebDevQuiz.questions.length;
+    } else if (module.moduleId == 'web_dev_adv_from_pdf') {
+      total = AdvancedWebDevQuiz.questions.length;
     }
 
-    final int score = _quizScore[module.moduleId] ?? 0;
+    final int score = (_quizScore[module.moduleId] ?? 0).clamp(0, total);
     final bool passed = _quizPassed.contains(module.moduleId);
     final double pct = total > 0 ? (score / total).clamp(0.0, 1.0) : 0.0;
     final Color progressColor = passed || pct == 1.0 ? Colors.green : levelColor;
@@ -267,59 +285,53 @@ class _ModulesScreenState extends State<ModulesScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              
               // TITLE
-              Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      module.title,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF1A1A1A),
-                      ),
-                    ),
-                  ),
-                ],
+              Text(
+                module.title,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF1A1A1A),
+                ),
               ),
 
-              const SizedBox(height: 12),
+              const SizedBox(height: 16),
 
-              // DIFFICULTY + PROGRESS PILL
+              // DIFFICULTY CHIP + PROGRESS PILL (ROW)
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   // Difficulty chip
                   Container(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 12, vertical: 6),
-                      decoration: BoxDecoration(
-                      color: levelColor.withValues(alpha: 38),
-                      borderRadius: BorderRadius.circular(12),
+                        horizontal: 14, vertical: 7),
+                    decoration: BoxDecoration(
+                      color: levelColor,
+                      borderRadius: BorderRadius.circular(8),
                     ),
                     child: Text(
                       difficultyLabel,
-                      style: TextStyle(
-                        fontSize: 12,
+                      style: const TextStyle(
+                        fontSize: 11,
                         fontWeight: FontWeight.bold,
-                        color: chipTextColor,
+                        color: Colors.white,
                       ),
                     ),
                   ),
 
                   const SizedBox(width: 12),
 
-                  // PILL PROGRESS BAR
+                  // PROGRESS PILL
                   Expanded(
                     child: Stack(
                       alignment: Alignment.centerLeft,
                       children: [
                         // Background pill
                         Container(
-                          height: 24,
-                            decoration: BoxDecoration(
-                            color: Colors.grey.withValues(alpha: 51),
-                            borderRadius: BorderRadius.circular(12),
+                          height: 28,
+                          decoration: BoxDecoration(
+                            color: Colors.grey.withValues(alpha: 76),
+                            borderRadius: BorderRadius.circular(14),
                           ),
                         ),
 
@@ -327,10 +339,10 @@ class _ModulesScreenState extends State<ModulesScreen> {
                         FractionallySizedBox(
                           widthFactor: pct,
                           child: Container(
-                            height: 24,
+                            height: 28,
                             decoration: BoxDecoration(
                               color: progressColor,
-                              borderRadius: BorderRadius.circular(12),
+                              borderRadius: BorderRadius.circular(14),
                             ),
                           ),
                         ),
@@ -341,7 +353,7 @@ class _ModulesScreenState extends State<ModulesScreen> {
                             child: Text(
                               total == 0 ? "- / -" : "$score / $total",
                               style: const TextStyle(
-                                fontSize: 12,
+                                fontSize: 13,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
                               ),
@@ -426,10 +438,10 @@ class _ModulesScreenState extends State<ModulesScreen> {
                     const SizedBox(height: 4),
 
                     Text(
-                      'Mobile App Development',
-                      style: TextStyle(
+                      'Web Development',
+                      style: const TextStyle(
                         fontSize: 16,
-                        color: Colors.white.withValues(alpha: 230),
+                        color: Colors.white,
                       ),
                     ),
 

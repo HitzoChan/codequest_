@@ -175,7 +175,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final logoSize = screenWidth * 0.20;
+    final logoSize = screenWidth * 0.14;
     final cardMaxWidth = screenWidth < 500 ? screenWidth * 0.9 : 480.0;
 
     return Scaffold(
@@ -234,15 +234,32 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     const SizedBox(height: 40.0),
 
-                    const Text(
-                      "Welcome Back to CodeQuest",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Color(0xFF0D1B2A),
-                        fontSize: 32.0,
-                        fontWeight: FontWeight.w800,
-                        letterSpacing: -0.5,
-                      ),
+                    // ---------------------------------------------------------
+                    // UPDATED WELCOME TEXT WITH TWO SIZES
+                    // ---------------------------------------------------------
+                    Column(
+                      children: const [
+                        Text(
+                          "Welcome to CodeQuest!",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 32.0,
+                            fontWeight: FontWeight.w800,
+                            letterSpacing: -0.5,
+                          ),
+                        ),
+                        SizedBox(height: 6),
+                        Text(
+                          "Your learning starts here.",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20.0, // ADJUST SIZE HERE
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ],
                     ),
 
                     const SizedBox(height: 45.0),

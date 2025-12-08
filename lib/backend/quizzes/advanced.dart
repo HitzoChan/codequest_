@@ -1,113 +1,108 @@
 import 'models.dart';
 
-// Placeholder for future advanced-level quizzes.
-// Add classes similar to SqlIntroQuiz here when needed.
-
-class DataStructuresAdvancedQuiz {
+class AdvancedWebDevQuiz {
   static List<QuizQuestion> questions = [
     QuizQuestion(
-      question: 'Which tree-rotation property helps maintain balance in an AVL tree?',
+      question: 'Which layers make up modern web application architecture?',
       choices: [
-        'Black-height constraints',
-        'Recoloring rules',
-        'Height difference of at most 1 between subtrees',
-        'Lazy propagation'
+        'Frontend, Backend, Database',
+        'HTML, CSS, JavaScript',
+        'Browser, ISP, Modem',
+        'URL, DNS, HTTPS',
       ],
-      correctIndex: 2,
+      correctIndex: 0,
     ),
 
     QuizQuestion(
-      question: 'Which advanced heap structure allows decrease-key in O(1) amortized time?',
+      question: 'What is the primary purpose of REST?',
       choices: [
-        'Binary Heap',
-        'Binomial Heap',
-        'Fibonacci Heap',
-        'Leftist Heap'
-      ],
-      correctIndex: 2,
-    ),
-
-    QuizQuestion(
-      question: 'Kosaraju’s algorithm requires how many full DFS passes to compute Strongly Connected Components (SCCs)?',
-      choices: ['1', '2', '3', 'Depends on graph density'],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Which algorithm correctly handles graphs with negative edge weights but no negative cycles?',
-      choices: [
-        'Dijkstra with min-heap',
-        'Bellman-Ford',
-        'Prim’s Algorithm',
-        'Kruskal’s Algorithm'
+        'To style web pages',
+        'To structure scalable, stateless API communication',
+        'To encrypt server files',
+        'To connect databases automatically',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Which data structure supports lexicographical string queries and substring matching efficiently?',
+      question: 'Which data format is most commonly used in REST APIs?',
+      choices: ['CSV', 'JSON', 'PDF', 'YAML'],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question:
+          'What mechanism enables JavaScript to perform asynchronous operations?',
       choices: [
-        'Binary Search Tree',
-        'Suffix Tree',
-        'Hash Table',
-        'Queue'
+        'The event loop',
+        'CSS animations',
+        'HTML rendering',
+        'Browser history',
+      ],
+      correctIndex: 0,
+    ),
+
+    QuizQuestion(
+      question:
+          'Which async pattern improves readability for handling promises?',
+      choices: ['Callbacks', 'async/await', 'Nested loops', 'iframes'],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'What does HTTPS provide?',
+      choices: [
+        'Faster connection speed',
+        'Encrypted communication between client and server',
+        'Enhanced styling capabilities',
+        'Automatic file backups',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Tarjan’s algorithm for SCCs relies heavily on which concept?',
+      question: 'What does authentication ensure?',
       choices: [
-        'Union-Find',
-        'Strong heap ordering',
-        'Low-link values',
-        'Bitmask DP'
-      ],
-      correctIndex: 2,
-    ),
-
-    QuizQuestion(
-      question: 'The amortized time complexity of Union-Find with union-by-rank and path compression is:',
-      choices: [
-        'O(1)',
-        'O(log n)',
-        'O(α(n)) where α is inverse Ackermann function',
-        'O(n)'
-      ],
-      correctIndex: 2,
-    ),
-
-    QuizQuestion(
-      question: 'Which sorting algorithm guarantees O(n log n) worst-case performance?',
-      choices: [
-        'Quick Sort',
-        'Merge Sort',
-        'Heap Sort',
-        'Insertion Sort'
+        'A user is allowed to perform specific actions',
+        'A user\'s identity is verified',
+        'Files load faster on the website',
+        'Scripts run asynchronously',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Which algorithmic paradigm is typically used to optimize exponential brute-force solutions into polynomial ones?',
+      question: 'CORS is used to:',
       choices: [
-        'Divide and Conquer',
-        'Greedy Strategy',
-        'Dynamic Programming',
-        'Backtracking'
+        'Control cross-domain resource access',
+        'Protect passwords in databases',
+        'Format HTML responses',
+        'Optimize images',
       ],
-      correctIndex: 2,
+      correctIndex: 0,
     ),
 
     QuizQuestion(
-      question: 'The Floyd–Warshall algorithm computes:',
+      question: 'In Git, what does a commit represent?',
       choices: [
-        'Single-source shortest paths',
-        'Minimum spanning tree',
-        'All-pairs shortest paths',
-        'Strongly connected components'
+        'A full backup of your OS',
+        'A snapshot of the project at a specific point in time',
+        'A server connection request',
+        'An automated merge of branches',
       ],
-      correctIndex: 2,
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question:
+          'What is the benefit of separating front-end and back-end in architecture?',
+      choices: [
+        'Makes styling easier',
+        'Improves modularity and scalability',
+        'Removes need for APIs',
+        'Eliminates JavaScript usage',
+      ],
+      correctIndex: 1,
     ),
   ];
 }

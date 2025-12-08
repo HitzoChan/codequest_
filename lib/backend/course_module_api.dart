@@ -66,9 +66,9 @@ class CourseModuleAPI {
 
   // API endpoint to get quiz questions for a module
   List<dynamic> getQuizForModule(String moduleId) {
-    // For now, directly return static quiz data for our seed module
-    if (moduleId == 'sql_intro_01') {
-      // Avoid hard dependency on `quiz_data.dart` at the backend level; return a simple map
+    // Return static quiz data for our seed module
+    if (moduleId == 'programming_fundamentals_beginner_01') {
+      // Return beginner programming quiz questions
       return [
         {
           'question': 'What does SQL stand for?',

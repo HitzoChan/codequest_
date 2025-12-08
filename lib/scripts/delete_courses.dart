@@ -48,10 +48,10 @@ Future<void> main() async {
     final courseData = course.toMap();
     log('  Course data: $courseData');
     
-    // Check SQL module specifically
+    // Check beginner module specifically
     for (var module in course.modules) {
-      if (module.moduleId == 'sql_intro_01') {
-        log('  SQL Module pdfUrl: ${module.pdfUrl}');
+      if (module.moduleId == 'programming_fundamentals_beginner_01') {
+        log('  Beginner Module pdfUrl: ${module.pdfUrl}');
       }
     }
     

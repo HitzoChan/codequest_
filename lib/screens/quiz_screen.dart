@@ -31,21 +31,15 @@ class _QuizScreenState extends State<QuizScreen> with SingleTickerProviderStateM
     moduleId = mid;
     startTime = DateTime.now();
 
-    // For now, select the SQL quiz when moduleId matches 'sql_intro_01'
-    // Map known module IDs to their quiz data. Default to the SQL intro quiz
-    // to avoid showing an empty quiz screen for unknown modules.
-    if (moduleId == 'sql_intro_01') {
-      questions = SqlIntroQuiz.questions;
-    } else if (moduleId == 'computing_intro_01') {
-      questions = ComputingIntroBeginnerQuiz.questions;
-    } else if (moduleId == 'programming_fundamentals_01') {
-      questions = ProgrammingFundamentalsBeginnerQuiz.questions;
-    } else if (moduleId == 'web_development_01') {
-      questions = WebDevIntermediateQuiz.questions;
-    } else if (moduleId == 'data_structures_advanced_01') {
-      questions = DataStructuresAdvancedQuiz.questions;
+    // Map known module IDs to their quiz data
+    if (moduleId == 'web_dev_ch1_pdf') {
+      questions = WebDevPdfQuiz.questions;
+    } else if (moduleId == 'web_dev_intermediate_ch1') {
+      questions = IntermediateWebDevQuiz.questions;
+    } else if (moduleId == 'web_dev_adv_from_pdf') {
+      questions = AdvancedWebDevQuiz.questions;
     } else {
-      questions = SqlIntroQuiz.questions;
+      questions = WebDevPdfQuiz.questions;
     }
     // initialize answers list to track per-question selections
     answers = List<int?>.filled(questions.length, null);
@@ -128,7 +122,13 @@ class _QuizScreenState extends State<QuizScreen> with SingleTickerProviderStateM
     // Hold visible for a short moment so user reads it
     await Future.delayed(const Duration(milliseconds: 700));
     if (!mounted) return;
-    Navigator.of(context, rootNavigator: true).pop();
+    
+    // If no hearts remaining, navigate to modules instead of just popping
+    if (remaining <= 0) {
+      Navigator.pushReplacementNamed(context, '/modules');
+    } else {
+      Navigator.of(context, rootNavigator: true).pop();
+    }
   }
 
   Future<void> _loadUserHearts() async {
@@ -174,15 +174,53 @@ class _QuizScreenState extends State<QuizScreen> with SingleTickerProviderStateM
       final uid = FirebaseAuth.instance.currentUser?.uid;
       if (_userHearts != null && _userHearts! <= 0) {
         if (mounted) {
-          showDialog(
+          showGeneralDialog(
             context: context,
-            builder: (c) => AlertDialog(
-              title: const Text('No hearts left'),
-              content: const Text('You have no hearts left. Quiz ended.'),
-              actions: [
-                TextButton(onPressed: () { Navigator.of(c).pop(); Navigator.of(context).pop(); }, child: const Text('OK')),
-              ],
-            ),
+            barrierDismissible: false,
+            barrierColor: Colors.black.withValues(alpha: 166),
+            transitionDuration: const Duration(milliseconds: 300),
+            pageBuilder: (context, a1, a2) {
+              return Center(
+                child: Material(
+                  color: Colors.transparent,
+                  child: Container(
+                    padding: const EdgeInsets.all(28),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 16, offset: Offset(0, 8))],
+                    ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.heart_broken, size: 100, color: Colors.red.shade400),
+                        const SizedBox(height: 16),
+                        const Text('No Hearts Left', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black87)),
+                        const SizedBox(height: 8),
+                        const Text('Quiz ended. You can try again later!', style: TextStyle(fontSize: 14, color: Colors.black54, height: 1.4)),
+                        const SizedBox(height: 24),
+                        SizedBox(
+                          width: double.infinity,
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.red.shade400,
+                              foregroundColor: Colors.white,
+                              padding: const EdgeInsets.symmetric(vertical: 12),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                            ),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                              Navigator.pushReplacementNamed(context, '/modules');
+                            },
+                            child: const Text('Back to Modules', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            },
           );
         }
         return;
@@ -199,15 +237,53 @@ class _QuizScreenState extends State<QuizScreen> with SingleTickerProviderStateM
             _showHeartBrokenAnimation(newHearts ?? _userHearts ?? 0);
             if (newHearts != null && newHearts <= 0) {
               // show exhausted dialog and end quiz
-              showDialog(
+              showGeneralDialog(
                 context: context,
-                builder: (c) => AlertDialog(
-                  title: const Text('No hearts left'),
-                  content: const Text('You have no hearts left. Quiz ended.'),
-                  actions: [
-                    TextButton(onPressed: () { Navigator.of(c).pop(); Navigator.of(context).pop(); }, child: const Text('OK')),
-                  ],
-                ),
+                barrierDismissible: false,
+                barrierColor: Colors.black.withValues(alpha: 166),
+                transitionDuration: const Duration(milliseconds: 300),
+                pageBuilder: (context, a1, a2) {
+                  return Center(
+                    child: Material(
+                      color: Colors.transparent,
+                      child: Container(
+                        padding: const EdgeInsets.all(28),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20),
+                          boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 16, offset: Offset(0, 8))],
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(Icons.heart_broken, size: 100, color: Colors.red.shade400),
+                            const SizedBox(height: 16),
+                            const Text('No Hearts Left', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black87)),
+                            const SizedBox(height: 8),
+                            const Text('Quiz ended. You can try again later!', style: TextStyle(fontSize: 14, color: Colors.black54, height: 1.4)),
+                            const SizedBox(height: 24),
+                            SizedBox(
+                              width: double.infinity,
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.red.shade400,
+                                  foregroundColor: Colors.white,
+                                  padding: const EdgeInsets.symmetric(vertical: 12),
+                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                                ),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                  Navigator.pushReplacementNamed(context, '/modules');
+                                },
+                                child: const Text('Back to Modules', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                },
               );
             }
           }

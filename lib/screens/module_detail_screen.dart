@@ -24,6 +24,7 @@ class ModuleDetailScreen extends StatefulWidget {
 class _ModuleDetailScreenState extends State<ModuleDetailScreen> {
   late YoutubePlayerController _ytController;
   final FlutterTts _tts = FlutterTts();
+  bool _isSpeaking = false;
 
   @override
   void initState() {
@@ -44,10 +45,15 @@ class _ModuleDetailScreenState extends State<ModuleDetailScreen> {
         loop: false,
       ),
     );
+
+    // Reset speaking state when playback finishes or is stopped externally.
+    _tts.setCompletionHandler(() => setState(() => _isSpeaking = false));
+    _tts.setCancelHandler(() => setState(() => _isSpeaking = false));
   }
 
   @override
   void dispose() {
+    _tts.stop();
     _ytController.dispose();
     super.dispose();
   }
@@ -56,9 +62,17 @@ class _ModuleDetailScreenState extends State<ModuleDetailScreen> {
   // TEXT TO SPEECH
   // -------------------------------
   void speakSummary() async {
+    setState(() => _isSpeaking = true);
     await _tts.setLanguage("en-US");
     await _tts.setSpeechRate(0.45);
     await _tts.speak(widget.module.summary);
+  }
+
+  Future<void> stopSpeaking() async {
+    await _tts.stop();
+    if (mounted) {
+      setState(() => _isSpeaking = false);
+    }
   }
 
   // ------------------------------------------------
@@ -254,9 +268,12 @@ class _ModuleDetailScreenState extends State<ModuleDetailScreen> {
         );
 
     final listenBtn = ElevatedButton.icon(
-      onPressed: speakSummary,
-      icon: const Icon(Icons.volume_up, color: Colors.white),
-      label: const Text('Listen', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600)),
+      onPressed: _isSpeaking ? stopSpeaking : speakSummary,
+      icon: Icon(_isSpeaking ? Icons.stop : Icons.volume_up, color: Colors.white),
+      label: Text(
+        _isSpeaking ? 'Stop' : 'Listen',
+        style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+      ),
       style: actionStyle(listenColor),
     );
 

@@ -213,30 +213,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            // Hearts (tappable to use, plus button to add)
+                            // Hearts (display only)
                             Row(
                               children: [
                                 ...List.generate(
                                   heartsToShow,
                                   (index) => Padding(
                                     padding: EdgeInsets.only(left: screenWidth * 0.005 > 2 ? 2 : screenWidth * 0.005),
-                                    child: GestureDetector(
-                                      onTap: _useHeart,
-                                      child: Icon(
-                                        Icons.favorite,
-                                        color: Colors.red.shade400,
-                                        size: screenWidth * 0.05 > 20 ? 20 : screenWidth * 0.05,
-                                      ),
+                                    child: Icon(
+                                      Icons.favorite,
+                                      color: Colors.red.shade400,
+                                      size: screenWidth * 0.05 > 20 ? 20 : screenWidth * 0.05,
                                     ),
-                                  ),
-                                ),
-                                const SizedBox(width: 8),
-                                GestureDetector(
-                                  onTap: _addHeart,
-                                    child: Container(
-                                    padding: const EdgeInsets.all(6),
-                                    decoration: BoxDecoration(color: Colors.white.withValues(alpha: 0.06), borderRadius: BorderRadius.circular(8)),
-                                    child: Icon(Icons.add, color: Colors.white, size: screenWidth * 0.04 > 18 ? 18 : screenWidth * 0.04),
                                   ),
                                 ),
                               ],
@@ -370,40 +358,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
       bottomNavigationBar: _buildBottomNavBar(context, 3),
     );
   }
-
-  // --- Profile actions: hearts, streak, learning stats ---
-  Future<void> _changeHearts(int delta) async {
-    if (user == null) return;
-    final messenger = ScaffoldMessenger.of(context);
-    final current = (userData?['hearts'] as int?) ?? 5;
-    var next = current + delta;
-    if (next < 0) next = 0;
-    if (next > 5) next = 5;
-    try {
-      await _firestore.collection('users').doc(user!.uid).update({'hearts': next});
-      if (mounted) setState(() => userData = {...?userData, 'hearts': next});
-    } catch (e) {
-      // ignore: avoid_print
-      debugPrint('Failed to update hearts: $e');
-      if (mounted) messenger.showSnackBar(const SnackBar(content: Text('Failed to update hearts')));
-    }
-  }
-
-  Future<void> _useHeart() async {
-    final current = (userData?['hearts'] as int?) ?? 0;
-    if (current <= 0) {
-      final messenger = ScaffoldMessenger.of(context);
-      if (mounted) messenger.showSnackBar(const SnackBar(content: Text('No hearts available')));
-      return;
-    }
-    await _changeHearts(-1);
-  }
-
-  Future<void> _addHeart() async {
-    await _changeHearts(1);
-  }
-
-  
 
   /// Recalculate simple learning stats by querying Firestore and store back to user doc.
   Future<void> _recalculateLearningStats() async {

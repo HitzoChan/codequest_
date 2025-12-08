@@ -28,37 +28,13 @@ class CourseModuleService {
   
 
   Future<void> initialize() async {
-    // FORCE UPDATE: Uncomment the next line to force update Firestore with latest seed data
-    // This will overwrite existing Firestore data with the local seed data
-    debugPrint('DEBUG: FORCE UPDATING Firestore with local seed data...');
-    await _firestore.forceUpdateCourses(_courses);
+    // ALWAYS USE LOCAL DATA: Don't sync with Firebase for course content
+    // This allows each developer to have their own modules without conflicts
+    debugPrint('DEBUG: Using LOCAL course data only (no Firebase sync for modules)');
+    debugPrint('DEBUG: Loaded ${_courses.length} courses from local files');
     
-    debugPrint('DEBUG: Fetching courses from Firestore...');
-    final remote = await _firestore.fetchCourses();
-    debugPrint('DEBUG: Fetched ${remote.length} courses from Firestore');
-    
-    if (remote.isNotEmpty) {
-      // Debug: Check SQL module pdfUrl before clearing
-      for (var course in _courses) {
-        for (var module in course.modules) {
-            if (module.moduleId == 'sql_intro_01') {
-            debugPrint('DEBUG: SQL Module pdfUrl in local seed: ${module.pdfUrl}');
-          }
-        }
-      }
-      
-      _courses.clear();
-      _courses.addAll(remote);
-      
-      // Debug: Check SQL module pdfUrl after fetching
-      for (var course in _courses) {
-        for (var module in course.modules) {
-            if (module.moduleId == 'sql_intro_01') {
-            debugPrint('DEBUG: SQL Module pdfUrl after Firestore fetch: ${module.pdfUrl}');
-          }
-        }
-      }
-    }
+    // We still use Firebase for user progress (quiz attempts, scores, etc.)
+    // but NOT for course/module content
   }
 
   // Create a new course with modules
@@ -72,7 +48,8 @@ class CourseModuleService {
   }
 
   Future<List<Course>> fetchCourses() async {
-    return await _firestore.fetchCourses();
+    // Return local courses instead of fetching from Firebase
+    return _courses;
   }
 
   // Fetch course details by ID

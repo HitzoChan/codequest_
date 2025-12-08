@@ -82,7 +82,18 @@ class _HomeScreenState extends State<HomeScreen> {
       for (final a in attempts) {
         final quizId = a['quizId'] as String?;
         if (quizId == null) continue;
-        final scoreVal = a['score'];
+
+      // Map old module IDs to new consolidated IDs
+      String normalizedQuizId = quizId;
+      if (quizId == 'sql_intro_01' || quizId == 'computing_intro_01' || quizId == 'programming_fundamentals_01' || quizId == 'programming_fundamentals_beginner_01' || quizId == 'intro_to_web_dev_01' || quizId == 'intro_to_python_01') {
+        normalizedQuizId = 'web_dev_ch1_pdf';
+      }
+      if (quizId == 'web_development_01' || quizId == 'python_intermediate_01') {
+        normalizedQuizId = 'web_dev_intermediate_ch1';
+      }
+      if (quizId == 'data_structures_advanced_01' || quizId == 'python_advanced_01') {
+        normalizedQuizId = 'web_dev_adv_from_pdf';
+      }        final scoreVal = a['score'];
         final passed = a['passed'] as bool? ?? false;
         DateTime? attemptedAt;
         final attemptedRaw = a['attemptedAt'];
@@ -104,25 +115,23 @@ class _HomeScreenState extends State<HomeScreen> {
           attemptedAt = null;
         }
 
-        final shouldReplace = latestAt[quizId] == null || (attemptedAt != null && latestAt[quizId] != null && attemptedAt.isAfter(latestAt[quizId]!)) || (attemptedAt != null && latestAt[quizId] == null);
+        final shouldReplace = latestAt[normalizedQuizId] == null || (attemptedAt != null && latestAt[normalizedQuizId] != null && attemptedAt.isAfter(latestAt[normalizedQuizId]!)) || (attemptedAt != null && latestAt[normalizedQuizId] == null);
         if (shouldReplace) {
-          latestAt[quizId] = attemptedAt;
-          latestScore[quizId] = scoreVal is int ? scoreVal : (scoreVal is num ? scoreVal.toInt() : 0);
+          latestAt[normalizedQuizId] = attemptedAt;
+          latestScore[normalizedQuizId] = scoreVal is int ? scoreVal : (scoreVal is num ? scoreVal.toInt() : 0);
           if (passed) {
-            latestPassed.add(quizId);
+            latestPassed.add(normalizedQuizId);
           } else {
-            latestPassed.remove(quizId);
+            latestPassed.remove(normalizedQuizId);
           }
         }
       }
 
       // helper: total questions per moduleId
       int totalFor(String moduleId) {
-        if (moduleId == 'sql_intro_01') return SqlIntroQuiz.questions.length;
-        if (moduleId == 'computing_intro_01') return ComputingIntroBeginnerQuiz.questions.length;
-        if (moduleId == 'programming_fundamentals_01') return ProgrammingFundamentalsBeginnerQuiz.questions.length;
-        if (moduleId == 'web_development_01') return WebDevIntermediateQuiz.questions.length;
-        if (moduleId == 'data_structures_advanced_01') return DataStructuresAdvancedQuiz.questions.length;
+        if (moduleId == 'web_dev_ch1_pdf') return WebDevPdfQuiz.questions.length;
+        if (moduleId == 'web_dev_intermediate_ch1') return IntermediateWebDevQuiz.questions.length;
+        if (moduleId == 'web_dev_adv_from_pdf') return AdvancedWebDevQuiz.questions.length;
         return 0;
       }
 
@@ -133,7 +142,7 @@ class _HomeScreenState extends State<HomeScreen> {
           final id = module.moduleId;
           final passed = latestPassed.contains(id);
           final total = totalFor(id);
-          final score = latestScore[id] ?? 0;
+          final score = (latestScore[id] ?? 0).clamp(0, total);
           final progress = total > 0 ? (score / total).clamp(0.0, 1.0) : 0.0;
           if (!passed) {
             title = module.title;
@@ -224,28 +233,23 @@ class _HomeScreenState extends State<HomeScreen> {
           ? stats['totalModules'] as int
           : _api.getCourses().fold<int>(0, (p, c) => p + c.modules.length);
       final modulesCompleted = (stats['modulesCompleted'] is int) ? stats['modulesCompleted'] as int : 0;
-      final quizzesPassed = (stats['quizzesPassed'] is int) ? stats['quizzesPassed'] as int : 0;
 
       // Compute a simple label based on fraction completed
       double frac = totalModules > 0 ? (modulesCompleted / totalModules) : 0.0;
       String label = 'Beginner';
+      int tierLevel = 1; // 1 for Beginner, 2 for Intermediate, 3 for Advanced
       if (frac >= 0.66) {
         label = 'Advanced';
+        tierLevel = 3;
       } else if (frac >= 0.33) {
         label = 'Intermediate';
+        tierLevel = 2;
       }
-
-      // Calculate level dynamically based on progress (same as profile screen)
-      // Formula: 1 point per module completed, 2 points per quiz passed
-      // Every 5 points = 1 level
-      final int totalPoints = modulesCompleted + (quizzesPassed * 2);
-      final int calculatedLevel = (totalPoints / 5).floor() + 1; // Start at level 1
-      final int level = calculatedLevel.clamp(1, 100); // Cap at level 100
 
       setState(() {
         _modulesCompleted = modulesCompleted;
         _totalModules = totalModules;
-        _levelNumber = level;
+        _levelNumber = tierLevel; // Use tier level (1, 2, 3) instead of XP-based level
         _levelLabel = label;
         _moduleProgress = frac.clamp(0.0, 1.0);
         _lessonsDone = modulesCompleted;

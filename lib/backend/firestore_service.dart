@@ -33,6 +33,18 @@ class FirestoreService {
 
   Future<void> forceUpdateCourses(List<Course> seedCourses) async {
     debugPrint('DEBUG: Force updating courses in Firestore...');
+    
+    // First, delete ALL existing courses to remove old data
+    debugPrint('DEBUG: Deleting all existing courses...');
+    final existingCourses = await _db.collection('courses').get();
+    final deleteBatch = _db.batch();
+    for (var doc in existingCourses.docs) {
+      deleteBatch.delete(doc.reference);
+    }
+    await deleteBatch.commit();
+    debugPrint('DEBUG: Deleted ${existingCourses.docs.length} old courses');
+    
+    // Now upload the new courses
     final batch = _db.batch();
     for (var c in seedCourses) {
       final docRef = _db.collection('courses').doc(c.courseId);
@@ -40,8 +52,8 @@ class FirestoreService {
       debugPrint('DEBUG: Force updating course ${c.courseId}');
       // Check pdfUrl in modules
       for (var module in c.modules) {
-        if (module.moduleId == 'sql_intro_01') {
-          debugPrint('DEBUG: SQL module pdfUrl in update: ${module.pdfUrl}');
+        if (module.moduleId == 'web_dev_ch1_pdf') {
+          debugPrint('DEBUG: Beginner module pdfUrl in update: ${module.pdfUrl}');
         }
       }
       batch.set(docRef, courseData, SetOptions(merge: false)); // Overwrite completely
