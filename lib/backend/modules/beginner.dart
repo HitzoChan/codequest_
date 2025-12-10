@@ -11,6 +11,7 @@ final List<Course> beginnerCourses = [
       Module(
         moduleId: 'networking_ch1_intro',
         title: 'Introduction to Computer Networks',
+        difficultyLevel: 'Beginner',
         summary: '''
 This module introduces the fundamentals of computer networking based on the uploaded PDF.
 
