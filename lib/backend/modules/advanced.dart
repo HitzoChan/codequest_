@@ -11,6 +11,7 @@ final List<Course> advancedCourses = [
       Module(
         moduleId: 'networking_advanced_ch1',
         title: 'Advanced Network Architectures, Routing & Protocols',
+        difficultyLevel: 'Advanced',
         summary: '''
 This advanced module explores how large-scale networks operate, how traffic flows across enterprise environments, and how routing protocols manage communication between networks.
 
