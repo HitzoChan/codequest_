@@ -1,106 +1,117 @@
 import 'models.dart';
 
-class BeginnerNetworkingQuiz {
+class BeginnerWebDevQuiz {
   static List<QuizQuestion> questions = [
+
     QuizQuestion(
-      question: 'What is a computer network?',
+      question: 'What is the main purpose of web development?',
       choices: [
-        'A collection of websites',
-        'A group of devices connected to share resources',
-        'A single computer used for storage',
-        'A program used to surf the internet',
+        'To build and maintain websites',
+        'To design computer hardware',
+        'To install mobile apps',
+        'To fix printers',
+      ],
+      correctIndex: 0,
+    ),
+
+    QuizQuestion(
+      question: 'Which of the following is used for structuring a webpage?',
+      choices: [
+        'CSS',
+        'JavaScript',
+        'HTML',
+        'SQL',
+      ],
+      correctIndex: 2,
+    ),
+
+    QuizQuestion(
+      question: 'What is the role of CSS in web development?',
+      choices: [
+        'To add interactivity',
+        'To store user data',
+        'To add design and layout',
+        'To process server requests',
+      ],
+      correctIndex: 2,
+    ),
+
+    QuizQuestion(
+      question: 'Which technology allows a webpage to react to user actions?',
+      choices: [
+        'JavaScript',
+        'HTML',
+        'Database',
+        'Web Server',
+      ],
+      correctIndex: 0,
+    ),
+
+    QuizQuestion(
+      question: 'What does the browser do when you open a website?',
+      choices: [
+        'Designs the webpage',
+        'Sends requests and displays the webpage',
+        'Stores user passwords',
+        'Creates new HTML files',
       ],
       correctIndex: 1,
     ),
+
     QuizQuestion(
-      question: 'Which device connects multiple devices within a LAN?',
+      question: 'A web server is responsible for…',
       choices: [
-        'Modem',
-        'Switch',
+        'Writing code',
+        'Designing images',
+        'Storing and delivering website files',
+        'Running animations',
+      ],
+      correctIndex: 2,
+    ),
+
+    QuizQuestion(
+      question: 'Which type of website displays fixed content unless manually updated?',
+      choices: [
+        'Dynamic',
+        'Static',
+        'Full-stack',
+        'Responsive',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Dynamic websites use which component to change and update content?',
+      choices: [
+        'Mouse and keyboard',
+        'Databases and server-side scripts',
+        'HTML only',
+        'CSS animations',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Which tool is used to write the code for HTML, CSS, and JavaScript?',
+      choices: [
+        'Code editor',
+        'Router',
+        'Web server',
         'Printer',
-        'USB cable',
+      ],
+      correctIndex: 0,
+    ),
+
+    QuizQuestion(
+      question: 'What is the benefit of using developer tools in the browser?',
+      choices: [
+        'To play games',
+        'To debug and inspect webpage elements',
+        'To increase WiFi speed',
+        'To save power',
       ],
       correctIndex: 1,
     ),
-    QuizQuestion(
-      question: 'What does a router do?',
-      choices: [
-        'Prints documents',
-        'Connects networks and directs data',
-        'Stores user files',
-        'Repairs cables',
-      ],
-      correctIndex: 1,
-    ),
-    QuizQuestion(
-      question: 'Which medium uses wireless signals?',
-      choices: [
-        'Ethernet cable',
-        'Wi-Fi',
-        'Fiber wire',
-        'Copper pipe',
-      ],
-      correctIndex: 1,
-    ),
-    QuizQuestion(
-      question: 'A network that covers a small area like a home or office is called:',
-      choices: [
-        'WAN',
-        'MAN',
-        'LAN',
-        'TAN',
-      ],
-      correctIndex: 2,
-    ),
-    QuizQuestion(
-      question: 'The internet is an example of what type of network?',
-      choices: [
-        'LAN',
-        'MAN',
-        'WAN',
-        'PAN',
-      ],
-      correctIndex: 2,
-    ),
-    QuizQuestion(
-      question: 'In which topology do all devices connect to a central device?',
-      choices: [
-        'Ring',
-        'Bus',
-        'Star',
-        'Mesh',
-      ],
-      correctIndex: 2,
-    ),
-    QuizQuestion(
-      question: 'A hub sends data to:',
-      choices: [
-        'Only the correct device',
-        'All connected devices',
-        'Wireless devices only',
-        'The router only',
-      ],
-      correctIndex: 1,
-    ),
-    QuizQuestion(
-      question: 'Full-duplex communication allows:',
-      choices: [
-        'One-way communication',
-        'Two-way communication but not simultaneously',
-        'Both devices to send and receive at the same time',
-        'Wireless communication only',
-      ],
-      correctIndex: 2,
-    ),
-    QuizQuestion(
-      question: 'Which device connects the network to the internet?',
-      choices: [
-        'Hub',
-        'Modem',
-        'Switch',
-        'Printer',
-      ],
-      correctIndex: 1,
-    ),
+
   ];
 }

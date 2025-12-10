@@ -1,116 +1,116 @@
 import 'models.dart';
 
-class IntermediateNetworkingQuiz {
+class IntermediateWebDevQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'What is the main purpose of the OSI model?',
+      question: 'In the client–server model, the client’s role is to:',
       choices: [
-        'To design computer hardware',
-        'To standardize how data travels in a network',
-        'To create IP addresses',
-        'To assign Wi-Fi passwords',
+        'Store databases',
+        'Request and display web content',
+        'Build HTML files',
+        'Monitor server temperature',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Which OSI layer is responsible for routing data using IP addresses?',
+      question: 'Which part of a website stores and serves its files?',
       choices: [
-        'Application',
-        'Network',
-        'Physical',
-        'Session',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'The TCP/IP model used in real-world networking has how many layers?',
-      choices: [
-        '2',
-        '3',
-        '4',
-        '7',
-      ],
-      correctIndex: 2,
-    ),
-
-    QuizQuestion(
-      question: 'Which layer in TCP/IP includes protocols like HTTP and DNS?',
-      choices: [
-        'Application',
-        'Transport',
-        'Internet',
-        'Network Access',
-      ],
-      correctIndex: 0,
-    ),
-
-    QuizQuestion(
-      question: 'What does an IPv4 address identify?',
-      choices: [
-        'Cable connector type',
-        'Software version',
-        'A device on a network',
-        'Voltage level',
-      ],
-      correctIndex: 2,
-    ),
-
-    QuizQuestion(
-      question: 'Which of the following is a private IP address range?',
-      choices: [
-        '8.8.8.8',
-        '172.16.0.1',
-        '220.12.1.1',
-        '1.1.1.1',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'A subnet mask is used to determine:',
-      choices: [
-        'The MAC address',
-        'Network and host portions of an IP',
-        'Cable type',
-        'Connection speed',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Which device forwards data using MAC addresses?',
-      choices: [
+        'Browser',
+        'Server',
         'Router',
-        'Switch',
-        'Firewall',
-        'Modem',
+        'DOM',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'What does the “ping” command check?',
+      question: 'What is the main difference between HTTP and HTTPS?',
       choices: [
-        'File size',
-        'Internet speed',
-        'Connectivity between devices',
-        'Cable temperature',
+        'HTTPS loads slower',
+        'HTTPS uses encryption for security',
+        'HTTP cannot load images',
+        'HTTP is newer',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'The DOM is created by the browser to:',
+      choices: [
+        'Store passwords',
+        'Represent the structure of the webpage as a tree',
+        'Compress images',
+        'Increase server speed',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Which language interacts directly with the DOM?',
+      choices: [
+        'CSS',
+        'JavaScript',
+        'SQL',
+        'PHP',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Responsive design is important because it:',
+      choices: [
+        'Makes photos clearer',
+        'Ensures websites adjust to different screen sizes',
+        'Adds security to websites',
+        'Improves WiFi connectivity',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Media queries are used in which technology?',
+      choices: [
+        'HTML',
+        'CSS',
+        'Java',
+        'Python',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'A static website is best described as a site that:',
+      choices: [
+        'Updates automatically',
+        'Uses a database for user content',
+        'Shows fixed content unless manually changed',
+        'Requires login',
       ],
       correctIndex: 2,
     ),
 
     QuizQuestion(
-      question: 'A firewall’s main purpose is to:',
+      question: 'Dynamic websites depend on:',
       choices: [
-        'Print documents',
-        'Filter network traffic',
-        'Increase bandwidth',
-        'Assign IP addresses',
+        'Only JavaScript',
+        'Browser settings',
+        'Server-side scripts and databases',
+        'HTML comments',
       ],
-      correctIndex: 1,
+      correctIndex: 2,
+    ),
+
+    QuizQuestion(
+      question: 'Which of the following is an example of a dynamic website?',
+      choices: [
+        'A simple text-only homepage',
+        'A static portfolio website',
+        'A social media platform with user accounts',
+        'A printed newspaper',
+      ],
+      correctIndex: 2,
     ),
 
   ];

@@ -2,33 +2,32 @@
 
 final List<Course> beginnerCourses = [
   Course(
-    courseId: 'networking_101_beginner',
-    title: 'Networking 1 – Introduction to Computer Networks',
+    courseId: 'web_dev_beginner_clean',
+    title: 'Web Development – Beginner',
     description:
-        'Beginner module based on the uploaded PDF, covering the basics of computer networks, components, types, and data transmission.',
+        'Beginner module introducing the fundamentals of how websites are created, displayed, and maintained.',
     difficultyLevel: 'Beginner',
     modules: [
       Module(
-        moduleId: 'networking_ch1_intro',
-        title: 'Introduction to Computer Networks',
+        moduleId: 'web_dev_beginner_ch1',
+        title: 'Introduction to Web Development',
+        difficultyLevel: 'Beginner',
         summary: '''
-This module introduces the fundamentals of computer networking based on the uploaded PDF.
+This module introduces the fundamentals of web development.
 
 Topics include:
-• What computer networking is and why it is important
-• Basic components of a network (devices, hardware, media)
-• Importance and advantages of networks in daily life
-• Types of networks (LAN, MAN, WAN)
-• Network topologies (Bus, Star, Ring, Mesh)
-• Basic data transmission concepts (simplex, half-duplex, full-duplex)
-
-This module provides a foundation for understanding how devices communicate and share information in modern digital environments.
+• What web development is and its importance
+• Components of a website: HTML for structure, CSS for design, JavaScript for interactivity
+• How the web works: browsers, servers, and URLs
+• Types of websites: static vs dynamic
+• Essential developer tools such as code editors and browser devtools
+• Why web development remains a vital skill in the digital era
 ''',
         content:
-            'A beginner-friendly overview of computer networks, components, classifications, topologies, and how data travels across devices.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=3QhU9jd03a0', // Working Networking Fundamentals video
+            'A beginner-friendly explanation of website structure, how browsers and servers communicate, the role of HTML/CSS/JavaScript, and essential tools used by developers.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=3JluqTojuME',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=1s4Sqmn9y2wgKrk_zecAYVSgJ3UhjDJHY',
+            'https://drive.google.com/uc?export=download&id=1BZQrP_Ys4Aafu0e7NmfP7oknG5-fCQ58',
       ),
     ],
   ),
