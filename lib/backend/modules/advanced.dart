@@ -2,34 +2,35 @@ import '../course_models.dart';
 
 final List<Course> advancedCourses = [
   Course(
-    courseId: 'data_analytics_advanced_clean',
-    title: 'Data Analytics – Advanced',
+    courseId: 'intro_computing_advanced_clean',
+    title: 'Introduction to Computing – Advanced',
     description:
-        'Advanced module covering predictive modeling, machine learning, regression, classification, model evaluation, and ethical data analytics.',
+        'Advanced module covering computer architecture, system performance, resource management, parallel and distributed computing, and emerging technologies.',
     difficultyLevel: 'Advanced',
     modules: [
       Module(
-        moduleId: 'data_analytics_advanced_ch1',
-        title: 'Predictive Modeling, Machine Learning, and Ethical Analytics',
+        moduleId: 'intro_computing_advanced_ch1',
+        title: 'Computer Architecture, Performance, and Advanced Computing Paradigms',
         difficultyLevel: 'Advanced',
         summary: '''
-This module explores advanced analytical techniques used for forecasting, decision-making, and model evaluation.
+This module explores advanced concepts that define how modern computer systems achieve performance, efficiency, and scalability.
 
 Topics include:
-• Predictive analytics and forecasting using historical data  
-• Fundamentals of machine learning and its major categories  
-• Regression and classification models for numerical and categorical prediction  
-• Model evaluation techniques including accuracy, precision, recall, and error metrics  
-• Overfitting, generalization, and validation strategies  
-• Ethical analytics, fairness, transparency, and responsible data handling  
+• Computer architecture and how system components interact  
+• Instruction Set Architecture (ISA) and its role in hardware–software communication  
+• CPU design principles including multicore processors, pipelining, caching, and optimization  
+• Memory hierarchy and system performance management  
+• System software resource management through scheduling, concurrency, and load balancing  
+• Parallel and distributed computing for high-performance applications  
+• Emerging computing trends such as quantum computing, AI-driven systems, edge computing, and green computing  
 
-The module equips learners with the skills needed to analyze complex datasets and build reliable, responsible predictive models.
+This module prepares learners to understand, evaluate, and optimize modern computing environments.
 ''',
         content:
-            'A comprehensive discussion of predictive modeling, machine learning approaches, regression and classification techniques, model performance evaluation, and ethical considerations that ensure analytical systems are accurate, fair, and trustworthy.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=ukzFI9rgwfU',
+            'A comprehensive discussion of advanced architecture concepts, CPU performance techniques, memory hierarchy, resource management in system software, parallel and distributed computing models, and new paradigms such as quantum computing and edge computing that shape the future of technology.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=zlX8cpvOW7U',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=1v_72jEdYCk3tJPCMUmrEYzV7mtuVqtEP',
+            'https://drive.google.com/uc?export=download&id=1FBe97Jrf7l8-HoHmuSiBmGZQm151oAms',
       ),
     ],
   ),

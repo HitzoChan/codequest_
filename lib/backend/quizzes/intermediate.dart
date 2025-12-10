@@ -1,116 +1,116 @@
 import 'models.dart';
 
-class IntermediateDataAnalyticsQuiz {
+class IntermediateIntroComputingQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'Primary data collection is best described as:',
+      question: 'A computer system functions effectively because:',
       choices: [
-        'Using existing reports from other organizations',
-        'Collecting information directly from original sources',
-        'Automatically generating data from software',
-        'Copying data from online articles',
+        'Only the hardware operates independently',
+        'Hardware, software, people, and processes work together',
+        'It performs tasks without any operating system',
+        'It requires no interaction between components',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Secondary data must be evaluated carefully because:',
+      question: 'The operating system acts as:',
       choices: [
-        'It is always inaccurate',
-        'It may not be relevant or up to date',
-        'It requires no processing',
-        'It is more expensive to obtain',
+        'A physical storage device',
+        'A bridge between hardware, software, and users',
+        'A replacement for applications',
+        'A tool used only for entertainment',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'The main purpose of data cleaning is to:',
+      question: 'One major role of an operating system is to:',
       choices: [
-        'Increase the size of datasets',
-        'Introduce more variables',
-        'Remove errors and prepare data for analysis',
-        'Generate visual charts automatically',
-      ],
-      correctIndex: 2,
-    ),
-
-    QuizQuestion(
-      question: 'A dataset containing duplicates, missing values, and inconsistent formats needs:',
-      choices: [
-        'Data visualization',
-        'Data collection',
-        'Data cleaning',
-        'Statistical modeling',
-      ],
-      correctIndex: 2,
-    ),
-
-    QuizQuestion(
-      question: 'Exploratory Data Analysis (EDA) helps analysts:',
-      choices: [
-        'Create final business reports',
-        'Understand patterns and detect anomalies in the data',
-        'Replace missing data automatically',
-        'Encrypt sensitive information',
+        'Restrict all forms of multitasking',
+        'Control how programs use hardware resources',
+        'Replace the central processing unit',
+        'Remove unused files automatically',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Which of the following is commonly used in EDA to summarize data?',
+      question: 'Which type of operating system is designed for personal computers used in everyday tasks?',
       choices: [
-        'Antivirus software',
-        'Descriptive statistics',
-        'Audio processing tools',
-        'Hardware drivers',
+        'Mobile OS',
+        'Desktop OS',
+        'Server OS',
+        'Embedded OS',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Data visualization is important because it:',
+      question: 'Mobile operating systems such as Android and iOS are designed to:',
       choices: [
-        'Converts images into numbers',
-        'Makes complex data easier to understand',
-        'Replaces the need for analysis',
-        'Removes errors from datasets',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'A histogram is most useful for showing:',
-      choices: [
-        'The distribution of numerical data',
-        'The total number of database tables',
-        'The details of text-based documents',
-        'The structure of an organization',
+        'Support touch-based interfaces and manage device power efficiently',
+        'Run multiple servers at the same time',
+        'Replace desktop operating systems entirely',
+        'Function only with external storage',
       ],
       correctIndex: 0,
     ),
 
     QuizQuestion(
-      question: 'Mean, median, and mode are examples of:',
+      question: 'Software installation involves:',
       choices: [
-        'Data collection methods',
-        'Measures of central tendency',
-        'Data encryption techniques',
-        'Programming languages',
+        'Removing all existing applications from a device',
+        'Allocating resources and integrating the program into the system',
+        'Copying data without configuration',
+        'Disabling system updates',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Why is proper data preparation essential for analysis?',
+      question: 'Updating software is important because it:',
       choices: [
-        'It guarantees higher internet speed',
-        'It ensures accurate and meaningful results',
-        'It eliminates the need for visualization',
-        'It replaces statistical tools entirely',
+        'Removes all saved files',
+        'Downgrades security features',
+        'Provides improvements, bug fixes, and security patches',
+        'Makes the software consume more storage',
+      ],
+      correctIndex: 2,
+    ),
+
+    QuizQuestion(
+      question: 'File management allows users to:',
+      choices: [
+        'Manipulate the CPU speed',
+        'Organize, store, and retrieve digital files efficiently',
+        'Modify hardware components',
+        'Operate the device without an operating system',
       ],
       correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Storage devices such as SSDs and cloud services help users:',
+      choices: [
+        'Connect to wireless networks',
+        'Store data for long-term access',
+        'Execute arithmetic calculations',
+        'Monitor energy consumption',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'User accounts and permissions are essential because they:',
+      choices: [
+        'Allow all users to access everything freely',
+        'Prevent system logs from recording activity',
+        'Protect system settings and user data from unauthorized access',
+        'Disable security features for convenience',
+      ],
+      correctIndex: 2,
     ),
 
   ];

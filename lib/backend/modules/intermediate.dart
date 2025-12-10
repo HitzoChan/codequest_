@@ -2,34 +2,34 @@ import '../course_models.dart';
 
 final List<Course> intermediateCourses = [
   Course(
-    courseId: 'data_analytics_intermediate_clean',
-    title: 'Data Analytics – Intermediate',
+    courseId: 'intro_computing_intermediate_clean',
+    title: 'Introduction to Computing – Intermediate',
     description:
-        'Intermediate module covering data collection methods, cleaning, exploratory data analysis, visualization, and basic statistical concepts.',
+        'Intermediate module explaining how computer systems operate, the role of operating systems, software management, file organization, and system security.',
     difficultyLevel: 'Intermediate',
     modules: [
       Module(
-        moduleId: 'data_analytics_intermediate_ch1',
-        title: 'Data Collection, Cleaning, and Exploratory Analysis',
+        moduleId: 'intro_computing_intermediate_ch1',
+        title: 'Computer Systems, Operating Systems, and Software Management',
         difficultyLevel: 'Intermediate',
         summary: '''
-This module expands on the essential processes used in preparing and analyzing data.
+This module discusses how computer systems function and how operating systems manage hardware, software, and user interactions.
 
 Topics include:
-• Primary and secondary data collection methods  
-• The importance of evaluating data sources for accuracy and relevance  
-• Data cleaning techniques for handling missing values, inconsistencies, and duplicates  
-• Exploratory Data Analysis (EDA) for identifying trends, patterns, and anomalies  
-• Introduction to data visualization and selecting appropriate chart types  
-• Basic statistical concepts such as mean, median, mode, variance, standard deviation, and correlation  
+• Components of a computer system and how they interact  
+• The operating system as the bridge between hardware, software, and users  
+• Types of operating systems including desktop, mobile, server, and embedded  
+• Software installation, configuration, updates, and resource allocation  
+• File management, storage concepts, and how data is organized for efficient access  
+• User accounts, permissions, and system security practices  
 
-The module strengthens analytical skills by building a deeper understanding of how data is prepared and explored before advanced modeling.
+This module helps learners understand how computing environments operate, how applications are managed, and how system resources remain secure and efficient.
 ''',
         content:
-            'A detailed discussion of how data is gathered, cleaned, examined, and summarized. It explains the role of reliable data collection, the necessity of removing errors, the purpose of exploratory analysis, and how visualization and statistics support meaningful interpretation of information.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=a4KiExvYJKo',
+            'An in-depth explanation of computer system components, operating system functions, software installation and updates, file organization methods, and the role of user accounts and security tools in protecting system resources.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=26QPDBe-NB8',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=1RYc5Dc_t-_2fXnmyBKiqnwuBcraZKVj4',
+            'https://drive.google.com/uc?export=download&id=1KEfiB4hwqPkXiyYxQyNxs_rSVKE2QdDW',
       ),
     ],
   ),

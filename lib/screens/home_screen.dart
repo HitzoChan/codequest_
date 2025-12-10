@@ -86,13 +86,13 @@ class _HomeScreenState extends State<HomeScreen> {
       // Map old module IDs to new consolidated IDs
       String normalizedQuizId = quizId;
       if (quizId == 'sql_intro_01' || quizId == 'computing_intro_01' || quizId == 'programming_fundamentals_01' || quizId == 'programming_fundamentals_beginner_01' || quizId == 'intro_to_web_dev_01' || quizId == 'intro_to_python_01' || quizId == 'web_dev_ch1_pdf') {
-        normalizedQuizId = 'sysint_beginner_ch1';
+        normalizedQuizId = 'intro_computing_beginner_ch1';
       }
       if (quizId == 'web_development_01' || quizId == 'python_intermediate_01' || quizId == 'web_dev_intermediate_ch1') {
-        normalizedQuizId = 'sysint_intermediate_ch1';
+        normalizedQuizId = 'intro_computing_intermediate_ch1';
       }
       if (quizId == 'data_structures_advanced_01' || quizId == 'python_advanced_01') {
-        normalizedQuizId = 'sysint_advanced_ch1';
+        normalizedQuizId = 'intro_computing_advanced_ch1';
       }        final scoreVal = a['score'];
         final passed = a['passed'] as bool? ?? false;
         DateTime? attemptedAt;
@@ -129,9 +129,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
       // helper: total questions per moduleId
       int totalFor(String moduleId) {
-        if (moduleId == 'data_analytics_beginner_ch1') return BeginnerDataAnalyticsQuiz.questions.length;
-        if (moduleId == 'data_analytics_intermediate_ch1') return IntermediateDataAnalyticsQuiz.questions.length;
-        if (moduleId == 'data_analytics_advanced_ch1') return AdvancedDataAnalyticsQuiz.questions.length;
+          if (moduleId == 'intro_computing_beginner_ch1') return BeginnerIntroComputingQuiz.questions.length;
+          if (moduleId == 'intro_computing_intermediate_ch1') return IntermediateIntroComputingQuiz.questions.length;
+        if (moduleId == 'intro_computing_advanced_ch1') return AdvancedIntroComputingQuiz.questions.length;
         return 0;
       }
 

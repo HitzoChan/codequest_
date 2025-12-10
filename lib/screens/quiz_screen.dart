@@ -33,14 +33,14 @@ class _QuizScreenState extends State<QuizScreen> with SingleTickerProviderStateM
     startTime = DateTime.now();
 
     // Load questions based on moduleId
-    if (moduleId == 'data_analytics_beginner_ch1') {
-      questions = BeginnerDataAnalyticsQuiz.questions;
-    } else if (moduleId == 'data_analytics_intermediate_ch1') {
-      questions = IntermediateDataAnalyticsQuiz.questions;
-    } else if (moduleId == 'data_analytics_advanced_ch1') {
-      questions = AdvancedDataAnalyticsQuiz.questions;
+    if (moduleId == 'intro_computing_beginner_ch1') {
+      questions = BeginnerIntroComputingQuiz.questions;
+    } else if (moduleId == 'intro_computing_intermediate_ch1') {
+      questions = IntermediateIntroComputingQuiz.questions;
+    } else if (moduleId == 'intro_computing_advanced_ch1') {
+      questions = AdvancedIntroComputingQuiz.questions;
     } else {
-      questions = BeginnerDataAnalyticsQuiz.questions;
+      questions = BeginnerIntroComputingQuiz.questions;
     }
 
     answers = List<int?>.filled(questions.length, null);

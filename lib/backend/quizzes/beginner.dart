@@ -1,114 +1,114 @@
 import 'models.dart';
 
-class BeginnerDataAnalyticsQuiz {
+class BeginnerIntroComputingQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'What is the main purpose of Data Analytics?',
+      question: 'Computing is best described as:',
       choices: [
-        'To create digital art',
-        'To turn raw data into meaningful insights',
-        'To design computer hardware',
-        'To increase internet speed',
+        'The study of plants and animals',
+        'The use of computers to process information and solve problems',
+        'The repair of electronic devices',
+        'The design of artwork',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Organizations use Data Analytics because it helps them:',
+      question: 'Hardware refers to:',
       choices: [
-        'Ignore customer behavior',
-        'Make decisions based on evidence',
-        'Replace all employees',
-        'Eliminate record-keeping',
+        'The instructions that tell a computer what to do',
+        'The physical components of a computer system',
+        'The people who use a computer',
+        'The documents stored on a computer',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Qualitative data refers to:',
+      question: 'Which of the following is an example of system software?',
       choices: [
-        'Numbers and measurements',
-        'Categories and descriptive information',
-        'Binary code',
-        'Mathematical formulas',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Quantitative data is best described as:',
-      choices: [
-        'Personal opinions',
-        'Visual media',
-        'Numerical information used for calculations',
-        'Music and audio files',
+        'Video editing application',
+        'Mobile game',
+        'Operating system',
+        'Web browser extension',
       ],
       correctIndex: 2,
     ),
 
     QuizQuestion(
-      question: 'Structured data is usually stored in:',
+      question: 'Data becomes information when:',
       choices: [
-        'Videos and images',
-        'Random text documents',
-        'Rows and columns',
-        'Social media feeds',
+        'It is stored in a cabinet',
+        'It is processed and given meaning',
+        'It is copied multiple times',
+        'It is converted to graphics',
       ],
-      correctIndex: 2,
+      correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'The first step in the Data Analytics process is:',
+      question: 'A device such as a keyboard or touchscreen is used for:',
       choices: [
+        'Storage',
+        'Input',
+        'Output',
+        'Processing',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'A computer displaying information through a monitor is performing:',
+      choices: [
+        'Input',
+        'Output',
         'Data cleaning',
-        'Data visualization',
-        'Data collection',
-        'Data interpretation',
-      ],
-      correctIndex: 2,
-    ),
-
-    QuizQuestion(
-      question: 'Data cleaning is important because it:',
-      choices: [
-        'Removes unnecessary software',
-        'Ensures data is accurate and usable',
-        'Makes files load faster',
-        'Adjusts the computer’s hardware settings',
+        'Searching',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Data exploration helps analysts:',
+      question: 'Personal computers such as laptops are designed for:',
       choices: [
-        'Hide errors in datasets',
-        'Examine data structure and identify early patterns',
-        'Delete unused files',
-        'Build physical storage devices',
+        'Large scientific simulations',
+        'Individual, everyday use',
+        'Managing network servers',
+        'Only gaming purposes',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Which tool is commonly used for basic data organization and analysis?',
+      question: 'Which type of computer is used to host websites and manage network resources?',
       choices: [
-        'Photoshop',
-        'Microsoft Excel',
-        'Blender',
-        'Audacity',
+        'Mobile device',
+        'Supercomputer',
+        'Personal computer',
+        'Server',
+      ],
+      correctIndex: 3,
+    ),
+
+    QuizQuestion(
+      question: 'Storage devices such as SSDs and cloud storage are used to:',
+      choices: [
+        'Display information visibly',
+        'Store data for future use',
+        'Increase internet speed',
+        'Print documents',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Why is ethical data use important?',
+      question: 'Why is computing important in society?',
       choices: [
-        'It increases brand logos',
-        'It prevents unauthorized access and protects privacy',
-        'It reduces internet costs',
-        'It improves computer graphics',
+        'It replaces the need for communication',
+        'It supports business operations, education, healthcare, and daily life',
+        'It is used only for entertainment',
+        'It reduces the need for electricity',
       ],
       correctIndex: 1,
     ),

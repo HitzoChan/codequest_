@@ -2,33 +2,34 @@
 
 final List<Course> beginnerCourses = [
   Course(
-    courseId: 'data_analytics_beginner_clean',
-    title: 'Data Analytics – Beginner',
+    courseId: 'intro_computing_beginner_clean',
+    title: 'Introduction to Computing – Beginner',
     description:
-        'Beginner module introducing the fundamentals of data analytics, data types, analysis processes, tools, and ethical use of data.',
+        'Beginner module introducing the fundamentals of computing, computer components, data and information, types of computers, and basic operations.',
     difficultyLevel: 'Beginner',
     modules: [
       Module(
-        moduleId: 'data_analytics_beginner_ch1',
-        title: 'Introduction to Data Analytics',
+        moduleId: 'intro_computing_beginner_ch1',
+        title: 'Understanding Computers, Information, and Basic Digital Concepts',
         difficultyLevel: 'Beginner',
         summary: '''
-This module introduces the essential concepts of data analytics and how organizations use data to guide decisions.
+This module introduces the foundational ideas of computing and how computers are used to process information.
 
 Topics include:
-• Understanding data analytics and its importance in modern industries  
-• Types of data: qualitative, quantitative, structured, unstructured, and semi-structured  
-• The data analytics process, including collection, cleaning, exploration, analysis, and interpretation  
-• Tools used for organizing, visualizing, and analyzing data  
-• Ethical considerations and responsible data handling  
+• What computing is and how it supports communication, problem-solving, and digital tasks  
+• Components of a computer system including hardware, software, data, people, and processes  
+• The difference between data and information and how computers transform one into the other  
+• Basic types of computers such as personal computers, mobile devices, servers, and supercomputers  
+• The four basic operations of a computer: input, processing, output, and storage  
+• The importance of computing in society across business, education, healthcare, and daily life  
 
-The module builds foundational knowledge that helps learners understand how insights are derived from raw information.
+This module builds a strong foundation for understanding how modern computer systems function.
 ''',
         content:
-            'A clear overview of data analytics fundamentals, classifications of data, the step-by-step analytics process, commonly used tools such as Excel and visualization platforms, and ethical practices required when working with sensitive information.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=yZvFH7B6gKI',
+            'A complete introduction to how computers work, the role of hardware and software, how data becomes information, the classification of computer types, and the essential operations that make computing possible in everyday life.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=l4plCAriwSs',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=1JontR0hKHWXLHy4vbkZbFRMYa53dFgpP',
+            'https://drive.google.com/uc?export=download&id=1xMAI4gCON2hZGjoHv1XewDLlXq3WHMF1',
       ),
     ],
   ),

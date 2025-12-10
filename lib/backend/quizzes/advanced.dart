@@ -1,116 +1,116 @@
 import 'models.dart';
 
-class AdvancedDataAnalyticsQuiz {
+class AdvancedIntroComputingQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'Predictive analytics is primarily used to:',
+      question: 'Computer architecture at the advanced level focuses on:',
       choices: [
-        'Describe past events',
-        'Categorize data into groups',
-        'Forecast future outcomes based on historical patterns',
-        'Store raw information in databases',
-      ],
-      correctIndex: 2,
-    ),
-
-    QuizQuestion(
-      question: 'Machine learning differs from traditional programming because it:',
-      choices: [
-        'Requires no data at all',
-        'Learns patterns automatically from examples',
-        'Only works with text-based information',
-        'Cannot be used for prediction',
+        'The design of computer packaging',
+        'How system components interact to optimize performance',
+        'Only the appearance of the user interface',
+        'Reducing all hardware to a single chip',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'In supervised learning, models are trained using:',
+      question: 'The instruction set architecture (ISA) is important because it:',
       choices: [
-        'Randomized numeric outputs',
-        'Unlabeled data',
-        'Trial-and-error rewards',
-        'Labeled data',
+        'Determines the color of the monitor',
+        'Defines how software communicates with hardware',
+        'Removes the need for an operating system',
+        'Stores user accounts and passwords',
       ],
-      correctIndex: 3,
+      correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Unsupervised learning is best used when the goal is to:',
+      question: 'Multicore processors improve performance by:',
       choices: [
-        'Predict the price of a product',
-        'Classify emails as spam or not spam',
-        'Discover hidden patterns or groups in data',
-        'Perform arithmetic operations',
+        'Running only one task at a time',
+        'Allowing multiple processing tasks to execute simultaneously',
+        'Replacing memory hierarchy',
+        'Disabling multitasking',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'CPU pipelining increases performance by:',
+      choices: [
+        'Slowing down instruction execution',
+        'Executing instructions one at a time',
+        'Dividing instructions into stages processed simultaneously',
+        'Removing the need for cache memory',
       ],
       correctIndex: 2,
     ),
 
     QuizQuestion(
-      question: 'Regression models are used to predict:',
+      question: 'Cache memory is used because it:',
       choices: [
-        'Numerical values',
-        'Categories',
-        'Geographical locations',
-        'Passwords',
+        'Stores data permanently',
+        'Provides fast access to frequently used data',
+        'Replaces all RAM',
+        'Slows down processing',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Virtual memory helps improve system performance by:',
+      choices: [
+        'Turning off physical memory',
+        'Using storage devices to extend available memory',
+        'Eliminating the need for multitasking',
+        'Preventing access to the CPU',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Parallel computing refers to:',
+      choices: [
+        'Completing tasks using a single processor',
+        'Executing multiple parts of a task at the same time',
+        'Moving data physically between buildings',
+        'Running applications one after another',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Distributed computing involves:',
+      choices: [
+        'One computer doing all the work',
+        'Multiple computers working together across a network',
+        'A single server storing all data offline',
+        'Blocking communication between systems',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Edge computing improves efficiency by:',
+      choices: [
+        'Moving data processing closer to where the data is generated',
+        'Sending all data to one central server',
+        'Slowing down communication networks',
+        'Eliminating the need for cloud computing',
       ],
       correctIndex: 0,
     ),
 
     QuizQuestion(
-      question: 'Classification models are most appropriate when the outcome is:',
+      question: 'Quantum computing is distinct because it:',
       choices: [
-        'A continuous number',
-        'A category or label',
-        'An image or video file',
-        'A mathematical equation',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Which metric is commonly used to evaluate classification models?',
-      choices: [
-        'Mean Absolute Error',
-        'Precision',
-        'Standard Deviation',
-        'Variance',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Overfitting occurs when a model:',
-      choices: [
-        'Performs well on both training and new data',
-        'Is too simple to capture important patterns',
-        'Performs well on training data but poorly on new data',
-        'Uses too little data for training',
+        'Uses binary 0s and 1s only',
+        'Depends entirely on classical logic gates',
+        'Uses quantum states to perform complex computations',
+        'Cannot solve mathematical problems',
       ],
       correctIndex: 2,
-    ),
-
-    QuizQuestion(
-      question: 'Ethical data analytics requires that:',
-      choices: [
-        'Data be used freely without restriction',
-        'Personal information be analyzed without consent',
-        'Models avoid reinforcing bias and unfair outcomes',
-        'Analysts hide how models make predictions',
-      ],
-      correctIndex: 2,
-    ),
-
-    QuizQuestion(
-      question: 'Transparency in analytics means:',
-      choices: [
-        'Allowing anyone to modify the database',
-        'Explaining clearly how data is used and how decisions are made',
-        'Publishing all private information',
-        'Encrypting every dataset',
-      ],
-      correctIndex: 1,
     ),
 
   ];
