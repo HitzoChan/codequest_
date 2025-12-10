@@ -1,116 +1,116 @@
 import 'models.dart';
 
-class AdvancedSysIntQuiz {
+class AdvancedDataAnalyticsQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'Enterprise architecture (EA) is primarily used to:',
+      question: 'Predictive analytics is primarily used to:',
       choices: [
-        'Focus only on software installation',
-        'Align an organization’s technology with its strategic goals',
-        'Replace all existing systems with new ones',
-        'Limit organizational growth',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'A key advantage of using an enterprise architecture framework such as TOGAF is that it:',
-      choices: [
-        'Eliminates the need for system documentation',
-        'Provides structured methods for designing and managing enterprise systems',
-        'Focuses only on hardware upgrades',
-        'Avoids long-term planning',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Point-to-point integration becomes difficult to manage because:',
-      choices: [
-        'It is too secure',
-        'It creates many direct connections as systems increase',
-        'It requires standardized interfaces',
-        'It supports only one application',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'In a hub-and-spoke integration model, the central hub is responsible for:',
-      choices: [
-        'Storing all user passwords',
-        'Coordinating communication among connected systems',
-        'Replacing the entire architecture',
-        'Running only manual processes',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'An Enterprise Service Bus (ESB) is best described as:',
-      choices: [
-        'A physical network cable',
-        'A messaging backbone that routes and transforms data',
-        'A type of database management system',
-        'Software used only for mobile applications',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Service-Oriented Architecture (SOA) promotes integration by:',
-      choices: [
-        'Creating tightly coupled software components',
-        'Organizing functionality into reusable, loosely coupled services',
-        'Removing all communication between applications',
-        'Requiring one large monolithic system',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Microservices architecture improves flexibility because:',
-      choices: [
-        'All components must be deployed together',
-        'Each service can be updated independently',
-        'It eliminates the need for APIs',
-        'It limits scalability',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Interoperability in integrated systems means that:',
-      choices: [
-        'Systems cannot exchange data',
-        'Applications communicate using incompatible formats',
-        'Different systems can work together and exchange information',
-        'Data meanings differ across all systems',
+        'Describe past events',
+        'Categorize data into groups',
+        'Forecast future outcomes based on historical patterns',
+        'Store raw information in databases',
       ],
       correctIndex: 2,
     ),
 
     QuizQuestion(
-      question: 'Data standards such as XML and JSON help integration by:',
+      question: 'Machine learning differs from traditional programming because it:',
       choices: [
-        'Preventing systems from sharing data',
-        'Providing consistent ways to structure and transmit information',
-        'Removing the need for multiple applications',
-        'Replacing APIs',
+        'Requires no data at all',
+        'Learns patterns automatically from examples',
+        'Only works with text-based information',
+        'Cannot be used for prediction',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Scalability in integrated systems refers to:',
+      question: 'In supervised learning, models are trained using:',
       choices: [
-        'Expanding system capacity to handle increased workloads',
-        'Reducing system performance intentionally',
-        'Removing servers to save resources',
-        'Making systems operate on a single device only',
+        'Randomized numeric outputs',
+        'Unlabeled data',
+        'Trial-and-error rewards',
+        'Labeled data',
+      ],
+      correctIndex: 3,
+    ),
+
+    QuizQuestion(
+      question: 'Unsupervised learning is best used when the goal is to:',
+      choices: [
+        'Predict the price of a product',
+        'Classify emails as spam or not spam',
+        'Discover hidden patterns or groups in data',
+        'Perform arithmetic operations',
+      ],
+      correctIndex: 2,
+    ),
+
+    QuizQuestion(
+      question: 'Regression models are used to predict:',
+      choices: [
+        'Numerical values',
+        'Categories',
+        'Geographical locations',
+        'Passwords',
       ],
       correctIndex: 0,
+    ),
+
+    QuizQuestion(
+      question: 'Classification models are most appropriate when the outcome is:',
+      choices: [
+        'A continuous number',
+        'A category or label',
+        'An image or video file',
+        'A mathematical equation',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Which metric is commonly used to evaluate classification models?',
+      choices: [
+        'Mean Absolute Error',
+        'Precision',
+        'Standard Deviation',
+        'Variance',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Overfitting occurs when a model:',
+      choices: [
+        'Performs well on both training and new data',
+        'Is too simple to capture important patterns',
+        'Performs well on training data but poorly on new data',
+        'Uses too little data for training',
+      ],
+      correctIndex: 2,
+    ),
+
+    QuizQuestion(
+      question: 'Ethical data analytics requires that:',
+      choices: [
+        'Data be used freely without restriction',
+        'Personal information be analyzed without consent',
+        'Models avoid reinforcing bias and unfair outcomes',
+        'Analysts hide how models make predictions',
+      ],
+      correctIndex: 2,
+    ),
+
+    QuizQuestion(
+      question: 'Transparency in analytics means:',
+      choices: [
+        'Allowing anyone to modify the database',
+        'Explaining clearly how data is used and how decisions are made',
+        'Publishing all private information',
+        'Encrypting every dataset',
+      ],
+      correctIndex: 1,
     ),
 
   ];

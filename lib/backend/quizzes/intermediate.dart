@@ -1,114 +1,114 @@
 import 'models.dart';
 
-class IntermediateSysIntQuiz {
+class IntermediateDataAnalyticsQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'System architecture models are used because they:',
+      question: 'Primary data collection is best described as:',
       choices: [
-        'Increase system complexity',
-        'Provide structured ways to design and organize system components',
-        'Remove the need for data processing',
-        'Focus only on hardware design',
+        'Using existing reports from other organizations',
+        'Collecting information directly from original sources',
+        'Automatically generating data from software',
+        'Copying data from online articles',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'The main purpose of layered architecture is to:',
+      question: 'Secondary data must be evaluated carefully because:',
       choices: [
-        'Combine all system functions into one layer',
-        'Allow each layer to handle specific responsibilities independently',
-        'Eliminate the need for data storage',
-        'Replace middleware in system integration',
+        'It is always inaccurate',
+        'It may not be relevant or up to date',
+        'It requires no processing',
+        'It is more expensive to obtain',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'In a typical layered architecture, the presentation layer is responsible for:',
+      question: 'The main purpose of data cleaning is to:',
       choices: [
-        'Applying business rules',
-        'Managing databases',
-        'Handling user interactions and interface tasks',
-        'Authenticating middleware connections',
+        'Increase the size of datasets',
+        'Introduce more variables',
+        'Remove errors and prepare data for analysis',
+        'Generate visual charts automatically',
       ],
       correctIndex: 2,
     ),
 
     QuizQuestion(
-      question: 'Client–server architecture relies on:',
+      question: 'A dataset containing duplicates, missing values, and inconsistent formats needs:',
       choices: [
-        'Servers sending requests to clients',
-        'Clients requesting services while servers process and store data',
-        'Direct device-to-device communication without servers',
-        'Systems operating without networks',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'A key advantage of client–server systems is that they:',
-      choices: [
-        'Require each user to manage their own local data',
-        'Prevent centralized management',
-        'Allow updates and security to be managed from a single point',
-        'Eliminate communication between applications',
+        'Data visualization',
+        'Data collection',
+        'Data cleaning',
+        'Statistical modeling',
       ],
       correctIndex: 2,
     ),
 
     QuizQuestion(
-      question: 'Middleware acts as:',
+      question: 'Exploratory Data Analysis (EDA) helps analysts:',
       choices: [
-        'A replacement for all network devices',
-        'Software that enables communication between separate systems',
-        'Hardware that stores backup copies of data',
-        'A direct substitute for operating systems',
+        'Create final business reports',
+        'Understand patterns and detect anomalies in the data',
+        'Replace missing data automatically',
+        'Encrypt sensitive information',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'APIs support integration by:',
+      question: 'Which of the following is commonly used in EDA to summarize data?',
       choices: [
-        'Allowing applications to exchange data using defined rules',
-        'Preventing communication between systems',
-        'Replacing all middleware functions',
-        'Eliminating the need for security measures',
+        'Antivirus software',
+        'Descriptive statistics',
+        'Audio processing tools',
+        'Hardware drivers',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Data visualization is important because it:',
+      choices: [
+        'Converts images into numbers',
+        'Makes complex data easier to understand',
+        'Replaces the need for analysis',
+        'Removes errors from datasets',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'A histogram is most useful for showing:',
+      choices: [
+        'The distribution of numerical data',
+        'The total number of database tables',
+        'The details of text-based documents',
+        'The structure of an organization',
       ],
       correctIndex: 0,
     ),
 
     QuizQuestion(
-      question: 'One benefit of using APIs is that they:',
+      question: 'Mean, median, and mode are examples of:',
       choices: [
-        'Make systems incompatible with each other',
-        'Limit the number of applications that can communicate',
-        'Promote reusability across different software solutions',
-        'Require all applications to use the same programming language',
+        'Data collection methods',
+        'Measures of central tendency',
+        'Data encryption techniques',
+        'Programming languages',
       ],
-      correctIndex: 2,
+      correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Data flow diagrams are used to:',
+      question: 'Why is proper data preparation essential for analysis?',
       choices: [
-        'Visualize how information moves across an integrated system',
-        'Replace system architecture models',
-        'Measure the physical speed of a processor',
-        'Test the durability of hardware',
-      ],
-      correctIndex: 0,
-    ),
-
-    QuizQuestion(
-      question: 'Understanding data flow in integrated systems is important because it:',
-      choices: [
-        'Increases processing errors',
-        'Helps ensure data is managed accurately and consistently',
-        'Prevents communication between components',
-        'Removes the need for system documentation',
+        'It guarantees higher internet speed',
+        'It ensures accurate and meaningful results',
+        'It eliminates the need for visualization',
+        'It replaces statistical tools entirely',
       ],
       correctIndex: 1,
     ),

@@ -2,34 +2,34 @@ import '../course_models.dart';
 
 final List<Course> intermediateCourses = [
   Course(
-    courseId: 'sysint_intermediate_clean',
-    title: 'System Integration & Architecture – Intermediate',
+    courseId: 'data_analytics_intermediate_clean',
+    title: 'Data Analytics – Intermediate',
     description:
-        'Intermediate module covering architectural models, layered design, client–server systems, middleware, APIs, and data flow in integrated systems.',
+        'Intermediate module covering data collection methods, cleaning, exploratory data analysis, visualization, and basic statistical concepts.',
     difficultyLevel: 'Intermediate',
     modules: [
       Module(
-        moduleId: 'sysint_intermediate_ch1',
-        title: 'Architectural Models, Middleware, and Data Flow',
+        moduleId: 'data_analytics_intermediate_ch1',
+        title: 'Data Collection, Cleaning, and Exploratory Analysis',
         difficultyLevel: 'Intermediate',
         summary: '''
-This module introduces common architectural models and integration tools used to design structured and well-organized information systems.
+This module expands on the essential processes used in preparing and analyzing data.
 
 Topics include:
-• Architectural models and how they organize system components  
-• Layered architecture and the separation of presentation, logic, and data access  
-• Client–server architecture and centralized management of applications  
-• The role of middleware in enabling communication between independent systems  
-• APIs as standardized interfaces for exchanging data  
-• Data flow across integrated systems and the use of diagrams to visualize information movement  
+• Primary and secondary data collection methods  
+• The importance of evaluating data sources for accuracy and relevance  
+• Data cleaning techniques for handling missing values, inconsistencies, and duplicates  
+• Exploratory Data Analysis (EDA) for identifying trends, patterns, and anomalies  
+• Introduction to data visualization and selecting appropriate chart types  
+• Basic statistical concepts such as mean, median, mode, variance, standard deviation, and correlation  
 
-The module provides a deeper understanding of how integrated systems are designed and how information moves efficiently across components.
+The module strengthens analytical skills by building a deeper understanding of how data is prepared and explored before advanced modeling.
 ''',
         content:
-            'A detailed explanation of how architectural models support organized system design, the structure and purpose of layered and client–server models, the role of middleware and APIs in system integration, and how data flows through multi-layered environments in modern information systems.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=5uq5wCCXvwU',
+            'A detailed discussion of how data is gathered, cleaned, examined, and summarized. It explains the role of reliable data collection, the necessity of removing errors, the purpose of exploratory analysis, and how visualization and statistics support meaningful interpretation of information.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=a4KiExvYJKo',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=1uvNOUFR7JgiEOMSo4C7OJffoZEYse5K8',
+            'https://drive.google.com/uc?export=download&id=1RYc5Dc_t-_2fXnmyBKiqnwuBcraZKVj4',
       ),
     ],
   ),

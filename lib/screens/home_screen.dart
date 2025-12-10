@@ -129,9 +129,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
       // helper: total questions per moduleId
       int totalFor(String moduleId) {
-        if (moduleId == 'sysint_beginner_ch1') return BeginnerSysIntQuiz.questions.length;
-        if (moduleId == 'sysint_intermediate_ch1') return IntermediateSysIntQuiz.questions.length;
-        if (moduleId == 'sysint_advanced_ch1') return AdvancedSysIntQuiz.questions.length;
+        if (moduleId == 'data_analytics_beginner_ch1') return BeginnerDataAnalyticsQuiz.questions.length;
+        if (moduleId == 'data_analytics_intermediate_ch1') return IntermediateDataAnalyticsQuiz.questions.length;
+        if (moduleId == 'data_analytics_advanced_ch1') return AdvancedDataAnalyticsQuiz.questions.length;
         return 0;
       }
 

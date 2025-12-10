@@ -2,32 +2,33 @@
 
 final List<Course> beginnerCourses = [
   Course(
-    courseId: 'sysint_beginner_clean',
-    title: 'System Integration & Architecture – Beginner',
+    courseId: 'data_analytics_beginner_clean',
+    title: 'Data Analytics – Beginner',
     description:
-        'Beginner module introducing systems, system components, integration concepts, and basic architecture.',
+        'Beginner module introducing the fundamentals of data analytics, data types, analysis processes, tools, and ethical use of data.',
     difficultyLevel: 'Beginner',
     modules: [
       Module(
-        moduleId: 'sysint_beginner_ch1',
-        title: 'Introduction to Systems and Integration',
+        moduleId: 'data_analytics_beginner_ch1',
+        title: 'Introduction to Data Analytics',
         difficultyLevel: 'Beginner',
         summary: '''
-This module introduces the essential concepts of systems and how different components work together to support organizational operations.
+This module introduces the essential concepts of data analytics and how organizations use data to guide decisions.
 
 Topics include:
-• Understanding what a system is and how components work together  
-• Components of an information system such as hardware, software, data, people, and processes  
-• System integration and why organizations connect multiple subsystems  
-• Types of integration such as data, application, and process integration  
-• Introduction to system architecture as the blueprint of how system components interact  
-• Importance of integration and architecture in improving efficiency and supporting organizational goals  
+• Understanding data analytics and its importance in modern industries  
+• Types of data: qualitative, quantitative, structured, unstructured, and semi-structured  
+• The data analytics process, including collection, cleaning, exploration, analysis, and interpretation  
+• Tools used for organizing, visualizing, and analyzing data  
+• Ethical considerations and responsible data handling  
+
+The module builds foundational knowledge that helps learners understand how insights are derived from raw information.
 ''',
         content:
-            'An introductory explanation of systems, information system components, integration approaches, and basic architecture principles that help organizations coordinate operations and streamline workflows.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=D8ojzlGXSUo',
+            'A clear overview of data analytics fundamentals, classifications of data, the step-by-step analytics process, commonly used tools such as Excel and visualization platforms, and ethical practices required when working with sensitive information.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=yZvFH7B6gKI',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=10UW-V6Bo1Wh7YYBVZQH9jz1Hd8szUgfe',
+            'https://drive.google.com/uc?export=download&id=1JontR0hKHWXLHy4vbkZbFRMYa53dFgpP',
       ),
     ],
   ),

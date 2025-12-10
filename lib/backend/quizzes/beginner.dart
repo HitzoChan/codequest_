@@ -1,114 +1,114 @@
 import 'models.dart';
 
-class BeginnerSysIntQuiz {
+class BeginnerDataAnalyticsQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'A system is best described as:',
+      question: 'What is the main purpose of Data Analytics?',
       choices: [
-        'A single device performing tasks independently',
-        'A collection of components working together toward a common goal',
-        'A random group of unrelated applications',
-        'A tool used only for entertainment',
+        'To create digital art',
+        'To turn raw data into meaningful insights',
+        'To design computer hardware',
+        'To increase internet speed',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Which component of an information system refers to physical devices like computers and servers?',
+      question: 'Organizations use Data Analytics because it helps them:',
       choices: [
-        'Software',
-        'Data',
-        'Hardware',
-        'Processes',
+        'Ignore customer behavior',
+        'Make decisions based on evidence',
+        'Replace all employees',
+        'Eliminate record-keeping',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Qualitative data refers to:',
+      choices: [
+        'Numbers and measurements',
+        'Categories and descriptive information',
+        'Binary code',
+        'Mathematical formulas',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Quantitative data is best described as:',
+      choices: [
+        'Personal opinions',
+        'Visual media',
+        'Numerical information used for calculations',
+        'Music and audio files',
       ],
       correctIndex: 2,
     ),
 
     QuizQuestion(
-      question: 'Software in an information system is responsible for:',
+      question: 'Structured data is usually stored in:',
       choices: [
-        'Storing physical documents',
-        'Instructing hardware on what tasks to perform',
-        'Replacing all hardware devices',
-        'Managing employee schedules',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Data becomes useful information when:',
-      choices: [
-        'It is raw and unprocessed',
-        'It is organized, interpreted, or processed',
-        'It is deleted from the system',
-        'It is printed on paper',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'People in an information system are important because they:',
-      choices: [
-        'Manufacture computer chips',
-        'Interact with the system and make decisions',
-        'Replace processes with hardware',
-        'Perform only manual tasks',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'System integration is the process of:',
-      choices: [
-        'Separating systems so they operate independently',
-        'Linking different subsystems into one unified system',
-        'Deleting old applications to save storage',
-        'Replacing all existing software with new versions',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'A common benefit of system integration is:',
-      choices: [
-        'Increased data duplication',
-        'More manual data entry',
-        'Seamless data sharing between applications',
-        'Limited communication between systems',
+        'Videos and images',
+        'Random text documents',
+        'Rows and columns',
+        'Social media feeds',
       ],
       correctIndex: 2,
     ),
 
     QuizQuestion(
-      question: 'Application integration allows:',
+      question: 'The first step in the Data Analytics process is:',
       choices: [
-        'Software programs to operate without data',
-        'Different applications to exchange information',
-        'Users to uninstall all system processes',
-        'Systems to function without hardware',
+        'Data cleaning',
+        'Data visualization',
+        'Data collection',
+        'Data interpretation',
+      ],
+      correctIndex: 2,
+    ),
+
+    QuizQuestion(
+      question: 'Data cleaning is important because it:',
+      choices: [
+        'Removes unnecessary software',
+        'Ensures data is accurate and usable',
+        'Makes files load faster',
+        'Adjusts the computer’s hardware settings',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'System architecture is best defined as:',
+      question: 'Data exploration helps analysts:',
       choices: [
-        'A blueprint describing how system components are organized and interact',
-        'A software used to design buildings',
-        'A set of instructions for printing documents',
-        'The physical layout of a computer laboratory',
+        'Hide errors in datasets',
+        'Examine data structure and identify early patterns',
+        'Delete unused files',
+        'Build physical storage devices',
       ],
-      correctIndex: 0,
+      correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Why are system integration and architecture important in organizations?',
+      question: 'Which tool is commonly used for basic data organization and analysis?',
       choices: [
-        'They increase system errors and inefficiency',
-        'They ensure systems communicate effectively and support organizational goals',
-        'They prevent systems from sharing data',
-        'They eliminate the need for information technology',
+        'Photoshop',
+        'Microsoft Excel',
+        'Blender',
+        'Audacity',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Why is ethical data use important?',
+      choices: [
+        'It increases brand logos',
+        'It prevents unauthorized access and protects privacy',
+        'It reduces internet costs',
+        'It improves computer graphics',
       ],
       correctIndex: 1,
     ),

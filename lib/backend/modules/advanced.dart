@@ -2,35 +2,34 @@ import '../course_models.dart';
 
 final List<Course> advancedCourses = [
   Course(
-    courseId: 'sysint_advanced_clean',
-    title: 'System Integration & Architecture – Advanced',
+    courseId: 'data_analytics_advanced_clean',
+    title: 'Data Analytics – Advanced',
     description:
-        'Advanced module covering enterprise architecture, integration patterns, SOA, microservices, interoperability, and scalability in complex systems.',
+        'Advanced module covering predictive modeling, machine learning, regression, classification, model evaluation, and ethical data analytics.',
     difficultyLevel: 'Advanced',
     modules: [
       Module(
-        moduleId: 'sysint_advanced_ch1',
-        title: 'Enterprise Architecture, Integration Patterns, and Scalability',
+        moduleId: 'data_analytics_advanced_ch1',
+        title: 'Predictive Modeling, Machine Learning, and Ethical Analytics',
         difficultyLevel: 'Advanced',
         summary: '''
-This module explores advanced concepts used to design and manage complex integrated systems.
+This module explores advanced analytical techniques used for forecasting, decision-making, and model evaluation.
 
 Topics include:
-• Enterprise Architecture (EA) and how it aligns technology with organizational goals  
-• Enterprise frameworks such as TOGAF for structured planning and evaluation  
-• Integration patterns including point-to-point, hub-and-spoke, and ESB  
-• Service-Oriented Architecture (SOA) and reusable, loosely coupled services  
-• Microservices as independently deployable components supporting flexibility and scalability  
-• Interoperability and the use of standards like XML, JSON, REST, and SOAP  
-• Scalability strategies and performance considerations in large integrated environments  
+• Predictive analytics and forecasting using historical data  
+• Fundamentals of machine learning and its major categories  
+• Regression and classification models for numerical and categorical prediction  
+• Model evaluation techniques including accuracy, precision, recall, and error metrics  
+• Overfitting, generalization, and validation strategies  
+• Ethical analytics, fairness, transparency, and responsible data handling  
 
-This module prepares learners for designing resilient, future-ready enterprise systems.
+The module equips learners with the skills needed to analyze complex datasets and build reliable, responsible predictive models.
 ''',
         content:
-            'A comprehensive explanation of enterprise architecture principles, advanced integration patterns, service-oriented and microservices architectures, the role of interoperability and data standards, and scalability strategies essential for modern enterprise environments.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=9TVc32M_gIY',
+            'A comprehensive discussion of predictive modeling, machine learning approaches, regression and classification techniques, model performance evaluation, and ethical considerations that ensure analytical systems are accurate, fair, and trustworthy.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=ukzFI9rgwfU',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=1FI_QfX4hTTIFXW_JULGdR_K-ahiPEv4f',
+            'https://drive.google.com/uc?export=download&id=1v_72jEdYCk3tJPCMUmrEYzV7mtuVqtEP',
       ),
     ],
   ),
