@@ -11,6 +11,7 @@ final List<Course> intermediateCourses = [
       Module(
         moduleId: 'networking_intermediate_ch1',
         title: 'Network Models, IP Addressing, and Network Devices',
+        difficultyLevel: 'Intermediate',
         summary: '''
 This module provides an intermediate-level understanding of networking concepts based on the uploaded PDF.
 
