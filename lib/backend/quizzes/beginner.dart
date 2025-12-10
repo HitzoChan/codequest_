@@ -1,104 +1,104 @@
 import 'models.dart';
 
-class WebDevPdfQuiz {
+class BeginnerNetworkingQuiz {
   static List<QuizQuestion> questions = [
     QuizQuestion(
-      question: 'What is the primary purpose of web development?',
+      question: 'What is a computer network?',
       choices: [
-        'To create and maintain websites and online systems',
-        'To design physical computer components',
-        'To build mobile hardware',
-        'To install operating systems',
-      ],
-      correctIndex: 0,
-    ),
-    QuizQuestion(
-      question: 'Which technology provides the structure of a webpage?',
-      choices: [
-        'CSS',
-        'JavaScript',
-        'HTML',
-        'Python',
-      ],
-      correctIndex: 2,
-    ),
-    QuizQuestion(
-      question: 'What role does CSS play in a website?',
-      choices: [
-        'Provides structure to the webpage',
-        'Adds visual design and layout',
-        'Handles server responses',
-        'Manages databases',
+        'A collection of websites',
+        'A group of devices connected to share resources',
+        'A single computer used for storage',
+        'A program used to surf the internet',
       ],
       correctIndex: 1,
     ),
     QuizQuestion(
-      question: 'Which of the following adds interactivity to a webpage?',
+      question: 'Which device connects multiple devices within a LAN?',
       choices: [
-        'HTML',
-        'CSS',
-        'JavaScript',
-        'SQL',
-      ],
-      correctIndex: 2,
-    ),
-    QuizQuestion(
-      question: 'What does a browser do when you enter a URL?',
-      choices: [
-        'Creates a new HTML file',
-        'Sends a request to a web server',
-        'Designs the webpage automatically',
-        'Stores user database records',
-      ],
-      correctIndex: 1,
-    ),
-    QuizQuestion(
-      question: 'Which of the following stores website files and responds to browser requests?',
-      choices: [
-        'Web server',
-        'Router',
-        'CSS engine',
-        'Compiler',
-      ],
-      correctIndex: 0,
-    ),
-    QuizQuestion(
-      question: 'Static websites are described as:',
-      choices: [
-        'Automatically updating content based on databases',
-        'Fixed content that only changes when updated manually',
-        'Websites that require no HTML at all',
-        'Websites designed only for mobile devices',
-      ],
-      correctIndex: 1,
-    ),
-    QuizQuestion(
-      question: 'Dynamic websites typically use which component?',
-      choices: [
-        'Only HTML and CSS',
-        'Databases and server-side scripts',
-        'Plain text files',
-        'Static hosting only',
-      ],
-      correctIndex: 1,
-    ),
-    QuizQuestion(
-      question: 'Which tool is essential for writing and organizing web development code?',
-      choices: [
+        'Modem',
+        'Switch',
         'Printer',
-        'Code Editor (e.g., VS Code)',
-        'Monitor',
-        'Firewall',
+        'USB cable',
       ],
       correctIndex: 1,
     ),
     QuizQuestion(
-      question: 'Why is web development important today?',
+      question: 'What does a router do?',
       choices: [
-        'It replaces traditional computer hardware',
-        'It supports digital communication, services, and business processes',
-        'It is only used for entertainment websites',
-        'It eliminates the need for programming skills',
+        'Prints documents',
+        'Connects networks and directs data',
+        'Stores user files',
+        'Repairs cables',
+      ],
+      correctIndex: 1,
+    ),
+    QuizQuestion(
+      question: 'Which medium uses wireless signals?',
+      choices: [
+        'Ethernet cable',
+        'Wi-Fi',
+        'Fiber wire',
+        'Copper pipe',
+      ],
+      correctIndex: 1,
+    ),
+    QuizQuestion(
+      question: 'A network that covers a small area like a home or office is called:',
+      choices: [
+        'WAN',
+        'MAN',
+        'LAN',
+        'TAN',
+      ],
+      correctIndex: 2,
+    ),
+    QuizQuestion(
+      question: 'The internet is an example of what type of network?',
+      choices: [
+        'LAN',
+        'MAN',
+        'WAN',
+        'PAN',
+      ],
+      correctIndex: 2,
+    ),
+    QuizQuestion(
+      question: 'In which topology do all devices connect to a central device?',
+      choices: [
+        'Ring',
+        'Bus',
+        'Star',
+        'Mesh',
+      ],
+      correctIndex: 2,
+    ),
+    QuizQuestion(
+      question: 'A hub sends data to:',
+      choices: [
+        'Only the correct device',
+        'All connected devices',
+        'Wireless devices only',
+        'The router only',
+      ],
+      correctIndex: 1,
+    ),
+    QuizQuestion(
+      question: 'Full-duplex communication allows:',
+      choices: [
+        'One-way communication',
+        'Two-way communication but not simultaneously',
+        'Both devices to send and receive at the same time',
+        'Wireless communication only',
+      ],
+      correctIndex: 2,
+    ),
+    QuizQuestion(
+      question: 'Which device connects the network to the internet?',
+      choices: [
+        'Hub',
+        'Modem',
+        'Switch',
+        'Printer',
       ],
       correctIndex: 1,
     ),

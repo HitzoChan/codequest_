@@ -2,34 +2,33 @@ import '../course_models.dart';
 
 final List<Course> intermediateCourses = [
   Course(
-    courseId: 'web_dev_intermediate_pdf',
-    title: 'Web Development – Intermediate',
+    courseId: 'networking_102_intermediate',
+    title: 'Networking 1 – Intermediate Concepts',
     description:
-        'Intermediate-level module based on the uploaded PDF covering client–server communication, HTTP/HTTPS, DOM, responsive design, and website types.',
+        'Intermediate module based on the uploaded PDF, covering OSI & TCP/IP models, IP addressing, subnet masks, network devices, and troubleshooting basics.',
     difficultyLevel: 'Intermediate',
     modules: [
       Module(
-        moduleId: 'web_dev_intermediate_ch1',
-        title: 'Web Foundations & Core Web Technologies',
+        moduleId: 'networking_intermediate_ch1',
+        title: 'Network Models, IP Addressing, and Network Devices',
         summary: '''
-This module covers the core intermediate topics of web development based entirely on the uploaded Intermediate PDF.
+This module provides an intermediate-level understanding of networking concepts based on the uploaded PDF.
 
 Topics include:
-• The Client–Server Model (browser requests, server responses, URLs)
-• HTTP & HTTPS protocols (data transfer, security, encryption)
-• The Document Object Model (DOM structure, nodes, browser rendering)
-• JavaScript–DOM interaction (dynamic updates, interactivity)
-• Responsive Web Design (flexible layouts, media queries, mobile-first)
-• Static vs Dynamic Websites (content generation, server-side processing)
+• The OSI Model: 7-layer conceptual framework for communication
+• The TCP/IP Model: 4-layer practical networking model used in real systems
+• Fundamentals of IP Addressing (IPv4, public/private ranges, network/host portions)
+• Subnet Masks and their role in dividing networks
+• Intermediate Networking Devices (switches, routers, access points, firewalls)
+• Basic Troubleshooting Tools (Ping, Ipconfig/Ifconfig, Traceroute, physical checks)
 
-This module helps learners deepen their understanding of how the web works internally and how modern websites adapt to different devices.
+This module helps learners bridge theoretical networking concepts with practical implementation.
 ''',
         content:
-            'An intermediate-level overview of client–server communication, HTTP vs HTTPS, DOM structure, JavaScript interactivity, responsive design principles, and the differences between static and dynamic websites.',
-        difficultyLevel: 'Intermediate',
-        youtubeUrl: 'https://youtu.be/pQN-pnXPaVg?si=W9d0OimgrXta5V58',
+            'An intermediate guide to network communication models, addressing schemes, subnetting basics, essential networking devices, and troubleshooting tools used in diagnosing network issues.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=nomyRJehhnM',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=1bA6DkwreiAtVPrDAXHUdtkmramQJFQND',
+            'https://drive.google.com/uc?export=download&id=1k7HhbODJtd0MyLCxSvEuzXenVkyPwwPF',
       ),
     ],
   ),

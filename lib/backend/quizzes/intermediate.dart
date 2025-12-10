@@ -1,114 +1,114 @@
 import 'models.dart';
 
-class IntermediateWebDevQuiz {
+class IntermediateNetworkingQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'What is the primary role of the client in the client–server model?',
+      question: 'What is the main purpose of the OSI model?',
       choices: [
-        'Store website files',
-        'Send requests to the server and display responses',
-        'Encrypt all data on the internet',
-        'Manage global DNS records',
+        'To design computer hardware',
+        'To standardize how data travels in a network',
+        'To create IP addresses',
+        'To assign Wi-Fi passwords',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Which protocol encrypts data transmitted between client and server?',
+      question: 'Which OSI layer is responsible for routing data using IP addresses?',
       choices: [
-        'HTTP',
-        'FTP',
-        'HTTPS',
-        'UDP',
+        'Application',
+        'Network',
+        'Physical',
+        'Session',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'The TCP/IP model used in real-world networking has how many layers?',
+      choices: [
+        '2',
+        '3',
+        '4',
+        '7',
       ],
       correctIndex: 2,
     ),
 
     QuizQuestion(
-      question: 'What is the Document Object Model (DOM)?',
+      question: 'Which layer in TCP/IP includes protocols like HTTP and DNS?',
       choices: [
-        'A debugging tool used by web browsers',
-        'A tree-like structure representing the elements of a webpage',
-        'A protocol for sending web requests',
-        'A layout system for mobile devices',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'What allows JavaScript to update webpage content without reloading the page?',
-      choices: [
-        'HTTP requests',
-        'CSS animations',
-        'DOM manipulation',
-        'File compression',
-      ],
-      correctIndex: 2,
-    ),
-
-    QuizQuestion(
-      question: 'Which CSS feature is essential for responsive web design?',
-      choices: [
-        'Keyframes',
-        'Media queries',
-        'Transforms',
-        'Pseudo-classes',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Responsive design ensures that a website:',
-      choices: [
-        'Uses only HTML and CSS',
-        'Looks and functions well on different device sizes',
-        'Loads without JavaScript',
-        'Can only be viewed on mobile devices',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Static websites:',
-      choices: [
-        'Generate content automatically',
-        'Contain fixed content unless manually updated',
-        'Require databases to function',
-        'Are always built with JavaScript frameworks',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Dynamic websites typically rely on:',
-      choices: [
-        'Flat HTML files only',
-        'CSS variables',
-        'Server-side scripts and databases',
-        'Local storage only',
-      ],
-      correctIndex: 2,
-    ),
-
-    QuizQuestion(
-      question: 'Which protocol is used when entering a website URL in a browser?',
-      choices: [
-        'HTTPS or HTTP',
-        'SMTP',
-        'SSH',
-        'WebSocket',
+        'Application',
+        'Transport',
+        'Internet',
+        'Network Access',
       ],
       correctIndex: 0,
     ),
 
     QuizQuestion(
-      question: 'Why is understanding the client–server model important?',
+      question: 'What does an IPv4 address identify?',
       choices: [
-        'It explains how images load in Photoshop',
-        'It shows how browsers and servers communicate to deliver webpages',
-        'It is required only for networking professionals',
-        'It helps design offline desktop applications',
+        'Cable connector type',
+        'Software version',
+        'A device on a network',
+        'Voltage level',
+      ],
+      correctIndex: 2,
+    ),
+
+    QuizQuestion(
+      question: 'Which of the following is a private IP address range?',
+      choices: [
+        '8.8.8.8',
+        '172.16.0.1',
+        '220.12.1.1',
+        '1.1.1.1',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'A subnet mask is used to determine:',
+      choices: [
+        'The MAC address',
+        'Network and host portions of an IP',
+        'Cable type',
+        'Connection speed',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Which device forwards data using MAC addresses?',
+      choices: [
+        'Router',
+        'Switch',
+        'Firewall',
+        'Modem',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'What does the “ping” command check?',
+      choices: [
+        'File size',
+        'Internet speed',
+        'Connectivity between devices',
+        'Cable temperature',
+      ],
+      correctIndex: 2,
+    ),
+
+    QuizQuestion(
+      question: 'A firewall’s main purpose is to:',
+      choices: [
+        'Print documents',
+        'Filter network traffic',
+        'Increase bandwidth',
+        'Assign IP addresses',
       ],
       correctIndex: 1,
     ),

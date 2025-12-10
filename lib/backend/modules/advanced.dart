@@ -2,33 +2,33 @@ import '../course_models.dart';
 
 final List<Course> advancedCourses = [
   Course(
-    courseId: 'web_dev_advanced_pdf_v2',
-    title: 'Web Development – Advanced',
+    courseId: 'networking_103_advanced',
+    title: 'Networking 1 – Advanced Concepts',
     description:
-        'Advanced web development module based on the newly provided PDF: deepening understanding of modern web architecture, security, APIs, asynchronous behavior, and performance best practices.',
+        'Advanced module covering enterprise architectures, routing concepts, routing protocols, VLANs, ACLs, VPNs, and WAN technologies.',
     difficultyLevel: 'Advanced',
     modules: [
       Module(
-        moduleId: 'web_dev_adv_from_pdf',
-        title: 'Advanced Web Dev Architecture, APIs, Security & Performance',
+        moduleId: 'networking_advanced_ch1',
+        title: 'Advanced Network Architectures, Routing & Protocols',
         summary: '''
-This advanced module covers:
+This advanced module explores how large-scale networks operate, how traffic flows across enterprise environments, and how routing protocols manage communication between networks.
 
-• Modern Web Architecture (client-server, REST APIs, microservices)  
-• API Communication & Data Handling (JSON, HTTP methods, status codes)  
-• Asynchronous Web Programming (AJAX/fetch, promises, async/await, event loop)  
-• Web Security Fundamentals (HTTPS, CORS, authentication/authorization, secure headers)  
-• Performance & Optimization (minification, caching, lazy loading, efficient resource handling)  
-• Version Control & Collaboration (using Git / GitHub, branching, merging, pull requests)  
-• Best Practices for Production Web Apps (clean code, project structure, scalability, maintenance)  
+Topics include:
+• Enterprise Architecture: Core, Distribution, and Access Layers
+• Routing Concepts: Routing tables, static vs dynamic routing
+• Routing Protocols: RIP, OSPF, BGP and their metrics
+• VLANs: Logical segmentation for security and efficiency
+• Advanced Network Security: ACLs, IDS/IPS, VPNs
+• WAN Technologies: MPLS, Fiber Optic, Satellite, Broadband
+
+This module prepares learners for real-world enterprise networking and large-scale infrastructures.
 ''',
         content:
-            'An advanced-level walkthrough of how modern web applications are structured, how front-end and back-end communicate via APIs, principles of asynchronous operations, security considerations, and performance optimizations — equipping learners to build production-ready web applications.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=7YcW25PHnAA',
+            'A complete overview of enterprise network structures, routing decisions, routing protocols, VLAN segmentation, core security mechanisms such as ACLs and VPNs, and major WAN technologies used for long-distance communication.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=pAopv0-lKxY',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=1m045C2ZCIOVu4lW6ZLrMpPs7nKU2F7rd',
-        orderIndex: 1,
-        difficultyLevel: 'Advanced',
+            'https://drive.google.com/uc?export=download&id=1v9wCr2SpEH8lrXxYv_c9JjmxJ5HLSuFP',
       ),
     ],
   ),
