@@ -1,114 +1,114 @@
 import 'models.dart';
 
-class IntermediateNetworkingQuiz {
+class IntermediateSysIntQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'What is the main purpose of the OSI model?',
+      question: 'System architecture models are used because they:',
       choices: [
-        'To design computer hardware',
-        'To standardize how data travels in a network',
-        'To create IP addresses',
-        'To assign Wi-Fi passwords',
+        'Increase system complexity',
+        'Provide structured ways to design and organize system components',
+        'Remove the need for data processing',
+        'Focus only on hardware design',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Which OSI layer is responsible for routing data using IP addresses?',
+      question: 'The main purpose of layered architecture is to:',
       choices: [
-        'Application',
-        'Network',
-        'Physical',
-        'Session',
+        'Combine all system functions into one layer',
+        'Allow each layer to handle specific responsibilities independently',
+        'Eliminate the need for data storage',
+        'Replace middleware in system integration',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'The TCP/IP model used in real-world networking has how many layers?',
+      question: 'In a typical layered architecture, the presentation layer is responsible for:',
       choices: [
-        '2',
-        '3',
-        '4',
-        '7',
+        'Applying business rules',
+        'Managing databases',
+        'Handling user interactions and interface tasks',
+        'Authenticating middleware connections',
       ],
       correctIndex: 2,
     ),
 
     QuizQuestion(
-      question: 'Which layer in TCP/IP includes protocols like HTTP and DNS?',
+      question: 'Client–server architecture relies on:',
       choices: [
-        'Application',
-        'Transport',
-        'Internet',
-        'Network Access',
+        'Servers sending requests to clients',
+        'Clients requesting services while servers process and store data',
+        'Direct device-to-device communication without servers',
+        'Systems operating without networks',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'A key advantage of client–server systems is that they:',
+      choices: [
+        'Require each user to manage their own local data',
+        'Prevent centralized management',
+        'Allow updates and security to be managed from a single point',
+        'Eliminate communication between applications',
+      ],
+      correctIndex: 2,
+    ),
+
+    QuizQuestion(
+      question: 'Middleware acts as:',
+      choices: [
+        'A replacement for all network devices',
+        'Software that enables communication between separate systems',
+        'Hardware that stores backup copies of data',
+        'A direct substitute for operating systems',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'APIs support integration by:',
+      choices: [
+        'Allowing applications to exchange data using defined rules',
+        'Preventing communication between systems',
+        'Replacing all middleware functions',
+        'Eliminating the need for security measures',
       ],
       correctIndex: 0,
     ),
 
     QuizQuestion(
-      question: 'What does an IPv4 address identify?',
+      question: 'One benefit of using APIs is that they:',
       choices: [
-        'Cable connector type',
-        'Software version',
-        'A device on a network',
-        'Voltage level',
+        'Make systems incompatible with each other',
+        'Limit the number of applications that can communicate',
+        'Promote reusability across different software solutions',
+        'Require all applications to use the same programming language',
       ],
       correctIndex: 2,
     ),
 
     QuizQuestion(
-      question: 'Which of the following is a private IP address range?',
+      question: 'Data flow diagrams are used to:',
       choices: [
-        '8.8.8.8',
-        '172.16.0.1',
-        '220.12.1.1',
-        '1.1.1.1',
+        'Visualize how information moves across an integrated system',
+        'Replace system architecture models',
+        'Measure the physical speed of a processor',
+        'Test the durability of hardware',
       ],
-      correctIndex: 1,
+      correctIndex: 0,
     ),
 
     QuizQuestion(
-      question: 'A subnet mask is used to determine:',
+      question: 'Understanding data flow in integrated systems is important because it:',
       choices: [
-        'The MAC address',
-        'Network and host portions of an IP',
-        'Cable type',
-        'Connection speed',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Which device forwards data using MAC addresses?',
-      choices: [
-        'Router',
-        'Switch',
-        'Firewall',
-        'Modem',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'What does the “ping” command check?',
-      choices: [
-        'File size',
-        'Internet speed',
-        'Connectivity between devices',
-        'Cable temperature',
-      ],
-      correctIndex: 2,
-    ),
-
-    QuizQuestion(
-      question: 'A firewall’s main purpose is to:',
-      choices: [
-        'Print documents',
-        'Filter network traffic',
-        'Increase bandwidth',
-        'Assign IP addresses',
+        'Increases processing errors',
+        'Helps ensure data is managed accurately and consistently',
+        'Prevents communication between components',
+        'Removes the need for system documentation',
       ],
       correctIndex: 1,
     ),

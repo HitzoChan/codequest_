@@ -33,14 +33,14 @@ class _QuizScreenState extends State<QuizScreen> with SingleTickerProviderStateM
     startTime = DateTime.now();
 
     // Load questions based on moduleId
-    if (moduleId == 'networking_beginner_ch1') {
-      questions = BeginnerNetworkingQuiz.questions;
-    } else if (moduleId == 'networking_intermediate_ch1') {
-      questions = IntermediateNetworkingQuiz.questions;
-    } else if (moduleId == 'networking_advanced_ch1') {
-      questions = AdvancedNetworkingQuiz.questions;
+    if (moduleId == 'sysint_beginner_ch1') {
+      questions = BeginnerSysIntQuiz.questions;
+    } else if (moduleId == 'sysint_intermediate_ch1') {
+      questions = IntermediateSysIntQuiz.questions;
+    } else if (moduleId == 'sysint_advanced_ch1') {
+      questions = AdvancedSysIntQuiz.questions;
     } else {
-      questions = BeginnerNetworkingQuiz.questions;
+      questions = BeginnerSysIntQuiz.questions;
     }
 
     answers = List<int?>.filled(questions.length, null);

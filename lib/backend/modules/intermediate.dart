@@ -2,35 +2,34 @@ import '../course_models.dart';
 
 final List<Course> intermediateCourses = [
   Course(
-    courseId: 'networking_intermediate_clean',
-    title: 'Networking 1 – Intermediate',
+    courseId: 'sysint_intermediate_clean',
+    title: 'System Integration & Architecture – Intermediate',
     description:
-        'Intermediate module exploring the OSI and TCP/IP models, IP addressing, subnet masks, network devices, and troubleshooting tools.',
+        'Intermediate module covering architectural models, layered design, client–server systems, middleware, APIs, and data flow in integrated systems.',
     difficultyLevel: 'Intermediate',
     modules: [
       Module(
-        moduleId: 'networking_intermediate_ch1',
-        title: 'Network Models, Addressing, and Devices',
+        moduleId: 'sysint_intermediate_ch1',
+        title: 'Architectural Models, Middleware, and Data Flow',
         difficultyLevel: 'Intermediate',
         summary: '''
-This module explains the core models, addressing systems, and devices used in computer networks.
+This module introduces common architectural models and integration tools used to design structured and well-organized information systems.
 
 Topics include:
-• The OSI Model and its seven layers  
-• The TCP/IP Model and its four functional layers  
-• IP addressing and the structure of IPv4 addresses  
-• Private and public IP ranges  
-• The purpose of subnet masks  
-• Common networking devices such as switches, routers, access points, and firewalls  
-• Basic troubleshooting tools including ping, ipconfig/ifconfig, and traceroute  
+• Architectural models and how they organize system components  
+• Layered architecture and the separation of presentation, logic, and data access  
+• Client–server architecture and centralized management of applications  
+• The role of middleware in enabling communication between independent systems  
+• APIs as standardized interfaces for exchanging data  
+• Data flow across integrated systems and the use of diagrams to visualize information movement  
 
-The module strengthens understanding of network communication and device interaction.
+The module provides a deeper understanding of how integrated systems are designed and how information moves efficiently across components.
 ''',
         content:
-            'A detailed exploration of theoretical and practical networking models, fundamentals of IP addressing and subnetting, roles of network devices, and widely used troubleshooting commands that help diagnose network issues.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=nomyRJehhnM',
+            'A detailed explanation of how architectural models support organized system design, the structure and purpose of layered and client–server models, the role of middleware and APIs in system integration, and how data flows through multi-layered environments in modern information systems.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=5uq5wCCXvwU',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=1k7HhbODJtd0MyLCxSvEuzXenVkyPwwPF',
+            'https://drive.google.com/uc?export=download&id=1uvNOUFR7JgiEOMSo4C7OJffoZEYse5K8',
       ),
     ],
   ),

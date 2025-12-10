@@ -2,35 +2,35 @@ import '../course_models.dart';
 
 final List<Course> advancedCourses = [
   Course(
-    courseId: 'networking_advanced_clean',
-    title: 'Networking 1 – Advanced',
+    courseId: 'sysint_advanced_clean',
+    title: 'System Integration & Architecture – Advanced',
     description:
-        'Advanced module covering enterprise architectures, routing concepts, routing protocols, VLANs, security mechanisms, and WAN technologies.',
+        'Advanced module covering enterprise architecture, integration patterns, SOA, microservices, interoperability, and scalability in complex systems.',
     difficultyLevel: 'Advanced',
     modules: [
       Module(
-        moduleId: 'networking_advanced_ch1',
-        title: 'Advanced Network Architectures, Routing, and Security',
+        moduleId: 'sysint_advanced_ch1',
+        title: 'Enterprise Architecture, Integration Patterns, and Scalability',
         difficultyLevel: 'Advanced',
         summary: '''
-This module explores advanced networking concepts used in large-scale and enterprise environments.
+This module explores advanced concepts used to design and manage complex integrated systems.
 
 Topics include:
-• Enterprise network layers: core, distribution, and access  
-• Routing fundamentals and routing tables  
-• Static and dynamic routing  
-• Routing protocols such as RIP, OSPF, and BGP  
-• VLAN segmentation for improved security and efficiency  
-• Advanced security tools including ACLs, IDS, IPS, and VPNs  
-• WAN technologies such as MPLS, fiber optics, satellite, and broadband  
+• Enterprise Architecture (EA) and how it aligns technology with organizational goals  
+• Enterprise frameworks such as TOGAF for structured planning and evaluation  
+• Integration patterns including point-to-point, hub-and-spoke, and ESB  
+• Service-Oriented Architecture (SOA) and reusable, loosely coupled services  
+• Microservices as independently deployable components supporting flexibility and scalability  
+• Interoperability and the use of standards like XML, JSON, REST, and SOAP  
+• Scalability strategies and performance considerations in large integrated environments  
 
-This module strengthens understanding of how large networks operate and how data flows securely across complex infrastructures.
+This module prepares learners for designing resilient, future-ready enterprise systems.
 ''',
         content:
-            'A detailed discussion of hierarchical network architecture, routing operations, protocol behavior, logical segmentation using VLANs, advanced security enforcement with ACLs and intrusion systems, and major WAN technologies supporting long-distance communication.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=pAopv0-lKxY',
+            'A comprehensive explanation of enterprise architecture principles, advanced integration patterns, service-oriented and microservices architectures, the role of interoperability and data standards, and scalability strategies essential for modern enterprise environments.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=9TVc32M_gIY',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=1v9wCr2SpEH8lrXxYv_c9JjmxJ5HLSuFP',
+            'https://drive.google.com/uc?export=download&id=1FI_QfX4hTTIFXW_JULGdR_K-ahiPEv4f',
       ),
     ],
   ),

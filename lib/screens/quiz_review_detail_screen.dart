@@ -20,14 +20,14 @@ class QuizReviewDetailScreen extends StatelessWidget {
     final score = attempt['score'] as int? ?? 0;
 
     late final List<QuizQuestion> questions;
-    if (quizId == 'networking_beginner_ch1') {
-      questions = BeginnerNetworkingQuiz.questions;
-    } else if (quizId == 'networking_intermediate_ch1') {
-      questions = IntermediateNetworkingQuiz.questions;
-    } else if (quizId == 'networking_advanced_ch1') {
-      questions = AdvancedNetworkingQuiz.questions;
+    if (quizId == 'sysint_beginner_ch1') {
+      questions = BeginnerSysIntQuiz.questions;
+    } else if (quizId == 'sysint_intermediate_ch1') {
+      questions = IntermediateSysIntQuiz.questions;
+    } else if (quizId == 'sysint_advanced_ch1') {
+      questions = AdvancedSysIntQuiz.questions;
     } else {
-      questions = BeginnerNetworkingQuiz.questions;
+      questions = BeginnerSysIntQuiz.questions;
     }
 
     final optionDefault = const Color(0xFF0F3B5F);

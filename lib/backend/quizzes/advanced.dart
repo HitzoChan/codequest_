@@ -1,116 +1,116 @@
 import 'models.dart';
 
-class AdvancedNetworkingQuiz {
+class AdvancedSysIntQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'Which layer of enterprise architecture provides high-speed backbone connectivity?',
+      question: 'Enterprise architecture (EA) is primarily used to:',
       choices: [
-        'Access Layer',
-        'Core Layer',
-        'Firewall Layer',
-        'User Layer',
+        'Focus only on software installation',
+        'Align an organization’s technology with its strategic goals',
+        'Replace all existing systems with new ones',
+        'Limit organizational growth',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A routing table contains:',
+      question: 'A key advantage of using an enterprise architecture framework such as TOGAF is that it:',
       choices: [
-        'Only MAC addresses',
-        'Destination networks and next hops',
-        'Wi-Fi passwords',
-        'Usernames and IDs',
+        'Eliminates the need for system documentation',
+        'Provides structured methods for designing and managing enterprise systems',
+        'Focuses only on hardware upgrades',
+        'Avoids long-term planning',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Static routing is best described as:',
+      question: 'Point-to-point integration becomes difficult to manage because:',
       choices: [
-        'Routes learned automatically',
-        'Manually configured routes',
-        'Wireless routing only',
-        'Routes used by switches',
+        'It is too secure',
+        'It creates many direct connections as systems increase',
+        'It requires standardized interfaces',
+        'It supports only one application',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Which routing protocol uses hop count as its metric?',
+      question: 'In a hub-and-spoke integration model, the central hub is responsible for:',
       choices: [
-        'OSPF',
-        'BGP',
-        'RIP',
-        'VLAN',
+        'Storing all user passwords',
+        'Coordinating communication among connected systems',
+        'Replacing the entire architecture',
+        'Running only manual processes',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'An Enterprise Service Bus (ESB) is best described as:',
+      choices: [
+        'A physical network cable',
+        'A messaging backbone that routes and transforms data',
+        'A type of database management system',
+        'Software used only for mobile applications',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Service-Oriented Architecture (SOA) promotes integration by:',
+      choices: [
+        'Creating tightly coupled software components',
+        'Organizing functionality into reusable, loosely coupled services',
+        'Removing all communication between applications',
+        'Requiring one large monolithic system',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Microservices architecture improves flexibility because:',
+      choices: [
+        'All components must be deployed together',
+        'Each service can be updated independently',
+        'It eliminates the need for APIs',
+        'It limits scalability',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Interoperability in integrated systems means that:',
+      choices: [
+        'Systems cannot exchange data',
+        'Applications communicate using incompatible formats',
+        'Different systems can work together and exchange information',
+        'Data meanings differ across all systems',
       ],
       correctIndex: 2,
     ),
 
     QuizQuestion(
-      question: 'OSPF is known as a:',
+      question: 'Data standards such as XML and JSON help integration by:',
       choices: [
-        'Link-state protocol',
-        'Distance-vector protocol',
-        'Path-vector protocol',
-        'Static protocol',
+        'Preventing systems from sharing data',
+        'Providing consistent ways to structure and transmit information',
+        'Removing the need for multiple applications',
+        'Replacing APIs',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Scalability in integrated systems refers to:',
+      choices: [
+        'Expanding system capacity to handle increased workloads',
+        'Reducing system performance intentionally',
+        'Removing servers to save resources',
+        'Making systems operate on a single device only',
       ],
       correctIndex: 0,
-    ),
-
-    QuizQuestion(
-      question: 'BGP is primarily used for:',
-      choices: [
-        'Small home networks',
-        'Connecting devices via Bluetooth',
-        'Routing between large networks and ISPs',
-        'Managing VLAN traffic',
-      ],
-      correctIndex: 2,
-    ),
-
-    QuizQuestion(
-      question: 'What is the purpose of VLANs?',
-      choices: [
-        'Increase Wi-Fi speed',
-        'Physically separate networks',
-        'Logically divide networks for security and efficiency',
-        'Replace routers',
-      ],
-      correctIndex: 2,
-    ),
-
-    QuizQuestion(
-      question: 'ACLs are used to:',
-      choices: [
-        'Save files',
-        'Control network traffic by allowing or denying packets',
-        'Test internet speed',
-        'Install applications',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'A VPN mainly provides:',
-      choices: [
-        'Faster browsing',
-        'Gaming performance',
-        'Encrypted remote access',
-        'DHCP services',
-      ],
-      correctIndex: 2,
-    ),
-
-    QuizQuestion(
-      question: 'Which WAN technology is commonly used for long-distance, high-speed connections?',
-      choices: [
-        'Ethernet',
-        'Fiber Optic Links',
-        'USB cables',
-        'HDMI',
-      ],
-      correctIndex: 1,
     ),
 
   ];

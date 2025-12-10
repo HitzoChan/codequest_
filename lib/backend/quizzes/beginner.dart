@@ -1,114 +1,114 @@
 import 'models.dart';
 
-class BeginnerNetworkingQuiz {
+class BeginnerSysIntQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'What is a computer network?',
+      question: 'A system is best described as:',
       choices: [
-        'A collection of websites',
-        'A group of devices connected to share resources',
-        'A single computer used for storage',
-        'A program used to surf the internet',
+        'A single device performing tasks independently',
+        'A collection of components working together toward a common goal',
+        'A random group of unrelated applications',
+        'A tool used only for entertainment',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Which device connects multiple devices within a LAN?',
+      question: 'Which component of an information system refers to physical devices like computers and servers?',
       choices: [
-        'Modem',
-        'Switch',
-        'Printer',
-        'USB cable',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'What does a router do?',
-      choices: [
-        'Prints documents',
-        'Connects networks and directs data',
-        'Stores user files',
-        'Repairs cables',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Which medium uses wireless signals?',
-      choices: [
-        'Ethernet cable',
-        'Wi-Fi',
-        'Fiber wire',
-        'Copper pipe',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'A network that covers a small area like a home or office is called:',
-      choices: [
-        'WAN',
-        'MAN',
-        'LAN',
-        'TAN',
+        'Software',
+        'Data',
+        'Hardware',
+        'Processes',
       ],
       correctIndex: 2,
     ),
 
     QuizQuestion(
-      question: 'The internet is an example of what type of network?',
+      question: 'Software in an information system is responsible for:',
       choices: [
-        'LAN',
-        'MAN',
-        'WAN',
-        'PAN',
-      ],
-      correctIndex: 2,
-    ),
-
-    QuizQuestion(
-      question: 'In which topology do all devices connect to a central device?',
-      choices: [
-        'Ring',
-        'Bus',
-        'Star',
-        'Mesh',
-      ],
-      correctIndex: 2,
-    ),
-
-    QuizQuestion(
-      question: 'A hub sends data to:',
-      choices: [
-        'Only the correct device',
-        'All connected devices',
-        'Wireless devices only',
-        'The router only',
+        'Storing physical documents',
+        'Instructing hardware on what tasks to perform',
+        'Replacing all hardware devices',
+        'Managing employee schedules',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Full-duplex communication allows:',
+      question: 'Data becomes useful information when:',
       choices: [
-        'One-way communication',
-        'Two-way communication but not simultaneously',
-        'Both devices to send and receive at the same time',
-        'Wireless communication only',
+        'It is raw and unprocessed',
+        'It is organized, interpreted, or processed',
+        'It is deleted from the system',
+        'It is printed on paper',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'People in an information system are important because they:',
+      choices: [
+        'Manufacture computer chips',
+        'Interact with the system and make decisions',
+        'Replace processes with hardware',
+        'Perform only manual tasks',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'System integration is the process of:',
+      choices: [
+        'Separating systems so they operate independently',
+        'Linking different subsystems into one unified system',
+        'Deleting old applications to save storage',
+        'Replacing all existing software with new versions',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'A common benefit of system integration is:',
+      choices: [
+        'Increased data duplication',
+        'More manual data entry',
+        'Seamless data sharing between applications',
+        'Limited communication between systems',
       ],
       correctIndex: 2,
     ),
 
     QuizQuestion(
-      question: 'Which device connects the network to the internet?',
+      question: 'Application integration allows:',
       choices: [
-        'Hub',
-        'Modem',
-        'Switch',
-        'Printer',
+        'Software programs to operate without data',
+        'Different applications to exchange information',
+        'Users to uninstall all system processes',
+        'Systems to function without hardware',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'System architecture is best defined as:',
+      choices: [
+        'A blueprint describing how system components are organized and interact',
+        'A software used to design buildings',
+        'A set of instructions for printing documents',
+        'The physical layout of a computer laboratory',
+      ],
+      correctIndex: 0,
+    ),
+
+    QuizQuestion(
+      question: 'Why are system integration and architecture important in organizations?',
+      choices: [
+        'They increase system errors and inefficiency',
+        'They ensure systems communicate effectively and support organizational goals',
+        'They prevent systems from sharing data',
+        'They eliminate the need for information technology',
       ],
       correctIndex: 1,
     ),

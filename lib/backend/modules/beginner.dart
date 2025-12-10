@@ -2,32 +2,32 @@
 
 final List<Course> beginnerCourses = [
   Course(
-    courseId: 'networking_beginner_clean',
-    title: 'Networking 1 – Beginner',
+    courseId: 'sysint_beginner_clean',
+    title: 'System Integration & Architecture – Beginner',
     description:
-        'Beginner module introducing the fundamentals of computer networking, devices, transmission, and network types.',
+        'Beginner module introducing systems, system components, integration concepts, and basic architecture.',
     difficultyLevel: 'Beginner',
     modules: [
       Module(
-        moduleId: 'networking_beginner_ch1',
-        title: 'Introduction to Computer Networks',
+        moduleId: 'sysint_beginner_ch1',
+        title: 'Introduction to Systems and Integration',
         difficultyLevel: 'Beginner',
         summary: '''
-This module introduces the foundational concepts of computer networks.
+This module introduces the essential concepts of systems and how different components work together to support organizational operations.
 
 Topics include:
-• What computer networking is and how devices share resources  
-• Key network components such as devices, hardware, and transmission media  
-• The importance of networks in communication and collaboration  
-• Types of networks including LAN, MAN, and WAN  
-• Common network topologies such as bus, star, ring, and mesh  
-• Basic data transmission concepts and communication modes  
+• Understanding what a system is and how components work together  
+• Components of an information system such as hardware, software, data, people, and processes  
+• System integration and why organizations connect multiple subsystems  
+• Types of integration such as data, application, and process integration  
+• Introduction to system architecture as the blueprint of how system components interact  
+• Importance of integration and architecture in improving efficiency and supporting organizational goals  
 ''',
         content:
-            'A beginner-friendly explanation of how networks enable devices to communicate, the components that make up a network, classifications of network sizes, common topologies, and how data moves between devices.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=3QhU9jd03a0',
+            'An introductory explanation of systems, information system components, integration approaches, and basic architecture principles that help organizations coordinate operations and streamline workflows.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=D8ojzlGXSUo',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=1bA6DkwreiAtVPrDAXHUdtkmramQJFQND',
+            'https://drive.google.com/uc?export=download&id=10UW-V6Bo1Wh7YYBVZQH9jz1Hd8szUgfe',
       ),
     ],
   ),
