@@ -2,34 +2,35 @@ import '../course_models.dart';
 
 final List<Course> intermediateCourses = [
   Course(
-    courseId: 'info_mgmt_intermediate_clean',
-    title: 'Information Management – Intermediate',
+    courseId: 'programming_intermediate_clean',
+    title: 'Computer Programming – Intermediate',
     description:
-        'Intermediate module explaining databases, DBMS, data models, relational structures, keys, and ERD fundamentals.',
+        'Intermediate module covering control structures, modular programming, arrays, file handling, and developing structured program solutions.',
     difficultyLevel: 'Intermediate',
     modules: [
       Module(
-        moduleId: 'info_mgmt_intermediate_ch1',
-        title: 'Databases, DBMS, and Data Modeling',
+        moduleId: 'programming_intermediate_ch1',
+        title: 'Control Structures, Functions, Arrays, and File Handling',
         difficultyLevel: 'Intermediate',
         summary: '''
-This module explains how data is organized, stored, managed, and modeled within information systems.
+This module expands beginner programming skills by introducing more advanced logic and structured program design.
 
 Topics include:
-• The purpose and importance of databases for storing and organizing data  
-• What a Database Management System (DBMS) does, including access control, security, and backup  
-• Data models such as hierarchical, network, object-oriented, and the widely used relational model  
-• Relational database concepts including tables, attributes, records, primary keys, and foreign keys  
-• Entity–Relationship Diagrams (ERDs) for designing and understanding database structures  
-• The role of databases in supporting accuracy, security, data consistency, and organizational decision-making  
+• Control structures for directing program flow, including nested conditionals and multiple branches  
+• Use of loops such as for loops, while loops, and nested loops for repetitive tasks  
+• Modular programming through functions to enhance reusability and code organization  
+• Parameters and return values for passing data between program components  
+• Arrays for storing multiple values under one variable and processing data sets  
+• Basic file handling for reading and writing external data  
+• Combining loops, functions, arrays, and file handling to solve real-world problems  
 
-This module strengthens understanding of how structured information is modeled and maintained in modern systems.
+This module strengthens logical thinking, improves code organization, and prepares learners for advanced programming topics.
 ''',
         content:
-            'A detailed discussion of database concepts, DBMS functions, relational structures, keys, and ERD modeling. It explains why databases are essential for ensuring data consistency, accuracy, and secure access across organizational processes.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=wR0jg0eQsZA',
+            'A detailed explanation of intermediate programming concepts such as advanced control structures, modular design, parameterized functions, array manipulation, and file handling operations. It emphasizes writing organized, reusable, and efficient code for practical applications.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=8PopR3x-VMY',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=1fMVIosh0OLTCCpTPeGyKvqGapWdpYkYX',
+            'https://drive.google.com/uc?export=download&id=1lWq9hmbite-6FVCvfTqi0GfLQ0NLKUcU',
       ),
     ],
   ),

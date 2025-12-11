@@ -1,116 +1,116 @@
 import 'models.dart';
 
-class AdvancedInformationManagementQuiz {
+class AdvancedProgrammingQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'What is the primary purpose of normalization in database design?',
+      question: 'Object-oriented programming helps manage complex programs by:',
       choices: [
-        'To make tables larger',
-        'To increase redundancy',
-        'To reduce duplication and improve data integrity',
-        'To improve network bandwidth',
-      ],
-      correctIndex: 2,
-    ),
-
-    QuizQuestion(
-      question: 'Which of the following best describes a transitive dependency?',
-      choices: [
-        'When a table has no primary key',
-        'When an attribute depends on another non-key attribute',
-        'When all attributes depend fully on a composite key',
-        'When records are duplicated across tables',
+        'Removing the need for functions',
+        'Structuring software around objects that combine data and behavior',
+        'Storing all program data in one variable',
+        'Only using low-level machine instructions',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Which SQL category contains commands such as CREATE and ALTER?',
+      question: 'Encapsulation improves program reliability by:',
       choices: [
-        'DML',
-        'DCL',
-        'DDL',
-        'TCL',
-      ],
-      correctIndex: 2,
-    ),
-
-    QuizQuestion(
-      question: 'The SQL command used to retrieve data from a table is:',
-      choices: [
-        'INSERT',
-        'UPDATE',
-        'DELETE',
-        'SELECT',
-      ],
-      correctIndex: 3,
-    ),
-
-    QuizQuestion(
-      question: 'In relational databases, a foreign key is used to:',
-      choices: [
-        'Generate a unique identifier for each row',
-        'Link one table to another table',
-        'Sort rows alphabetically',
-        'Remove duplicate records',
+        'Allowing unrestricted access to all variables',
+        'Hiding internal details and exposing only necessary operations',
+        'Removing methods from a class',
+        'Preventing object creation',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Which type of join retrieves only the matching records between two tables?',
+      question: 'Inheritance is the OOP principle that allows a class to:',
       choices: [
-        'Full Join',
-        'Left Join',
-        'Inner Join',
-        'Cross Join',
-      ],
-      correctIndex: 2,
-    ),
-
-    QuizQuestion(
-      question: 'The ACID property that ensures all steps of a transaction succeed or fail together is:',
-      choices: [
-        'Durability',
-        'Atomicity',
-        'Isolation',
-        'Consistency',
+        'Hide all its attributes',
+        'Acquire properties and methods from another class',
+        'Execute multiple tasks at once',
+        'Replace recursion completely',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Which DBMS feature protects data when multiple users attempt to modify it simultaneously?',
+      question: 'Polymorphism enables a method to:',
       choices: [
-        'Data formatting',
-        'Concurrency control',
-        'Table indexing',
-        'Record sorting',
+        'Only work with one specific object',
+        'Behave differently depending on the object calling it',
+        'Store multiple data types at once',
+        'Block inheritance from occurring',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'The primary reason organizations enforce integrity constraints is to:',
+      question: 'Exception handling is important because it:',
       choices: [
-        'Increase data redundancy',
-        'Prevent unauthorized access to servers',
-        'Maintain accuracy and consistency of data',
-        'Speed up hardware performance',
+        'Removes the need for debugging',
+        'Prevents all user errors',
+        'Allows programs to respond safely to unexpected conditions',
+        'Automatically fixes all logic mistakes',
       ],
       correctIndex: 2,
     ),
 
     QuizQuestion(
-      question: 'A SQL JOIN is used when:',
+      question: 'A recursive function is one that:',
       choices: [
-        'Updating the physical structure of a database',
-        'Creating new data types',
-        'Retrieving related data from multiple tables',
-        'Formatting the display layout of a report',
+        'Calls itself to solve smaller parts of a problem',
+        'Must contain no base case',
+        'Cannot use parameters',
+        'Runs only once',
+      ],
+      correctIndex: 0,
+    ),
+
+    QuizQuestion(
+      question: 'The base case in recursion:',
+      choices: [
+        'Causes infinite repetition',
+        'Stops the recursive calls and prevents endless loops',
+        'Deletes the function from memory',
+        'Removes parameters from the call',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'A stack is a data structure that follows which principle?',
+      choices: [
+        'First-in, first-out (FIFO)',
+        'Last-in, first-out (LIFO)',
+        'Largest-value priority',
+        'Circular indexing only',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'A queue is most useful for tasks that require:',
+      choices: [
+        'Processing the newest item first',
+        'Reversing elements frequently',
+        'Handling items in the order they arrive',
+        'Calling functions recursively',
       ],
       correctIndex: 2,
+    ),
+
+    QuizQuestion(
+      question: 'Linked lists differ from arrays because they:',
+      choices: [
+        'Store elements in connected nodes rather than contiguous memory',
+        'Cannot store more than three values',
+        'Require multi-level inheritance',
+        'Are only used in graphical applications',
+      ],
+      correctIndex: 0,
     ),
 
   ];

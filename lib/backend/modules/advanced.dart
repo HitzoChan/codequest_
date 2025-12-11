@@ -2,35 +2,34 @@ import '../course_models.dart';
 
 final List<Course> advancedCourses = [
   Course(
-    courseId: 'info_mgmt_advanced_clean',
-    title: 'Information Management – Advanced',
+    courseId: 'programming_advanced_clean',
+    title: 'Computer Programming – Advanced',
     description:
-        'Advanced module covering normalization, SQL foundations, joins, ACID transactions, concurrency control, and enterprise-level data integrity concepts.',
+        'Advanced module covering OOP principles, class design, exception handling, recursion, and introductory data structures for building scalable software.',
     difficultyLevel: 'Advanced',
     modules: [
       Module(
-        moduleId: 'info_mgmt_advanced_ch1',
-        title: 'Advanced Database Design, SQL, and Data Integrity',
+        moduleId: 'programming_advanced_ch1',
+        title: 'OOP Principles, Exception Handling, Recursion, and Data Structures',
         difficultyLevel: 'Advanced',
         summary: '''
-This module explores advanced database concepts used to ensure accuracy, stability, and efficiency in large information systems.
+This module explores advanced programming concepts used to design structured, efficient, and scalable software systems.
 
 Topics include:
-• Data redundancy, integrity rules, and why they matter in enterprise environments  
-• Normalization principles including 1NF, 2NF, and 3NF  
-• SQL foundations: DDL, DML, DCL, and TCL command categories  
-• Relational queries, joins, and linking tables using keys  
-• ACID transactions and why they ensure safe multi-step operations  
-• Concurrency control for multi-user environments  
-• Importance of advanced database concepts in organizational information systems  
+• Object-oriented programming (OOP) concepts including encapsulation, inheritance, polymorphism, and abstraction  
+• Class and object design including constructors, method design, and class relationships  
+• Exception handling for managing unexpected errors and improving program reliability  
+• Recursion as a problem-solving technique with base cases, recursive calls, and algorithmic thinking  
+• Introduction to data structures including stacks, queues, and linked lists  
+• How these concepts support modular, maintainable, and real-world software solutions  
 
-This module strengthens analytical and technical skills needed for managing modern relational databases.
+This module prepares learners for higher-level development and complex programming challenges.
 ''',
         content:
-            'A comprehensive explanation of normalization, SQL command groups, relational joins, ACID properties, and concurrency control. The module highlights how advanced database design improves consistency, reduces redundancy, and enables secure multi-user data management.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=GFQaEYEc8_8',
+            'A detailed exploration of OOP principles, class structures, exception-handling mechanisms, and recursion as a technique for solving hierarchical and repetitive problems. The module also introduces essential data structures like stacks, queues, and linked lists to enhance program organization and efficiency.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=pTB0EiLXUC8',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=1kkwohN2Y4NVzumutyBjI3vwe2kxBFTl_',
+            'https://drive.google.com/uc?export=download&id=1n1A0ASRYmYElAdBuOFhdAuCMLBHtRFBz',
       ),
     ],
   ),

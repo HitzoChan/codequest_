@@ -2,34 +2,36 @@
 
 final List<Course> beginnerCourses = [
   Course(
-    courseId: 'info_mgmt_beginner_clean',
-    title: 'Information Management – Beginner',
+    courseId: 'programming_beginner_clean',
+    title: 'Computer Programming – Beginner',
     description:
-        'Beginner module introducing information management concepts, types of information, information life cycle, characteristics of good information, and components of information systems.',
+        'Beginner module introducing programming basics, syntax, variables, data types, control flow, algorithms, debugging, and the programming process.',
     difficultyLevel: 'Beginner',
     modules: [
       Module(
-        moduleId: 'info_mgmt_beginner_ch1',
-        title: 'Introduction to Information Management',
+        moduleId: 'programming_beginner_ch1',
+        title: 'Introduction to Programming and Core Concepts',
         difficultyLevel: 'Beginner',
         summary: '''
-This module introduces the fundamental concepts of Information Management and how organizations handle information effectively.
+This module introduces the foundational concepts of computer programming and how computers interpret instructions.
 
 Topics include:
-• What Information Management is and why organizations rely on it  
-• Types of information: operational, tactical, and strategic  
-• The Information Life Cycle: creation, storage, use, maintenance, and disposal  
-• Characteristics of good information such as accuracy, timeliness, completeness, and relevance  
-• Components of an information system including hardware, software, people, procedures, and data  
-• How effective information management supports decision-making and improves organizational performance  
+• What computer programming is and why it is important  
+• Programming languages and syntax  
+• High-level vs low-level languages  
+• Variables, data types, and basic operators  
+• Control structures: conditionals and loops  
+• Algorithms and structured problem-solving  
+• Debugging and identifying program errors  
+• The programming process: planning, coding, testing, and improving  
 
-This module provides a foundation for understanding how information flows and is managed in modern workplaces.
+This module provides the essential building blocks needed before moving into more advanced programming topics.
 ''',
         content:
-            'A beginner-friendly overview of how information is collected, organized, stored, and used within organizations. It explains information types, life cycle stages, qualities of useful information, and the key elements that make up an information system.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=AChfIfQ4gjw',
+            'A complete explanation of programming fundamentals including syntax rules, variable usage, data types, basic logic structures, and debugging methods. It also covers the structured programming process and the role of algorithms in solving problems efficiently.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=zOjov-2OZ0E',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=1Lwlpl3AkNqmMdzerDBvR-w9il6y83ouf',
+            'https://drive.google.com/uc?export=download&id=1ltWHRRxwEK9yDCzpN-yNAmWLwFIuhS37',
       ),
     ],
   ),
