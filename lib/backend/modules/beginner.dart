@@ -2,35 +2,35 @@
 
 final List<Course> beginnerCourses = [
   Course(
-    courseId: 'css_beginner_clean',
-    title: 'Computer Systems Servicing – Beginner',
+    courseId: 'digital_literacy_beginner_clean',
+    title: 'Digital Literacy & Productivity Tools – Beginner',
     description:
-        'Beginner module introducing computer components, peripherals, safety procedures, servicing tools, and preventive maintenance.',
+        'Beginner module introducing digital literacy, ICT concepts, and basic productivity tools such as word processors, spreadsheets, and presentations.',
     difficultyLevel: 'Beginner',
     modules: [
       Module(
-        moduleId: 'css_beginner_ch1',
-        title: 'Introduction to Computer Systems Servicing',
+        moduleId: 'dl_beginner_ch1',
+        title: 'Introduction to Digital Literacy & Productivity Tools',
         difficultyLevel: 'Beginner',
         summary: '''
-This module introduces the foundational concepts of Computer Systems Servicing (CSS), focusing on how computer hardware and peripherals function and how technicians maintain and repair systems.
+This module introduces the essential skills needed to navigate digital environments, use ICT tools, and apply basic productivity applications.
 
 Topics include:
-• Introduction to computer systems servicing and the role of a technician  
-• Major internal components: CPU, RAM, storage devices, motherboard, expansion cards  
-• Peripheral devices and their functions such as input, output, and storage peripherals  
-• Basic servicing tools including screwdrivers, anti-static wrist straps, and cable testers  
-• Essential safety practices like disconnecting power and preventing electrostatic discharge  
-• Preventive maintenance: cleaning components, checking cables, updating drivers, and ensuring ventilation  
-• Importance of CSS fundamentals for troubleshooting, upgrades, and safe hardware handling  
+• Understanding digital literacy and its importance in communication, learning, and productivity  
+• Basic ICT concepts including hardware, software, networks, the internet, and cloud services  
+• Introduction to productivity tools such as word processors, spreadsheets, and presentation software  
+• Word processing basics including text editing, formatting, layout, and inserting elements  
+• Spreadsheet basics such as rows, columns, cells, formulas, and simple data organization  
+• Presentation software basics including slide layout, visual themes, images, and simple animations  
+• How digital literacy enhances academic tasks, workplace readiness, and everyday digital communication  
 
-This module prepares learners to identify components, follow safety procedures, and perform basic servicing tasks confidently.
+This module builds strong foundational skills needed to use digital tools confidently and effectively.
 ''',
         content:
-            'A beginner-focused explanation of computer components, peripherals, servicing tools, and safety procedures. It covers the technician’s responsibilities, proper tool usage, and the importance of preventive maintenance in keeping computer systems reliable and efficient.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=qfUZBKDh9BY',
+            'An introductory explanation of digital literacy, ICT systems, and key productivity tools. Learners explore essential features of word processors, spreadsheets, and presentation software to support communication, organization, and digital tasks.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=_LElWqXi7Ag',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=147Dh5tlwYp-jKsgVwAA6E9wgrjaI4LqR',
+            'https://drive.google.com/uc?export=download&id=1ylS5Tg_Sf-17A5yj0guShvVbuctNgtmO',
       ),
     ],
   ),

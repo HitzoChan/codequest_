@@ -86,13 +86,13 @@ class _ModulesScreenState extends State<ModulesScreen> {
         // Map old module IDs to new consolidated IDs
         String normalizedQuizId = quizId;
         if (quizId == 'sql_intro_01' || quizId == 'computing_intro_01' || quizId == 'programming_fundamentals_01' || quizId == 'programming_fundamentals_beginner_01' || quizId == 'intro_to_web_dev_01' || quizId == 'intro_to_python_01' || quizId == 'web_dev_ch1_pdf') {
-          normalizedQuizId = 'css_beginner_ch1';
+          normalizedQuizId = 'dl_beginner_ch1';
         }
         if (quizId == 'web_development_01' || quizId == 'python_intermediate_01' || quizId == 'web_dev_intermediate_ch1') {
-          normalizedQuizId = 'css_intermediate_ch1';
+          normalizedQuizId = 'dl_intermediate_ch1';
         }
         if (quizId == 'data_structures_advanced_01' || quizId == 'python_advanced_01') {
-          normalizedQuizId = 'css_advanced_ch1';
+          normalizedQuizId = 'dl_advanced_ch1';
         }
 
         // parse attemptedAt robustly (Timestamp, DateTime, int millis)
@@ -130,9 +130,9 @@ class _ModulesScreenState extends State<ModulesScreen> {
       final Map<String, double> map = {};
       latestScore.forEach((quizId, scoreInt) {
         int total = 0;
-        if (quizId == 'css_beginner_ch1') { total = BeginnerCSSQuiz.questions.length; }
-        else if (quizId == 'css_intermediate_ch1') { total = IntermediateCSSQuiz.questions.length; }
-        else if (quizId == 'css_advanced_ch1') { total = AdvancedCSSQuiz.questions.length; }
+        if (quizId == 'dl_beginner_ch1') { total = BeginnerDigitalLiteracyQuiz.questions.length; }
+        else if (quizId == 'dl_intermediate_ch1') { total = IntermediateDigitalLiteracyQuiz.questions.length; }
+        else if (quizId == 'dl_advanced_ch1') { total = AdvancedDigitalLiteracyQuiz.questions.length; }
 
         // Clamp score to not exceed the total questions
         final clampedScore = scoreInt.clamp(0, total);
@@ -148,9 +148,9 @@ class _ModulesScreenState extends State<ModulesScreen> {
         // Store clamped scores
         latestScore.forEach((quizId, scoreInt) {
           int total = 0;
-          if (quizId == 'css_beginner_ch1') { total = BeginnerCSSQuiz.questions.length; }
-          else if (quizId == 'css_intermediate_ch1') { total = IntermediateCSSQuiz.questions.length; }
-          else if (quizId == 'css_advanced_ch1') { total = AdvancedCSSQuiz.questions.length; }
+          if (quizId == 'dl_beginner_ch1') { total = BeginnerDigitalLiteracyQuiz.questions.length; }
+          else if (quizId == 'dl_intermediate_ch1') { total = IntermediateDigitalLiteracyQuiz.questions.length; }
+          else if (quizId == 'dl_advanced_ch1') { total = AdvancedDigitalLiteracyQuiz.questions.length; }
           _quizScore[quizId] = scoreInt.clamp(0, total);
         });
         _quizPassed.clear();
@@ -241,12 +241,12 @@ class _ModulesScreenState extends State<ModulesScreen> {
 
     // Compute quiz progress
     int total = 0;
-    if (module.moduleId == 'css_beginner_ch1') {
-      total = BeginnerCSSQuiz.questions.length;
-    } else if (module.moduleId == 'css_intermediate_ch1') {
-      total = IntermediateCSSQuiz.questions.length;
-    } else if (module.moduleId == 'css_advanced_ch1') {
-      total = AdvancedCSSQuiz.questions.length;
+    if (module.moduleId == 'dl_beginner_ch1') {
+      total = BeginnerDigitalLiteracyQuiz.questions.length;
+    } else if (module.moduleId == 'dl_intermediate_ch1') {
+      total = IntermediateDigitalLiteracyQuiz.questions.length;
+    } else if (module.moduleId == 'dl_advanced_ch1') {
+      total = AdvancedDigitalLiteracyQuiz.questions.length;
     }
 
     final int score = (_quizScore[module.moduleId] ?? 0).clamp(0, total);
@@ -438,7 +438,7 @@ class _ModulesScreenState extends State<ModulesScreen> {
                     const SizedBox(height: 4),
 
                     Text(
-                      'Computer Systems Servicing',
+                      'Digital Literacy & Productivity Tools',
                       style: const TextStyle(
                         fontSize: 16,
                         color: Colors.white,

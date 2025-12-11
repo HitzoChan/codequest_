@@ -2,35 +2,35 @@ import '../course_models.dart';
 
 final List<Course> intermediateCourses = [
   Course(
-    courseId: 'css_intermediate_clean',
-    title: 'Computer Systems Servicing – Intermediate',
+    courseId: 'digital_literacy_intermediate_clean',
+    title: 'Digital Literacy & Productivity Tools – Intermediate',
     description:
-        'Intermediate module covering system configuration, BIOS/UEFI, disk partitioning, OS installation, diagnostics, troubleshooting, and system optimization.',
+        'Intermediate module focusing on structured document creation, data analysis in spreadsheets, presentation design, cloud collaboration tools, and professional digital communication.',
     difficultyLevel: 'Intermediate',
     modules: [
       Module(
-        moduleId: 'css_intermediate_ch1',
-        title: 'System Configuration, BIOS/UEFI, Troubleshooting, and Optimization',
+        moduleId: 'dl_intermediate_ch1',
+        title: 'Intermediate Document Design, Data Organization & Digital Collaboration',
         difficultyLevel: 'Intermediate',
         summary: '''
-This module covers intermediate-level concepts in computer systems servicing, focusing on configuring, maintaining, and optimizing computer systems.
+This module builds on foundational digital literacy by introducing more advanced tools and techniques for creating professional documents, analyzing data, designing effective presentations, and collaborating online.
 
 Topics include:
-• System configuration and why it ensures hardware and software work efficiently  
-• BIOS and UEFI functions, setup navigation, and configuring boot options  
-• Disk partitioning, file systems, and their role in organizing and managing data  
-• Operating system installation and post-installation configuration tasks including drivers and updates  
-• Diagnostic tools for identifying hardware and software issues  
-• Structured troubleshooting processes to isolate and resolve system problems  
-• System optimization such as cleaning temporary files, updating drivers, managing startup programs, and improving hardware performance  
+• Intermediate word processing skills such as styles, headers/footers, tables, hyperlinks, and track changes  
+• Creating well-structured documents with consistent formatting and visual organization  
+• Spreadsheet skills including formulas (SUM, AVERAGE, IF), sorting, filtering, charts, and conditional formatting  
+• Understanding absolute and relative references and organizing data into tables  
+• Presentation enhancement using layout principles, color harmony, visual hierarchy, and proper use of multimedia  
+• Cloud-based collaboration including shared editing, permissions, version history, and remote teamwork  
+• Professional communication etiquette, clarity in messaging, and evaluating credible online information  
 
-This module builds essential skills needed to install, configure, diagnose, and optimize modern computer systems.
+This module strengthens digital productivity skills needed for academic, workplace, and collaborative environments.
 ''',
         content:
-            'An in-depth explanation of system configuration concepts including firmware settings, disk management, OS installation, diagnostics, troubleshooting workflows, and optimization techniques. The module equips learners with practical skills needed for real-world servicing tasks.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=aGhCUJmtDR4',
+            'A detailed explanation of document structuring, data analysis techniques, presentation design principles, cloud collaboration features, and digital communication etiquette. Learners enhance productivity and professionalism using intermediate digital tools.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=MJHhTTh-q3g',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=1V0E6O5K1Xm07tGuWIuh0fise_9TE5-BW',
+            'https://drive.google.com/uc?export=download&id=1Vb9Fif6kNY7y6KrzAZs-l7mOzXbLqzRx',
       ),
     ],
   ),

@@ -1,114 +1,114 @@
 import 'models.dart';
 
-class AdvancedCSSQuiz {
+class AdvancedDigitalLiteracyQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'Advanced hardware diagnostics require technicians to:',
+      question: 'Advanced document production focuses on:',
       choices: [
-        'Rely only on basic visual inspection',
-        'Use specialized tools to identify deeper component issues',
-        'Replace all parts without testing',
-        'Avoid using diagnostic software',
+        'Creating short, unformatted notes',
+        'Producing highly structured documents using advanced formatting tools',
+        'Removing all graphics from documents',
+        'Limiting documents to one page only',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A POST card analyzer is used to:',
+      question: 'A table of contents generated automatically requires:',
       choices: [
-        'Improve Wi-Fi signal strength',
-        'Display diagnostic codes during system startup',
-        'Clean dust from components',
-        'Format storage drives',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'When upgrading a CPU, the technician must first evaluate:',
-      choices: [
-        'The number of USB ports available',
-        'Whether the motherboard socket and chipset support the processor',
-        'The color of the heatsink',
-        'The size of the computer case',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Network troubleshooting often begins with:',
-      choices: [
-        'Replacing the motherboard',
-        'Checking IP settings and basic connectivity',
-        'Formatting the storage drive',
-        'Uninstalling all drivers',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'A DNS configuration problem typically causes:',
-      choices: [
-        'Inability to access websites by name',
-        'Overheating of internal components',
-        'Failure of the BIOS to load',
-        'The keyboard to stop responding',
+        'Proper use of styles and heading levels',
+        'Deleting all section breaks',
+        'Writing the entire document in uppercase',
+        'Removing all page numbers',
       ],
       correctIndex: 0,
     ),
 
     QuizQuestion(
-      question: 'Implementing system security includes tasks such as:',
+      question: 'Pivot tables in spreadsheets are primarily used to:',
       choices: [
-        'Disabling all updates permanently',
-        'Installing antivirus software and configuring firewalls',
-        'Removing all system passwords',
-        'Allowing unrestricted user access',
+        'Create animations',
+        'Summarize and categorize large datasets efficiently',
+        'Design presentation slides',
+        'Remove duplicate files',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'BIOS/UEFI password protection is used to:',
+      question: 'The VLOOKUP or XLOOKUP function allows users to:',
       choices: [
-        'Slow down system performance',
-        'Prevent unauthorized access to firmware settings',
-        'Remove malware from the system',
-        'Delete partitions automatically',
+        'Search for data in another table and return a corresponding value',
+        'Create hyperlinks automatically',
+        'Delete unused rows',
+        'Split documents into sections',
+      ],
+      correctIndex: 0,
+    ),
+
+    QuizQuestion(
+      question: 'Advanced presentation design emphasizes:',
+      choices: [
+        'Overusing animations and colors to entertain the audience',
+        'Clear visual hierarchy and consistent slide formatting',
+        'Placing as much text as possible on each slide',
+        'Avoiding multimedia elements entirely',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Encryption helps secure a system by:',
+      question: 'Slide masters are used in presentations to:',
       choices: [
-        'Increasing CPU temperature',
-        'Converting data into unreadable form without a key',
-        'Deleting all user files',
-        'Blocking all network traffic',
+        'Change the appearance of all slides consistently',
+        'Automatically write speaker notes',
+        'Remove transitions',
+        'Edit videos inside the presentation',
+      ],
+      correctIndex: 0,
+    ),
+
+    QuizQuestion(
+      question: 'Digital collaboration systems allow teams to:',
+      choices: [
+        'Work individually without communication',
+        'Share documents, track tasks, and coordinate workflows',
+        'Delete all previous versions of files',
+        'Avoid cloud-based tools',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Preventive maintenance documentation is important because it:',
+      question: 'Version control in cloud platforms is useful because it:',
       choices: [
-        'Makes systems last longer without checks',
-        'Tracks maintenance activities and recurring issues',
-        'Replaces the need for diagnostics',
-        'Prevents all hardware failures permanently',
+        'Prevents documents from being edited',
+        'Tracks changes over time and restores earlier versions when needed',
+        'Deletes the oldest version automatically',
+        'Removes all formatting from the document',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A well-planned preventive maintenance schedule should:',
+      question: 'Effective digital information management includes:',
       choices: [
-        'Be performed only when errors occur',
-        'Include routine inspections, updates, and cleaning',
-        'Ignore environmental conditions',
-        'Only apply to software components',
+        'Storing all files in one folder with no organization',
+        'Structuring files, securing data, and evaluating information sources',
+        'Sharing files publicly without restrictions',
+        'Avoiding the use of password protections',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Digital security awareness is important because:',
+      choices: [
+        'Online risks are rare',
+        'Users must protect sensitive data and reduce privacy threats',
+        'Productivity tools automatically block all threats',
+        'Only advanced programmers face security issues',
       ],
       correctIndex: 1,
     ),

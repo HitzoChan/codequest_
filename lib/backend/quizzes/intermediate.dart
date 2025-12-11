@@ -1,114 +1,114 @@
 import 'models.dart';
 
-class IntermediateCSSQuiz {
+class IntermediateDigitalLiteracyQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'System configuration is important because it:',
+      question: 'Intermediate word processing focuses on:',
       choices: [
-        'Ensures hardware and software function together efficiently',
-        'Replaces the need for operating systems',
-        'Prevents users from changing settings',
-        'Removes all system drivers automatically',
-      ],
-      correctIndex: 0,
-    ),
-
-    QuizQuestion(
-      question: 'The primary function of BIOS/UEFI is to:',
-      choices: [
-        'Monitor internet performance',
-        'Initialize hardware and prepare the system to boot',
-        'Store user documents',
-        'Edit system applications',
+        'Basic typing without formatting',
+        'Creating professionally structured documents with advanced formatting',
+        'Designing websites using HTML',
+        'Removing all images from documents',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'One advantage of UEFI over BIOS is that it:',
+      question: 'Styles, headers, and footers improve documents by:',
       choices: [
-        'Supports only small storage drives',
-        'Boots slower than BIOS',
-        'Supports larger disks and provides more advanced security',
-        'Does not allow hardware diagnostics',
+        'Making them harder to edit',
+        'Adding unnecessary decorations',
+        'Providing consistent formatting and better organization',
+        'Removing text automatically',
       ],
       correctIndex: 2,
     ),
 
     QuizQuestion(
-      question: 'Disk partitioning is used to:',
+      question: 'The IF function in spreadsheets is used for:',
       choices: [
-        'Reduce RAM usage',
-        'Divide a storage drive into separate sections for organization',
-        'Increase processor speed',
-        'Remove the need for a file system',
+        'Creating slideshows',
+        'Performing calculations based on a condition',
+        'Formatting graphics',
+        'Writing long paragraphs',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A file system determines:',
+      question: 'Sorting and filtering spreadsheet data allows users to:',
       choices: [
-        'How the CPU executes instructions',
-        'How files are stored, accessed, and organized on a partition',
-        'How monitors display images',
-        'How RAM is installed in the motherboard',
+        'Delete all stored information',
+        'Organize and analyze data more efficiently',
+        'Create animations',
+        'Remove formulas permanently',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'After installing an operating system, a technician must:',
+      question: 'Conditional formatting is useful because it:',
       choices: [
-        'Immediately delete system files',
-        'Install drivers and configure system settings',
-        'Disable all security features',
-        'Avoid applying updates',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Diagnostic tools are used to:',
-      choices: [
-        'Test hardware and software functionality',
-        'Remove all user accounts',
-        'Increase file size',
-        'Edit website code',
+        'Applies colors or styles based on data values',
+        'Removes hidden rows automatically',
+        'Prevents editing of cells',
+        'Replaces all numerical data with symbols',
       ],
       correctIndex: 0,
     ),
 
     QuizQuestion(
-      question: 'A structured troubleshooting process typically begins with:',
+      question: 'Effective presentation design includes:',
       choices: [
-        'Replacing all hardware components',
-        'Identifying the problem and gathering information',
-        'Formatting the entire drive',
-        'Installing a new operating system',
+        'Overusing animations to impress the audience',
+        'Using clear structure, visuals, and design principles',
+        'Filling every slide with text',
+        'Ignoring color and layout choices',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'System optimization includes tasks such as:',
+      question: 'Cloud-based collaboration tools allow users to:',
       choices: [
-        'Adding unnecessary startup programs',
-        'Filling the storage drive completely',
-        'Updating drivers and removing temporary files',
-        'Blocking all system updates',
+        'Work on documents only when offline',
+        'Edit files together in real time from different locations',
+        'Disable communication between team members',
+        'Replace all productivity tools completely',
       ],
-      correctIndex: 2,
+      correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A technician who can configure BIOS, create partitions, install OS software, and troubleshoot issues is demonstrating:',
+      question: 'Version history in cloud tools helps users by:',
       choices: [
-        'Beginner-level CSS skills',
-        'Intermediate CSS competencies',
-        'Networking administration skills only',
-        'Advanced software development',
+        'Deleting old files automatically',
+        'Tracking changes and restoring previous versions',
+        'Preventing shared files from being edited',
+        'Removing all comments in a document',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Digital communication etiquette requires:',
+      choices: [
+        'Using informal or unclear messages',
+        'Responding professionally and respectfully',
+        'Sending messages without reading them',
+        'Ignoring proper grammar and tone',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Evaluating online information is important because:',
+      choices: [
+        'All online content is automatically verified',
+        'It helps users identify credible sources and avoid misinformation',
+        'It slows down digital work',
+        'It prevents users from accessing websites',
       ],
       correctIndex: 1,
     ),
