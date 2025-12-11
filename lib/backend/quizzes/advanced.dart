@@ -1,116 +1,116 @@
 import 'models.dart';
 
-class AdvancedIntroComputingQuiz {
+class AdvancedCloudComputingQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'Computer architecture at the advanced level focuses on:',
+      question: 'Advanced cloud architecture places strong emphasis on:',
       choices: [
-        'The design of computer packaging',
-        'How system components interact to optimize performance',
-        'Only the appearance of the user interface',
-        'Reducing all hardware to a single chip',
+        'Removing redundancy',
+        'Building scalable and resilient systems',
+        'Using only local servers',
+        'Eliminating automation',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'The instruction set architecture (ISA) is important because it:',
+      question: 'Microservices are used in cloud architecture to:',
       choices: [
-        'Determines the color of the monitor',
-        'Defines how software communicates with hardware',
-        'Removes the need for an operating system',
-        'Stores user accounts and passwords',
+        'Combine all application functions into one large component',
+        'Allow independent components to be updated or scaled separately',
+        'Prevent applications from communicating',
+        'Increase dependency among services',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Multicore processors improve performance by:',
+      question: 'Containerization is beneficial because it:',
       choices: [
-        'Running only one task at a time',
-        'Allowing multiple processing tasks to execute simultaneously',
-        'Replacing memory hierarchy',
-        'Disabling multitasking',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'CPU pipelining increases performance by:',
-      choices: [
-        'Slowing down instruction execution',
-        'Executing instructions one at a time',
-        'Dividing instructions into stages processed simultaneously',
-        'Removing the need for cache memory',
+        'Requires its own operating system for each application',
+        'Makes applications heavier and slower',
+        'Packages applications with their dependencies for consistency',
+        'Prevents applications from running on different machines',
       ],
       correctIndex: 2,
     ),
 
     QuizQuestion(
-      question: 'Cache memory is used because it:',
+      question: 'Unlike virtual machines, containers:',
       choices: [
-        'Stores data permanently',
-        'Provides fast access to frequently used data',
-        'Replaces all RAM',
-        'Slows down processing',
+        'Run on separate kernels',
+        'Share the host operating system',
+        'Cannot be moved across environments',
+        'Require more memory',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Virtual memory helps improve system performance by:',
+      question: 'Kubernetes is primarily used to:',
       choices: [
-        'Turning off physical memory',
-        'Using storage devices to extend available memory',
-        'Eliminating the need for multitasking',
-        'Preventing access to the CPU',
+        'Edit cloud-based documents',
+        'Automate deployment and scaling of containers',
+        'Store large volumes of data',
+        'Manage encryption keys',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Parallel computing refers to:',
+      question: 'In Kubernetes, a node refers to:',
       choices: [
-        'Completing tasks using a single processor',
-        'Executing multiple parts of a task at the same time',
-        'Moving data physically between buildings',
-        'Running applications one after another',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Distributed computing involves:',
-      choices: [
-        'One computer doing all the work',
-        'Multiple computers working together across a network',
-        'A single server storing all data offline',
-        'Blocking communication between systems',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Edge computing improves efficiency by:',
-      choices: [
-        'Moving data processing closer to where the data is generated',
-        'Sending all data to one central server',
-        'Slowing down communication networks',
-        'Eliminating the need for cloud computing',
+        'A server that runs workloads',
+        'A directory for storing images',
+        'A file used for software updates',
+        'A security permission level',
       ],
       correctIndex: 0,
     ),
 
     QuizQuestion(
-      question: 'Quantum computing is distinct because it:',
+      question: 'Serverless computing allows developers to:',
       choices: [
-        'Uses binary 0s and 1s only',
-        'Depends entirely on classical logic gates',
-        'Uses quantum states to perform complex computations',
-        'Cannot solve mathematical problems',
+        'Manage and configure server hardware',
+        'Deploy functions without provisioning infrastructure',
+        'Build only desktop applications',
+        'Run systems that never scale automatically',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'The zero-trust security model assumes that:',
+      choices: [
+        'All internal users are trustworthy',
+        'Devices outside the network must be trusted automatically',
+        'No user or device is trusted by default',
+        'Security checks slow down the network',
       ],
       correctIndex: 2,
+    ),
+
+    QuizQuestion(
+      question: 'A multi-cloud strategy involves:',
+      choices: [
+        'Using only private cloud resources',
+        'Combining services from multiple cloud providers',
+        'Eliminating all external cloud platforms',
+        'Restricting workloads to on-premise servers only',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'One advantage of hybrid cloud environments is that they:',
+      choices: [
+        'Prevent workloads from moving between clouds',
+        'Allow sensitive tasks to stay private while using public cloud scalability',
+        'Require only one type of cloud provider',
+        'Eliminate all networking requirements',
+      ],
+      correctIndex: 1,
     ),
 
   ];

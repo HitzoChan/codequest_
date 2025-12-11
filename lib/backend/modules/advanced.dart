@@ -2,35 +2,35 @@ import '../course_models.dart';
 
 final List<Course> advancedCourses = [
   Course(
-    courseId: 'intro_computing_advanced_clean',
-    title: 'Introduction to Computing – Advanced',
+    courseId: 'cloud_computing_advanced_clean',
+    title: 'Cloud Computing – Advanced',
     description:
-        'Advanced module covering computer architecture, system performance, resource management, parallel and distributed computing, and emerging technologies.',
+        'Advanced module covering cloud architecture, microservices, containerization, orchestration, serverless computing, advanced cloud security, and multi-cloud strategies.',
     difficultyLevel: 'Advanced',
     modules: [
       Module(
-        moduleId: 'intro_computing_advanced_ch1',
-        title: 'Computer Architecture, Performance, and Advanced Computing Paradigms',
+        moduleId: 'cloud_advanced_ch1',
+        title: 'Advanced Cloud Architecture, Containerization, and Security',
         difficultyLevel: 'Advanced',
         summary: '''
-This module explores advanced concepts that define how modern computer systems achieve performance, efficiency, and scalability.
+This module explores the advanced technologies and architectural concepts used to build scalable, resilient, and secure cloud environments.
 
 Topics include:
-• Computer architecture and how system components interact  
-• Instruction Set Architecture (ISA) and its role in hardware–software communication  
-• CPU design principles including multicore processors, pipelining, caching, and optimization  
-• Memory hierarchy and system performance management  
-• System software resource management through scheduling, concurrency, and load balancing  
-• Parallel and distributed computing for high-performance applications  
-• Emerging computing trends such as quantum computing, AI-driven systems, edge computing, and green computing  
+• Advanced cloud architecture principles such as scalability, resilience, and fault tolerance  
+• Microservices architecture and independent service deployment  
+• Containerization technologies like Docker and how containers provide consistency across environments  
+• Kubernetes orchestration for automated deployment, scaling, and workload management  
+• Serverless computing and event-driven execution of cloud functions  
+• Zero-trust security, encryption, automated threat detection, and identity controls  
+• Multi-cloud and hybrid cloud strategies for flexibility, reliability, and vendor independence  
 
-This module prepares learners to understand, evaluate, and optimize modern computing environments.
+This module equips learners with the knowledge needed to design and manage modern cloud infrastructures.
 ''',
         content:
-            'A comprehensive discussion of advanced architecture concepts, CPU performance techniques, memory hierarchy, resource management in system software, parallel and distributed computing models, and new paradigms such as quantum computing and edge computing that shape the future of technology.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=zlX8cpvOW7U',
+            'A detailed explanation of scalable cloud architectures, microservices, container-based deployment, orchestration systems such as Kubernetes, serverless execution models, advanced security practices, and multi-cloud/hybrid strategies used in enterprise environments.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=kBF6Bvth0zw',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=1FBe97Jrf7l8-HoHmuSiBmGZQm151oAms',
+            'https://drive.google.com/uc?export=download&id=164fyxw-7JwFohWh1wqkiDMPgSCi8-Bm3',
       ),
     ],
   ),

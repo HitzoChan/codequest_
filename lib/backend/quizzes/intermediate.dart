@@ -1,114 +1,114 @@
 import 'models.dart';
 
-class IntermediateIntroComputingQuiz {
+class IntermediateCloudComputingQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'A computer system functions effectively because:',
+      question: 'Virtualization enables cloud computing by:',
       choices: [
-        'Only the hardware operates independently',
-        'Hardware, software, people, and processes work together',
-        'It performs tasks without any operating system',
-        'It requires no interaction between components',
+        'Replacing internet connections',
+        'Creating virtual versions of computing resources',
+        'Eliminating the need for servers',
+        'Running only one application at a time',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'The operating system acts as:',
+      question: 'A virtual machine (VM) is best described as:',
       choices: [
-        'A physical storage device',
-        'A bridge between hardware, software, and users',
-        'A replacement for applications',
-        'A tool used only for entertainment',
+        'A physical server located in a data center',
+        'A computer simulation that behaves like a separate device',
+        'A type of cloud storage',
+        'A backup management tool',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'One major role of an operating system is to:',
+      question: 'Server virtualization is useful because it:',
       choices: [
-        'Restrict all forms of multitasking',
-        'Control how programs use hardware resources',
-        'Replace the central processing unit',
-        'Remove unused files automatically',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Which type of operating system is designed for personal computers used in everyday tasks?',
-      choices: [
-        'Mobile OS',
-        'Desktop OS',
-        'Server OS',
-        'Embedded OS',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Mobile operating systems such as Android and iOS are designed to:',
-      choices: [
-        'Support touch-based interfaces and manage device power efficiently',
-        'Run multiple servers at the same time',
-        'Replace desktop operating systems entirely',
-        'Function only with external storage',
-      ],
-      correctIndex: 0,
-    ),
-
-    QuizQuestion(
-      question: 'Software installation involves:',
-      choices: [
-        'Removing all existing applications from a device',
-        'Allocating resources and integrating the program into the system',
-        'Copying data without configuration',
-        'Disabling system updates',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Updating software is important because it:',
-      choices: [
-        'Removes all saved files',
-        'Downgrades security features',
-        'Provides improvements, bug fixes, and security patches',
-        'Makes the software consume more storage',
+        'Forces each application to run on its own physical machine',
+        'Reduces hardware efficiency',
+        'Allows multiple virtual servers to run on one physical server',
+        'Eliminates the need for an operating system',
       ],
       correctIndex: 2,
     ),
 
     QuizQuestion(
-      question: 'File management allows users to:',
+      question: 'Storage virtualization involves:',
       choices: [
-        'Manipulate the CPU speed',
-        'Organize, store, and retrieve digital files efficiently',
-        'Modify hardware components',
-        'Operate the device without an operating system',
+        'Combining multiple physical storage devices into a unified system',
+        'Removing local storage from all computers',
+        'Preventing users from accessing shared files',
+        'Converting storage into software applications',
+      ],
+      correctIndex: 0,
+    ),
+
+    QuizQuestion(
+      question: 'Which type of cloud storage is most suitable for handling large amounts of unstructured data like images or videos?',
+      choices: [
+        'Block storage',
+        'File storage',
+        'Object storage',
+        'Local disk storage',
+      ],
+      correctIndex: 2,
+    ),
+
+    QuizQuestion(
+      question: 'Cloud networking allows organizations to:',
+      choices: [
+        'Limit connectivity to only on-site systems',
+        'Manage network resources and configurations through cloud platforms',
+        'Replace all routers with physical cables',
+        'Disable remote access permanently',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Storage devices such as SSDs and cloud services help users:',
+      question: 'The shared responsibility model states that cloud providers are responsible for:',
       choices: [
-        'Connect to wireless networks',
-        'Store data for long-term access',
-        'Execute arithmetic calculations',
-        'Monitor energy consumption',
+        'Securing customer passwords',
+        'Managing internal company policies',
+        'Protecting the cloud infrastructure',
+        'Monitoring employee access behavior',
+      ],
+      correctIndex: 2,
+    ),
+
+    QuizQuestion(
+      question: 'Encryption in cloud security is used to:',
+      choices: [
+        'Reduce storage space',
+        'Convert data into a protected format',
+        'Increase network speed',
+        'Delete unused files automatically',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'User accounts and permissions are essential because they:',
+      question: 'Compliance in cloud computing ensures that:',
       choices: [
-        'Allow all users to access everything freely',
-        'Prevent system logs from recording activity',
-        'Protect system settings and user data from unauthorized access',
-        'Disable security features for convenience',
+        'Users can freely access all organizational data',
+        'Data is managed according to legal and industry standards',
+        'Cloud providers decide all internal company rules',
+        'Only free software is used in the cloud',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Why is virtualization important in cloud environments?',
+      choices: [
+        'It reduces the number of applications available',
+        'It prevents system scalability',
+        'It enables flexible and efficient use of physical hardware',
+        'It restricts the creation of new servers',
       ],
       correctIndex: 2,
     ),

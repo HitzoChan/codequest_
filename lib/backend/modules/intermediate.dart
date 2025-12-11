@@ -2,34 +2,34 @@ import '../course_models.dart';
 
 final List<Course> intermediateCourses = [
   Course(
-    courseId: 'intro_computing_intermediate_clean',
-    title: 'Introduction to Computing – Intermediate',
+    courseId: 'cloud_computing_intermediate_clean',
+    title: 'Cloud Computing – Intermediate',
     description:
-        'Intermediate module explaining how computer systems operate, the role of operating systems, software management, file organization, and system security.',
+        'Intermediate module covering virtualization, cloud storage systems, cloud networking, cloud security, compliance, and data protection.',
     difficultyLevel: 'Intermediate',
     modules: [
       Module(
-        moduleId: 'intro_computing_intermediate_ch1',
-        title: 'Computer Systems, Operating Systems, and Software Management',
+        moduleId: 'cloud_intermediate_ch1',
+        title: 'Virtualization, Cloud Storage, Networking, and Security',
         difficultyLevel: 'Intermediate',
         summary: '''
-This module discusses how computer systems function and how operating systems manage hardware, software, and user interactions.
+This module explains the technologies and practices that enable cloud computing environments.
 
 Topics include:
-• Components of a computer system and how they interact  
-• The operating system as the bridge between hardware, software, and users  
-• Types of operating systems including desktop, mobile, server, and embedded  
-• Software installation, configuration, updates, and resource allocation  
-• File management, storage concepts, and how data is organized for efficient access  
-• User accounts, permissions, and system security practices  
+• Virtualization concepts and how virtual machines operate  
+• Types of virtualization such as server, storage, and network virtualization  
+• Cloud storage systems including object, file, and block storage  
+• Cloud networking, virtual networks, and remote management tools  
+• Cloud security fundamentals including encryption, shared responsibility, and monitoring  
+• Compliance, data protection, and regulatory standards in cloud environments  
 
-This module helps learners understand how computing environments operate, how applications are managed, and how system resources remain secure and efficient.
+The module builds a deeper understanding of how cloud systems operate and remain secure and scalable.
 ''',
         content:
-            'An in-depth explanation of computer system components, operating system functions, software installation and updates, file organization methods, and the role of user accounts and security tools in protecting system resources.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=26QPDBe-NB8',
+            'A detailed discussion of virtualization technologies, cloud storage methods, cloud networking tools, and essential cloud security practices. It also covers compliance requirements, data protection, and the role of virtualization in building flexible, cost-efficient cloud infrastructures.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=Qt9lhzFhW_c',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=1KEfiB4hwqPkXiyYxQyNxs_rSVKE2QdDW',
+            'https://drive.google.com/uc?export=download&id=1pzcUCfTp1N94T8sqj_qqkjqFgiojCzPW',
       ),
     ],
   ),

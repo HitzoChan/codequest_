@@ -20,14 +20,14 @@ class QuizReviewDetailScreen extends StatelessWidget {
     final score = attempt['score'] as int? ?? 0;
 
     late final List<QuizQuestion> questions;
-    if (quizId == 'intro_computing_beginner_ch1') {
-      questions = BeginnerIntroComputingQuiz.questions;
-    } else if (quizId == 'intro_computing_intermediate_ch1') {
-      questions = IntermediateIntroComputingQuiz.questions;
-    } else if (quizId == 'intro_computing_advanced_ch1') {
-      questions = AdvancedIntroComputingQuiz.questions;
+    if (quizId == 'cloud_computing_beginner_ch1') {
+      questions = BeginnerCloudComputingQuiz.questions;
+    } else if (quizId == 'cloud_intermediate_ch1') {
+      questions = IntermediateCloudComputingQuiz.questions;
+    } else if (quizId == 'cloud_advanced_ch1') {
+      questions = AdvancedCloudComputingQuiz.questions;
     } else {
-      questions = BeginnerIntroComputingQuiz.questions;
+      questions = BeginnerCloudComputingQuiz.questions;
     }
 
     final optionDefault = const Color(0xFF0F3B5F);

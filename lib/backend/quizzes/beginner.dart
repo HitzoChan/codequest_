@@ -1,116 +1,116 @@
 import 'models.dart';
 
-class BeginnerIntroComputingQuiz {
+class BeginnerCloudComputingQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'Computing is best described as:',
+      question: 'Cloud computing allows users to access computing resources through:',
       choices: [
-        'The study of plants and animals',
-        'The use of computers to process information and solve problems',
-        'The repair of electronic devices',
-        'The design of artwork',
+        'Local hardware only',
+        'The internet',
+        'Physical storage devices',
+        'Offline applications',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Hardware refers to:',
+      question: 'One major benefit of cloud computing is that it:',
       choices: [
-        'The instructions that tell a computer what to do',
-        'The physical components of a computer system',
-        'The people who use a computer',
-        'The documents stored on a computer',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Which of the following is an example of system software?',
-      choices: [
-        'Video editing application',
-        'Mobile game',
-        'Operating system',
-        'Web browser extension',
+        'Requires installing all software manually',
+        'Eliminates all security requirements',
+        'Allows users to pay only for the resources they consume',
+        'Works only on desktop computers',
       ],
       correctIndex: 2,
     ),
 
     QuizQuestion(
-      question: 'Data becomes information when:',
+      question: 'Which characteristic of cloud computing allows users to access services anytime without IT assistance?',
       choices: [
-        'It is stored in a cabinet',
-        'It is processed and given meaning',
-        'It is copied multiple times',
-        'It is converted to graphics',
+        'Resource pooling',
+        'On-demand self-service',
+        'Hybrid networking',
+        'Data encryption',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A device such as a keyboard or touchscreen is used for:',
+      question: 'A public cloud is best described as:',
       choices: [
-        'Storage',
-        'Input',
-        'Output',
-        'Processing',
+        'A cloud environment used by only one organization',
+        'A cloud service hosted locally on personal hardware',
+        'A shared environment provided by third-party companies',
+        'A private backup storage device',
+      ],
+      correctIndex: 2,
+    ),
+
+    QuizQuestion(
+      question: 'Which deployment model combines public and private cloud features?',
+      choices: [
+        'Local cloud',
+        'Distributed cloud',
+        'Hybrid cloud',
+        'Exclusive cloud',
+      ],
+      correctIndex: 2,
+    ),
+
+    QuizQuestion(
+      question: 'Infrastructure as a Service (IaaS) provides users with:',
+      choices: [
+        'Fully developed software applications',
+        'A virtualized computing environment such as storage and servers',
+        'Only email and messaging tools',
+        'Pre-built gaming engines',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A computer displaying information through a monitor is performing:',
+      question: 'Which service model is used when accessing applications through a web browser without installation?',
       choices: [
-        'Input',
-        'Output',
-        'Data cleaning',
-        'Searching',
+        'IaaS',
+        'PaaS',
+        'SaaS',
+        'NaaS',
+      ],
+      correctIndex: 2,
+    ),
+
+    QuizQuestion(
+      question: 'A private cloud is often chosen because it offers:',
+      choices: [
+        'Shared access with all users on the internet',
+        'No maintenance and no customization',
+        'Greater control and enhanced security',
+        'Free unlimited storage',
+      ],
+      correctIndex: 2,
+    ),
+
+    QuizQuestion(
+      question: 'Cloud computing supports collaboration because it:',
+      choices: [
+        'Restricts file sharing',
+        'Allows users to access shared files from anywhere',
+        'Requires users to work on the same device',
+        'Limits communication tools',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Personal computers such as laptops are designed for:',
+      question: 'Which of the following is a common real-world use of cloud computing?',
       choices: [
-        'Large scientific simulations',
-        'Individual, everyday use',
-        'Managing network servers',
-        'Only gaming purposes',
+        'Manual filing systems',
+        'Paper-based communication',
+        'Streaming services and online storage',
+        'Analog telephone systems',
       ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Which type of computer is used to host websites and manage network resources?',
-      choices: [
-        'Mobile device',
-        'Supercomputer',
-        'Personal computer',
-        'Server',
-      ],
-      correctIndex: 3,
-    ),
-
-    QuizQuestion(
-      question: 'Storage devices such as SSDs and cloud storage are used to:',
-      choices: [
-        'Display information visibly',
-        'Store data for future use',
-        'Increase internet speed',
-        'Print documents',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Why is computing important in society?',
-      choices: [
-        'It replaces the need for communication',
-        'It supports business operations, education, healthcare, and daily life',
-        'It is used only for entertainment',
-        'It reduces the need for electricity',
-      ],
-      correctIndex: 1,
+      correctIndex: 2,
     ),
 
   ];

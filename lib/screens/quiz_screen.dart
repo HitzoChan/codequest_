@@ -33,14 +33,14 @@ class _QuizScreenState extends State<QuizScreen> with SingleTickerProviderStateM
     startTime = DateTime.now();
 
     // Load questions based on moduleId
-    if (moduleId == 'intro_computing_beginner_ch1') {
-      questions = BeginnerIntroComputingQuiz.questions;
-    } else if (moduleId == 'intro_computing_intermediate_ch1') {
-      questions = IntermediateIntroComputingQuiz.questions;
-    } else if (moduleId == 'intro_computing_advanced_ch1') {
-      questions = AdvancedIntroComputingQuiz.questions;
+    if (moduleId == 'cloud_computing_beginner_ch1') {
+      questions = BeginnerCloudComputingQuiz.questions;
+    } else if (moduleId == 'cloud_computing_intermediate_ch1') {
+      questions = IntermediateCloudComputingQuiz.questions;
+    } else if (moduleId == 'cloud_computing_advanced_ch1') {
+      questions = AdvancedCloudComputingQuiz.questions;
     } else {
-      questions = BeginnerIntroComputingQuiz.questions;
+      questions = BeginnerCloudComputingQuiz.questions;
     }
 
     answers = List<int?>.filled(questions.length, null);
