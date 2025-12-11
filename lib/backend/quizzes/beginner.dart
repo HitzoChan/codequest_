@@ -1,116 +1,116 @@
 import 'models.dart';
 
-class BeginnerCloudComputingQuiz {
+class BeginnerInformationManagementQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'Cloud computing allows users to access computing resources through:',
+      question: 'Information Management primarily involves the process of:',
       choices: [
-        'Local hardware only',
-        'The internet',
-        'Physical storage devices',
-        'Offline applications',
+        'Designing computer hardware',
+        'Collecting, organizing, and using information',
+        'Programming applications',
+        'Creating animations',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'One major benefit of cloud computing is that it:',
+      question: 'Which type of information supports day-to-day organizational activities?',
       choices: [
-        'Requires installing all software manually',
-        'Eliminates all security requirements',
-        'Allows users to pay only for the resources they consume',
-        'Works only on desktop computers',
+        'Strategic information',
+        'Tactical information',
+        'Operational information',
+        'Historical information',
       ],
       correctIndex: 2,
     ),
 
     QuizQuestion(
-      question: 'Which characteristic of cloud computing allows users to access services anytime without IT assistance?',
+      question: 'Strategic information is mainly used for:',
       choices: [
-        'Resource pooling',
-        'On-demand self-service',
-        'Hybrid networking',
-        'Data encryption',
+        'Daily tasks',
+        'Long-term decision making',
+        'Checking inventory',
+        'Editing documents',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A public cloud is best described as:',
+      question: 'Which stage of the Information Life Cycle involves deleting outdated information?',
       choices: [
-        'A cloud environment used by only one organization',
-        'A cloud service hosted locally on personal hardware',
-        'A shared environment provided by third-party companies',
-        'A private backup storage device',
+        'Storage',
+        'Use',
+        'Creation',
+        'Disposal',
       ],
-      correctIndex: 2,
+      correctIndex: 3,
     ),
 
     QuizQuestion(
-      question: 'Which deployment model combines public and private cloud features?',
+      question: 'Information is considered useful only if it is:',
       choices: [
-        'Local cloud',
-        'Distributed cloud',
-        'Hybrid cloud',
-        'Exclusive cloud',
-      ],
-      correctIndex: 2,
-    ),
-
-    QuizQuestion(
-      question: 'Infrastructure as a Service (IaaS) provides users with:',
-      choices: [
-        'Fully developed software applications',
-        'A virtualized computing environment such as storage and servers',
-        'Only email and messaging tools',
-        'Pre-built gaming engines',
+        'Colorful and attractive',
+        'Accurate and timely',
+        'Difficult to access',
+        'Expensive to produce',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Which service model is used when accessing applications through a web browser without installation?',
+      question: 'Which characteristic of good information ensures that data is not outdated?',
       choices: [
-        'IaaS',
-        'PaaS',
-        'SaaS',
-        'NaaS',
+        'Consistency',
+        'Completeness',
+        'Timeliness',
+        'Format',
       ],
       correctIndex: 2,
     ),
 
     QuizQuestion(
-      question: 'A private cloud is often chosen because it offers:',
+      question: 'Which component of an information system refers to the people who use it?',
       choices: [
-        'Shared access with all users on the internet',
-        'No maintenance and no customization',
-        'Greater control and enhanced security',
-        'Free unlimited storage',
+        'Software',
+        'Procedures',
+        'Hardware',
+        'Users',
       ],
-      correctIndex: 2,
+      correctIndex: 3,
     ),
 
     QuizQuestion(
-      question: 'Cloud computing supports collaboration because it:',
+      question: 'A database or cloud storage is an example of which life cycle stage?',
       choices: [
-        'Restricts file sharing',
-        'Allows users to access shared files from anywhere',
-        'Requires users to work on the same device',
-        'Limits communication tools',
+        'Storage',
+        'Maintenance',
+        'Use',
+        'Disposal',
+      ],
+      correctIndex: 0,
+    ),
+
+    QuizQuestion(
+      question: 'Which system component includes physical devices such as computers and servers?',
+      choices: [
+        'Hardware',
+        'Software',
+        'Data',
+        'Procedures',
+      ],
+      correctIndex: 0,
+    ),
+
+    QuizQuestion(
+      question: 'Why is Information Management important for organizations?',
+      choices: [
+        'It makes websites load faster',
+        'It ensures accurate decision-making and efficient operations',
+        'It replaces all human workers',
+        'It eliminates the need for technology',
       ],
       correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Which of the following is a common real-world use of cloud computing?',
-      choices: [
-        'Manual filing systems',
-        'Paper-based communication',
-        'Streaming services and online storage',
-        'Analog telephone systems',
-      ],
-      correctIndex: 2,
     ),
 
   ];

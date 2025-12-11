@@ -2,34 +2,34 @@
 
 final List<Course> beginnerCourses = [
   Course(
-    courseId: 'cloud_computing_beginner_clean',
-    title: 'Cloud Computing – Beginner',
+    courseId: 'info_mgmt_beginner_clean',
+    title: 'Information Management – Beginner',
     description:
-        'Beginner module introducing the fundamentals of cloud computing, characteristics, deployment models, service models, advantages, and common uses.',
+        'Beginner module introducing information management concepts, types of information, information life cycle, characteristics of good information, and components of information systems.',
     difficultyLevel: 'Beginner',
     modules: [
       Module(
-        moduleId: 'cloud_computing_beginner_ch1',
-        title: 'Introduction to Cloud Computing',
+        moduleId: 'info_mgmt_beginner_ch1',
+        title: 'Introduction to Information Management',
         difficultyLevel: 'Beginner',
         summary: '''
-This module introduces the essential concepts of cloud computing and how modern organizations use cloud-based technologies.
+This module introduces the fundamental concepts of Information Management and how organizations handle information effectively.
 
 Topics include:
-• What cloud computing is and how resources are delivered over the internet  
-• Key characteristics such as on-demand self-service, scalability, resource pooling, and measured service  
-• Cloud deployment models including public, private, and hybrid cloud  
-• Primary cloud service models: IaaS, PaaS, and SaaS  
-• Advantages such as cost efficiency, flexibility, collaboration, and enhanced security  
-• Common uses across business, education, media, and everyday digital services  
+• What Information Management is and why organizations rely on it  
+• Types of information: operational, tactical, and strategic  
+• The Information Life Cycle: creation, storage, use, maintenance, and disposal  
+• Characteristics of good information such as accuracy, timeliness, completeness, and relevance  
+• Components of an information system including hardware, software, people, procedures, and data  
+• How effective information management supports decision-making and improves organizational performance  
 
-This module provides a solid foundation for understanding how cloud services support modern computing environments.
+This module provides a foundation for understanding how information flows and is managed in modern workplaces.
 ''',
         content:
-            'A clear explanation of cloud computing concepts, essential characteristics, deployment models, service layers, benefits, and real-world applications used across different industries and daily digital activities.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=M988_fsOSWo',
+            'A beginner-friendly overview of how information is collected, organized, stored, and used within organizations. It explains information types, life cycle stages, qualities of useful information, and the key elements that make up an information system.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=AChfIfQ4gjw',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=1_daLCrTUxlorfvgKsQP3Ivg6h10P8YVB',
+            'https://drive.google.com/uc?export=download&id=1Lwlpl3AkNqmMdzerDBvR-w9il6y83ouf',
       ),
     ],
   ),
