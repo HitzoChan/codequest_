@@ -2,35 +2,35 @@
 
 final List<Course> beginnerCourses = [
   Course(
-    courseId: 'integrative_programming_beginner_clean',
-    title: 'Integrative Programming – Beginner',
+    courseId: 'css_beginner_clean',
+    title: 'Computer Systems Servicing – Beginner',
     description:
-        'Beginner module introducing integrative programming concepts, programming paradigms, components of integrated applications, APIs, libraries, and data formats.',
+        'Beginner module introducing computer components, peripherals, safety procedures, servicing tools, and preventive maintenance.',
     difficultyLevel: 'Beginner',
     modules: [
       Module(
-        moduleId: 'ip_beginner_ch1',
-        title: 'Introduction to Integrative Programming',
+        moduleId: 'css_beginner_ch1',
+        title: 'Introduction to Computer Systems Servicing',
         difficultyLevel: 'Beginner',
         summary: '''
-This module introduces the core ideas of integrative programming and why modern applications rely on multiple languages, tools, and components working together.
+This module introduces the foundational concepts of Computer Systems Servicing (CSS), focusing on how computer hardware and peripherals function and how technicians maintain and repair systems.
 
 Topics include:
-• What integrative programming is and why applications often use multiple languages and technologies  
-• Programming paradigms such as procedural, object-oriented, and event-driven programming  
-• Components of an integrated application including user interface, application logic, and data storage  
-• APIs for communication between applications and accessing external services  
-• External libraries that provide ready-made functions to simplify development  
-• Data formats like JSON and XML used for exchanging information across systems  
-• Fundamental principles of software integration and its importance in modern development  
+• Introduction to computer systems servicing and the role of a technician  
+• Major internal components: CPU, RAM, storage devices, motherboard, expansion cards  
+• Peripheral devices and their functions such as input, output, and storage peripherals  
+• Basic servicing tools including screwdrivers, anti-static wrist straps, and cable testers  
+• Essential safety practices like disconnecting power and preventing electrostatic discharge  
+• Preventive maintenance: cleaning components, checking cables, updating drivers, and ensuring ventilation  
+• Importance of CSS fundamentals for troubleshooting, upgrades, and safe hardware handling  
 
-This module provides a solid foundation for understanding how different technologies come together to create complete software solutions.
+This module prepares learners to identify components, follow safety procedures, and perform basic servicing tasks confidently.
 ''',
         content:
-            'A beginner-friendly explanation of multiple programming paradigms, integration layers, APIs, external libraries, and standardized data formats used in modern software development. It highlights the importance of combining technologies to build flexible and scalable applications.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=eIrMbAQSU34',
+            'A beginner-focused explanation of computer components, peripherals, servicing tools, and safety procedures. It covers the technician’s responsibilities, proper tool usage, and the importance of preventive maintenance in keeping computer systems reliable and efficient.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=qfUZBKDh9BY',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=16OfHUjSid4YzRpwy23ImOu1SvuQLU5Kz',
+            'https://drive.google.com/uc?export=download&id=147Dh5tlwYp-jKsgVwAA6E9wgrjaI4LqR',
       ),
     ],
   ),

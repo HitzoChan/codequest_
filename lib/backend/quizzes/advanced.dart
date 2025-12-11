@@ -1,114 +1,114 @@
 import 'models.dart';
 
-class AdvancedIntegrativeProgrammingQuiz {
+class AdvancedCSSQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'Advanced integration architecture focuses mainly on:',
+      question: 'Advanced hardware diagnostics require technicians to:',
       choices: [
-        'Designing systems that operate only on a single device',
-        'Ensuring diverse components communicate efficiently and scale effectively',
-        'Eliminating the need for distributed systems',
-        'Limiting applications to one programming language',
+        'Rely only on basic visual inspection',
+        'Use specialized tools to identify deeper component issues',
+        'Replace all parts without testing',
+        'Avoid using diagnostic software',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Microservices differ from monolithic systems because they:',
+      question: 'A POST card analyzer is used to:',
       choices: [
-        'Must be deployed all at once',
-        'Are small, independent components that can be updated separately',
-        'Cannot communicate with other services',
-        'Are stored only in local machines',
+        'Improve Wi-Fi signal strength',
+        'Display diagnostic codes during system startup',
+        'Clean dust from components',
+        'Format storage drives',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Distributed systems improve reliability because they:',
+      question: 'When upgrading a CPU, the technician must first evaluate:',
       choices: [
-        'Rely on one server to handle all tasks',
-        'Spread processing across multiple machines or environments',
-        'Remove redundancy between services',
-        'Disable communication between components',
+        'The number of USB ports available',
+        'Whether the motherboard socket and chipset support the processor',
+        'The color of the heatsink',
+        'The size of the computer case',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'API management is important because it:',
+      question: 'Network troubleshooting often begins with:',
       choices: [
-        'Prevents the monitoring of API usage',
-        'Controls and secures how APIs are accessed and consumed',
-        'Removes the need for documentation',
-        'Limits applications to internal communication only',
+        'Replacing the motherboard',
+        'Checking IP settings and basic connectivity',
+        'Formatting the storage drive',
+        'Uninstalling all drivers',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Orchestration in modern systems refers to:',
+      question: 'A DNS configuration problem typically causes:',
       choices: [
-        'Manually configuring each service',
-        'Automatically coordinating interactions among services',
-        'Preventing services from communicating',
-        'Storing all application data',
+        'Inability to access websites by name',
+        'Overheating of internal components',
+        'Failure of the BIOS to load',
+        'The keyboard to stop responding',
+      ],
+      correctIndex: 0,
+    ),
+
+    QuizQuestion(
+      question: 'Implementing system security includes tasks such as:',
+      choices: [
+        'Disabling all updates permanently',
+        'Installing antivirus software and configuring firewalls',
+        'Removing all system passwords',
+        'Allowing unrestricted user access',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Event-driven integration allows systems to:',
+      question: 'BIOS/UEFI password protection is used to:',
       choices: [
-        'Rely only on direct request–response communication',
-        'Communicate through events that trigger actions in other services',
-        'Ignore real-time data changes',
-        'Function without messaging platforms',
+        'Slow down system performance',
+        'Prevent unauthorized access to firmware settings',
+        'Remove malware from the system',
+        'Delete partitions automatically',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Containerization improves integration by:',
+      question: 'Encryption helps secure a system by:',
       choices: [
-        'Creating inconsistent environments across different machines',
-        'Packaging applications and dependencies in portable, isolated units',
-        'Requiring physical servers for deployment',
-        'Preventing the use of CI/CD pipelines',
+        'Increasing CPU temperature',
+        'Converting data into unreadable form without a key',
+        'Deleting all user files',
+        'Blocking all network traffic',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'CI/CD pipelines are used to:',
+      question: 'Preventive maintenance documentation is important because it:',
       choices: [
-        'Slow down software development',
-        'Automate integration, testing, and deployment',
-        'Replace microservices',
-        'Disable version control systems',
+        'Makes systems last longer without checks',
+        'Tracks maintenance activities and recurring issues',
+        'Replaces the need for diagnostics',
+        'Prevents all hardware failures permanently',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A zero-trust security approach assumes that:',
+      question: 'A well-planned preventive maintenance schedule should:',
       choices: [
-        'All users and systems are trusted automatically',
-        'Verification is required for every request, internal or external',
-        'Authentication is optional in integrated systems',
-        'API traffic does not need encryption',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Security in integrated systems is critical because:',
-      choices: [
-        'Integrated applications never exchange sensitive data',
-        'Multiple connected services increase potential attack points',
-        'Microservices eliminate all security concerns',
-        'Event-driven systems cannot be compromised',
+        'Be performed only when errors occur',
+        'Include routine inspections, updates, and cleaning',
+        'Ignore environmental conditions',
+        'Only apply to software components',
       ],
       correctIndex: 1,
     ),

@@ -1,116 +1,116 @@
 import 'models.dart';
 
-class BeginnerIntegrativeProgrammingQuiz {
+class BeginnerCSSQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'Integrative programming is best defined as:',
+      question: 'Computer Systems Servicing primarily involves:',
       choices: [
-        'Writing programs using only one language',
-        'Combining multiple languages, tools, and technologies to build applications',
-        'Using only hardware to perform tasks',
-        'Creating programs with no external components',
+        'Designing software applications',
+        'Maintaining, repairing, and configuring computer hardware and peripherals',
+        'Creating video game graphics',
+        'Operating social media applications',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'The procedural programming paradigm focuses on:',
+      question: 'The CPU (Central Processing Unit) is best described as:',
       choices: [
-        'Objects and classes',
-        'User-generated events',
-        'Step-by-step instructions and functions',
-        'Multimedia content only',
+        'A device for storing long-term files',
+        'The component that executes instructions and processes data',
+        'A backup power source',
+        'A type of external peripheral',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'RAM (Random Access Memory) is used to:',
+      choices: [
+        'Store temporary data needed while programs are running',
+        'Store files permanently',
+        'Display output to the user',
+        'Control the power supply',
+      ],
+      correctIndex: 0,
+    ),
+
+    QuizQuestion(
+      question: 'Which of the following is an example of an input device?',
+      choices: [
+        'Monitor',
+        'Printer',
+        'Keyboard',
+        'Speaker',
       ],
       correctIndex: 2,
     ),
 
     QuizQuestion(
-      question: 'Object-oriented programming organizes code around:',
+      question: 'An anti-static wrist strap is used to:',
       choices: [
-        'Randomly assigned variables',
-        'Linear sequences of commands',
-        'Objects that combine data and behavior',
-        'Hardware specifications',
-      ],
-      correctIndex: 2,
-    ),
-
-    QuizQuestion(
-      question: 'Event-driven programming is commonly used in:',
-      choices: [
-        'Server cooling systems',
-        'Graphical user interfaces that respond to user actions',
-        'Mathematical theory only',
-        'Systems with no interaction',
+        'Increase computer speed',
+        'Prevent electrostatic discharge from damaging components',
+        'Secure cables inside the system',
+        'Test network connectivity',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'The user interface in an integrated application is responsible for:',
+      question: 'Before opening a computer system for servicing, the technician should:',
       choices: [
-        'Storing data permanently',
-        'Handling processes behind the scenes',
-        'Allowing users to interact with the software',
-        'Managing network devices',
-      ],
-      correctIndex: 2,
-    ),
-
-    QuizQuestion(
-      question: 'The part of an integrated application that handles calculations and system decisions is the:',
-      choices: [
-        'User interface',
-        'Application logic layer',
-        'Storage hardware',
-        'External network',
+        'Install new software',
+        'Disconnect the power source',
+        'Increase screen brightness',
+        'Remove all peripherals',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'APIs are used in software development because they:',
+      question: 'A cable tester is used to:',
       choices: [
-        'Prevent data from being transmitted',
-        'Allow applications to communicate and access external services',
-        'Replace all internal functions',
-        'Are required only in gaming applications',
+        'Measure CPU temperature',
+        'Test whether network cables are functioning correctly',
+        'Install software drivers',
+        'Clean internal components',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'External libraries help developers by:',
+      question: 'Preventive maintenance is important because it:',
       choices: [
-        'Forcing them to write all code manually',
-        'Providing ready-made functions that simplify tasks',
-        'Removing programming paradigms',
-        'Eliminating the need for data formats',
+        'Makes the computer run slower',
+        'Prevents overheating, reduces failures, and extends hardware lifespan',
+        'Requires replacing components frequently',
+        'Eliminates the need for safety procedures',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'JSON and XML are commonly used because they:',
+      question: 'Cleaning dust from computer components helps prevent:',
       choices: [
-        'Are incompatible with most programming languages',
-        'Provide standardized structures for exchanging data',
-        'Can only be read by one specific system',
-        'Replace the need for integration',
+        'Faster boot time',
+        'System overheating and hardware damage',
+        'Software errors',
+        'The need for peripherals',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Software integration is important because it:',
+      question: 'Device drivers are needed because they:',
       choices: [
-        'Separates systems permanently',
-        'Increases redundancy across programs',
-        'Connects components so they function as one unified application',
-        'Prevents systems from sharing information',
+        'Store user files',
+        'Allow the operating system to communicate with hardware devices',
+        'Replace the BIOS settings',
+        'Remove viruses from the computer',
       ],
-      correctIndex: 2,
+      correctIndex: 1,
     ),
 
   ];
