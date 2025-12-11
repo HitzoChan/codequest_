@@ -1,116 +1,116 @@
 import 'models.dart';
 
-class AdvancedProgrammingQuiz {
+class AdvancedIntegrativeProgrammingQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'Object-oriented programming helps manage complex programs by:',
+      question: 'Advanced integration architecture focuses mainly on:',
       choices: [
-        'Removing the need for functions',
-        'Structuring software around objects that combine data and behavior',
-        'Storing all program data in one variable',
-        'Only using low-level machine instructions',
+        'Designing systems that operate only on a single device',
+        'Ensuring diverse components communicate efficiently and scale effectively',
+        'Eliminating the need for distributed systems',
+        'Limiting applications to one programming language',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Encapsulation improves program reliability by:',
+      question: 'Microservices differ from monolithic systems because they:',
       choices: [
-        'Allowing unrestricted access to all variables',
-        'Hiding internal details and exposing only necessary operations',
-        'Removing methods from a class',
-        'Preventing object creation',
+        'Must be deployed all at once',
+        'Are small, independent components that can be updated separately',
+        'Cannot communicate with other services',
+        'Are stored only in local machines',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Inheritance is the OOP principle that allows a class to:',
+      question: 'Distributed systems improve reliability because they:',
       choices: [
-        'Hide all its attributes',
-        'Acquire properties and methods from another class',
-        'Execute multiple tasks at once',
-        'Replace recursion completely',
+        'Rely on one server to handle all tasks',
+        'Spread processing across multiple machines or environments',
+        'Remove redundancy between services',
+        'Disable communication between components',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Polymorphism enables a method to:',
+      question: 'API management is important because it:',
       choices: [
-        'Only work with one specific object',
-        'Behave differently depending on the object calling it',
-        'Store multiple data types at once',
-        'Block inheritance from occurring',
+        'Prevents the monitoring of API usage',
+        'Controls and secures how APIs are accessed and consumed',
+        'Removes the need for documentation',
+        'Limits applications to internal communication only',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Exception handling is important because it:',
+      question: 'Orchestration in modern systems refers to:',
       choices: [
-        'Removes the need for debugging',
-        'Prevents all user errors',
-        'Allows programs to respond safely to unexpected conditions',
-        'Automatically fixes all logic mistakes',
-      ],
-      correctIndex: 2,
-    ),
-
-    QuizQuestion(
-      question: 'A recursive function is one that:',
-      choices: [
-        'Calls itself to solve smaller parts of a problem',
-        'Must contain no base case',
-        'Cannot use parameters',
-        'Runs only once',
-      ],
-      correctIndex: 0,
-    ),
-
-    QuizQuestion(
-      question: 'The base case in recursion:',
-      choices: [
-        'Causes infinite repetition',
-        'Stops the recursive calls and prevents endless loops',
-        'Deletes the function from memory',
-        'Removes parameters from the call',
+        'Manually configuring each service',
+        'Automatically coordinating interactions among services',
+        'Preventing services from communicating',
+        'Storing all application data',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A stack is a data structure that follows which principle?',
+      question: 'Event-driven integration allows systems to:',
       choices: [
-        'First-in, first-out (FIFO)',
-        'Last-in, first-out (LIFO)',
-        'Largest-value priority',
-        'Circular indexing only',
+        'Rely only on direct request–response communication',
+        'Communicate through events that trigger actions in other services',
+        'Ignore real-time data changes',
+        'Function without messaging platforms',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A queue is most useful for tasks that require:',
+      question: 'Containerization improves integration by:',
       choices: [
-        'Processing the newest item first',
-        'Reversing elements frequently',
-        'Handling items in the order they arrive',
-        'Calling functions recursively',
+        'Creating inconsistent environments across different machines',
+        'Packaging applications and dependencies in portable, isolated units',
+        'Requiring physical servers for deployment',
+        'Preventing the use of CI/CD pipelines',
       ],
-      correctIndex: 2,
+      correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Linked lists differ from arrays because they:',
+      question: 'CI/CD pipelines are used to:',
       choices: [
-        'Store elements in connected nodes rather than contiguous memory',
-        'Cannot store more than three values',
-        'Require multi-level inheritance',
-        'Are only used in graphical applications',
+        'Slow down software development',
+        'Automate integration, testing, and deployment',
+        'Replace microservices',
+        'Disable version control systems',
       ],
-      correctIndex: 0,
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'A zero-trust security approach assumes that:',
+      choices: [
+        'All users and systems are trusted automatically',
+        'Verification is required for every request, internal or external',
+        'Authentication is optional in integrated systems',
+        'API traffic does not need encryption',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Security in integrated systems is critical because:',
+      choices: [
+        'Integrated applications never exchange sensitive data',
+        'Multiple connected services increase potential attack points',
+        'Microservices eliminate all security concerns',
+        'Event-driven systems cannot be compromised',
+      ],
+      correctIndex: 1,
     ),
 
   ];

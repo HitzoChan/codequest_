@@ -1,114 +1,114 @@
 import 'models.dart';
 
-class IntermediateProgrammingQuiz {
+class IntermediateIntegrativeProgrammingQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'Control structures are important in programming because they:',
+      question: 'Programming integration techniques are important because they:',
       choices: [
-        'Store data permanently',
-        'Determine the logical flow and decision-making of a program',
-        'Replace the need for functions',
-        'Automatically fix syntax errors',
+        'Limit applications to one language only',
+        'Allow different technologies to work together within an application',
+        'Prevent systems from sharing data',
+        'Remove the need for a database',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Nested conditionals are used when a program must:',
+      question: 'Scripting languages such as Python or JavaScript help integration by:',
       choices: [
-        'Execute only one fixed outcome',
-        'Store multiple values in a single variable',
-        'Make more complex decisions based on multiple conditions',
-        'Stop immediately after execution',
+        'Replacing all compiled languages',
+        'Automating tasks and connecting components',
+        'Removing the need for APIs',
+        'Preventing background processes',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'A key advantage of automation in integration is that it:',
+      choices: [
+        'Increases manual operations',
+        'Introduces more repeated errors',
+        'Reduces errors and ensures consistency',
+        'Eliminates system logic',
       ],
       correctIndex: 2,
     ),
 
     QuizQuestion(
-      question: 'A loop is most useful when:',
+      question: 'RESTful APIs commonly use:',
       choices: [
-        'A task needs to be repeated many times',
-        'Only one value must be printed',
-        'The program must not allow repetition',
-        'The program contains no variables',
-      ],
-      correctIndex: 0,
-    ),
-
-    QuizQuestion(
-      question: 'Modular programming improves code because it:',
-      choices: [
-        'Hides all program logic',
-        'Groups tasks into reusable functions or modules',
-        'Prevents programmers from using parameters',
-        'Eliminates the need for debugging',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'A function parameter allows a program to:',
-      choices: [
-        'Delete variables automatically',
-        'Send values into a function for processing',
-        'Block interaction with other modules',
-        'Close the program after execution',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Arrays are used to:',
-      choices: [
-        'Store a single value only',
-        'Replace the need for functions',
-        'Store multiple related values under one variable name',
-        'Prevent loops from executing',
+        'Messaging queues',
+        'Hexadecimal encoding only',
+        'Standard HTTP methods for communication',
+        'Only binary data formats',
       ],
       correctIndex: 2,
     ),
 
     QuizQuestion(
-      question: 'Accessing the third element of an array usually requires:',
+      question: 'JSON and XML are used in integration because they:',
       choices: [
-        'Using index 3',
-        'Using index 0',
-        'Using index 2',
-        'Using index 1',
-      ],
-      correctIndex: 2,
-    ),
-
-    QuizQuestion(
-      question: 'File handling is important because it:',
-      choices: [
-        'Allows data to be saved and retrieved outside the program’s temporary memory',
-        'Prevents programs from storing information',
-        'Eliminates the need for variables',
-        'Automatically creates backup files',
-      ],
-      correctIndex: 0,
-    ),
-
-    QuizQuestion(
-      question: 'The first step before reading or writing to a file is to:',
-      choices: [
-        'Delete the file',
-        'Open the file using the correct mode',
-        'Run a loop',
-        'Search for array values',
+        'Are incompatible with modern programming languages',
+        'Provide structured and widely accepted data formats',
+        'Replace the need for scripting',
+        'Only work in desktop applications',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Combining arrays, loops, functions, and file handling allows:',
+      question: 'Asynchronous messaging allows systems to:',
       choices: [
-        'Only simple programs with limited features',
-        'Programs that cannot store data',
-        'More complex and efficient solutions to real-world problems',
-        'Removal of all control structures',
+        'Communicate only when both parties are online',
+        'Exchange data without requiring simultaneous availability',
+        'Remove middleware layers',
+        'Always produce immediate responses',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Middleware is best described as:',
+      choices: [
+        'A hardware device for storing backups',
+        'Software that enables communication between independent systems',
+        'A programming language for GUI design',
+        'A type of optical storage',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'API gateways help integration by:',
+      choices: [
+        'Limiting access to only one user',
+        'Managing and securing access to multiple APIs',
+        'Replacing all application servers',
+        'Storing database records',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'SOAP web services are typically used when:',
+      choices: [
+        'Only lightweight communication is needed',
+        'Security and strict communication rules are required',
+        'Data must always be sent in JSON format',
+        'Systems operate without networks',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Effective error handling in integration ensures that systems:',
+      choices: [
+        'Fail completely when issues occur',
+        'Respond unpredictably to communication problems',
+        'Detect, log, and recover from failures',
+        'Ignore communication failures',
       ],
       correctIndex: 2,
     ),

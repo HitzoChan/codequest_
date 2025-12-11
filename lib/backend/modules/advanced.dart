@@ -2,34 +2,37 @@ import '../course_models.dart';
 
 final List<Course> advancedCourses = [
   Course(
-    courseId: 'programming_advanced_clean',
-    title: 'Computer Programming – Advanced',
+    courseId: 'integrative_programming_advanced_clean',
+    title: 'Integrative Programming – Advanced',
     description:
-        'Advanced module covering OOP principles, class design, exception handling, recursion, and introductory data structures for building scalable software.',
+        'Advanced module covering integration architectures, microservices, distributed systems, API management, event-driven design, containerization, CI/CD pipelines, and security.',
     difficultyLevel: 'Advanced',
     modules: [
       Module(
-        moduleId: 'programming_advanced_ch1',
-        title: 'OOP Principles, Exception Handling, Recursion, and Data Structures',
+        moduleId: 'ip_advanced_ch1',
+        title: 'Advanced Integration Architecture & Enterprise-Scale Systems',
         difficultyLevel: 'Advanced',
         summary: '''
-This module explores advanced programming concepts used to design structured, efficient, and scalable software systems.
+This module explores modern enterprise integration concepts and technologies used to build scalable, distributed, and secure applications.
 
 Topics include:
-• Object-oriented programming (OOP) concepts including encapsulation, inheritance, polymorphism, and abstraction  
-• Class and object design including constructors, method design, and class relationships  
-• Exception handling for managing unexpected errors and improving program reliability  
-• Recursion as a problem-solving technique with base cases, recursive calls, and algorithmic thinking  
-• Introduction to data structures including stacks, queues, and linked lists  
-• How these concepts support modular, maintainable, and real-world software solutions  
+• Advanced integration architecture and how large systems connect diverse services  
+• Microservices design: independent, modular services communicating via lightweight APIs  
+• Distributed systems for reliability, scalability, and high availability  
+• API management for securing, monitoring, and controlling API consumption  
+• Orchestration tools for automating service interactions and workflows  
+• Event-driven integration using real-time event triggers and messaging platforms  
+• Containerization using Docker/Kubernetes for consistent deployment  
+• CI/CD pipelines for automated testing, integration, and delivery  
+• Security approaches including authentication, authorization, encryption, and zero-trust principles  
 
-This module prepares learners for higher-level development and complex programming challenges.
+This module prepares learners for developing, managing, and securing large-scale integrated applications.
 ''',
         content:
-            'A detailed exploration of OOP principles, class structures, exception-handling mechanisms, and recursion as a technique for solving hierarchical and repetitive problems. The module also introduces essential data structures like stacks, queues, and linked lists to enhance program organization and efficiency.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=pTB0EiLXUC8',
+            'A comprehensive discussion on advanced integration models, microservices, distributed architectures, API management, orchestration, event-driven systems, containerization, deployment pipelines, and enterprise security. The module emphasizes scalability, automation, and resilience in modern integrated applications.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=1xo-0gCVhTU',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=1n1A0ASRYmYElAdBuOFhdAuCMLBHtRFBz',
+            'https://drive.google.com/uc?export=download&id=1CZPUufm853xJvQaheF2pp1MeM5vvUKhA',
       ),
     ],
   ),

@@ -1,116 +1,116 @@
 import 'models.dart';
 
-class BeginnerProgrammingQuiz {
+class BeginnerIntegrativeProgrammingQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'Computer programming is best described as:',
+      question: 'Integrative programming is best defined as:',
       choices: [
-        'Telling a computer what to do through written instructions',
-        'Designing hardware components',
-        'Creating only mobile applications',
-        'Running programs without writing code',
-      ],
-      correctIndex: 0,
-    ),
-
-    QuizQuestion(
-      question: 'A programming language’s syntax refers to:',
-      choices: [
-        'The speed at which a program runs',
-        'The rules and structure for writing valid code',
-        'The physical components of a computer',
-        'The amount of memory used by a program',
+        'Writing programs using only one language',
+        'Combining multiple languages, tools, and technologies to build applications',
+        'Using only hardware to perform tasks',
+        'Creating programs with no external components',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'High-level programming languages are:',
+      question: 'The procedural programming paradigm focuses on:',
       choices: [
-        'Difficult for humans to read',
-        'Closer to machine code',
-        'Easier to understand and write than low-level languages',
-        'Used only for hardware control',
+        'Objects and classes',
+        'User-generated events',
+        'Step-by-step instructions and functions',
+        'Multimedia content only',
       ],
       correctIndex: 2,
     ),
 
     QuizQuestion(
-      question: 'A variable in programming is used to:',
+      question: 'Object-oriented programming organizes code around:',
       choices: [
-        'Store data that may change during program execution',
-        'Design the appearance of a web page',
-        'Control the speed of the computer',
-        'Modify the hardware of the system',
+        'Randomly assigned variables',
+        'Linear sequences of commands',
+        'Objects that combine data and behavior',
+        'Hardware specifications',
       ],
-      correctIndex: 0,
+      correctIndex: 2,
     ),
 
     QuizQuestion(
-      question: 'Data types are important because they:',
+      question: 'Event-driven programming is commonly used in:',
       choices: [
-        'Determine the physical storage device to use',
-        'Indicate what kind of data a variable can hold',
-        'Remove the need for variables',
-        'Automatically fix syntax errors',
+        'Server cooling systems',
+        'Graphical user interfaces that respond to user actions',
+        'Mathematical theory only',
+        'Systems with no interaction',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Conditional statements in programming allow the program to:',
+      question: 'The user interface in an integrated application is responsible for:',
       choices: [
-        'Repeat tasks automatically',
-        'Make decisions based on specific conditions',
-        'Display only text output',
-        'Ignore user input',
+        'Storing data permanently',
+        'Handling processes behind the scenes',
+        'Allowing users to interact with the software',
+        'Managing network devices',
+      ],
+      correctIndex: 2,
+    ),
+
+    QuizQuestion(
+      question: 'The part of an integrated application that handles calculations and system decisions is the:',
+      choices: [
+        'User interface',
+        'Application logic layer',
+        'Storage hardware',
+        'External network',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A loop is used when:',
+      question: 'APIs are used in software development because they:',
       choices: [
-        'A program must stop after one instruction',
-        'A task needs to be repeated multiple times',
-        'Only one value must be stored',
-        'Data types must be converted',
+        'Prevent data from being transmitted',
+        'Allow applications to communicate and access external services',
+        'Replace all internal functions',
+        'Are required only in gaming applications',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'An algorithm is:',
+      question: 'External libraries help developers by:',
       choices: [
-        'A random sequence of commands',
-        'A step-by-step procedure for solving a problem',
-        'A physical diagram of a computer',
-        'A tool for storing user data',
+        'Forcing them to write all code manually',
+        'Providing ready-made functions that simplify tasks',
+        'Removing programming paradigms',
+        'Eliminating the need for data formats',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Debugging refers to:',
+      question: 'JSON and XML are commonly used because they:',
       choices: [
-        'Running the program without errors',
-        'Finding and fixing problems in the code',
-        'Installing new software',
-        'Designing graphical interfaces',
+        'Are incompatible with most programming languages',
+        'Provide standardized structures for exchanging data',
+        'Can only be read by one specific system',
+        'Replace the need for integration',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'The programming process includes:',
+      question: 'Software integration is important because it:',
       choices: [
-        'Planning, coding, testing, and improving the solution',
-        'Writing the final program immediately',
-        'Designing hardware circuits',
-        'Copying programs without modification',
+        'Separates systems permanently',
+        'Increases redundancy across programs',
+        'Connects components so they function as one unified application',
+        'Prevents systems from sharing information',
       ],
-      correctIndex: 0,
+      correctIndex: 2,
     ),
 
   ];
