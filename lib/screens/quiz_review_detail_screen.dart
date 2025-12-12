@@ -20,14 +20,14 @@ class QuizReviewDetailScreen extends StatelessWidget {
     final score = attempt['score'] as int? ?? 0;
 
     late final List<QuizQuestion> questions;
-    if (quizId == 'oop_beginner_ch1') {
-      questions = BeginnerOOPQuiz.questions;
-    } else if (quizId == 'oop_intermediate_ch1') {
-      questions = IntermediateOOPQuiz.questions;
-    } else if (quizId == 'oop_advanced_ch1') {
-      questions = AdvancedOOPQuiz.questions;
+    if (quizId == 'Discrete Mathematics') {
+      questions = BeginnerDiscreteMathQuiz.questions;
+    } else if (quizId == 'discrete_math_intermediate_ch1') {
+      questions = IntermediateDiscreteMathQuiz.questions;
+    } else if (quizId == 'discrete_math_advanced_ch1') {
+      questions = AdvancedDiscreteMathQuiz.questions;
     } else {
-      questions = BeginnerOOPQuiz.questions;
+      questions = BeginnerDiscreteMathQuiz.questions;
     }
 
     final optionDefault = const Color(0xFF0F3B5F);

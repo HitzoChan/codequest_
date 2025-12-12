@@ -2,35 +2,33 @@ import '../course_models.dart';
 
 final List<Course> intermediateCourses = [
   Course(
-    courseId: 'oop_intermediate_clean',
-    title: 'Object-Oriented Programming – Intermediate',
+    courseId: 'discrete_math_intermediate_clean',
+    title: 'Discrete Mathematics – Intermediate',
     description:
-        'Intermediate module covering constructors, method overloading, access modifiers, object relationships, and static members.',
+        'Intermediate module exploring relations, functions, counting principles, logic applications, and mathematical induction.',
     difficultyLevel: 'Intermediate',
     modules: [
       Module(
-        moduleId: 'oop_intermediate_ch1',
-        title: 'Constructors, Overloading, Access Modifiers & Object Relationships',
+        moduleId: 'discrete_math_intermediate_ch1',
+        title: 'Relations, Functions, Counting Principles & Logical Reasoning',
         difficultyLevel: 'Intermediate',
         summary: '''
-This module expands foundational OOP concepts by exploring how objects are created, how methods handle different inputs, and how classes interact within a system.
+This module develops deeper understanding of discrete structures used in computing and mathematics.
 
 Topics include:
-• Constructors and their role in initializing objects  
-• Default and parameterized constructors for setting initial attribute values  
-• Method overloading for offering multiple versions of a method with different parameters  
-• Access modifiers (public, private, protected) to control visibility and reinforce encapsulation  
-• Object relationships such as association, aggregation, and composition to model real-world structures  
-• Static variables and methods for class-level data and shared functionality  
-• Designing applications where multiple classes work together to build structured, maintainable systems  
+• Relations as sets of ordered pairs and key properties such as reflexive, symmetric, antisymmetric, and transitive  
+• Functions as special relations with unique outputs, including domain, range, and common function types  
+• Counting principles including the Product Rule and Sum Rule for determining possible outcomes  
+• Logical reasoning using rules of inference such as Modus Ponens, Modus Tollens, and Hypothetical Syllogism  
+• Mathematical induction for proving statements involving natural numbers, including the base case and inductive step  
 
-This module prepares learners to create more flexible, organized, and realistic object-oriented programs.
+These concepts support algorithm design, data modeling, proof construction, and computational reasoning across many areas of computer science.
 ''',
         content:
-            'A detailed explanation of constructors, method overloading, access control, object relationships, and static members. Learners develop stronger OOP design skills for building scalable and well-structured applications.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=Q6XT089lDmw',
+            'A structured discussion of relations and their properties, functions and mappings, fundamental counting techniques, logical inference, and mathematical induction used in problem solving and algorithm verification.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=xaxt-zNlRRg',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=1qQPXTIxH26A6IL5H-YdxMApyzl0JNUqY',
+            'https://drive.google.com/uc?export=download&id=1SiYvXABZxzl4EL4QPXoFIYw8DyrY0Ezf',
       ),
     ],
   ),

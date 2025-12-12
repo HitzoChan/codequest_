@@ -1,114 +1,114 @@
 import 'models.dart';
 
-class AdvancedOOPQuiz {
+class AdvancedDiscreteMathQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'An abstract class is best described as:',
+      question: 'A graph is primarily composed of:',
       choices: [
-        'A class that can be instantiated directly',
-        'A class that provides partial implementation and may include abstract methods',
-        'A class with only private methods',
-        'A class used only for storing variables',
+        'Equations and inequalities',
+        'Vertices (nodes) and edges (connections)',
+        'Only numerical sequences',
+        'Angles and geometric shapes',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A method declared in an interface must be:',
+      question: 'A tree is a special type of graph because it:',
       choices: [
-        'Implemented in any class that uses the interface',
-        'Ignored by subclasses',
-        'Automatically implemented by the compiler',
-        'Used only for exceptions',
+        'Contains cycles and loops',
+        'Has no cycles and follows a hierarchical structure',
+        'Contains no vertices',
+        'Must always be a binary tree',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'A binary tree is defined as a tree in which:',
+      choices: [
+        'Each node has at most two children',
+        'All nodes have exactly three children',
+        'The tree must be perfectly balanced',
+        'Nodes are arranged randomly',
       ],
       correctIndex: 0,
     ),
 
     QuizQuestion(
-      question: 'Interfaces are useful in OOP because they:',
+      question: 'Recurrence relations describe:',
       choices: [
-        'Replace the need for classes',
-        'Define required behaviors without specifying how they should be implemented',
-        'Contain full method implementations',
-        'Prevent inheritance entirely',
+        'Graphical solutions to equations',
+        'Sequences where each term depends on previous terms',
+        'Only one-time events',
+        'Data that cannot be represented numerically',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Exception handling is used to:',
+      question: 'The Fibonacci sequence is an example of:',
       choices: [
-        'Make code run faster',
-        'Respond gracefully to runtime errors and prevent program crashes',
-        'Replace all debugging steps',
-        'Avoid writing constructors',
+        'A direct formula',
+        'A recurrence relation',
+        'A combinatorial proof',
+        'A graph traversal',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'The try–catch block is used to:',
+      question: 'Permutations are used when:',
       choices: [
-        'Declare variables',
-        'Handle exceptions and control how errors are processed',
-        'Define class inheritance',
-        'Create static methods',
+        'Order does not matter',
+        'Order matters in arranging objects',
+        'There are no possible arrangements',
+        'All objects are identical',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Dynamic binding occurs when:',
+      question: 'Combinations are used for counting:',
       choices: [
-        'The method executed is determined at compile time',
-        'The method executed is determined at runtime based on the object type',
-        'Only overloaded methods are used',
-        'A class has no methods at all',
+        'Arrangements where order matters',
+        'Selections where order does not matter',
+        'Outcomes with infinite sets',
+        'Graph edges only',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Polymorphism allows objects to:',
+      question: 'Depth-first search (DFS) explores a graph by:',
       choices: [
-        'Share identical behavior in all situations',
-        'Respond differently to the same method call depending on the object',
-        'Inherit from multiple classes only',
-        'Avoid using interfaces',
+        'Visiting all neighbors level by level',
+        'Exploring as far as possible along a branch before backtracking',
+        'Calculating probabilities',
+        'Sorting nodes alphabetically',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'The Single Responsibility Principle states that:',
+      question: 'Dijkstra’s algorithm is used to find:',
       choices: [
-        'A class should handle many unrelated tasks',
-        'A class should have only one clear purpose',
-        'A class should never change',
-        'A class must implement at least one interface',
+        'The number of cycles in a graph',
+        'The shortest path between nodes in a weighted graph',
+        'The maximum possible path',
+        'The total number of spanning trees',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'The Open/Closed Principle means that:',
+      question: 'A minimum spanning tree (MST) is:',
       choices: [
-        'Code should never be extended',
-        'Software should be open for extension but closed for modification',
-        'Only abstract classes may be used',
-        'Methods must always be private',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'The Dependency Inversion Principle encourages:',
-      choices: [
-        'High-level modules depending directly on low-level modules',
-        'Both high-level and low-level modules depending on abstractions',
-        'Eliminating interfaces entirely',
-        'Writing programs without OOP concepts',
+        'A tree with the largest possible total weight',
+        'A tree connecting all vertices with the minimum total edge weight',
+        'A tree that must have cycles',
+        'A random subset of edges in a graph',
       ],
       correctIndex: 1,
     ),

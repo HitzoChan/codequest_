@@ -1,116 +1,116 @@
 import 'models.dart';
 
-class IntermediateOOPQuiz {
+class IntermediateDiscreteMathQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'A constructor is used to:',
+      question: 'A relation is best described as:',
       choices: [
-        'Destroy an object',
-        'Initialize an object when it is created',
-        'Copy an object automatically',
-        'Change data types during runtime',
+        'A set of numbers in ascending order',
+        'A set of ordered pairs connecting elements of one set to another',
+        'A method for solving equations',
+        'A type of function that has no domain',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A parameterized constructor differs from a default constructor because it:',
+      question: 'A relation is symmetric if:',
       choices: [
-        'Contains no code',
-        'Does not have a name',
-        'Accepts arguments to initialize object attributes',
-        'Cannot be used in classes',
+        'Each element relates only to itself',
+        'For every pair (a, b), the pair (b, a) is also in the relation',
+        'No pairs repeat',
+        'The relation contains no elements',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'A function differs from a general relation because:',
+      choices: [
+        'It allows multiple outputs for one input',
+        'Each input corresponds to exactly one output',
+        'It contains no ordered pairs',
+        'It always has the same domain and range',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'The domain of a function refers to:',
+      choices: [
+        'All possible outputs',
+        'All elements that have no relation',
+        'All possible inputs',
+        'Only the largest value in the set',
       ],
       correctIndex: 2,
     ),
 
     QuizQuestion(
-      question: 'Method overloading occurs when:',
+      question: 'According to the Product Rule, if event A can happen in 3 ways and event B in 4 ways, then both events together can occur in:',
       choices: [
-        'A subclass replaces a superclass method',
-        'Two methods have the same name but different parameters',
-        'Methods return multiple values',
-        'A method is defined without a return type',
+        '7 ways',
+        '12 ways',
+        '1 way',
+        '3 ways',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Access modifiers control:',
+      question: 'The Sum Rule applies when events:',
       choices: [
-        'How many objects can be created',
-        'Whether class members can be accessed publicly or privately',
-        'Which superclass a class inherits from',
-        'How fast the program runs',
+        'Happen at the same time',
+        'Cannot occur together',
+        'Must occur in sequence',
+        'Have no possible outcomes',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A private variable can be accessed:',
+      question: 'Modus Ponens is used in logic to conclude:',
       choices: [
-        'From any class',
-        'Only from the class where it is defined',
-        'Only from subclasses',
-        'Only from unrelated classes',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'In an aggregation relationship:',
-      choices: [
-        'The contained object cannot exist on its own',
-        'Both objects can exist independently',
-        'Only one object has methods',
-        'Objects must belong to the same class',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Composition is different from aggregation because:',
-      choices: [
-        'Objects in composition are loosely connected',
-        'The composed object depends entirely on the parent object',
-        'Composition allows unrelated classes to communicate',
-        'Composition is used only for static members',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'A static method:',
-      choices: [
-        'Can be called without creating an object',
-        'Requires an object to be created first',
-        'Can only be used inside constructors',
-        'Must return a value',
+        'If P then Q; P is true, therefore Q is true',
+        'If P then Q; Q is false, therefore P is true',
+        'If P then Q; P is false, therefore Q must be true',
+        'If P then Q; Q is true, therefore P is false',
       ],
       correctIndex: 0,
     ),
 
     QuizQuestion(
-      question: 'Static variables:',
+      question: 'Mathematical induction is commonly used to:',
       choices: [
-        'Are unique to each object instance',
-        'Are shared by all instances of a class',
-        'Cannot store numeric values',
-        'Are automatically private',
+        'Solve algebraic equations directly',
+        'Prove statements involving natural numbers',
+        'Measure geometric angles',
+        'Evaluate trigonometric expressions',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Object relationships (association, aggregation, composition) help programmers:',
+      question: 'In mathematical induction, the base case:',
       choices: [
-        'Reduce the number of classes needed',
-        'Model real-world interactions and structure complex systems',
-        'Add errors intentionally',
-        'Avoid using constructors',
+        'Is optional',
+        'Must always be proved first',
+        'Can be skipped if the inductive step is correct',
+        'Only applies to even numbers',
       ],
       correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'The inductive step requires showing that:',
+      choices: [
+        'If the statement holds for k, then it holds for k + 1',
+        'The statement is true only for one specific number',
+        'The statement is unrelated to natural numbers',
+        'The proof has no logical structure',
+      ],
+      correctIndex: 0,
     ),
 
   ];

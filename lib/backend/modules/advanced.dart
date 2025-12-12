@@ -2,39 +2,33 @@ import '../course_models.dart';
 
 final List<Course> advancedCourses = [
   Course(
-    courseId: 'oop_advanced_clean',
-    title: 'Object-Oriented Programming – Advanced',
+    courseId: 'discrete_math_advanced_clean',
+    title: 'Discrete Mathematics – Advanced',
     description:
-        'Advanced module covering abstract classes, interfaces, exception handling, dynamic binding, polymorphism, and SOLID design principles.',
+        'Advanced module covering graph theory, trees, recurrence relations, advanced counting techniques, and graph algorithms.',
     difficultyLevel: 'Advanced',
     modules: [
       Module(
-        moduleId: 'oop_advanced_ch1',
-        title: 'Abstract Classes, Interfaces, Exception Handling & Design Principles',
+        moduleId: 'discrete_math_advanced_ch1',
+        title: 'Graphs, Trees, Recurrence Relations & Advanced Counting',
         difficultyLevel: 'Advanced',
         summary: '''
-This module explores high-level OOP concepts used to build scalable, flexible, and maintainable software systems.
+This module explores advanced discrete structures used throughout computer science, focusing on mathematical models that describe networks, hierarchical systems, recursive patterns, and combinatorial problems.
 
 Topics include:
-• Abstract classes for defining templates that share implementation while requiring subclasses to provide specific behaviors  
-• Interfaces as contracts that enforce required behaviors across unrelated classes  
-• Exception handling using try–catch–finally to manage runtime errors and ensure program reliability  
-• Advanced polymorphism and dynamic binding, where method execution is determined at runtime  
-• How dynamic binding supports extensible designs and common design patterns  
-• Core object-oriented design principles, including the SOLID framework:  
-  – Single Responsibility Principle  
-  – Open/Closed Principle  
-  – Liskov Substitution Principle  
-  – Interface Segregation Principle  
-  – Dependency Inversion Principle  
+• Graph theory fundamentals including vertices, edges, types of graphs, and applications in real-world networks  
+• Trees and hierarchical structures, including binary trees, levels, height, and their role in data organization  
+• Recurrence relations for defining sequences based on previous terms, used in analyzing recursive algorithms  
+• Advanced counting techniques such as permutations and combinations for determining arrangements and selections  
+• Essential graph algorithms including DFS, BFS, shortest-path techniques, and minimum spanning tree algorithms  
 
-This module prepares learners to design professional, large-scale systems that remain adaptable and robust over time.
+These concepts form the foundation of modern algorithm design, network analysis, and computational problem solving.
 ''',
         content:
-            'A comprehensive look at abstract classes, interfaces, exception handling, advanced polymorphism, and SOLID principles. Learners gain the ability to architect complex systems that balance structure, flexibility, and reliability.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=HvPlEJ3LHgE',
+            'A comprehensive exploration of graph theory, tree structures, recurrence relations, combinatorics, and graph algorithms used to model networks, analyze algorithm complexity, and solve advanced mathematical problems.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=HipVU5vz3Q8',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=13sirefyPpsjQjaN7MlC0KQ2dSdM9m6sQ',
+            'https://drive.google.com/uc?export=download&id=1VzPYDLrxMZxFp1o9t_TvV6_DWKUKQWAd',
       ),
     ],
   ),

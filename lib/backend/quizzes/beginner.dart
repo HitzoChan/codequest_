@@ -1,114 +1,114 @@
 import 'models.dart';
 
-class BeginnerOOPQuiz {
+class BeginnerDiscreteMathQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'Object-Oriented Programming (OOP) is primarily based on:',
+      question: 'Discrete Mathematics primarily studies:',
       choices: [
-        'Mathematical equations',
-        'Organizing programs around objects that contain data and behavior',
-        'Writing long procedural functions',
-        'Using only built-in commands',
+        'Continuous structures like curves and surfaces',
+        'Separate, countable structures such as integers and logical statements',
+        'Only geometry and measurement',
+        'Physical experiments in science',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A class is best described as:',
+      question: 'A proposition in logic is:',
       choices: [
-        'A single variable',
-        'A blueprint for creating objects',
-        'A method that performs calculations',
-        'A piece of hardware in a computer',
+        'A mathematical equation with variables',
+        'A statement that is either true or false',
+        'A symbol without meaning',
+        'A diagram that shows sets',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'An object is:',
+      question: 'Which of the following is a logical connective?',
       choices: [
-        'A printed document',
-        'An instance created from a class',
-        'A comment in the code',
-        'A type of programming error',
+        'Plus sign (+)',
+        'And, or, not',
+        'Square root',
+        'Derivative',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Attributes in a class represent:',
+      question: 'Truth tables are used to:',
       choices: [
-        'Actions an object can perform',
-        'Data or characteristics of an object',
-        'Errors that stop the program',
-        'The main function of a program',
+        'Count numbers in sequences',
+        'Determine the truth value of compound logical statements',
+        'Measure angles',
+        'Graph linear equations',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Methods in a class refer to:',
+      question: 'A set is best described as:',
       choices: [
-        'Data stored in the object',
-        'Visual elements only',
-        'Functions that define an object’s behavior',
-        'Items unrelated to the class',
+        'A random collection of unrelated facts',
+        'A collection of distinct objects considered as a group',
+        'A list of numbers in ascending order only',
+        'A type of variable in algebra',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'The empty set is the set that contains:',
+      choices: [
+        'No elements',
+        'All possible elements',
+        'Only one element',
+        'Duplicate elements',
+      ],
+      correctIndex: 0,
+    ),
+
+    QuizQuestion(
+      question: 'The union of two sets A and B contains:',
+      choices: [
+        'Only elements common to both sets',
+        'Only the elements of set A',
+        'Only the elements of set B',
+        'All elements that are in A, in B, or in both',
+      ],
+      correctIndex: 3,
+    ),
+
+    QuizQuestion(
+      question: 'The intersection of sets A and B contains:',
+      choices: [
+        'All elements in the universal set',
+        'Elements common to both A and B',
+        'Only elements in A but not B',
+        'Only elements in B but not A',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Venn diagrams help visualize:',
+      choices: [
+        'Steps in solving equations',
+        'Geometric shapes',
+        'Relationships between sets',
+        'Graphs of functions',
       ],
       correctIndex: 2,
     ),
 
     QuizQuestion(
-      question: 'Encapsulation means:',
+      question: 'Mathematical reasoning is important because it:',
       choices: [
-        'Allowing all data to be accessed freely',
-        'Keeping data and methods together and protecting internal data',
-        'Removing variables from classes',
-        'Exposing all attributes publicly',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Inheritance allows a class to:',
-      choices: [
-        'Create multiple main functions',
-        'Acquire attributes and methods from another class',
-        'Store data in arrays only',
-        'Delete data from the parent class',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Polymorphism allows objects to:',
-      choices: [
-        'Behave in the same way regardless of context',
-        'Respond differently to the same method call',
-        'Contain no data',
-        'Avoid using methods',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Method overriding occurs when:',
-      choices: [
-        'A method is deleted from the superclass',
-        'A subclass provides its own version of a superclass method',
-        'A variable is created multiple times',
-        'A class does not have a constructor',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Abstraction helps programmers by:',
-      choices: [
-        'Hiding essential features',
-        'Hiding unneeded details and showing only what is important',
-        'Preventing classes from being created',
-        'Removing all data from methods',
+        'Focuses on memorizing formulas',
+        'Helps justify conclusions through logical thinking',
+        'Eliminates the need to understand sets',
+        'Prevents the use of truth tables',
       ],
       correctIndex: 1,
     ),
