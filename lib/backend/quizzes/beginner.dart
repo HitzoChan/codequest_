@@ -1,114 +1,114 @@
 import 'models.dart';
 
-class BeginnerSoftwareEngineeringQuiz {
+class BeginnerOOPQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'Software Engineering focuses on:',
+      question: 'Object-Oriented Programming (OOP) is primarily based on:',
       choices: [
-        'Writing short programs only',
-        'A systematic approach to designing and maintaining software',
-        'Hardware installation and repair',
-        'Creating software without planning',
+        'Mathematical equations',
+        'Organizing programs around objects that contain data and behavior',
+        'Writing long procedural functions',
+        'Using only built-in commands',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Software Engineering is different from programming because:',
+      question: 'A class is best described as:',
       choices: [
-        'Programming does not require code',
-        'Software Engineering involves the entire development process, not just coding',
-        'Programming is more complex',
-        'Software Engineering does not use programming languages',
+        'A single variable',
+        'A blueprint for creating objects',
+        'A method that performs calculations',
+        'A piece of hardware in a computer',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'The Software Development Life Cycle (SDLC) is:',
+      question: 'An object is:',
       choices: [
-        'A random set of coding rules',
-        'A structured process for developing software',
-        'A debugging tool',
-        'A version of operating systems',
+        'A printed document',
+        'An instance created from a class',
+        'A comment in the code',
+        'A type of programming error',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Which phase of the SDLC focuses on determining user needs?',
+      question: 'Attributes in a class represent:',
       choices: [
-        'Testing',
-        'Deployment',
-        'Requirements Analysis',
-        'Maintenance',
+        'Actions an object can perform',
+        'Data or characteristics of an object',
+        'Errors that stop the program',
+        'The main function of a program',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Methods in a class refer to:',
+      choices: [
+        'Data stored in the object',
+        'Visual elements only',
+        'Functions that define an object’s behavior',
+        'Items unrelated to the class',
       ],
       correctIndex: 2,
     ),
 
     QuizQuestion(
-      question: 'The Waterfall Model is best described as:',
+      question: 'Encapsulation means:',
       choices: [
-        'A flexible, rapidly changing approach',
-        'A linear sequence of development phases',
-        'A model used only for mobile apps',
-        'A method with no documentation',
+        'Allowing all data to be accessed freely',
+        'Keeping data and methods together and protecting internal data',
+        'Removing variables from classes',
+        'Exposing all attributes publicly',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Agile development is characterized by:',
+      question: 'Inheritance allows a class to:',
       choices: [
-        'Long phases with no user interaction',
-        'Frequent feedback and short development cycles',
-        'No testing phases',
-        'A strict sequence that cannot change',
+        'Create multiple main functions',
+        'Acquire attributes and methods from another class',
+        'Store data in arrays only',
+        'Delete data from the parent class',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Functional requirements describe:',
+      question: 'Polymorphism allows objects to:',
       choices: [
-        'How fast a system should run',
-        'Specific actions or features the system must perform',
-        'The color of the interface',
-        'The hardware specifications',
+        'Behave in the same way regardless of context',
+        'Respond differently to the same method call',
+        'Contain no data',
+        'Avoid using methods',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Non-functional requirements describe:',
+      question: 'Method overriding occurs when:',
       choices: [
-        'The individual programmers involved',
-        'System qualities such as performance and security',
-        'The list of functional modules',
-        'Only database rules',
+        'A method is deleted from the superclass',
+        'A subclass provides its own version of a superclass method',
+        'A variable is created multiple times',
+        'A class does not have a constructor',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Interviews, surveys, and observations are used for:',
+      question: 'Abstraction helps programmers by:',
       choices: [
-        'Writing code',
-        'Gathering software requirements',
-        'Designing interfaces',
-        'Deploying software to users',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Clear and accurate requirements are important because they:',
-      choices: [
-        'Make coding unnecessary',
-        'Ensure all stakeholders share the same understanding of the system',
-        'Allow the project to skip testing',
-        'Reduce the number of developers required',
+        'Hiding essential features',
+        'Hiding unneeded details and showing only what is important',
+        'Preventing classes from being created',
+        'Removing all data from methods',
       ],
       correctIndex: 1,
     ),

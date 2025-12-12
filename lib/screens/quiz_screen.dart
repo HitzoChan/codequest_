@@ -33,14 +33,14 @@ class _QuizScreenState extends State<QuizScreen> with SingleTickerProviderStateM
     startTime = DateTime.now();
 
     // Load questions based on moduleId
-    if (moduleId == 'se_beginner_ch1') {
-      questions = BeginnerSoftwareEngineeringQuiz.questions;
-    } else if (moduleId == 'se_intermediate_ch1') {
-      questions = IntermediateSoftwareEngineeringQuiz.questions;
-    } else if (moduleId == 'se_advanced_ch1') {
-      questions = AdvancedSoftwareEngineeringQuiz.questions;
+    if (moduleId == 'oop_beginner_ch1') {
+      questions = BeginnerOOPQuiz.questions;
+    } else if (moduleId == 'oop_intermediate_ch1') {
+      questions = IntermediateOOPQuiz.questions;
+    } else if (moduleId == 'oop_advanced_ch1') {
+      questions = AdvancedOOPQuiz.questions;
     } else {
-      questions = BeginnerSoftwareEngineeringQuiz.questions;
+      questions = BeginnerOOPQuiz.questions;
     }
 
     answers = List<int?>.filled(questions.length, null);

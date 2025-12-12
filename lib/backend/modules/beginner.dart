@@ -2,36 +2,36 @@
 
 final List<Course> beginnerCourses = [
   Course(
-    courseId: 'se_beginner_clean',
-    title: 'Software Engineering – Beginner',
+    courseId: 'oop_beginner_clean',
+    title: 'Object-Oriented Programming – Beginner',
     description:
-        'Beginner module introducing Software Engineering, the SDLC, requirements, and foundational development principles.',
+        'Beginner module introducing the fundamentals of Object-Oriented Programming, including classes, objects, encapsulation, inheritance, polymorphism, and abstraction.',
     difficultyLevel: 'Beginner',
     modules: [
       Module(
-        moduleId: 'se_beginner_ch1',
-        title: 'Introduction to Software Engineering & SDLC Foundations',
+        moduleId: 'oop_beginner_ch1',
+        title: 'Introduction to OOP, Classes, Objects & Core Principles',
         difficultyLevel: 'Beginner',
         summary: '''
-This module introduces the core concepts of Software Engineering and explains why software projects require structured processes.
+This module introduces learners to the core concepts of Object-Oriented Programming (OOP) and how it improves software structure and organization.
 
 Topics include:
-• What Software Engineering is and why it uses systematic, engineering-based approaches  
-• Differences between Software Engineering and simple programming  
-• The Software Development Life Cycle (SDLC) and its major phases such as planning, analysis, design, implementation, testing, deployment, and maintenance  
-• Common SDLC models including Waterfall, Iterative, and Agile, and when each model is appropriate  
-• The importance of software requirements in guiding development  
-• Differences between functional and non-functional requirements  
-• Techniques for gathering requirements such as interviews, surveys, observations, brainstorming, and prototypes  
-• How Software Engineering principles improve quality, reduce risks, and support teamwork  
+• What OOP is and how it models real-world entities through objects  
+• Understanding classes as blueprints that define attributes and methods  
+• Creating objects as instances that store data and perform actions  
+• Encapsulation for protecting internal data and grouping behavior with data  
+• Inheritance for reusing features and forming hierarchical relationships  
+• Polymorphism and method overriding for flexible behavior  
+• Abstraction for simplifying complexity and hiding unnecessary implementation details  
+• The importance of OOP in creating reusable, modular, and maintainable software  
 
-This module builds a strong foundation for beginners to understand how professional software is designed and managed.
+This module prepares beginners to understand modern programming structures used in many popular languages.
 ''',
         content:
-            'A beginner-friendly explanation of Software Engineering fundamentals, SDLC structure, requirement types, and the role of organized processes in building high-quality software systems.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=IHx9ImEMuzQ',
+            'A beginner-friendly explanation of how OOP organizes programs around objects, including the roles of classes, attributes, methods, encapsulation, inheritance, polymorphism, and abstraction in software design.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=SiBw7os-_zI',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=1x1z2LD-z9xdwimOfJKpxcpqf7d9sHVk4',
+            'https://drive.google.com/uc?export=download&id=1coFVhQPKZ2ZJ1f0kqnrX30BOx4vEJRuC',
       ),
     ],
   ),

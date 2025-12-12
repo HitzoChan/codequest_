@@ -2,35 +2,35 @@ import '../course_models.dart';
 
 final List<Course> intermediateCourses = [
   Course(
-    courseId: 'se_intermediate_clean',
-    title: 'Software Engineering – Intermediate',
+    courseId: 'oop_intermediate_clean',
+    title: 'Object-Oriented Programming – Intermediate',
     description:
-        'Intermediate module covering software design, UML modeling, architecture, design patterns, project planning, and risk management.',
+        'Intermediate module covering constructors, method overloading, access modifiers, object relationships, and static members.',
     difficultyLevel: 'Intermediate',
     modules: [
       Module(
-        moduleId: 'se_intermediate_ch1',
-        title: 'Software Design, UML Modeling, Architecture & Project Management',
+        moduleId: 'oop_intermediate_ch1',
+        title: 'Constructors, Overloading, Access Modifiers & Object Relationships',
         difficultyLevel: 'Intermediate',
         summary: '''
-This module explores how software systems are designed, structured, visualized, and managed throughout development.
+This module expands foundational OOP concepts by exploring how objects are created, how methods handle different inputs, and how classes interact within a system.
 
 Topics include:
-• The purpose of software design and its role in converting requirements into blueprints  
-• High-level design (architecture, components) and low-level design (algorithms, data structures)  
-• UML modeling tools including use case diagrams, class diagrams, and sequence diagrams  
-• Software architecture styles such as layered, client–server, and microservices  
-• Design patterns as reusable solutions to common software problems  
-• Project planning through task breakdown, scheduling, estimation, and resource allocation  
-• Risk management strategies that identify uncertainties and prepare mitigation plans  
+• Constructors and their role in initializing objects  
+• Default and parameterized constructors for setting initial attribute values  
+• Method overloading for offering multiple versions of a method with different parameters  
+• Access modifiers (public, private, protected) to control visibility and reinforce encapsulation  
+• Object relationships such as association, aggregation, and composition to model real-world structures  
+• Static variables and methods for class-level data and shared functionality  
+• Designing applications where multiple classes work together to build structured, maintainable systems  
 
-This module strengthens analytical, organizational, and visualization skills essential for professional software development.
+This module prepares learners to create more flexible, organized, and realistic object-oriented programs.
 ''',
         content:
-            'A detailed exploration of structured software design, UML diagrams, architectural principles, design patterns, project planning, and risk management, helping learners transition from requirements to well-organized system implementations.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=ZKOL-rZ79gs',
+            'A detailed explanation of constructors, method overloading, access control, object relationships, and static members. Learners develop stronger OOP design skills for building scalable and well-structured applications.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=Q6XT089lDmw',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=1b1uVttyV0rbFKNf2qSykmrH_EZI5EXJo',
+            'https://drive.google.com/uc?export=download&id=1qQPXTIxH26A6IL5H-YdxMApyzl0JNUqY',
       ),
     ],
   ),

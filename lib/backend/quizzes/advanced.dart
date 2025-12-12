@@ -1,114 +1,114 @@
 import 'models.dart';
 
-class AdvancedSoftwareEngineeringQuiz {
+class AdvancedOOPQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'Software quality refers to:',
+      question: 'An abstract class is best described as:',
       choices: [
-        'The speed of the development team',
-        'How well the software meets requirements and user expectations',
-        'The number of features added',
-        'The size of the project budget',
+        'A class that can be instantiated directly',
+        'A class that provides partial implementation and may include abstract methods',
+        'A class with only private methods',
+        'A class used only for storing variables',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Reliability, usability, and maintainability are examples of:',
+      question: 'A method declared in an interface must be:',
       choices: [
-        'Coding standards',
-        'Hardware requirements',
-        'Software quality attributes',
-        'Deployment procedures',
+        'Implemented in any class that uses the interface',
+        'Ignored by subclasses',
+        'Automatically implemented by the compiler',
+        'Used only for exceptions',
       ],
-      correctIndex: 2,
+      correctIndex: 0,
     ),
 
     QuizQuestion(
-      question: 'Unit testing focuses on:',
+      question: 'Interfaces are useful in OOP because they:',
       choices: [
-        'Testing multiple systems together',
-        'Evaluating small, individual components of the software',
-        'Checking user satisfaction',
-        'Running the software on different hardware devices',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Integration testing is done to:',
-      choices: [
-        'Test the complete software in a real environment',
-        'Verify that combined modules work correctly together',
-        'Test only documentation',
-        'Evaluate only non-functional requirements',
+        'Replace the need for classes',
+        'Define required behaviors without specifying how they should be implemented',
+        'Contain full method implementations',
+        'Prevent inheritance entirely',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Black-box testing evaluates software by:',
+      question: 'Exception handling is used to:',
       choices: [
-        'Inspecting internal source code',
-        'Focusing only on hardware behavior',
-        'Testing inputs and outputs without examining internal logic',
-        'Debugging code line by line',
-      ],
-      correctIndex: 2,
-    ),
-
-    QuizQuestion(
-      question: 'Regression testing ensures that:',
-      choices: [
-        'New features replace old ones completely',
-        'Changes do not introduce new defects into previously working features',
-        'Documentation is always updated',
-        'The software runs faster after updates',
+        'Make code run faster',
+        'Respond gracefully to runtime errors and prevent program crashes',
+        'Replace all debugging steps',
+        'Avoid writing constructors',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A test plan is used to:',
+      question: 'The try–catch block is used to:',
       choices: [
-        'Describe the system architecture',
-        'Outline the testing strategy, scope, and resources',
-        'Write source code',
-        'Perform hardware installation',
+        'Declare variables',
+        'Handle exceptions and control how errors are processed',
+        'Define class inheritance',
+        'Create static methods',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Software Configuration Management (SCM) is used to:',
+      question: 'Dynamic binding occurs when:',
       choices: [
-        'Remove changes permanently',
-        'Control, track, and manage changes in software',
-        'Estimate project budget',
-        'Create marketing materials',
+        'The method executed is determined at compile time',
+        'The method executed is determined at runtime based on the object type',
+        'Only overloaded methods are used',
+        'A class has no methods at all',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Version control systems such as Git help teams by:',
+      question: 'Polymorphism allows objects to:',
       choices: [
-        'Preventing collaboration',
-        'Tracking changes and allowing developers to merge work safely',
-        'Automatically writing test cases',
-        'Removing old project files',
+        'Share identical behavior in all situations',
+        'Respond differently to the same method call depending on the object',
+        'Inherit from multiple classes only',
+        'Avoid using interfaces',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Models like CMMI and ISO 9001 are used for:',
+      question: 'The Single Responsibility Principle states that:',
       choices: [
-        'Debugging program errors',
-        'Improving and evaluating software development processes',
-        'Creating diagrams only',
-        'Designing user interfaces',
+        'A class should handle many unrelated tasks',
+        'A class should have only one clear purpose',
+        'A class should never change',
+        'A class must implement at least one interface',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'The Open/Closed Principle means that:',
+      choices: [
+        'Code should never be extended',
+        'Software should be open for extension but closed for modification',
+        'Only abstract classes may be used',
+        'Methods must always be private',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'The Dependency Inversion Principle encourages:',
+      choices: [
+        'High-level modules depending directly on low-level modules',
+        'Both high-level and low-level modules depending on abstractions',
+        'Eliminating interfaces entirely',
+        'Writing programs without OOP concepts',
       ],
       correctIndex: 1,
     ),

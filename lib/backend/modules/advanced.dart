@@ -2,36 +2,39 @@ import '../course_models.dart';
 
 final List<Course> advancedCourses = [
   Course(
-    courseId: 'se_advanced_clean',
-    title: 'Software Engineering – Advanced',
+    courseId: 'oop_advanced_clean',
+    title: 'Object-Oriented Programming – Advanced',
     description:
-        'Advanced module focusing on software quality attributes, testing strategies, documentation, configuration management, and process improvement models.',
+        'Advanced module covering abstract classes, interfaces, exception handling, dynamic binding, polymorphism, and SOLID design principles.',
     difficultyLevel: 'Advanced',
     modules: [
       Module(
-        moduleId: 'se_advanced_ch1',
-        title: 'Software Quality, Testing Strategies, SCM & Process Improvement',
+        moduleId: 'oop_advanced_ch1',
+        title: 'Abstract Classes, Interfaces, Exception Handling & Design Principles',
         difficultyLevel: 'Advanced',
         summary: '''
-This module explores advanced practices that ensure software reliability, long-term maintainability, and high development standards.
+This module explores high-level OOP concepts used to build scalable, flexible, and maintainable software systems.
 
 Topics include:
-• Software quality and essential quality attributes such as reliability, maintainability, usability, efficiency, and security  
-• Trade-offs involved in engineering decisions that influence software quality  
-• Testing levels including unit, integration, system, and acceptance testing  
-• Testing methods such as black-box testing, white-box testing, and regression testing  
-• Importance of test documentation including test plans, test cases, and reports  
-• Software Configuration Management (SCM) for tracking, controlling, and managing software changes  
-• Version control systems that support collaboration, traceability, and rollback capabilities  
-• Software process improvement models such as CMMI and ISO 9001 to enhance workflow efficiency and quality  
+• Abstract classes for defining templates that share implementation while requiring subclasses to provide specific behaviors  
+• Interfaces as contracts that enforce required behaviors across unrelated classes  
+• Exception handling using try–catch–finally to manage runtime errors and ensure program reliability  
+• Advanced polymorphism and dynamic binding, where method execution is determined at runtime  
+• How dynamic binding supports extensible designs and common design patterns  
+• Core object-oriented design principles, including the SOLID framework:  
+  – Single Responsibility Principle  
+  – Open/Closed Principle  
+  – Liskov Substitution Principle  
+  – Interface Segregation Principle  
+  – Dependency Inversion Principle  
 
-This module prepares learners for advanced roles in quality assurance, configuration management, and engineering leadership.
+This module prepares learners to design professional, large-scale systems that remain adaptable and robust over time.
 ''',
         content:
-            'An in-depth look at software quality, multi-level testing strategies, documentation practices, configuration management systems, and process improvement frameworks that strengthen large-scale software development.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=g4bJn03k8YA',
+            'A comprehensive look at abstract classes, interfaces, exception handling, advanced polymorphism, and SOLID principles. Learners gain the ability to architect complex systems that balance structure, flexibility, and reliability.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=HvPlEJ3LHgE',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=1LQGy0yhSksdeCd-sOTGdBnmtLeSBj_kD',
+            'https://drive.google.com/uc?export=download&id=13sirefyPpsjQjaN7MlC0KQ2dSdM9m6sQ',
       ),
     ],
   ),
