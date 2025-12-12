@@ -20,7 +20,7 @@ class QuizReviewDetailScreen extends StatelessWidget {
     final score = attempt['score'] as int? ?? 0;
 
     late final List<QuizQuestion> questions;
-    if (quizId == 'Discrete Mathematics') {
+    if (quizId == 'discrete_math_beginner_ch1') {
       questions = BeginnerDiscreteMathQuiz.questions;
     } else if (quizId == 'discrete_math_intermediate_ch1') {
       questions = IntermediateDiscreteMathQuiz.questions;
