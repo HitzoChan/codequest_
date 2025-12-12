@@ -33,7 +33,7 @@ class _QuizScreenState extends State<QuizScreen> with SingleTickerProviderStateM
     startTime = DateTime.now();
 
     // Load questions based on moduleId
-    if (moduleId == 'Discrete Mathematics') {
+    if (moduleId == 'discrete_math_beginner_ch1') {
       questions = BeginnerDiscreteMathQuiz.questions;
     } else if (moduleId == 'discrete_math_intermediate_ch1') {
       questions = IntermediateDiscreteMathQuiz.questions;
