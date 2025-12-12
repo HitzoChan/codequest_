@@ -2,33 +2,38 @@ import '../course_models.dart';
 
 final List<Course> intermediateCourses = [
   Course(
-    courseId: 'discrete_math_intermediate_clean',
-    title: 'Discrete Mathematics – Intermediate',
+    courseId: 'dsa_intermediate_clean',
+    title: 'Data Structures & Algorithms – Intermediate',
     description:
-        'Intermediate module exploring relations, functions, counting principles, logic applications, and mathematical induction.',
+        'Intermediate module covering stacks, queues, searching algorithms, sorting algorithms, and recursion.',
     difficultyLevel: 'Intermediate',
     modules: [
       Module(
-        moduleId: 'discrete_math_intermediate_ch1',
-        title: 'Relations, Functions, Counting Principles & Logical Reasoning',
+        moduleId: 'dsa_intermediate_ch1',
+        title: 'Stacks, Queues, Searching, Sorting & Recursion',
         difficultyLevel: 'Intermediate',
         summary: '''
-This module develops deeper understanding of discrete structures used in computing and mathematics.
+This module builds on basic data structures and algorithms by introducing more specialized structures and problem-solving techniques.
 
 Topics include:
-• Relations as sets of ordered pairs and key properties such as reflexive, symmetric, antisymmetric, and transitive  
-• Functions as special relations with unique outputs, including domain, range, and common function types  
-• Counting principles including the Product Rule and Sum Rule for determining possible outcomes  
-• Logical reasoning using rules of inference such as Modus Ponens, Modus Tollens, and Hypothetical Syllogism  
-• Mathematical induction for proving statements involving natural numbers, including the base case and inductive step  
+• Stacks and their Last-In, First-Out (LIFO) behavior  
+• Stack operations such as push, pop, and peek  
+• Real-world applications of stacks including undo operations and function calls  
+• Queues and their First-In, First-Out (FIFO) behavior  
+• Queue operations such as enqueue and dequeue  
+• Linear search for locating elements in a list  
+• Binary search and its requirement for sorted data  
+• Bubble sort and selection sort for organizing data  
+• Introduction to recursion and the importance of base cases  
+• Using recursion to solve repetitive or self-similar problems  
 
-These concepts support algorithm design, data modeling, proof construction, and computational reasoning across many areas of computer science.
+These concepts improve algorithmic thinking and prepare learners for advanced structures and optimization techniques.
 ''',
         content:
-            'A structured discussion of relations and their properties, functions and mappings, fundamental counting techniques, logical inference, and mathematical induction used in problem solving and algorithm verification.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=xaxt-zNlRRg',
+            'A structured discussion of stacks, queues, searching and sorting algorithms, and recursion. Learners develop stronger problem-solving skills and understand how algorithm efficiency impacts performance.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=CBYHwZcbD-s',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=1SiYvXABZxzl4EL4QPXoFIYw8DyrY0Ezf',
+            'https://drive.google.com/uc?export=download&id=18yVFpZeum4bzgTJGiuVQ_YV5g3Y8M7kF',
       ),
     ],
   ),

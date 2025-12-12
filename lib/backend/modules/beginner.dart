@@ -2,36 +2,35 @@
 
 final List<Course> beginnerCourses = [
   Course(
-    courseId: 'discrete_math_beginner_clean',
-    title: 'Discrete Mathematics – Beginner',
+    courseId: 'dsa_beginner_clean',
+    title: 'Data Structures & Algorithms – Beginner',
     description:
-        'Beginner module introducing foundational concepts in discrete mathematics including logic, sets, and mathematical reasoning.',
+        'Beginner module introducing the foundations of data structures, algorithms, arrays, linked lists, and basic time complexity.',
     difficultyLevel: 'Beginner',
     modules: [
       Module(
-        moduleId: 'discrete_math_beginner_ch1',
-        title: 'Foundations of Logic, Sets, and Mathematical Reasoning',
+        moduleId: 'dsa_beginner_ch1',
+        title: 'Introduction to Data Structures, Algorithms & Basic Operations',
         difficultyLevel: 'Beginner',
         summary: '''
-This module introduces the core ideas of discrete mathematics, focusing on structures that are separate, countable, and essential in computing.
+This module introduces the essential building blocks of Data Structures and Algorithms (DSA), forming the basis of efficient programming.
 
 Topics include:
-• What discrete mathematics is and why it matters  
-• Logic and propositions, including simple and compound statements  
-• Logical connectives such as AND, OR, NOT, implication, and biconditional  
-• Truth tables used to evaluate logical expressions  
-• Introduction to sets: elements, notation, subsets, and the empty set  
-• Set operations including union, intersection, difference, and complement  
-• Venn diagrams for visualizing relationships between sets  
-• Basic mathematical reasoning and introductory proof techniques  
+• What data structures and algorithms are and why they matter in computing  
+• Arrays as continuous memory structures that allow fast indexed access  
+• Linked lists as flexible node-based structures ideal for insertions and deletions  
+• Differences between static and dynamic storage organization  
+• Characteristics of good algorithms: clarity, correctness, efficiency, and finiteness  
+• Basic operations such as accessing, updating, and traversing data  
+• Introduction to Big-O notation for estimating algorithm performance  
 
-These foundations strengthen analytical thinking and support future study in programming, algorithms, and data structures.
+These foundations prepare learners for solving computational problems, writing efficient code, and progressing toward more complex structures and algorithms.
 ''',
         content:
-            'An accessible introduction to logic, set theory, truth tables, and mathematical reasoning, helping learners develop clear analytical skills essential for computer science.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=D5sTEIVKYxA',
+            'A beginner-friendly explanation of arrays, linked lists, algorithm basics, and the role of Big-O notation in evaluating efficiency. This sets the groundwork for building fast and scalable programs.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=RBSGKlAvoiM',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=1AJc1J7pIQYzABsyV40-faQm6d3yHqbFB',
+            'https://drive.google.com/uc?export=download&id=1LS1uqEM0ykVrAZHFYTLBcTU3wiNjkwp4',
       ),
     ],
   ),

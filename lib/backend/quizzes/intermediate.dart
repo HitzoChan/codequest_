@@ -1,116 +1,116 @@
 import 'models.dart';
 
-class IntermediateDiscreteMathQuiz {
+class IntermediateDSAQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'A relation is best described as:',
+      question: 'A stack follows which principle?',
       choices: [
-        'A set of numbers in ascending order',
-        'A set of ordered pairs connecting elements of one set to another',
-        'A method for solving equations',
-        'A type of function that has no domain',
+        'First-In, First-Out',
+        'Last-In, First-Out',
+        'Random Access Order',
+        'Sorted Order Only',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A relation is symmetric if:',
+      question: 'The operation that adds an element to the top of a stack is called:',
       choices: [
-        'Each element relates only to itself',
-        'For every pair (a, b), the pair (b, a) is also in the relation',
-        'No pairs repeat',
-        'The relation contains no elements',
+        'Insert',
+        'Push',
+        'Enqueue',
+        'Peek',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A function differs from a general relation because:',
+      question: 'A queue removes elements using:',
       choices: [
-        'It allows multiple outputs for one input',
-        'Each input corresponds to exactly one output',
-        'It contains no ordered pairs',
-        'It always has the same domain and range',
+        'Pop',
+        'Dequeue',
+        'Push',
+        'Reverse',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'The domain of a function refers to:',
+      question: 'Which principle does a queue follow?',
       choices: [
-        'All possible outputs',
-        'All elements that have no relation',
-        'All possible inputs',
-        'Only the largest value in the set',
-      ],
-      correctIndex: 2,
-    ),
-
-    QuizQuestion(
-      question: 'According to the Product Rule, if event A can happen in 3 ways and event B in 4 ways, then both events together can occur in:',
-      choices: [
-        '7 ways',
-        '12 ways',
-        '1 way',
-        '3 ways',
+        'LIFO',
+        'FIFO',
+        'Random Access',
+        'Priority-Based Only',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'The Sum Rule applies when events:',
+      question: 'Linear search works by:',
       choices: [
-        'Happen at the same time',
-        'Cannot occur together',
-        'Must occur in sequence',
-        'Have no possible outcomes',
+        'Dividing the list repeatedly',
+        'Checking each element one by one',
+        'Sorting before searching',
+        'Jumping directly to the middle',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Modus Ponens is used in logic to conclude:',
+      question: 'Binary search is much faster than linear search but requires:',
       choices: [
-        'If P then Q; P is true, therefore Q is true',
-        'If P then Q; Q is false, therefore P is true',
-        'If P then Q; P is false, therefore Q must be true',
-        'If P then Q; Q is true, therefore P is false',
+        'The data to be sorted',
+        'Very small datasets',
+        'Linked lists instead of arrays',
+        'No comparisons',
       ],
       correctIndex: 0,
     ),
 
     QuizQuestion(
-      question: 'Mathematical induction is commonly used to:',
+      question: 'Bubble sort works by:',
       choices: [
-        'Solve algebraic equations directly',
-        'Prove statements involving natural numbers',
-        'Measure geometric angles',
-        'Evaluate trigonometric expressions',
+        'Selecting the smallest element each time',
+        'Comparing and swapping adjacent elements repeatedly',
+        'Jumping to random positions',
+        'Removing duplicate values only',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'In mathematical induction, the base case:',
+      question: 'Selection sort works by:',
       choices: [
-        'Is optional',
-        'Must always be proved first',
-        'Can be skipped if the inductive step is correct',
-        'Only applies to even numbers',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'The inductive step requires showing that:',
-      choices: [
-        'If the statement holds for k, then it holds for k + 1',
-        'The statement is true only for one specific number',
-        'The statement is unrelated to natural numbers',
-        'The proof has no logical structure',
+        'Picking the smallest element and placing it in its correct position',
+        'Swapping elements without comparisons',
+        'Sorting only part of the list',
+        'Sorting in reverse alphabetical order',
       ],
       correctIndex: 0,
+    ),
+
+    QuizQuestion(
+      question: 'A recursive function must include:',
+      choices: [
+        'At least two loops',
+        'A base case to stop recursion',
+        'A constant return value',
+        'No parameters',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Recursion is helpful for problems that:',
+      choices: [
+        'Cannot be broken into smaller tasks',
+        'Require repetitive or self-similar steps',
+        'Must run without function calls',
+        'Only involve arrays',
+      ],
+      correctIndex: 1,
     ),
 
   ];

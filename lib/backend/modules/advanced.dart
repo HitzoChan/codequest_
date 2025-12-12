@@ -2,33 +2,37 @@ import '../course_models.dart';
 
 final List<Course> advancedCourses = [
   Course(
-    courseId: 'discrete_math_advanced_clean',
-    title: 'Discrete Mathematics – Advanced',
+    courseId: 'dsa_advanced_clean',
+    title: 'Data Structures & Algorithms – Advanced',
     description:
-        'Advanced module covering graph theory, trees, recurrence relations, advanced counting techniques, and graph algorithms.',
+        'Advanced module covering trees, binary search trees, graphs, hashing, and algorithm design techniques.',
     difficultyLevel: 'Advanced',
     modules: [
       Module(
-        moduleId: 'discrete_math_advanced_ch1',
-        title: 'Graphs, Trees, Recurrence Relations & Advanced Counting',
+        moduleId: 'dsa_advanced_ch1',
+        title: 'Trees, Graphs, Hashing & Algorithm Design',
         difficultyLevel: 'Advanced',
         summary: '''
-This module explores advanced discrete structures used throughout computer science, focusing on mathematical models that describe networks, hierarchical systems, recursive patterns, and combinatorial problems.
+This module covers advanced data structures and algorithm design techniques used in modern computing systems.
 
 Topics include:
-• Graph theory fundamentals including vertices, edges, types of graphs, and applications in real-world networks  
-• Trees and hierarchical structures, including binary trees, levels, height, and their role in data organization  
-• Recurrence relations for defining sequences based on previous terms, used in analyzing recursive algorithms  
-• Advanced counting techniques such as permutations and combinations for determining arrangements and selections  
-• Essential graph algorithms including DFS, BFS, shortest-path techniques, and minimum spanning tree algorithms  
+• Trees as hierarchical data structures using parent-child relationships  
+• Binary Search Trees (BST) and how ordering improves search efficiency  
+• Graphs composed of vertices and edges to represent relationships  
+• Breadth-First Search (BFS) and Depth-First Search (DFS) graph traversal methods  
+• Hash tables and the use of hash functions for fast data storage  
+• Hash collisions and why they occur  
+• Algorithm design strategies such as Divide and Conquer, Greedy algorithms, and Dynamic Programming  
 
-These concepts form the foundation of modern algorithm design, network analysis, and computational problem solving.
+These concepts are essential for building efficient, scalable, and high-performance software systems.
 ''',
         content:
-            'A comprehensive exploration of graph theory, tree structures, recurrence relations, combinatorics, and graph algorithms used to model networks, analyze algorithm complexity, and solve advanced mathematical problems.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=HipVU5vz3Q8',
+            'An advanced study of trees, binary search trees, graphs, hashing, and algorithm design techniques used to solve complex computational problems efficiently.',
+        // ✅ YouTube link is used ONLY in the module
+        youtubeUrl: 'https://youtu.be/bum_19loj9A?si=rUbdJVeFqnlstlBx',
+        // ✅ PDF link you provided
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=1VzPYDLrxMZxFp1o9t_TvV6_DWKUKQWAd',
+            'https://drive.google.com/uc?export=download&id=1gBnm38Veczd0exQA4AJq6a37hAdJ-p-A',
       ),
     ],
   ),

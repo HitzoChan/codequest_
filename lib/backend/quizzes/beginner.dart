@@ -1,116 +1,116 @@
 import 'models.dart';
 
-class BeginnerDiscreteMathQuiz {
+class BeginnerDSAQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'Discrete Mathematics primarily studies:',
+      question: 'A data structure is:',
       choices: [
-        'Continuous structures like curves and surfaces',
-        'Separate, countable structures such as integers and logical statements',
-        'Only geometry and measurement',
-        'Physical experiments in science',
+        'A programming language',
+        'A way of organizing and storing data efficiently',
+        'A type of hardware device',
+        'A mathematical equation',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A proposition in logic is:',
+      question: 'An algorithm is best described as:',
       choices: [
-        'A mathematical equation with variables',
-        'A statement that is either true or false',
-        'A symbol without meaning',
-        'A diagram that shows sets',
+        'A random guess',
+        'A step-by-step procedure for solving a problem',
+        'A type of data structure',
+        'A storage device',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Which of the following is a logical connective?',
+      question: 'Arrays store data:',
       choices: [
-        'Plus sign (+)',
-        'And, or, not',
-        'Square root',
-        'Derivative',
+        'In random memory locations',
+        'In continuous memory locations with fixed size',
+        'Only in alphabetical order',
+        'Using pointers only',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Truth tables are used to:',
+      question: 'A major limitation of arrays is that they:',
       choices: [
-        'Count numbers in sequences',
-        'Determine the truth value of compound logical statements',
-        'Measure angles',
-        'Graph linear equations',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'A set is best described as:',
-      choices: [
-        'A random collection of unrelated facts',
-        'A collection of distinct objects considered as a group',
-        'A list of numbers in ascending order only',
-        'A type of variable in algebra',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'The empty set is the set that contains:',
-      choices: [
-        'No elements',
-        'All possible elements',
-        'Only one element',
-        'Duplicate elements',
-      ],
-      correctIndex: 0,
-    ),
-
-    QuizQuestion(
-      question: 'The union of two sets A and B contains:',
-      choices: [
-        'Only elements common to both sets',
-        'Only the elements of set A',
-        'Only the elements of set B',
-        'All elements that are in A, in B, or in both',
-      ],
-      correctIndex: 3,
-    ),
-
-    QuizQuestion(
-      question: 'The intersection of sets A and B contains:',
-      choices: [
-        'All elements in the universal set',
-        'Elements common to both A and B',
-        'Only elements in A but not B',
-        'Only elements in B but not A',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Venn diagrams help visualize:',
-      choices: [
-        'Steps in solving equations',
-        'Geometric shapes',
-        'Relationships between sets',
-        'Graphs of functions',
+        'Cannot store numbers',
+        'Cannot be accessed by index',
+        'Have a fixed size once created',
+        'Are slower than all other structures',
       ],
       correctIndex: 2,
     ),
 
     QuizQuestion(
-      question: 'Mathematical reasoning is important because it:',
+      question: 'A linked list stores data using:',
       choices: [
-        'Focuses on memorizing formulas',
-        'Helps justify conclusions through logical thinking',
-        'Eliminates the need to understand sets',
-        'Prevents the use of truth tables',
+        'Contiguous memory blocks',
+        'Nodes linked by pointers or references',
+        'Only two elements at a time',
+        'A fixed-size table',
       ],
       correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'One advantage of linked lists is that they:',
+      choices: [
+        'Require no memory',
+        'Allow fast insertions and deletions',
+        'Can only store integers',
+        'Always run faster than arrays',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'An algorithm that checks every element in a list one by one has a time complexity of:',
+      choices: [
+        'O(1)',
+        'O(n)',
+        'O(n²)',
+        'O(log n)',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Big-O notation is used to measure:',
+      choices: [
+        'How attractive code looks',
+        'The efficiency of an algorithm',
+        'How many languages a programmer knows',
+        'Hardware performance',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'A good algorithm must be:',
+      choices: [
+        'Infinite and unpredictable',
+        'Correct, efficient, and clear',
+        'Complicated and long',
+        'Written only in one specific language',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Arrays provide fast access to elements because:',
+      choices: [
+        'They store elements in continuous memory and use indexes',
+        'They automatically search for the largest element',
+        'They use random storage patterns',
+        'They convert all values to pointers',
+      ],
+      correctIndex: 0,
     ),
 
   ];

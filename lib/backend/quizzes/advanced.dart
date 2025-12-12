@@ -1,114 +1,114 @@
 import 'models.dart';
 
-class AdvancedDiscreteMathQuiz {
+class AdvancedDSAQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'A graph is primarily composed of:',
+      question: 'A tree is considered a hierarchical structure because:',
       choices: [
-        'Equations and inequalities',
-        'Vertices (nodes) and edges (connections)',
-        'Only numerical sequences',
-        'Angles and geometric shapes',
+        'It stores data randomly',
+        'It organizes nodes in parent-child relationships',
+        'All nodes contain identical values',
+        'It must always be balanced',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A tree is a special type of graph because it:',
+      question: 'A binary search tree (BST) allows efficient searching because:',
       choices: [
-        'Contains cycles and loops',
-        'Has no cycles and follows a hierarchical structure',
-        'Contains no vertices',
-        'Must always be a binary tree',
+        'It does not use comparisons',
+        'Nodes are arranged so smaller values go left and larger values go right',
+        'All values are stored in continuous memory',
+        'It always contains the same number of nodes',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A binary tree is defined as a tree in which:',
+      question: 'A major disadvantage of an unbalanced BST is that:',
       choices: [
-        'Each node has at most two children',
-        'All nodes have exactly three children',
-        'The tree must be perfectly balanced',
-        'Nodes are arranged randomly',
+        'It cannot store duplicate values',
+        'It may behave like a linked list and reduce performance',
+        'It requires hashing to function',
+        'It cannot delete nodes',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'A graph is composed of:',
+      choices: [
+        'Arrays and matrices only',
+        'Vertices and edges that represent relationships',
+        'Trees and subtrees',
+        'Only weighted paths',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Breadth-First Search (BFS) explores a graph by:',
+      choices: [
+        'Visiting nodes level by level',
+        'Going as deep as possible before backtracking',
+        'Ignoring edges with weights',
+        'Only exploring leaf nodes',
       ],
       correctIndex: 0,
     ),
 
     QuizQuestion(
-      question: 'Recurrence relations describe:',
+      question: 'A hash table stores data based on:',
       choices: [
-        'Graphical solutions to equations',
-        'Sequences where each term depends on previous terms',
-        'Only one-time events',
-        'Data that cannot be represented numerically',
+        'Random selection',
+        'A hash function that maps keys to index positions',
+        'Numerical sorting',
+        'Manual insertion order only',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'The Fibonacci sequence is an example of:',
+      question: 'A hash collision occurs when:',
       choices: [
-        'A direct formula',
-        'A recurrence relation',
-        'A combinatorial proof',
-        'A graph traversal',
+        'A key has no value',
+        'Two different keys map to the same index',
+        'The table becomes too large',
+        'A hash function returns negative numbers',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Permutations are used when:',
+      question: 'Divide and Conquer works by:',
       choices: [
-        'Order does not matter',
-        'Order matters in arranging objects',
-        'There are no possible arrangements',
-        'All objects are identical',
+        'Solving problems without splitting them',
+        'Breaking a problem into smaller subproblems and combining solutions',
+        'Always using recursion only',
+        'Searching the entire dataset sequentially',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Combinations are used for counting:',
+      question: 'Greedy algorithms make decisions by:',
       choices: [
-        'Arrangements where order matters',
-        'Selections where order does not matter',
-        'Outcomes with infinite sets',
-        'Graph edges only',
+        'Exploring all possible combinations',
+        'Choosing the best immediate option at each step',
+        'Comparing dynamic programming tables',
+        'Avoiding local choices',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Depth-first search (DFS) explores a graph by:',
+      question: 'Dynamic Programming is effective for problems that:',
       choices: [
-        'Visiting all neighbors level by level',
-        'Exploring as far as possible along a branch before backtracking',
-        'Calculating probabilities',
-        'Sorting nodes alphabetically',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Dijkstra’s algorithm is used to find:',
-      choices: [
-        'The number of cycles in a graph',
-        'The shortest path between nodes in a weighted graph',
-        'The maximum possible path',
-        'The total number of spanning trees',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'A minimum spanning tree (MST) is:',
-      choices: [
-        'A tree with the largest possible total weight',
-        'A tree connecting all vertices with the minimum total edge weight',
-        'A tree that must have cycles',
-        'A random subset of edges in a graph',
+        'Cannot be broken down',
+        'Contain overlapping subproblems and require storing intermediate results',
+        'Must be sorted first',
+        'Do not involve optimization',
       ],
       correctIndex: 1,
     ),
