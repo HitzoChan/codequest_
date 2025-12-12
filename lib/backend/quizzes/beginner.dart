@@ -1,114 +1,114 @@
 import 'models.dart';
 
-class BeginnerDigitalLiteracyQuiz {
+class BeginnerHCIQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'Digital literacy refers to the ability to:',
+      question: 'Human–Computer Interaction (HCI) primarily studies:',
       choices: [
-        'Build computer hardware',
-        'Use digital tools effectively and responsibly',
-        'Repair mobile phones',
-        'Write programming languages',
+        'How computers communicate with other machines',
+        'How people interact with computers and how systems can be improved',
+        'How to design hardware components',
+        'How networks are configured',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'ICT (Information and Communication Technology) involves:',
+      question: 'Usability refers to a system’s ability to be:',
       choices: [
-        'Only mobile applications',
-        'Technologies used for managing information and digital communication',
-        'Printing documents only',
-        'Operating system installation only',
+        'Entertaining but difficult to use',
+        'Easy to learn, efficient, and satisfying for users',
+        'Limited in function',
+        'Used only by expert programmers',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Productivity tools are used to:',
+      question: 'User Experience (UX) focuses on:',
       choices: [
-        'Make devices run slower',
-        'Help users create documents, organize data, and communicate',
-        'Manage only hardware components',
-        'Remove viruses from the system',
+        'Only the visual appearance of a system',
+        'The overall feelings and perceptions users have when interacting with a system',
+        'Hardware performance',
+        'Internet speed',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A word processor is mainly used for:',
+      question: 'An example of good usability is when:',
       choices: [
-        'Creating slideshows',
-        'Editing and formatting text documents',
-        'Designing databases',
-        'Writing source code',
+        'A system requires many steps for simple tasks',
+        'Users can quickly understand how to perform tasks with minimal effort',
+        'Information is hidden and hard to find',
+        'Buttons behave differently each time',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Which of the following is an example of a spreadsheet task?',
+      question: 'Consistency in interface design helps users:',
       choices: [
-        'Watching a video online',
-        'Creating tables and applying formulas',
-        'Designing animations',
-        'Typing a printed letter',
+        'Become confused about system behavior',
+        'Form mental models and predict how the system works',
+        'Make more errors',
+        'Avoid using familiar features',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Presentation software allows users to:',
+      question: 'An affordance in HCI refers to:',
       choices: [
-        'Create audio recordings only',
-        'Design slideshows for communication',
-        'Test network connections',
-        'Open compressed files',
+        'A system bug',
+        'A visual cue that suggests how something should be used',
+        'A hardware requirement',
+        'A type of network connection',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A cell in a spreadsheet is identified by:',
+      question: 'Prototyping is useful because it:',
       choices: [
-        'Color only',
-        'A combination of a column letter and row number',
-        'The file size',
-        'The number of formulas inside it',
+        'Requires building a complete final system immediately',
+        'Allows early testing of ideas before full development',
+        'Removes the need for user feedback',
+        'Prevents design changes',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'The purpose of formatting text in a word processor is to:',
+      question: 'Human factors in HCI involve understanding:',
       choices: [
-        'Make documents more readable and professional',
-        'Prevent saving the document',
-        'Disconnect from the internet',
-        'Delete all content automatically',
-      ],
-      correctIndex: 0,
-    ),
-
-    QuizQuestion(
-      question: 'Digital communication tools such as email and messaging apps are part of:',
-      choices: [
-        'Entertainment software',
-        'ICT',
-        'File compression tools',
-        'Computer hardware components',
+        'Only the technical limitations of computers',
+        'How user abilities, limitations, and characteristics affect interaction',
+        'The speed of internet connections',
+        'Only user emotions',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Being digitally literate helps individuals:',
+      question: 'Feedback in user interfaces is important because it:',
       choices: [
-        'Avoid using technology',
-        'Work efficiently and participate confidently in digital environments',
-        'Remove the need for productivity tools',
-        'Replace all computer components',
+        'Confuses users on purpose',
+        'Helps users understand the results of their actions',
+        'Makes interfaces slower',
+        'Removes information from the screen',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'HCI is important because it:',
+      choices: [
+        'Focuses only on making systems look attractive',
+        'Helps create technology that is intuitive, accessible, and user-centered',
+        'Reduces the need to understand users',
+        'Makes systems harder to operate',
       ],
       correctIndex: 1,
     ),

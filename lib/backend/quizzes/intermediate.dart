@@ -1,114 +1,114 @@
 import 'models.dart';
 
-class IntermediateDigitalLiteracyQuiz {
+class IntermediateHCIQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'Intermediate word processing focuses on:',
+      question: 'The interaction design process is best described as:',
       choices: [
-        'Basic typing without formatting',
-        'Creating professionally structured documents with advanced formatting',
-        'Designing websites using HTML',
-        'Removing all images from documents',
+        'A single-step method for creating interfaces',
+        'An iterative cycle of understanding user needs, designing solutions, and evaluating results',
+        'A process focused only on programming workflows',
+        'A technique used only for graphic design',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Styles, headers, and footers improve documents by:',
+      question: 'User research is conducted to:',
       choices: [
-        'Making them harder to edit',
-        'Adding unnecessary decorations',
-        'Providing consistent formatting and better organization',
-        'Removing text automatically',
-      ],
-      correctIndex: 2,
-    ),
-
-    QuizQuestion(
-      question: 'The IF function in spreadsheets is used for:',
-      choices: [
-        'Creating slideshows',
-        'Performing calculations based on a condition',
-        'Formatting graphics',
-        'Writing long paragraphs',
+        'Confirm assumptions without evidence',
+        'Understand users’ behaviors, needs, and challenges',
+        'Test only system hardware',
+        'Remove the need for usability testing',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Sorting and filtering spreadsheet data allows users to:',
+      question: 'Interviews and surveys are useful in HCI because they:',
       choices: [
-        'Delete all stored information',
-        'Organize and analyze data more efficiently',
-        'Create animations',
-        'Remove formulas permanently',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Conditional formatting is useful because it:',
-      choices: [
-        'Applies colors or styles based on data values',
-        'Removes hidden rows automatically',
-        'Prevents editing of cells',
-        'Replaces all numerical data with symbols',
+        'Provide direct feedback from users',
+        'Replace observation entirely',
+        'Only measure system performance',
+        'Are required only at the end of a project',
       ],
       correctIndex: 0,
     ),
 
     QuizQuestion(
-      question: 'Effective presentation design includes:',
+      question: 'Contextual inquiry focuses on:',
       choices: [
-        'Overusing animations to impress the audience',
-        'Using clear structure, visuals, and design principles',
-        'Filling every slide with text',
-        'Ignoring color and layout choices',
+        'Studying users in artificial, controlled environments',
+        'Observing users in their natural work settings',
+        'Asking users only yes-or-no questions',
+        'Testing prototypes without user involvement',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Cloud-based collaboration tools allow users to:',
+      question: 'Information architecture is concerned with:',
       choices: [
-        'Work on documents only when offline',
-        'Edit files together in real time from different locations',
-        'Disable communication between team members',
-        'Replace all productivity tools completely',
+        'Visual color choices',
+        'How information is structured and organized for navigation',
+        'Writing computer code',
+        'Designing computer hardware',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Version history in cloud tools helps users by:',
+      question: 'Wireframes are valuable because they:',
       choices: [
-        'Deleting old files automatically',
-        'Tracking changes and restoring previous versions',
-        'Preventing shared files from being edited',
-        'Removing all comments in a document',
+        'Provide full-color, high-fidelity designs',
+        'Show the layout and structure of a screen without detailed visuals',
+        'Replace the need for any prototypes',
+        'Are only used after a system is fully developed',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Digital communication etiquette requires:',
+      question: 'Low-fidelity prototypes help designers:',
       choices: [
-        'Using informal or unclear messages',
-        'Responding professionally and respectfully',
-        'Sending messages without reading them',
-        'Ignoring proper grammar and tone',
+        'Avoid revising their designs',
+        'Test early ideas quickly and cheaply',
+        'Finalize the system’s visual aesthetics',
+        'Remove the need for user feedback',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Evaluating online information is important because:',
+      question: 'Usability testing allows designers to:',
       choices: [
-        'All online content is automatically verified',
-        'It helps users identify credible sources and avoid misinformation',
-        'It slows down digital work',
-        'It prevents users from accessing websites',
+        'Measure how efficiently users complete tasks',
+        'Skip user involvement during development',
+        'Confirm that the system looks visually appealing',
+        'Test hardware performance only',
+      ],
+      correctIndex: 0,
+    ),
+
+    QuizQuestion(
+      question: 'A heuristic evaluation is conducted by:',
+      choices: [
+        'Random users',
+        'Experts using established usability principles',
+        'Programmers testing only code errors',
+        'Automated computer tools without human input',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'The think-aloud method helps researchers because users:',
+      choices: [
+        'Remain silent during tasks',
+        'Verbalize their thoughts, revealing decision-making and confusion',
+        'Provide written reports after testing',
+        'Focus only on visual design',
       ],
       correctIndex: 1,
     ),

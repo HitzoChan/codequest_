@@ -1,114 +1,114 @@
 import 'models.dart';
 
-class AdvancedDigitalLiteracyQuiz {
+class AdvancedHCIQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'Advanced document production focuses on:',
+      question: 'Cognitive models in HCI help designers understand:',
       choices: [
-        'Creating short, unformatted notes',
-        'Producing highly structured documents using advanced formatting tools',
-        'Removing all graphics from documents',
-        'Limiting documents to one page only',
+        'Hardware performance limitations',
+        'How users perceive, process, and respond to information',
+        'How to create animations and visual effects',
+        'How networks handle data packets',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A table of contents generated automatically requires:',
+      question: 'GOMS is a cognitive model used to:',
       choices: [
-        'Proper use of styles and heading levels',
-        'Deleting all section breaks',
-        'Writing the entire document in uppercase',
-        'Removing all page numbers',
-      ],
-      correctIndex: 0,
-    ),
-
-    QuizQuestion(
-      question: 'Pivot tables in spreadsheets are primarily used to:',
-      choices: [
-        'Create animations',
-        'Summarize and categorize large datasets efficiently',
-        'Design presentation slides',
-        'Remove duplicate files',
+        'Evaluate color contrast in interfaces',
+        'Break tasks into smaller actions to predict user performance',
+        'Design keyboard shortcuts',
+        'Test only high-fidelity prototypes',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'The VLOOKUP or XLOOKUP function allows users to:',
+      question: 'Fitts’ Law explains:',
       choices: [
-        'Search for data in another table and return a corresponding value',
-        'Create hyperlinks automatically',
-        'Delete unused rows',
-        'Split documents into sections',
-      ],
-      correctIndex: 0,
-    ),
-
-    QuizQuestion(
-      question: 'Advanced presentation design emphasizes:',
-      choices: [
-        'Overusing animations and colors to entertain the audience',
-        'Clear visual hierarchy and consistent slide formatting',
-        'Placing as much text as possible on each slide',
-        'Avoiding multimedia elements entirely',
+        'How users remember instructions',
+        'How target size and distance influence pointing speed',
+        'How many steps an interface should have',
+        'How visual design affects emotions',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Slide masters are used in presentations to:',
+      question: 'Accessibility in HCI aims to:',
       choices: [
-        'Change the appearance of all slides consistently',
-        'Automatically write speaker notes',
-        'Remove transitions',
-        'Edit videos inside the presentation',
-      ],
-      correctIndex: 0,
-    ),
-
-    QuizQuestion(
-      question: 'Digital collaboration systems allow teams to:',
-      choices: [
-        'Work individually without communication',
-        'Share documents, track tasks, and coordinate workflows',
-        'Delete all previous versions of files',
-        'Avoid cloud-based tools',
+        'Remove features for advanced users',
+        'Ensure interfaces can be used by people with diverse abilities',
+        'Require high-speed hardware',
+        'Limit customization options',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Version control in cloud platforms is useful because it:',
+      question: 'WCAG guidelines focus on:',
       choices: [
-        'Prevents documents from being edited',
-        'Tracks changes over time and restores earlier versions when needed',
-        'Deletes the oldest version automatically',
-        'Removes all formatting from the document',
+        'Screen resolution standards',
+        'Principles for accessible web design',
+        'Programming languages for interface development',
+        'Physical device dimensions',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Effective digital information management includes:',
+      question: 'A multimodal interface allows users to interact through:',
       choices: [
-        'Storing all files in one folder with no organization',
-        'Structuring files, securing data, and evaluating information sources',
-        'Sharing files publicly without restrictions',
-        'Avoiding the use of password protections',
+        'Only keyboard input',
+        'Multiple input methods, such as speech, touch, and gestures',
+        'Only mouse clicks',
+        'Only visual commands',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Digital security awareness is important because:',
+      question: 'High-fidelity prototypes are used because they:',
       choices: [
-        'Online risks are rare',
-        'Users must protect sensitive data and reduce privacy threats',
-        'Productivity tools automatically block all threats',
-        'Only advanced programmers face security issues',
+        'Contain minimal detail and no interaction',
+        'Closely resemble the final product and support realistic testing',
+        'Eliminate the need for user testing',
+        'Are created only after software development is complete',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Eye-tracking studies help designers understand:',
+      choices: [
+        'Device heating patterns',
+        'Where users focus their attention and how they view the interface',
+        'The speed of system boot time',
+        'How well users memorize instructions',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'A cognitive walkthrough evaluates:',
+      choices: [
+        'How experts complete tasks efficiently',
+        'How easily a first-time user can learn and complete tasks',
+        'How fast a system performs operations',
+        'The number of clicks in a navigation menu',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Advanced evaluation methods are important because they:',
+      choices: [
+        'Reduce the need for user involvement entirely',
+        'Provide deeper insights into user behavior and interface performance',
+        'Replace wireframing and prototyping',
+        'Focus only on hardware design',
       ],
       correctIndex: 1,
     ),

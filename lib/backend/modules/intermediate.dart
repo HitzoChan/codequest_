@@ -2,35 +2,34 @@ import '../course_models.dart';
 
 final List<Course> intermediateCourses = [
   Course(
-    courseId: 'digital_literacy_intermediate_clean',
-    title: 'Digital Literacy & Productivity Tools – Intermediate',
+    courseId: 'hci_intermediate_clean',
+    title: 'Human–Computer Interaction – Intermediate',
     description:
-        'Intermediate module focusing on structured document creation, data analysis in spreadsheets, presentation design, cloud collaboration tools, and professional digital communication.',
+        'Intermediate module covering the interaction design process, user research methods, information architecture, wireframing, prototyping, and usability evaluation.',
     difficultyLevel: 'Intermediate',
     modules: [
       Module(
-        moduleId: 'dl_intermediate_ch1',
-        title: 'Intermediate Document Design, Data Organization & Digital Collaboration',
+        moduleId: 'hci_intermediate_ch1',
+        title: 'Interaction Design, User Research, IA & Usability Evaluation',
         difficultyLevel: 'Intermediate',
         summary: '''
-This module builds on foundational digital literacy by introducing more advanced tools and techniques for creating professional documents, analyzing data, designing effective presentations, and collaborating online.
+This module explores structured methods for designing interactive systems, focusing on research, design, and evaluation techniques used in user-centered development.
 
 Topics include:
-• Intermediate word processing skills such as styles, headers/footers, tables, hyperlinks, and track changes  
-• Creating well-structured documents with consistent formatting and visual organization  
-• Spreadsheet skills including formulas (SUM, AVERAGE, IF), sorting, filtering, charts, and conditional formatting  
-• Understanding absolute and relative references and organizing data into tables  
-• Presentation enhancement using layout principles, color harmony, visual hierarchy, and proper use of multimedia  
-• Cloud-based collaboration including shared editing, permissions, version history, and remote teamwork  
-• Professional communication etiquette, clarity in messaging, and evaluating credible online information  
+• The interaction design process including requirement gathering, ideation, prototyping, and evaluation  
+• User research methods such as interviews, surveys, observations, and contextual inquiries  
+• Information architecture for organizing and structuring content to support navigation and reduce cognitive load  
+• Wireframes and low-fidelity prototypes for exploring layout ideas and testing early concepts  
+• Usability testing approaches including task-based testing, heuristic evaluation, and think-aloud protocols  
+• How evaluation results guide design refinement and improve user effectiveness and satisfaction  
 
-This module strengthens digital productivity skills needed for academic, workplace, and collaborative environments.
+This module strengthens analytical thinking and prepares learners to design interfaces based on real user needs rather than assumptions.
 ''',
         content:
-            'A detailed explanation of document structuring, data analysis techniques, presentation design principles, cloud collaboration features, and digital communication etiquette. Learners enhance productivity and professionalism using intermediate digital tools.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=MJHhTTh-q3g',
+            'A detailed explanation of the interaction design cycle, user research, information architecture, wireframes, prototypes, and usability evaluation. Learners develop the ability to gather user insights, structure information effectively, and evaluate interfaces using established HCI methods.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=0iNojP9tf1U',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=1Vb9Fif6kNY7y6KrzAZs-l7mOzXbLqzRx',
+            'https://drive.google.com/uc?export=download&id=1HmiW1vWn8Zfiv3uo9GhvqzFgpAcDHEEd',
       ),
     ],
   ),

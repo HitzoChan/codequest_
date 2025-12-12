@@ -2,35 +2,35 @@
 
 final List<Course> beginnerCourses = [
   Course(
-    courseId: 'digital_literacy_beginner_clean',
-    title: 'Digital Literacy & Productivity Tools – Beginner',
+    courseId: 'hci_beginner_clean',
+    title: 'Human–Computer Interaction – Beginner',
     description:
-        'Beginner module introducing digital literacy, ICT concepts, and basic productivity tools such as word processors, spreadsheets, and presentations.',
+        'Beginner module introducing Human–Computer Interaction (HCI), usability, user experience, basic interaction principles, human factors, and prototyping.',
     difficultyLevel: 'Beginner',
     modules: [
       Module(
-        moduleId: 'dl_beginner_ch1',
-        title: 'Introduction to Digital Literacy & Productivity Tools',
+        moduleId: 'hci_beginner_ch1',
+        title: 'Introduction to HCI, Usability, UX, and Interaction Principles',
         difficultyLevel: 'Beginner',
         summary: '''
-This module introduces the essential skills needed to navigate digital environments, use ICT tools, and apply basic productivity applications.
+This module introduces learners to the foundations of Human–Computer Interaction (HCI), focusing on how users interact with technology and how systems can be designed to improve that experience.
 
 Topics include:
-• Understanding digital literacy and its importance in communication, learning, and productivity  
-• Basic ICT concepts including hardware, software, networks, the internet, and cloud services  
-• Introduction to productivity tools such as word processors, spreadsheets, and presentation software  
-• Word processing basics including text editing, formatting, layout, and inserting elements  
-• Spreadsheet basics such as rows, columns, cells, formulas, and simple data organization  
-• Presentation software basics including slide layout, visual themes, images, and simple animations  
-• How digital literacy enhances academic tasks, workplace readiness, and everyday digital communication  
+• Understanding Human–Computer Interaction and its importance in designing user-centered systems  
+• Usability concepts such as simplicity, clarity, efficiency, consistency, and effective feedback  
+• User Experience (UX) principles involving user perception, emotions, satisfaction, and interaction flow  
+• Basic interaction principles including visibility, affordances, consistency, and feedback  
+• Human factors such as user differences, abilities, ergonomics, accessibility, and cognitive limitations  
+• The role of prototyping using sketches, wireframes, and early testing to refine interface designs  
+• Importance of studying HCI to create intuitive, inclusive, and efficient digital systems  
 
-This module builds strong foundational skills needed to use digital tools confidently and effectively.
+This module helps learners develop awareness of how to evaluate interfaces, understand user needs, and contribute to user-centered design.
 ''',
         content:
-            'An introductory explanation of digital literacy, ICT systems, and key productivity tools. Learners explore essential features of word processors, spreadsheets, and presentation software to support communication, organization, and digital tasks.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=_LElWqXi7Ag',
+            'An introductory exploration of HCI, usability, user experience, interaction principles, human factors, and prototyping. Learners build foundational skills for analyzing interfaces and designing systems that effectively support user goals.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=m3EzxNfpsr0',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=1ylS5Tg_Sf-17A5yj0guShvVbuctNgtmO',
+            'https://drive.google.com/uc?export=download&id=1MIqXm8UDbDWshfMPtCZGCthpcQjQ5cLQ',
       ),
     ],
   ),

@@ -2,35 +2,35 @@ import '../course_models.dart';
 
 final List<Course> advancedCourses = [
   Course(
-    courseId: 'digital_literacy_advanced_clean',
-    title: 'Digital Literacy & Productivity Tools – Advanced',
+    courseId: 'hci_advanced_clean',
+    title: 'Human–Computer Interaction – Advanced',
     description:
-        'Advanced module focusing on complex document production, data analysis, presentation design, digital collaboration systems, and information management.',
+        'Advanced module covering cognitive models, accessibility standards, multimodal interaction, high-fidelity prototyping, and advanced evaluation techniques.',
     difficultyLevel: 'Advanced',
     modules: [
       Module(
-        moduleId: 'dl_advanced_ch1',
-        title: 'Advanced Document Production, Data Analysis & Digital Collaboration',
+        moduleId: 'hci_advanced_ch1',
+        title: 'Cognitive Models, Accessibility, Interaction Paradigms & Advanced Evaluation',
         difficultyLevel: 'Advanced',
         summary: '''
-This module develops advanced skills in digital literacy, enabling learners to create structured documents, analyze large datasets, design professional presentations, and manage digital workflows.
+This module explores advanced concepts that influence how users think, behave, and interact with modern digital systems.
 
 Topics include:
-• Advanced word processing features such as templates, automated tables of contents, mail merge, citations, tracked changes, and section formatting  
-• Document production with consistent visual identity, integrated graphics, complex tables, and editorial tools  
-• Advanced spreadsheet analysis using pivot tables, VLOOKUP/XLOOKUP, COUNTIF/SUMIF, logic functions, and data visualization  
-• Professional presentation design through slide masters, themes, multimedia integration, visual hierarchy, and data-linked charts  
-• Digital collaboration using cloud platforms, workflow tools, shared repositories, permissions, real-time editing, and version control  
-• Information management strategies such as structured file organization, secure sharing, encryption, and evaluating credible sources  
-• Digital security awareness to protect data, maintain privacy, and use digital tools ethically and responsibly  
+• Cognitive models that explain human perception, memory, attention, and motor behavior  
+• GOMS, Fitts’ Law, and other analytical tools for predicting user performance  
+• Accessibility principles and inclusive design, focusing on diverse user needs  
+• WCAG standards for creating accessible web interfaces  
+• Emerging interaction paradigms including multimodal interfaces, voice input, gestures, and ubiquitous computing  
+• High-fidelity prototyping using realistic visuals and interactions for deep testing  
+• Advanced evaluation methods such as cognitive walkthroughs, eye-tracking, controlled experiments, and heuristic analysis  
 
-This module prepares learners for high-level academic, professional, and collaborative digital tasks.
+This module prepares learners to design research-informed, inclusive, and forward-thinking user experiences for complex systems.
 ''',
         content:
-            'An advanced-level exploration of document automation, spreadsheet data analysis, presentation mastery, digital collaboration platforms, workflow coordination, and secure information management. Learners apply productivity tools strategically to create professional outputs.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=vvWn-RL22n0',
+            'A detailed exploration of cognitive modeling, accessibility guidelines, multimodal interaction, high-fidelity prototyping, and rigorous evaluation methods. Learners gain advanced analytical and design skills for building intuitive, inclusive, and high-performance interfaces.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=YOAhPg3L9Vg',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=1ivguJlPCnpK1FCOvMCaoLKEK7suyiS-L',
+            'https://drive.google.com/uc?export=download&id=1aFkQDMy25ZH62r4zoFUeX-Pm_w9VsEN5',
       ),
     ],
   ),
