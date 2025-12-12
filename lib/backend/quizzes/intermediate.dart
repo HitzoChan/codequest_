@@ -1,116 +1,116 @@
 import 'models.dart';
 
-class IntermediateHCIQuiz {
+class IntermediateSoftwareEngineeringQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'The interaction design process is best described as:',
+      question: 'Software design is important because it:',
       choices: [
-        'A single-step method for creating interfaces',
-        'An iterative cycle of understanding user needs, designing solutions, and evaluating results',
-        'A process focused only on programming workflows',
-        'A technique used only for graphic design',
+        'Eliminates the need for requirements',
+        'Provides a blueprint that guides implementation',
+        'Allows programmers to skip testing',
+        'Focuses only on writing code',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'User research is conducted to:',
+      question: 'High-level design focuses on:',
       choices: [
-        'Confirm assumptions without evidence',
-        'Understand users’ behaviors, needs, and challenges',
-        'Test only system hardware',
-        'Remove the need for usability testing',
+        'Individual algorithms only',
+        'The overall structure and major components of the system',
+        'Hardware installation',
+        'Writing the final documentation',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Interviews and surveys are useful in HCI because they:',
+      question: 'UML is primarily used to:',
       choices: [
-        'Provide direct feedback from users',
-        'Replace observation entirely',
-        'Only measure system performance',
-        'Are required only at the end of a project',
-      ],
-      correctIndex: 0,
-    ),
-
-    QuizQuestion(
-      question: 'Contextual inquiry focuses on:',
-      choices: [
-        'Studying users in artificial, controlled environments',
-        'Observing users in their natural work settings',
-        'Asking users only yes-or-no questions',
-        'Testing prototypes without user involvement',
+        'Estimate project costs',
+        'Visualize the structure and behavior of software systems',
+        'Replace programming languages',
+        'Test software automatically',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Information architecture is concerned with:',
+      question: 'A use case diagram shows:',
       choices: [
-        'Visual color choices',
-        'How information is structured and organized for navigation',
-        'Writing computer code',
-        'Designing computer hardware',
+        'The database structure',
+        'How users interact with the system',
+        'The exact code for each module',
+        'Only test cases',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Wireframes are valuable because they:',
+      question: 'A class diagram describes:',
       choices: [
-        'Provide full-color, high-fidelity designs',
-        'Show the layout and structure of a screen without detailed visuals',
-        'Replace the need for any prototypes',
-        'Are only used after a system is fully developed',
+        'The appearance of the user interface',
+        'Classes, attributes, methods, and relationships',
+        'The final executable file',
+        'Hardware components in a network',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Low-fidelity prototypes help designers:',
+      question: 'A software architecture represents:',
       choices: [
-        'Avoid revising their designs',
-        'Test early ideas quickly and cheaply',
-        'Finalize the system’s visual aesthetics',
-        'Remove the need for user feedback',
+        'Only the user interface',
+        'The overall structure and component interactions of a system',
+        'The team’s organizational chart',
+        'The order of tasks in the SDLC',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Usability testing allows designers to:',
+      question: 'A design pattern is:',
       choices: [
-        'Measure how efficiently users complete tasks',
-        'Skip user involvement during development',
-        'Confirm that the system looks visually appealing',
-        'Test hardware performance only',
-      ],
-      correctIndex: 0,
-    ),
-
-    QuizQuestion(
-      question: 'A heuristic evaluation is conducted by:',
-      choices: [
-        'Random users',
-        'Experts using established usability principles',
-        'Programmers testing only code errors',
-        'Automated computer tools without human input',
+        'A case study about system testing',
+        'A reusable solution to a common software design problem',
+        'A graphical tool for debugging',
+        'A type of hardware driver',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'The think-aloud method helps researchers because users:',
+      question: 'Project planning includes:',
       choices: [
-        'Remain silent during tasks',
-        'Verbalize their thoughts, revealing decision-making and confusion',
-        'Provide written reports after testing',
-        'Focus only on visual design',
+        'Writing code immediately',
+        'Breaking work into tasks and estimating time and resources',
+        'Skipping documentation to save time',
+        'Waiting for user feedback after deployment',
       ],
       correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'A primary purpose of risk management is to:',
+      choices: [
+        'Increase project costs',
+        'Identify and address potential problems before they occur',
+        'Remove all testing activities',
+        'Avoid all communication with stakeholders',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Without proper software design and planning, software projects often:',
+      choices: [
+        'Complete faster',
+        'Meet all user expectations automatically',
+        'Experience delays, errors, and unclear system structure',
+        'Require no maintenance',
+      ],
+      correctIndex: 2,
     ),
 
   ];

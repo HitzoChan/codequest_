@@ -2,35 +2,36 @@
 
 final List<Course> beginnerCourses = [
   Course(
-    courseId: 'hci_beginner_clean',
-    title: 'Human–Computer Interaction – Beginner',
+    courseId: 'se_beginner_clean',
+    title: 'Software Engineering – Beginner',
     description:
-        'Beginner module introducing Human–Computer Interaction (HCI), usability, user experience, basic interaction principles, human factors, and prototyping.',
+        'Beginner module introducing Software Engineering, the SDLC, requirements, and foundational development principles.',
     difficultyLevel: 'Beginner',
     modules: [
       Module(
-        moduleId: 'hci_beginner_ch1',
-        title: 'Introduction to HCI, Usability, UX, and Interaction Principles',
+        moduleId: 'se_beginner_ch1',
+        title: 'Introduction to Software Engineering & SDLC Foundations',
         difficultyLevel: 'Beginner',
         summary: '''
-This module introduces learners to the foundations of Human–Computer Interaction (HCI), focusing on how users interact with technology and how systems can be designed to improve that experience.
+This module introduces the core concepts of Software Engineering and explains why software projects require structured processes.
 
 Topics include:
-• Understanding Human–Computer Interaction and its importance in designing user-centered systems  
-• Usability concepts such as simplicity, clarity, efficiency, consistency, and effective feedback  
-• User Experience (UX) principles involving user perception, emotions, satisfaction, and interaction flow  
-• Basic interaction principles including visibility, affordances, consistency, and feedback  
-• Human factors such as user differences, abilities, ergonomics, accessibility, and cognitive limitations  
-• The role of prototyping using sketches, wireframes, and early testing to refine interface designs  
-• Importance of studying HCI to create intuitive, inclusive, and efficient digital systems  
+• What Software Engineering is and why it uses systematic, engineering-based approaches  
+• Differences between Software Engineering and simple programming  
+• The Software Development Life Cycle (SDLC) and its major phases such as planning, analysis, design, implementation, testing, deployment, and maintenance  
+• Common SDLC models including Waterfall, Iterative, and Agile, and when each model is appropriate  
+• The importance of software requirements in guiding development  
+• Differences between functional and non-functional requirements  
+• Techniques for gathering requirements such as interviews, surveys, observations, brainstorming, and prototypes  
+• How Software Engineering principles improve quality, reduce risks, and support teamwork  
 
-This module helps learners develop awareness of how to evaluate interfaces, understand user needs, and contribute to user-centered design.
+This module builds a strong foundation for beginners to understand how professional software is designed and managed.
 ''',
         content:
-            'An introductory exploration of HCI, usability, user experience, interaction principles, human factors, and prototyping. Learners build foundational skills for analyzing interfaces and designing systems that effectively support user goals.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=m3EzxNfpsr0',
+            'A beginner-friendly explanation of Software Engineering fundamentals, SDLC structure, requirement types, and the role of organized processes in building high-quality software systems.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=IHx9ImEMuzQ',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=1MIqXm8UDbDWshfMPtCZGCthpcQjQ5cLQ',
+            'https://drive.google.com/uc?export=download&id=1x1z2LD-z9xdwimOfJKpxcpqf7d9sHVk4',
       ),
     ],
   ),

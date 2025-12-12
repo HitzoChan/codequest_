@@ -1,114 +1,114 @@
 import 'models.dart';
 
-class BeginnerHCIQuiz {
+class BeginnerSoftwareEngineeringQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'Human–Computer Interaction (HCI) primarily studies:',
+      question: 'Software Engineering focuses on:',
       choices: [
-        'How computers communicate with other machines',
-        'How people interact with computers and how systems can be improved',
-        'How to design hardware components',
-        'How networks are configured',
+        'Writing short programs only',
+        'A systematic approach to designing and maintaining software',
+        'Hardware installation and repair',
+        'Creating software without planning',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Usability refers to a system’s ability to be:',
+      question: 'Software Engineering is different from programming because:',
       choices: [
-        'Entertaining but difficult to use',
-        'Easy to learn, efficient, and satisfying for users',
-        'Limited in function',
-        'Used only by expert programmers',
+        'Programming does not require code',
+        'Software Engineering involves the entire development process, not just coding',
+        'Programming is more complex',
+        'Software Engineering does not use programming languages',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'User Experience (UX) focuses on:',
+      question: 'The Software Development Life Cycle (SDLC) is:',
       choices: [
-        'Only the visual appearance of a system',
-        'The overall feelings and perceptions users have when interacting with a system',
-        'Hardware performance',
-        'Internet speed',
+        'A random set of coding rules',
+        'A structured process for developing software',
+        'A debugging tool',
+        'A version of operating systems',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'An example of good usability is when:',
+      question: 'Which phase of the SDLC focuses on determining user needs?',
       choices: [
-        'A system requires many steps for simple tasks',
-        'Users can quickly understand how to perform tasks with minimal effort',
-        'Information is hidden and hard to find',
-        'Buttons behave differently each time',
+        'Testing',
+        'Deployment',
+        'Requirements Analysis',
+        'Maintenance',
+      ],
+      correctIndex: 2,
+    ),
+
+    QuizQuestion(
+      question: 'The Waterfall Model is best described as:',
+      choices: [
+        'A flexible, rapidly changing approach',
+        'A linear sequence of development phases',
+        'A model used only for mobile apps',
+        'A method with no documentation',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Consistency in interface design helps users:',
+      question: 'Agile development is characterized by:',
       choices: [
-        'Become confused about system behavior',
-        'Form mental models and predict how the system works',
-        'Make more errors',
-        'Avoid using familiar features',
+        'Long phases with no user interaction',
+        'Frequent feedback and short development cycles',
+        'No testing phases',
+        'A strict sequence that cannot change',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'An affordance in HCI refers to:',
+      question: 'Functional requirements describe:',
       choices: [
-        'A system bug',
-        'A visual cue that suggests how something should be used',
-        'A hardware requirement',
-        'A type of network connection',
+        'How fast a system should run',
+        'Specific actions or features the system must perform',
+        'The color of the interface',
+        'The hardware specifications',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Prototyping is useful because it:',
+      question: 'Non-functional requirements describe:',
       choices: [
-        'Requires building a complete final system immediately',
-        'Allows early testing of ideas before full development',
-        'Removes the need for user feedback',
-        'Prevents design changes',
+        'The individual programmers involved',
+        'System qualities such as performance and security',
+        'The list of functional modules',
+        'Only database rules',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Human factors in HCI involve understanding:',
+      question: 'Interviews, surveys, and observations are used for:',
       choices: [
-        'Only the technical limitations of computers',
-        'How user abilities, limitations, and characteristics affect interaction',
-        'The speed of internet connections',
-        'Only user emotions',
+        'Writing code',
+        'Gathering software requirements',
+        'Designing interfaces',
+        'Deploying software to users',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Feedback in user interfaces is important because it:',
+      question: 'Clear and accurate requirements are important because they:',
       choices: [
-        'Confuses users on purpose',
-        'Helps users understand the results of their actions',
-        'Makes interfaces slower',
-        'Removes information from the screen',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'HCI is important because it:',
-      choices: [
-        'Focuses only on making systems look attractive',
-        'Helps create technology that is intuitive, accessible, and user-centered',
-        'Reduces the need to understand users',
-        'Makes systems harder to operate',
+        'Make coding unnecessary',
+        'Ensure all stakeholders share the same understanding of the system',
+        'Allow the project to skip testing',
+        'Reduce the number of developers required',
       ],
       correctIndex: 1,
     ),

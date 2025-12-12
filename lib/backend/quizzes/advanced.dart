@@ -1,114 +1,114 @@
 import 'models.dart';
 
-class AdvancedHCIQuiz {
+class AdvancedSoftwareEngineeringQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'Cognitive models in HCI help designers understand:',
+      question: 'Software quality refers to:',
       choices: [
-        'Hardware performance limitations',
-        'How users perceive, process, and respond to information',
-        'How to create animations and visual effects',
-        'How networks handle data packets',
+        'The speed of the development team',
+        'How well the software meets requirements and user expectations',
+        'The number of features added',
+        'The size of the project budget',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'GOMS is a cognitive model used to:',
+      question: 'Reliability, usability, and maintainability are examples of:',
       choices: [
-        'Evaluate color contrast in interfaces',
-        'Break tasks into smaller actions to predict user performance',
-        'Design keyboard shortcuts',
-        'Test only high-fidelity prototypes',
+        'Coding standards',
+        'Hardware requirements',
+        'Software quality attributes',
+        'Deployment procedures',
+      ],
+      correctIndex: 2,
+    ),
+
+    QuizQuestion(
+      question: 'Unit testing focuses on:',
+      choices: [
+        'Testing multiple systems together',
+        'Evaluating small, individual components of the software',
+        'Checking user satisfaction',
+        'Running the software on different hardware devices',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Fitts’ Law explains:',
+      question: 'Integration testing is done to:',
       choices: [
-        'How users remember instructions',
-        'How target size and distance influence pointing speed',
-        'How many steps an interface should have',
-        'How visual design affects emotions',
+        'Test the complete software in a real environment',
+        'Verify that combined modules work correctly together',
+        'Test only documentation',
+        'Evaluate only non-functional requirements',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Accessibility in HCI aims to:',
+      question: 'Black-box testing evaluates software by:',
       choices: [
-        'Remove features for advanced users',
-        'Ensure interfaces can be used by people with diverse abilities',
-        'Require high-speed hardware',
-        'Limit customization options',
+        'Inspecting internal source code',
+        'Focusing only on hardware behavior',
+        'Testing inputs and outputs without examining internal logic',
+        'Debugging code line by line',
+      ],
+      correctIndex: 2,
+    ),
+
+    QuizQuestion(
+      question: 'Regression testing ensures that:',
+      choices: [
+        'New features replace old ones completely',
+        'Changes do not introduce new defects into previously working features',
+        'Documentation is always updated',
+        'The software runs faster after updates',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'WCAG guidelines focus on:',
+      question: 'A test plan is used to:',
       choices: [
-        'Screen resolution standards',
-        'Principles for accessible web design',
-        'Programming languages for interface development',
-        'Physical device dimensions',
+        'Describe the system architecture',
+        'Outline the testing strategy, scope, and resources',
+        'Write source code',
+        'Perform hardware installation',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A multimodal interface allows users to interact through:',
+      question: 'Software Configuration Management (SCM) is used to:',
       choices: [
-        'Only keyboard input',
-        'Multiple input methods, such as speech, touch, and gestures',
-        'Only mouse clicks',
-        'Only visual commands',
+        'Remove changes permanently',
+        'Control, track, and manage changes in software',
+        'Estimate project budget',
+        'Create marketing materials',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'High-fidelity prototypes are used because they:',
+      question: 'Version control systems such as Git help teams by:',
       choices: [
-        'Contain minimal detail and no interaction',
-        'Closely resemble the final product and support realistic testing',
-        'Eliminate the need for user testing',
-        'Are created only after software development is complete',
+        'Preventing collaboration',
+        'Tracking changes and allowing developers to merge work safely',
+        'Automatically writing test cases',
+        'Removing old project files',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Eye-tracking studies help designers understand:',
+      question: 'Models like CMMI and ISO 9001 are used for:',
       choices: [
-        'Device heating patterns',
-        'Where users focus their attention and how they view the interface',
-        'The speed of system boot time',
-        'How well users memorize instructions',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'A cognitive walkthrough evaluates:',
-      choices: [
-        'How experts complete tasks efficiently',
-        'How easily a first-time user can learn and complete tasks',
-        'How fast a system performs operations',
-        'The number of clicks in a navigation menu',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Advanced evaluation methods are important because they:',
-      choices: [
-        'Reduce the need for user involvement entirely',
-        'Provide deeper insights into user behavior and interface performance',
-        'Replace wireframing and prototyping',
-        'Focus only on hardware design',
+        'Debugging program errors',
+        'Improving and evaluating software development processes',
+        'Creating diagrams only',
+        'Designing user interfaces',
       ],
       correctIndex: 1,
     ),
