@@ -2,34 +2,34 @@ import '../course_models.dart';
 
 final List<Course> intermediateCourses = [
   Course(
-    courseId: 'sql_intermediate_clean',
-    title: 'Advanced Database System (SQL 2) – Intermediate',
+    courseId: 'operating_systems_intermediate',
+    title: 'Operating Systems – Intermediate',
     description:
-        'Intermediate module focusing on advanced SQL query techniques, performance optimization, and transaction management.',
+        'Intermediate module focusing on how operating systems manage processes, memory, files, and hardware devices.',
     difficultyLevel: 'Intermediate',
     modules: [
       Module(
-        moduleId: 'sql_intermediate_ch1',
-        title: 'Advanced JOINs, Subqueries, Indexing, and Transactions',
+        moduleId: 'os_intermediate_ch1',
+        title: 'Process, Memory, and Device Management',
         difficultyLevel: 'Intermediate',
         summary: '''
-This module builds on basic SQL knowledge by introducing more advanced querying and database management techniques.
+This module explains how operating systems manage multiple tasks and system resources.
 
 Topics include:
-• Advanced JOIN operations: LEFT JOIN, RIGHT JOIN, and FULL OUTER JOIN
-• Retrieving complete datasets including matched and unmatched records
-• Writing subqueries to handle complex and nested data requirements
-• Improving query performance using indexes
-• Understanding indexing trade-offs between read and write operations
-• Managing database consistency using transactions
-• ACID properties: Atomicity, Consistency, Isolation, and Durability
-• Using aliases to simplify and improve the readability of complex SQL queries
+• Definition of a process and program execution
+• Process Control Block (PCB) and process states
+• CPU scheduling algorithms (FCFS, SJF, Round Robin)
+• Memory management concepts such as paging and virtual memory
+• Page replacement algorithms
+• File system organization and storage management
+• Device drivers and interrupt handling
+• Importance of efficient resource management in modern operating systems
 ''',
         content:
-            'An intermediate-level exploration of SQL techniques used to combine multiple tables, structure complex queries with subqueries, optimize database performance through indexing, and ensure data integrity using transactions and ACID principles.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=7S_tz1z_5bA',
+            'This module provides a deeper understanding of operating system internals, including how processes are scheduled, how memory is allocated and extended using virtual memory, how files are organized on storage devices, and how hardware devices communicate with the operating system using drivers and interrupts.',
+        youtubeUrl: 'https://youtu.be/RozoeWzT7IM',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=1FG3Peo7X8y1SyELTNTDf8n_iaFugCs8d',
+            'https://drive.google.com/uc?export=download&id=12ZkbjH5-UYHEJ0-rjIaqXf6EzEV3YmsE',
       ),
     ],
   ),

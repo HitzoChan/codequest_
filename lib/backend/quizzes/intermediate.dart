@@ -1,113 +1,113 @@
 import 'models.dart';
 
-class IntermediateSQLQuiz {
+class IntermediateOSQuiz {
   static List<QuizQuestion> questions = [
     QuizQuestion(
-      question: 'A LEFT JOIN returns:',
+      question: 'A process is best defined as:',
       choices: [
-        'Only rows that match in both tables',
-        'All rows from the left table and matched rows from the right table',
-        'All rows from both tables, including unmatched',
-        'Only unmatched rows',
+        'A file stored on disk',
+        'A program in execution',
+        'A hardware component',
+        'A user account',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A RIGHT JOIN is similar to a LEFT JOIN but:',
+      question: 'The Process Control Block (PCB) is used to:',
       choices: [
-        'Prioritizes the right table instead of the left',
-        'Removes all duplicates automatically',
-        'Returns no NULL values',
-        'Works only on numeric columns',
+        'Store images and documents',
+        'Track process information such as ID, registers, and memory allocation',
+        'Represent the file system hierarchy',
+        'Display GUI windows',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Which scheduling algorithm executes processes in order of arrival?',
+      choices: [
+        'Round Robin (RR)',
+        'Shortest Job First (SJF)',
+        'First-Come, First-Served (FCFS)',
+        'Priority Scheduling',
+      ],
+      correctIndex: 2,
+    ),
+
+    QuizQuestion(
+      question: 'Round Robin scheduling is known for:',
+      choices: [
+        'Giving each process a fixed time slice',
+        'Always choosing the longest job first',
+        'Running only one process at a time',
+        'Ignoring waiting processes',
       ],
       correctIndex: 0,
     ),
 
     QuizQuestion(
-      question: 'A FULL OUTER JOIN returns:',
+      question: 'Paging divides memory into:',
       choices: [
-        'Only matched rows',
-        'All rows from both tables, including unmatched rows',
-        'Only rows without foreign keys',
-        'Only records from the larger table',
+        'Random-sized chunks',
+        'Fixed-size blocks called pages',
+        'Variable-sized files',
+        'User-created partitions',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A subquery is:',
+      question: 'Virtual memory allows a system to:',
       choices: [
-        'A command used only for deleting data',
-        'A query written inside another query',
-        'A JOIN with three or more tables',
-        'A database backup procedure',
+        'Run without RAM',
+        'Use disk space to extend available memory',
+        'Delete inactive processes automatically',
+        'Bypass the CPU scheduler',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Subqueries are useful when:',
+      question: 'A page replacement algorithm determines:',
       choices: [
-        'A single SELECT statement cannot provide the needed result',
-        'Working only with one table',
-        'You want to disable constraints',
-        'No filtering is needed',
+        'Which users can access a file',
+        'Which memory pages should be removed from RAM',
+        'How process IDs are assigned',
+        'How directories are named',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'A file system is responsible for:',
+      choices: [
+        'Managing the CPU pipeline',
+        'Organizing and storing data on disks',
+        'Rendering GUI components',
+        'Scheduling device interrupts',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Device drivers are used to:',
+      choices: [
+        'Translate OS commands into signals hardware can understand',
+        'Encrypt user data',
+        'Allocate RAM to processes',
+        'Display icons on the desktop',
       ],
       correctIndex: 0,
     ),
 
     QuizQuestion(
-      question: 'The purpose of an index is to:',
+      question: 'Interrupt handling allows the OS to:',
       choices: [
-        'Slow down read operations',
-        'Speed up searching and retrieving data',
-        'Remove duplicate table rows',
-        'Encrypt sensitive records',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'A major trade-off of indexing is that:',
-      choices: [
-        'It increases storage and slows down write operations',
-        'It prevents table joins',
-        'It makes SELECT queries invalid',
-        'It removes primary keys',
-      ],
-      correctIndex: 0,
-    ),
-
-    QuizQuestion(
-      question: 'A transaction ensures that:',
-      choices: [
-        'Multiple users cannot access the database',
-        'Data updates follow ACID principles',
-        'Backups are created automatically',
-        'SQL statements are always faster',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'The COMMIT command is used to:',
-      choices: [
-        'Undo all changes',
-        'Save all operations in a transaction permanently',
-        'Detect deadlocks',
-        'Close the database connection',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Aliases in SQL help by:',
-      choices: [
-        'Creating permanent column names',
-        'Temporarily renaming tables or columns to simplify queries',
-        'Encrypting table names',
-        'Removing JOIN conditions',
+        'Run only one device at a time',
+        'Respond to hardware events quickly and temporarily pause the CPU',
+        'Delete background processes',
+        'Disable user access to files',
       ],
       correctIndex: 1,
     ),

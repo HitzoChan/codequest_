@@ -2,33 +2,35 @@
 
 final List<Course> beginnerCourses = [
   Course(
-    courseId: 'sql_beginner_clean',
-    title: 'Advanced Database System (SQL 2) – Beginner',
+    courseId: 'os_beginner_clean',
+    title: 'Operating Systems – Beginner',
     description:
-        'Beginner module introducing core SQL concepts, data manipulation, and basic table relationships.',
+        'Beginner module introducing the fundamentals of operating systems, their functions, and basic components.',
     difficultyLevel: 'Beginner',
     modules: [
       Module(
-        moduleId: 'sql_beginner_ch1',
-        title: 'Introduction to SQL Basics and Table Relationships',
+        moduleId: 'os_beginner_ch1',
+        title: 'Introduction to Operating Systems',
         difficultyLevel: 'Beginner',
         summary: '''
-This module introduces the foundational concepts of SQL used in relational database systems.
+This module introduces the basic concepts of operating systems and their role in computer systems.
 
 Topics include:
-• Purpose and importance of SQL in database management
-• Retrieving data using SELECT statements
-• Adding, updating, and deleting records using INSERT, UPDATE, and DELETE
-• Understanding primary keys and foreign keys
-• Linking tables using basic INNER JOIN concepts
-• Using constraints such as NOT NULL to maintain data integrity
-• Why structured databases are essential for real-world applications
+• Definition and purpose of an operating system
+• Core functions such as process scheduling and CPU management
+• Memory management and allocation of system resources
+• File management for organizing and protecting data
+• Single-user and multi-user operating systems
+• User interfaces: Graphical User Interface (GUI) and Command Line Interface (CLI)
+• System calls and how applications interact with hardware safely
+• The kernel and its role in managing core system operations
+• Why operating systems are essential for modern computing
 ''',
         content:
-            'A beginner-level overview of how SQL is used to manage relational databases, manipulate data, define relationships between tables, and enforce rules that keep data accurate and consistent.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=HXV3zeQKqGY',
+            'A beginner-friendly overview of how operating systems manage hardware resources, support applications, provide user interfaces, and ensure efficient and secure computing.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=26QPDBe-NB8',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=1w_f-ImdW7xdU4v3peVMICxBumTCXt_78',
+            'https://drive.google.com/uc?export=download&id=1jj1p7E1l7j9q5GmnTBuUQC7ZOxzoxJIA',
       ),
     ],
   ),

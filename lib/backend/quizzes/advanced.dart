@@ -1,115 +1,117 @@
 import 'models.dart';
 
-class AdvancedSQLQuiz {
+class AdvancedOSQuiz {
   static List<QuizQuestion> questions = [
     QuizQuestion(
-      question: 'A stored procedure is best described as:',
+      question: 'Concurrency in an operating system refers to:',
       choices: [
-        'A temporary SQL query',
-        'A precompiled set of SQL statements stored in the database',
-        'A type of user-created index',
-        'An automatically triggered update',
+        'Running only one process at a time',
+        'Multiple processes or threads executing simultaneously',
+        'Shutting down unused programs',
+        'Storing files on multiple disks',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Stored procedures improve performance because they:',
+      question: 'A race condition occurs when:',
       choices: [
-        'Delete unused tables',
-        'Execute on the client side',
-        'Reduce network traffic and are precompiled',
-        'Run slower but more securely',
-      ],
-      correctIndex: 2,
-    ),
-
-    QuizQuestion(
-      question: 'A trigger is activated:',
-      choices: [
-        'When a user logs into the DBMS',
-        'Automatically when an INSERT, UPDATE, or DELETE occurs',
-        'Only when the database restarts',
-        'Manually by the administrator',
+        'Two users log in at the same time',
+        'Processes access shared data without proper synchronization',
+        'The CPU overheats',
+        'Memory allocation fails',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'One common use of a trigger is to:',
+      question: 'A semaphore or mutex is used to:',
       choices: [
-        'Improve user interface design',
-        'Automatically enforce business rules or maintain audit logs',
-        'Create backups of the database',
-        'Format output results',
+        'Speed up file transfers',
+        'Manage exclusive access to shared resources',
+        'Replace virtual memory',
+        'Detect viruses',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A view is:',
+      question: 'A deadlock occurs when:',
       choices: [
-        'A physical table storing its own data',
-        'A saved SQL query that behaves like a virtual table',
-        'A system file for indexing',
-        'A table that cannot be queried',
+        'The system reboots unexpectedly',
+        'Processes wait indefinitely for resources held by each other',
+        'A file cannot be found',
+        'A user opens too many windows',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Views are useful because they:',
+      question:
+          'Which method aims to avoid deadlocks by checking resource requests before granting them?',
       choices: [
-        'Store data faster than tables',
-        'Hide complex queries and restrict access to sensitive columns',
-        'Replace primary keys',
-        'Eliminate the need for joins',
+        'Monolithic scheduling',
+        'Banker\'s Algorithm',
+        'FIFO replacement',
+        'Paging',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Query optimization aims to:',
+      question: 'A distributed operating system is designed to:',
       choices: [
-        'Make SQL queries harder to read',
-        'Improve query performance and reduce resource usage',
-        'Increase the number of tables stored',
-        'Disable indexing',
+        'Run on a single machine only',
+        'Make multiple computers function as one coordinated system',
+        'Replace all hardware drivers',
+        'Block network access',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Which of the following helps improve SQL performance?',
+      question: 'Remote Procedure Call (RPC) allows:',
       choices: [
-        'Selecting only necessary columns instead of using SELECT *',
-        'Running the same subquery repeatedly',
-        'Creating excessive indexes on all columns',
-        'Avoiding JOINs entirely',
+        'A program to execute a procedure on another machine as if it were local',
+        'Only one process to run at a time',
+        'Disk errors to be automatically corrected',
+        'Files to delete themselves',
       ],
       correctIndex: 0,
     ),
 
     QuizQuestion(
-      question: 'Savepoints in transactions allow:',
+      question:
+          'OS security mechanisms such as ACLs and permissions are used to:',
       choices: [
-        'Full rollback only',
-        'Partial rollbacks to specific points within a transaction',
-        'Automatic optimization of queries',
-        'Encryption of transaction logs',
+        'Increase file size',
+        'Control access to system resources',
+        'Speed up CPU cycles',
+        'Disable background processes',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Isolation levels in transactions are used to:',
+      question: 'A monolithic kernel is characterized by:',
       choices: [
-        'Control how concurrent transactions interact',
-        'Increase storage space',
-        'Remove foreign keys',
-        'Manage network connections',
+        'Keeping most OS services in user space',
+        'Having all major OS components in one large program',
+        'Requiring no device drivers',
+        'Being slower than all other designs',
       ],
-      correctIndex: 0,
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'A microkernel improves system reliability by:',
+      choices: [
+        'Combining all services directly inside the kernel',
+        'Limiting the kernel to essential functions and moving other services to user space',
+        'Removing hardware support modules',
+        'Increasing virtual memory automatically',
+      ],
+      correctIndex: 1,
     ),
   ];
 }
