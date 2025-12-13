@@ -2,37 +2,35 @@ import '../course_models.dart';
 
 final List<Course> advancedCourses = [
   Course(
-    courseId: 'dsa_advanced_clean',
-    title: 'Data Structures & Algorithms – Advanced',
+    courseId: 'sql_advanced_clean',
+    title: 'Advanced Database System (SQL 2) – Advanced',
     description:
-        'Advanced module covering trees, binary search trees, graphs, hashing, and algorithm design techniques.',
+        'Advanced module focusing on programmable database objects, performance optimization, and advanced transaction control.',
     difficultyLevel: 'Advanced',
     modules: [
       Module(
-        moduleId: 'dsa_advanced_ch1',
-        title: 'Trees, Graphs, Hashing & Algorithm Design',
+        moduleId: 'sql_advanced_ch1',
+        title: 'Stored Procedures, Triggers, Views, and Query Optimization',
         difficultyLevel: 'Advanced',
         summary: '''
-This module covers advanced data structures and algorithm design techniques used in modern computing systems.
+This module explores advanced SQL features used in enterprise-level database systems.
 
 Topics include:
-• Trees as hierarchical data structures using parent-child relationships  
-• Binary Search Trees (BST) and how ordering improves search efficiency  
-• Graphs composed of vertices and edges to represent relationships  
-• Breadth-First Search (BFS) and Depth-First Search (DFS) graph traversal methods  
-• Hash tables and the use of hash functions for fast data storage  
-• Hash collisions and why they occur  
-• Algorithm design strategies such as Divide and Conquer, Greedy algorithms, and Dynamic Programming  
-
-These concepts are essential for building efficient, scalable, and high-performance software systems.
+• Stored procedures and their role in automating and securing database operations
+• Performance benefits of precompiled SQL logic
+• Triggers for automatic execution during INSERT, UPDATE, and DELETE events
+• Enforcing business rules and maintaining audit logs using triggers
+• Views as virtual tables for simplifying queries and restricting sensitive data
+• Query optimization techniques to improve performance and reduce resource usage
+• Index usage strategies and avoiding inefficient query patterns
+• Advanced transaction management using savepoints and isolation levels
+• Managing concurrency and data consistency in multi-user environments
 ''',
         content:
-            'An advanced study of trees, binary search trees, graphs, hashing, and algorithm design techniques used to solve complex computational problems efficiently.',
-        // ✅ YouTube link is used ONLY in the module
-        youtubeUrl: 'https://youtu.be/bum_19loj9A?si=rUbdJVeFqnlstlBx',
-        // ✅ PDF link you provided
+            'An advanced-level discussion of SQL programming objects such as stored procedures, triggers, and views, combined with query optimization techniques and advanced transaction controls to ensure performance, security, and data integrity in complex database systems.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=AOeM7gGXirQ',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=1gBnm38Veczd0exQA4AJq6a37hAdJ-p-A',
+            'https://drive.google.com/uc?export=download&id=1fX4a95sfes7p_tq-0NoawoQYd9-RVg87',
       ),
     ],
   ),

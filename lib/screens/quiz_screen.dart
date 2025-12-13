@@ -33,14 +33,14 @@ class _QuizScreenState extends State<QuizScreen> with SingleTickerProviderStateM
     startTime = DateTime.now();
 
     // Load questions based on moduleId
-    if (moduleId == 'dsa_beginner_ch1') {
-      questions = BeginnerDSAQuiz.questions;
-    } else if (moduleId == 'dsa_intermediate_ch1') {
-      questions = IntermediateDSAQuiz.questions;
-    } else if (moduleId == 'dsa_advanced_ch1') {
-      questions = AdvancedDSAQuiz.questions;
+    if (moduleId == 'sql_beginner_ch1') {
+      questions = BeginnerSQLQuiz.questions;
+    } else if (moduleId == 'sql_intermediate_ch1') {
+      questions = IntermediateSQLQuiz.questions;
+    } else if (moduleId == 'sql_advanced_ch1') {
+      questions = AdvancedSQLQuiz.questions;
     } else {
-      questions = BeginnerDSAQuiz.questions;
+      questions = BeginnerSQLQuiz.questions;
     }
 
     answers = List<int?>.filled(questions.length, null);

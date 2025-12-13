@@ -2,35 +2,33 @@
 
 final List<Course> beginnerCourses = [
   Course(
-    courseId: 'dsa_beginner_clean',
-    title: 'Data Structures & Algorithms – Beginner',
+    courseId: 'sql_beginner_clean',
+    title: 'Advanced Database System (SQL 2) – Beginner',
     description:
-        'Beginner module introducing the foundations of data structures, algorithms, arrays, linked lists, and basic time complexity.',
+        'Beginner module introducing core SQL concepts, data manipulation, and basic table relationships.',
     difficultyLevel: 'Beginner',
     modules: [
       Module(
-        moduleId: 'dsa_beginner_ch1',
-        title: 'Introduction to Data Structures, Algorithms & Basic Operations',
+        moduleId: 'sql_beginner_ch1',
+        title: 'Introduction to SQL Basics and Table Relationships',
         difficultyLevel: 'Beginner',
         summary: '''
-This module introduces the essential building blocks of Data Structures and Algorithms (DSA), forming the basis of efficient programming.
+This module introduces the foundational concepts of SQL used in relational database systems.
 
 Topics include:
-• What data structures and algorithms are and why they matter in computing  
-• Arrays as continuous memory structures that allow fast indexed access  
-• Linked lists as flexible node-based structures ideal for insertions and deletions  
-• Differences between static and dynamic storage organization  
-• Characteristics of good algorithms: clarity, correctness, efficiency, and finiteness  
-• Basic operations such as accessing, updating, and traversing data  
-• Introduction to Big-O notation for estimating algorithm performance  
-
-These foundations prepare learners for solving computational problems, writing efficient code, and progressing toward more complex structures and algorithms.
+• Purpose and importance of SQL in database management
+• Retrieving data using SELECT statements
+• Adding, updating, and deleting records using INSERT, UPDATE, and DELETE
+• Understanding primary keys and foreign keys
+• Linking tables using basic INNER JOIN concepts
+• Using constraints such as NOT NULL to maintain data integrity
+• Why structured databases are essential for real-world applications
 ''',
         content:
-            'A beginner-friendly explanation of arrays, linked lists, algorithm basics, and the role of Big-O notation in evaluating efficiency. This sets the groundwork for building fast and scalable programs.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=RBSGKlAvoiM',
+            'A beginner-level overview of how SQL is used to manage relational databases, manipulate data, define relationships between tables, and enforce rules that keep data accurate and consistent.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=HXV3zeQKqGY',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=1LS1uqEM0ykVrAZHFYTLBcTU3wiNjkwp4',
+            'https://drive.google.com/uc?export=download&id=1w_f-ImdW7xdU4v3peVMICxBumTCXt_78',
       ),
     ],
   ),

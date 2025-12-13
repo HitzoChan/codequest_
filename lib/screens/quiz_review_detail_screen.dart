@@ -20,14 +20,14 @@ class QuizReviewDetailScreen extends StatelessWidget {
     final score = attempt['score'] as int? ?? 0;
 
     late final List<QuizQuestion> questions;
-    if (quizId == 'dsa_beginner_ch1') {
-      questions = BeginnerDSAQuiz.questions;
-    } else if (quizId == 'dsa_intermediate_ch1') {
-      questions = IntermediateDSAQuiz.questions;
-    } else if (quizId == 'dsa_advanced_ch1') {
-      questions = AdvancedDSAQuiz.questions;
+    if (quizId == 'sql_beginner_ch1') {
+      questions = BeginnerSQLQuiz.questions;
+    } else if (quizId == 'sql_intermediate_ch1') {
+      questions = IntermediateSQLQuiz.questions;
+    } else if (quizId == 'sql_advanced_ch1') {
+      questions = AdvancedSQLQuiz.questions;
     } else {
-      questions = BeginnerDSAQuiz.questions;
+      questions = BeginnerSQLQuiz.questions;
     }
 
     final optionDefault = const Color(0xFF0F3B5F);

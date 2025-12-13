@@ -2,38 +2,34 @@ import '../course_models.dart';
 
 final List<Course> intermediateCourses = [
   Course(
-    courseId: 'dsa_intermediate_clean',
-    title: 'Data Structures & Algorithms – Intermediate',
+    courseId: 'sql_intermediate_clean',
+    title: 'Advanced Database System (SQL 2) – Intermediate',
     description:
-        'Intermediate module covering stacks, queues, searching algorithms, sorting algorithms, and recursion.',
+        'Intermediate module focusing on advanced SQL query techniques, performance optimization, and transaction management.',
     difficultyLevel: 'Intermediate',
     modules: [
       Module(
-        moduleId: 'dsa_intermediate_ch1',
-        title: 'Stacks, Queues, Searching, Sorting & Recursion',
+        moduleId: 'sql_intermediate_ch1',
+        title: 'Advanced JOINs, Subqueries, Indexing, and Transactions',
         difficultyLevel: 'Intermediate',
         summary: '''
-This module builds on basic data structures and algorithms by introducing more specialized structures and problem-solving techniques.
+This module builds on basic SQL knowledge by introducing more advanced querying and database management techniques.
 
 Topics include:
-• Stacks and their Last-In, First-Out (LIFO) behavior  
-• Stack operations such as push, pop, and peek  
-• Real-world applications of stacks including undo operations and function calls  
-• Queues and their First-In, First-Out (FIFO) behavior  
-• Queue operations such as enqueue and dequeue  
-• Linear search for locating elements in a list  
-• Binary search and its requirement for sorted data  
-• Bubble sort and selection sort for organizing data  
-• Introduction to recursion and the importance of base cases  
-• Using recursion to solve repetitive or self-similar problems  
-
-These concepts improve algorithmic thinking and prepare learners for advanced structures and optimization techniques.
+• Advanced JOIN operations: LEFT JOIN, RIGHT JOIN, and FULL OUTER JOIN
+• Retrieving complete datasets including matched and unmatched records
+• Writing subqueries to handle complex and nested data requirements
+• Improving query performance using indexes
+• Understanding indexing trade-offs between read and write operations
+• Managing database consistency using transactions
+• ACID properties: Atomicity, Consistency, Isolation, and Durability
+• Using aliases to simplify and improve the readability of complex SQL queries
 ''',
         content:
-            'A structured discussion of stacks, queues, searching and sorting algorithms, and recursion. Learners develop stronger problem-solving skills and understand how algorithm efficiency impacts performance.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=CBYHwZcbD-s',
+            'An intermediate-level exploration of SQL techniques used to combine multiple tables, structure complex queries with subqueries, optimize database performance through indexing, and ensure data integrity using transactions and ACID principles.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=7S_tz1z_5bA',
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=18yVFpZeum4bzgTJGiuVQ_YV5g3Y8M7kF',
+            'https://drive.google.com/uc?export=download&id=1FG3Peo7X8y1SyELTNTDf8n_iaFugCs8d',
       ),
     ],
   ),

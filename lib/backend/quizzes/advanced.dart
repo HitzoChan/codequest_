@@ -1,117 +1,115 @@
 import 'models.dart';
 
-class AdvancedDSAQuiz {
+class AdvancedSQLQuiz {
   static List<QuizQuestion> questions = [
-
     QuizQuestion(
-      question: 'A tree is considered a hierarchical structure because:',
+      question: 'A stored procedure is best described as:',
       choices: [
-        'It stores data randomly',
-        'It organizes nodes in parent-child relationships',
-        'All nodes contain identical values',
-        'It must always be balanced',
+        'A temporary SQL query',
+        'A precompiled set of SQL statements stored in the database',
+        'A type of user-created index',
+        'An automatically triggered update',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A binary search tree (BST) allows efficient searching because:',
+      question: 'Stored procedures improve performance because they:',
       choices: [
-        'It does not use comparisons',
-        'Nodes are arranged so smaller values go left and larger values go right',
-        'All values are stored in continuous memory',
-        'It always contains the same number of nodes',
+        'Delete unused tables',
+        'Execute on the client side',
+        'Reduce network traffic and are precompiled',
+        'Run slower but more securely',
+      ],
+      correctIndex: 2,
+    ),
+
+    QuizQuestion(
+      question: 'A trigger is activated:',
+      choices: [
+        'When a user logs into the DBMS',
+        'Automatically when an INSERT, UPDATE, or DELETE occurs',
+        'Only when the database restarts',
+        'Manually by the administrator',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A major disadvantage of an unbalanced BST is that:',
+      question: 'One common use of a trigger is to:',
       choices: [
-        'It cannot store duplicate values',
-        'It may behave like a linked list and reduce performance',
-        'It requires hashing to function',
-        'It cannot delete nodes',
+        'Improve user interface design',
+        'Automatically enforce business rules or maintain audit logs',
+        'Create backups of the database',
+        'Format output results',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A graph is composed of:',
+      question: 'A view is:',
       choices: [
-        'Arrays and matrices only',
-        'Vertices and edges that represent relationships',
-        'Trees and subtrees',
-        'Only weighted paths',
+        'A physical table storing its own data',
+        'A saved SQL query that behaves like a virtual table',
+        'A system file for indexing',
+        'A table that cannot be queried',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Breadth-First Search (BFS) explores a graph by:',
+      question: 'Views are useful because they:',
       choices: [
-        'Visiting nodes level by level',
-        'Going as deep as possible before backtracking',
-        'Ignoring edges with weights',
-        'Only exploring leaf nodes',
+        'Store data faster than tables',
+        'Hide complex queries and restrict access to sensitive columns',
+        'Replace primary keys',
+        'Eliminate the need for joins',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Query optimization aims to:',
+      choices: [
+        'Make SQL queries harder to read',
+        'Improve query performance and reduce resource usage',
+        'Increase the number of tables stored',
+        'Disable indexing',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Which of the following helps improve SQL performance?',
+      choices: [
+        'Selecting only necessary columns instead of using SELECT *',
+        'Running the same subquery repeatedly',
+        'Creating excessive indexes on all columns',
+        'Avoiding JOINs entirely',
       ],
       correctIndex: 0,
     ),
 
     QuizQuestion(
-      question: 'A hash table stores data based on:',
+      question: 'Savepoints in transactions allow:',
       choices: [
-        'Random selection',
-        'A hash function that maps keys to index positions',
-        'Numerical sorting',
-        'Manual insertion order only',
+        'Full rollback only',
+        'Partial rollbacks to specific points within a transaction',
+        'Automatic optimization of queries',
+        'Encryption of transaction logs',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A hash collision occurs when:',
+      question: 'Isolation levels in transactions are used to:',
       choices: [
-        'A key has no value',
-        'Two different keys map to the same index',
-        'The table becomes too large',
-        'A hash function returns negative numbers',
+        'Control how concurrent transactions interact',
+        'Increase storage space',
+        'Remove foreign keys',
+        'Manage network connections',
       ],
-      correctIndex: 1,
+      correctIndex: 0,
     ),
-
-    QuizQuestion(
-      question: 'Divide and Conquer works by:',
-      choices: [
-        'Solving problems without splitting them',
-        'Breaking a problem into smaller subproblems and combining solutions',
-        'Always using recursion only',
-        'Searching the entire dataset sequentially',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Greedy algorithms make decisions by:',
-      choices: [
-        'Exploring all possible combinations',
-        'Choosing the best immediate option at each step',
-        'Comparing dynamic programming tables',
-        'Avoiding local choices',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Dynamic Programming is effective for problems that:',
-      choices: [
-        'Cannot be broken down',
-        'Contain overlapping subproblems and require storing intermediate results',
-        'Must be sorted first',
-        'Do not involve optimization',
-      ],
-      correctIndex: 1,
-    ),
-
   ];
 }

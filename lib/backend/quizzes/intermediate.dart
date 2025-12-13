@@ -1,117 +1,115 @@
 import 'models.dart';
 
-class IntermediateDSAQuiz {
+class IntermediateSQLQuiz {
   static List<QuizQuestion> questions = [
-
     QuizQuestion(
-      question: 'A stack follows which principle?',
+      question: 'A LEFT JOIN returns:',
       choices: [
-        'First-In, First-Out',
-        'Last-In, First-Out',
-        'Random Access Order',
-        'Sorted Order Only',
+        'Only rows that match in both tables',
+        'All rows from the left table and matched rows from the right table',
+        'All rows from both tables, including unmatched',
+        'Only unmatched rows',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'The operation that adds an element to the top of a stack is called:',
+      question: 'A RIGHT JOIN is similar to a LEFT JOIN but:',
       choices: [
-        'Insert',
-        'Push',
-        'Enqueue',
-        'Peek',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'A queue removes elements using:',
-      choices: [
-        'Pop',
-        'Dequeue',
-        'Push',
-        'Reverse',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Which principle does a queue follow?',
-      choices: [
-        'LIFO',
-        'FIFO',
-        'Random Access',
-        'Priority-Based Only',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Linear search works by:',
-      choices: [
-        'Dividing the list repeatedly',
-        'Checking each element one by one',
-        'Sorting before searching',
-        'Jumping directly to the middle',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Binary search is much faster than linear search but requires:',
-      choices: [
-        'The data to be sorted',
-        'Very small datasets',
-        'Linked lists instead of arrays',
-        'No comparisons',
+        'Prioritizes the right table instead of the left',
+        'Removes all duplicates automatically',
+        'Returns no NULL values',
+        'Works only on numeric columns',
       ],
       correctIndex: 0,
     ),
 
     QuizQuestion(
-      question: 'Bubble sort works by:',
+      question: 'A FULL OUTER JOIN returns:',
       choices: [
-        'Selecting the smallest element each time',
-        'Comparing and swapping adjacent elements repeatedly',
-        'Jumping to random positions',
-        'Removing duplicate values only',
+        'Only matched rows',
+        'All rows from both tables, including unmatched rows',
+        'Only rows without foreign keys',
+        'Only records from the larger table',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Selection sort works by:',
+      question: 'A subquery is:',
       choices: [
-        'Picking the smallest element and placing it in its correct position',
-        'Swapping elements without comparisons',
-        'Sorting only part of the list',
-        'Sorting in reverse alphabetical order',
+        'A command used only for deleting data',
+        'A query written inside another query',
+        'A JOIN with three or more tables',
+        'A database backup procedure',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Subqueries are useful when:',
+      choices: [
+        'A single SELECT statement cannot provide the needed result',
+        'Working only with one table',
+        'You want to disable constraints',
+        'No filtering is needed',
       ],
       correctIndex: 0,
     ),
 
     QuizQuestion(
-      question: 'A recursive function must include:',
+      question: 'The purpose of an index is to:',
       choices: [
-        'At least two loops',
-        'A base case to stop recursion',
-        'A constant return value',
-        'No parameters',
+        'Slow down read operations',
+        'Speed up searching and retrieving data',
+        'Remove duplicate table rows',
+        'Encrypt sensitive records',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Recursion is helpful for problems that:',
+      question: 'A major trade-off of indexing is that:',
       choices: [
-        'Cannot be broken into smaller tasks',
-        'Require repetitive or self-similar steps',
-        'Must run without function calls',
-        'Only involve arrays',
+        'It increases storage and slows down write operations',
+        'It prevents table joins',
+        'It makes SELECT queries invalid',
+        'It removes primary keys',
+      ],
+      correctIndex: 0,
+    ),
+
+    QuizQuestion(
+      question: 'A transaction ensures that:',
+      choices: [
+        'Multiple users cannot access the database',
+        'Data updates follow ACID principles',
+        'Backups are created automatically',
+        'SQL statements are always faster',
       ],
       correctIndex: 1,
     ),
 
+    QuizQuestion(
+      question: 'The COMMIT command is used to:',
+      choices: [
+        'Undo all changes',
+        'Save all operations in a transaction permanently',
+        'Detect deadlocks',
+        'Close the database connection',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Aliases in SQL help by:',
+      choices: [
+        'Creating permanent column names',
+        'Temporarily renaming tables or columns to simplify queries',
+        'Encrypting table names',
+        'Removing JOIN conditions',
+      ],
+      correctIndex: 1,
+    ),
   ];
 }
