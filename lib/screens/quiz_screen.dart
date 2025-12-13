@@ -33,14 +33,14 @@ class _QuizScreenState extends State<QuizScreen> with SingleTickerProviderStateM
     startTime = DateTime.now();
 
     // Load questions based on moduleId
-    if (moduleId == 'mobile_dev_beginner_ch1') {
-      questions = BeginnerMobileDevQuiz.questions;
-    } else if (moduleId == 'mobile_dev_intermediate_ch1') {
-      questions = IntermediateMobileDevQuiz.questions;
-    } else if (moduleId == 'mobile_dev_advanced_ch1') {
-      questions = AdvancedMobileDevQuiz.questions;
+    if (moduleId == 'cybersecurity_beginner_ch1') {
+      questions = BeginnerCybersecurityQuiz.questions;
+    } else if (moduleId == 'cybersecurity_intermediate_ch1') {
+      questions = IntermediateCybersecurityQuiz.questions;
+    } else if (moduleId == 'cybersecurity_advanced_ch1') {
+      questions = AdvancedCybersecurityQuiz.questions;
     } else {
-      questions = BeginnerMobileDevQuiz.questions;
+      questions = BeginnerCybersecurityQuiz.questions;
     }
 
     answers = List<int?>.filled(questions.length, null);

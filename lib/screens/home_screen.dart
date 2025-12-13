@@ -86,13 +86,13 @@ class _HomeScreenState extends State<HomeScreen> {
       // Map old module IDs to new consolidated IDs
       String normalizedQuizId = quizId;
       if (quizId == 'sql_intro_01' || quizId == 'computing_intro_01' || quizId == 'programming_fundamentals_01' || quizId == 'programming_fundamentals_beginner_01' || quizId == 'intro_to_web_dev_01' || quizId == 'intro_to_python_01' || quizId == 'web_dev_ch1_pdf') {
-        normalizedQuizId = 'mobile_dev_beginner_ch1';
+        normalizedQuizId = 'cybersecurity_beginner_ch1';
       }
       if (quizId == 'web_development_01' || quizId == 'python_intermediate_01' || quizId == 'web_dev_intermediate_ch1') {
-        normalizedQuizId = 'mobile_dev_intermediate_ch1';
+        normalizedQuizId = 'cybersecurity_intermediate_ch1';
       }
       if (quizId == 'data_structures_advanced_01' || quizId == 'python_advanced_01') {
-        normalizedQuizId = 'mobile_dev_advanced_ch1';
+        normalizedQuizId = 'cybersecurity_advanced_ch1';
       }        final scoreVal = a['score'];
         final passed = a['passed'] as bool? ?? false;
         DateTime? attemptedAt;
@@ -129,9 +129,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
       // helper: total questions per moduleId
         int totalFor(String moduleId) {
-            if (moduleId == 'mobile_dev_beginner_ch1') return BeginnerMobileDevQuiz.questions.length;
-          if (moduleId == 'mobile_dev_intermediate_ch1') return IntermediateMobileDevQuiz.questions.length;
-        if (moduleId == 'mobile_dev_advanced_ch1') return AdvancedMobileDevQuiz.questions.length;
+            if (moduleId == 'cybersecurity_beginner_ch1') return BeginnerCybersecurityQuiz.questions.length;
+          if (moduleId == 'cybersecurity_intermediate_ch1') return IntermediateCybersecurityQuiz.questions.length;
+        if (moduleId == 'cybersecurity_advanced_ch1') return AdvancedCybersecurityQuiz.questions.length;
         return 0;
       }
 

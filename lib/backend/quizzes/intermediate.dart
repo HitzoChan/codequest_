@@ -1,114 +1,114 @@
 import 'models.dart';
 
-class IntermediateMobileDevQuiz {
+class IntermediateCybersecurityQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'UI/UX design in mobile apps focuses on:',
+      question: 'A firewall is primarily used to:',
       choices: [
-        'Hardware compatibility',
-        'Creating interfaces and experiences that are easy and enjoyable for users',
-        'Writing low-level system code',
-        'Increasing device battery usage',
+        'Store passwords securely',
+        'Filter network traffic and block unauthorized access',
+        'Repair damaged hardware',
+        'Speed up internet browsing',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Visual hierarchy in mobile design refers to:',
+      question: 'IDS (Intrusion Detection System) is used to:',
       choices: [
-        'Arranging elements randomly',
-        'Organizing interface elements to show importance and guide user attention',
-        'Hiding all non-essential features',
-        'Making all text the same size',
+        'Automatically delete malware',
+        'Monitor network activity and alert when suspicious behavior is detected',
+        'Replace antivirus software',
+        'Encrypt all data in the network',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A tab bar or bottom navigation is most useful when:',
+      question: 'Symmetric encryption uses:',
       choices: [
-        'The app contains only one screen',
-        'Users need quick access to several main sections',
-        'The app has no user interface',
-        'Users prefer text-only menus',
+        'A pair of public and private keys',
+        'A single shared key for both encryption and decryption',
+        'No keys at all',
+        'Biometrics for authentication',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'SQLite in mobile development is used for:',
+      question: 'Asymmetric encryption differs because it:',
       choices: [
-        'Rendering animations',
-        'Local database storage',
-        'Sending push notifications',
-        'Testing device performance',
+        'Uses only passwords',
+        'Uses two keys: one public and one private',
+        'Does not protect data during transmission',
+        'Works only on local networks',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Shared Preferences is best used for storing:',
+      question: 'Cybercriminals are threat actors typically motivated by:',
       choices: [
-        'Large datasets',
-        'Simple key-value pairs like settings or user preferences',
-        'High-resolution images',
-        'Complete user accounts',
+        'Entertainment',
+        'Financial gain',
+        'Environmental concerns',
+        'System maintenance',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'APIs allow mobile apps to:',
+      question: 'Insider threats occur when:',
       choices: [
-        'Connect with external services and retrieve data',
-        'Change device hardware',
-        'Automatically update the operating system',
-        'Remove unused features',
-      ],
-      correctIndex: 0,
-    ),
-
-    QuizQuestion(
-      question: 'JSON is commonly used in API communication because it:',
-      choices: [
-        'Is readable by both humans and machines',
-        'Only works on iOS',
-        'Stores images efficiently',
-        'Requires no structure',
-      ],
-      correctIndex: 0,
-    ),
-
-    QuizQuestion(
-      question: 'Asynchronous operations help apps by:',
-      choices: [
-        'Freezing the interface during tasks',
-        'Running long operations without blocking the UI',
-        'Reducing app security',
-        'Preventing data storage',
+        'A hacker breaks in from another country',
+        'Someone inside the organization misuses access or accidentally causes harm',
+        'A server runs out of storage',
+        'A user creates strong passwords',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A callback is:',
+      question: 'Security policies exist to:',
       choices: [
-        'A function executed after an asynchronous operation completes',
-        'An error caused by network failure',
-        'A tool for deleting stored data',
-        'A built-in database engine',
+        'Reduce the number of employees',
+        'Provide rules that guide safe use of organizational systems',
+        'Prevent users from browsing the internet',
+        'Replace firewalls and antivirus software',
       ],
-      correctIndex: 0,
+      correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'API integration is important because:',
+      question: 'Incident response begins with which phase?',
       choices: [
-        'Most apps run without internet access',
-        'It allows apps to access real-time or external information',
-        'It removes the need for UI design',
-        'It disables offline features',
+        'Containment',
+        'Detection',
+        'Preparation',
+        'Recovery',
+      ],
+      correctIndex: 2,
+    ),
+
+    QuizQuestion(
+      question: 'The goal of containment during incident response is to:',
+      choices: [
+        'Punish the attacker',
+        'Limit damage and prevent the attack from spreading',
+        'Restore all data immediately',
+        'Upgrade all hardware',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Post-incident analysis is important because it:',
+      choices: [
+        'Ensures the attack never happened',
+        'Helps identify lessons learned and prevents future incidents',
+        'Rewrites all security policies',
+        'Removes encryption from the system',
       ],
       correctIndex: 1,
     ),

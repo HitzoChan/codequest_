@@ -2,37 +2,37 @@ import '../course_models.dart';
 
 final List<Course> intermediateCourses = [
   Course(
-    courseId: 'mobile_dev_intermediate_clean',
-    title: 'Mobile Application Development – Intermediate',
+    courseId: 'cybersecurity_intermediate_clean',
+    title: 'Cybersecurity Fundamentals – Intermediate',
     description:
-        'Intermediate module covering UI/UX principles, navigation structures, local data storage, and API integration.',
+        'Intermediate module covering network security, encryption, threat actors, security policies, and incident response.',
     difficultyLevel: 'Intermediate',
     modules: [
       Module(
-        moduleId: 'mobile_dev_intermediate_ch1',
-        title: 'UI/UX Design, Data Storage & API Integration',
+        moduleId: 'cybersecurity_intermediate_ch1',
+        title: 'Network Security, Encryption & Incident Response',
         difficultyLevel: 'Intermediate',
         summary: '''
-This module focuses on practical mobile application development concepts that improve usability, data handling, and app connectivity.
+This module expands cybersecurity knowledge by focusing on how organizations protect networks and respond to security incidents.
 
 Topics include:
-• UI/UX design principles for mobile applications  
-• Visual hierarchy and user-centered interface design  
-• Navigation patterns such as tab bars and bottom navigation  
-• Local data storage using Shared Preferences and SQLite  
-• API integration for accessing external services  
-• JSON data formats used in API communication  
-• Asynchronous operations and callbacks to keep apps responsive  
+• Network security fundamentals and the role of firewalls  
+• Intrusion Detection Systems (IDS) for monitoring suspicious activity  
+• Encryption basics including symmetric and asymmetric encryption  
+• Threat actors such as cybercriminals and insider threats  
+• Security policies and organizational controls  
+• Incident response phases including preparation, detection, containment, and recovery  
+• Importance of post-incident analysis  
 
-These topics help developers build functional, user-friendly, and responsive mobile applications.
+These topics help learners understand how layered security defenses protect systems and data.
 ''',
         content:
-            'An intermediate-level exploration of UI/UX design, navigation patterns, local data storage, API integration, and asynchronous programming in mobile applications.',
-        
-        youtubeUrl: 'https://youtu.be/ODpB9-MCa5s?si=SGx4Hy3zsc-XxMVK',
-        
+            'An intermediate-level study of network security, encryption methods, threat actors, security policies, and structured incident response processes.',
+        // 
+        youtubeUrl: 'https://youtu.be/rz0RL4Xue-A?si=O_wTT5IoV4pI9cKq',
+        // 
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=14S0EzumAtKpE-iLRsjlAsLojkXxyGvys',
+            'https://drive.google.com/uc?export=download&id=11U34EsrOFuHRM2j7eQGY9HJgj0ZWCHfg',
       ),
     ],
   ),

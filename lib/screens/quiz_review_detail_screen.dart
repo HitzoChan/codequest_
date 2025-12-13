@@ -20,14 +20,14 @@ class QuizReviewDetailScreen extends StatelessWidget {
     final score = attempt['score'] as int? ?? 0;
 
     late final List<QuizQuestion> questions;
-    if (quizId == 'mobile_dev_beginner_ch1') {
-      questions = BeginnerMobileDevQuiz.questions;
-    } else if (quizId == 'mobile_dev_intermediate_ch1') {
-      questions = IntermediateMobileDevQuiz.questions;
-    } else if (quizId == 'mobile_dev_advanced_ch1') {
-      questions = AdvancedMobileDevQuiz.questions;
+    if (quizId == 'cybersecurity_beginner_ch1') {
+      questions = BeginnerCybersecurityQuiz.questions;
+    } else if (quizId == 'cybersecurity_intermediate_ch1') {
+      questions = IntermediateCybersecurityQuiz.questions;
+    } else if (quizId == 'cybersecurity_advanced_ch1') {
+      questions = AdvancedCybersecurityQuiz.questions;
     } else {
-      questions = BeginnerMobileDevQuiz.questions;
+      questions = BeginnerCybersecurityQuiz.questions;
     }
 
     final optionDefault = const Color(0xFF0F3B5F);

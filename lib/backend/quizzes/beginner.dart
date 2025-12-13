@@ -1,116 +1,116 @@
 import 'models.dart';
 
-class BeginnerMobileDevQuiz {
+class BeginnerCybersecurityQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'Mobile application development refers to:',
+      question: 'Cybersecurity refers to:',
       choices: [
-        'Designing websites for desktop computers',
-        'Creating software applications for smartphones and tablets',
-        'Installing hardware components',
-        'Writing programs for servers only',
+        'Maintaining computer hardware only',
+        'Protecting systems, networks, and data from unauthorized access or attacks',
+        'Creating new programming languages',
+        'Installing office software',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Android and iOS are examples of:',
+      question: 'The CIA triad stands for:',
       choices: [
-        'Database systems',
-        'Mobile operating platforms',
-        'Programming languages',
-        'Web browsers',
+        'Communication, Integrity, Administration',
+        'Confidentiality, Integrity, Availability',
+        'Control, Information, Access',
+        'Confidentiality, Inspection, Authorization',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A native mobile application is one that:',
+      question: 'Confidentiality ensures that:',
       choices: [
-        'Runs only in a web browser',
-        'Is developed specifically for one platform (Android or iOS)',
-        'Cannot access device features',
-        'Works without any coding',
+        'Data is always backed up',
+        'Only authorized individuals can access information',
+        'All users have equal permissions',
+        'Old files are deleted regularly',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Cross-platform applications are designed to:',
+      question: 'Which of the following is a type of malware?',
       choices: [
-        'Run on multiple mobile platforms using shared code',
-        'Work only on high-end devices',
-        'Replace native applications entirely',
-        'Operate only offline',
+        'Phishing',
+        'Worm',
+        'Firewall',
+        'Encryption',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Phishing attacks typically involve:',
+      choices: [
+        'Fake messages that trick users into revealing sensitive information',
+        'Physical destruction of hardware',
+        'Passwords that never expire',
+        'Rewriting operating system code',
       ],
       correctIndex: 0,
     ),
 
     QuizQuestion(
-      question: 'The user interface layer of a mobile app is responsible for:',
+      question: 'A vulnerability is:',
       choices: [
-        'Managing the device hardware',
-        'Displaying layouts, buttons, and interactive elements',
-        'Connecting directly to remote databases',
-        'Testing network performance',
+        'A security tool used to block attackers',
+        'A weakness in a system that can be exploited',
+        'A strong security protocol',
+        'A type of encrypted file',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'The logic layer of a mobile app:',
+      question: 'Which practice helps strengthen account security the most?',
       choices: [
-        'Controls how the app behaves and processes data',
-        'Changes device screen brightness',
-        'Stores user passwords permanently',
-        'Displays advertisements only',
-      ],
-      correctIndex: 0,
-    ),
-
-    QuizQuestion(
-      question: 'Android Studio is the official development tool for:',
-      choices: [
-        'iOS',
-        'Android',
-        'Web applications',
-        'Desktop games',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'The main programming language for iOS development is:',
-      choices: [
-        'Java',
-        'Kotlin',
-        'Swift',
-        'C#',
+        'Using the same password for all accounts',
+        'Writing passwords on paper',
+        'Enabling multi-factor authentication',
+        'Logging in through public Wi-Fi',
       ],
       correctIndex: 2,
     ),
 
     QuizQuestion(
-      question: 'APIs in mobile applications are used to:',
+      question: 'Regular software updates are important because they:',
       choices: [
-        'Control phone brightness',
-        'Communicate with external servers or services',
-        'Uninstall unused apps',
-        'Format the device memory',
+        'Make computers run slower',
+        'Remove unused apps automatically',
+        'Patch security flaws and improve protection',
+        'Delete browser history',
       ],
-      correctIndex: 1,
+      correctIndex: 2,
     ),
 
     QuizQuestion(
-      question: 'Mobile application development is important because:',
+      question: 'Access control refers to:',
       choices: [
-        'Mobile devices are rarely used today',
-        'Apps allow users to access services and information on the go',
-        'Only companies benefit from apps',
-        'It replaces all forms of web development',
+        'Determining which users can access specific resources',
+        'Blocking all internet connections',
+        'Formatting the hard drive',
+        'Installing new hardware',
       ],
-      correctIndex: 1,
+      correctIndex: 0,
+    ),
+
+    QuizQuestion(
+      question: 'Cybersecurity awareness is important because:',
+      choices: [
+        'Most security threats are caused by user mistakes',
+        'It replaces the need for antivirus software',
+        'It allows all users to become programmers',
+        'It eliminates the need for passwords',
+      ],
+      correctIndex: 0,
     ),
 
   ];
