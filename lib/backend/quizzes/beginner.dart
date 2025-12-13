@@ -1,115 +1,117 @@
 import 'models.dart';
 
-class BeginnerOSQuiz {
+class BeginnerMobileDevQuiz {
   static List<QuizQuestion> questions = [
+
     QuizQuestion(
-      question: 'An operating system is best described as:',
+      question: 'Mobile application development refers to:',
       choices: [
-        'A hardware device installed inside the computer',
-        'Software that manages hardware and enables applications to run',
-        'A tool used only for gaming',
-        'A program used for creating documents',
+        'Designing websites for desktop computers',
+        'Creating software applications for smartphones and tablets',
+        'Installing hardware components',
+        'Writing programs for servers only',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'One of the main functions of an operating system is:',
+      question: 'Android and iOS are examples of:',
       choices: [
-        'Designing web pages',
-        'Scheduling processes and managing CPU time',
-        'Connecting computers to social media',
-        'Formatting USB drives automatically',
+        'Database systems',
+        'Mobile operating platforms',
+        'Programming languages',
+        'Web browsers',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Memory management in an OS is responsible for:',
+      question: 'A native mobile application is one that:',
       choices: [
-        'Controlling the monitor’s brightness',
-        'Assigning and tracking memory used by programs',
-        'Displaying icons on the desktop',
-        'Installing third-party apps',
+        'Runs only in a web browser',
+        'Is developed specifically for one platform (Android or iOS)',
+        'Cannot access device features',
+        'Works without any coding',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'File management includes:',
+      question: 'Cross-platform applications are designed to:',
       choices: [
-        'Designing folder icons',
-        'Organizing, storing, and protecting files',
-        'Creating new programming languages',
-        'Managing website servers',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'A multi-user operating system allows:',
-      choices: [
-        'Only one program to run at a time',
-        'Multiple users to access system resources simultaneously',
-        'Only one file to be stored',
-        'The computer to run without electricity',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'A Graphical User Interface (GUI):',
-      choices: [
-        'Requires typing commands only',
-        'Uses windows, icons, and menus for interaction',
-        'Works only on servers',
-        'Cannot run applications',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'A Command Line Interface (CLI):',
-      choices: [
-        'Is used only on mobile phones',
-        'Requires command typing and offers high precision',
-        'Cannot manage files',
-        'Has no access to hardware',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'System calls allow:',
-      choices: [
-        'Applications to access hardware safely through the OS',
-        'Users to shut down the computer',
-        'Games to run faster',
-        'Files to download automatically',
+        'Run on multiple mobile platforms using shared code',
+        'Work only on high-end devices',
+        'Replace native applications entirely',
+        'Operate only offline',
       ],
       correctIndex: 0,
     ),
 
     QuizQuestion(
-      question: 'The kernel of an operating system:',
+      question: 'The user interface layer of a mobile app is responsible for:',
       choices: [
-        'Controls only the screen display',
-        'Manages hardware, memory, and core OS functions',
-        'Stores music files',
-        'Repairs corrupted files',
+        'Managing the device hardware',
+        'Displaying layouts, buttons, and interactive elements',
+        'Connecting directly to remote databases',
+        'Testing network performance',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Operating systems are important because they:',
+      question: 'The logic layer of a mobile app:',
       choices: [
-        'Replace all hardware in a computer',
-        'Make computing possible by managing resources and supporting applications',
-        'Remove viruses automatically',
-        'Make the internet faster',
+        'Controls how the app behaves and processes data',
+        'Changes device screen brightness',
+        'Stores user passwords permanently',
+        'Displays advertisements only',
+      ],
+      correctIndex: 0,
+    ),
+
+    QuizQuestion(
+      question: 'Android Studio is the official development tool for:',
+      choices: [
+        'iOS',
+        'Android',
+        'Web applications',
+        'Desktop games',
       ],
       correctIndex: 1,
     ),
+
+    QuizQuestion(
+      question: 'The main programming language for iOS development is:',
+      choices: [
+        'Java',
+        'Kotlin',
+        'Swift',
+        'C#',
+      ],
+      correctIndex: 2,
+    ),
+
+    QuizQuestion(
+      question: 'APIs in mobile applications are used to:',
+      choices: [
+        'Control phone brightness',
+        'Communicate with external servers or services',
+        'Uninstall unused apps',
+        'Format the device memory',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Mobile application development is important because:',
+      choices: [
+        'Mobile devices are rarely used today',
+        'Apps allow users to access services and information on the go',
+        'Only companies benefit from apps',
+        'It replaces all forms of web development',
+      ],
+      correctIndex: 1,
+    ),
+
   ];
 }

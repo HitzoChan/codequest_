@@ -2,35 +2,36 @@
 
 final List<Course> beginnerCourses = [
   Course(
-    courseId: 'os_beginner_clean',
-    title: 'Operating Systems – Beginner',
+    courseId: 'mobile_dev_beginner_clean',
+    title: 'Mobile Application Development – Beginner',
     description:
-        'Beginner module introducing the fundamentals of operating systems, their functions, and basic components.',
+        'Beginner module introducing mobile application development, platforms, app structures, and development tools.',
     difficultyLevel: 'Beginner',
     modules: [
       Module(
-        moduleId: 'os_beginner_ch1',
-        title: 'Introduction to Operating Systems',
+        moduleId: 'mobile_dev_beginner_ch1',
+        title: 'Introduction to Mobile Application Development',
         difficultyLevel: 'Beginner',
         summary: '''
-This module introduces the basic concepts of operating systems and their role in computer systems.
+This module introduces the fundamentals of mobile application development.
 
 Topics include:
-• Definition and purpose of an operating system
-• Core functions such as process scheduling and CPU management
-• Memory management and allocation of system resources
-• File management for organizing and protecting data
-• Single-user and multi-user operating systems
-• User interfaces: Graphical User Interface (GUI) and Command Line Interface (CLI)
-• System calls and how applications interact with hardware safely
-• The kernel and its role in managing core system operations
-• Why operating systems are essential for modern computing
+• Definition of mobile application development  
+• Mobile platforms such as Android and iOS  
+• Types of mobile applications: native and cross-platform  
+• Basic structure of a mobile app including UI and logic layers  
+• Role of APIs in mobile applications  
+• Development tools such as Android Studio  
+• Programming languages used in mobile development  
+
+These topics provide a foundation for understanding how mobile apps are designed and built.
 ''',
         content:
-            'A beginner-friendly overview of how operating systems manage hardware resources, support applications, provide user interfaces, and ensure efficient and secure computing.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=26QPDBe-NB8',
+            'A beginner-level overview of mobile application development covering platforms, application types, app structure, development tools, and basic programming concepts.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=FjrKMcnKahY',
+       
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=1jj1p7E1l7j9q5GmnTBuUQC7ZOxzoxJIA',
+            'https://drive.google.com/uc?export=download&id=1CWEh6uJApumgQzaF-k7VBesAzOulF3t9',
       ),
     ],
   ),

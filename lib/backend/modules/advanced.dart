@@ -2,36 +2,38 @@ import '../course_models.dart';
 
 final List<Course> advancedCourses = [
   Course(
-    courseId: 'os_advanced_clean',
-    title: 'Operating Systems – Advanced',
+    courseId: 'mobile_dev_advanced_clean',
+    title: 'Mobile Application Development – Advanced',
     description:
-        'Advanced module focusing on concurrency, synchronization, distributed systems, security mechanisms, and kernel architectures.',
+        'Advanced module covering mobile app architecture, performance optimization, security, testing, and deployment.',
     difficultyLevel: 'Advanced',
     modules: [
       Module(
-        moduleId: 'os_advanced_ch1',
-        title: 'Concurrency, Deadlocks, Distributed Systems, and Kernel Design',
+        moduleId: 'mobile_dev_advanced_ch1',
+        title: 'Architecture, Performance, Security & Deployment',
         difficultyLevel: 'Advanced',
         summary: '''
-This module explores advanced concepts in modern operating systems.
+This module focuses on advanced mobile application development concepts required to build production-ready apps.
 
 Topics include:
-• Concurrency and parallel execution of processes and threads
-• Race conditions and critical section problems
-• Synchronization mechanisms such as semaphores and mutexes
-• Deadlocks, deadlock conditions, and avoidance techniques
-• Banker’s Algorithm for deadlock avoidance
-• Distributed operating systems and coordinated resource sharing
-• Remote Procedure Call (RPC) for inter-process communication across machines
-• Operating system security using access control lists and permissions
-• Kernel architectures: monolithic kernel vs microkernel design
-• Reliability, scalability, and performance considerations in advanced OS design
+• Mobile application architecture patterns such as MVC, MVVM, and Clean Architecture  
+• Separation of UI, business logic, and data layers  
+• Performance optimization and profiling using development tools  
+• Memory management and prevention of memory leaks  
+• Secure coding practices and secure API communication  
+• Backend integration and data synchronization  
+• Unit testing and UI testing strategies  
+• Deployment requirements for Google Play Store and Apple App Store  
+
+These topics prepare developers to create scalable, secure, and high-quality mobile applications.
 ''',
         content:
-            'An advanced-level discussion of operating system mechanisms that enable concurrent execution, synchronization, deadlock handling, distributed coordination, security enforcement, and kernel architecture design to ensure system reliability and scalability.',
-        youtubeUrl: 'https://www.youtube.com/watch?v=rWFH6PLOIEI',
+            'An advanced-level study of mobile application architecture, performance optimization, security practices, backend integration, testing, and deployment to app stores.',
+        // ✅ YouTube link used ONLY in the module
+        youtubeUrl: 'https://youtu.be/yye7rSsiV6k?si=DAWaTjrlC6pLp054',
+        // ✅ PDF link you provided
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=1B9I9K3alp1g4WEhP8HxHgpB2cC7hHk82',
+            'https://drive.google.com/uc?export=download&id=1fkKVXeyjqKgoLNg8lHycZCKZHsQNb-eV',
       ),
     ],
   ),

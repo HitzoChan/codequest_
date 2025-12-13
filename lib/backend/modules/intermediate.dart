@@ -2,34 +2,37 @@ import '../course_models.dart';
 
 final List<Course> intermediateCourses = [
   Course(
-    courseId: 'operating_systems_intermediate',
-    title: 'Operating Systems – Intermediate',
+    courseId: 'mobile_dev_intermediate_clean',
+    title: 'Mobile Application Development – Intermediate',
     description:
-        'Intermediate module focusing on how operating systems manage processes, memory, files, and hardware devices.',
+        'Intermediate module covering UI/UX principles, navigation structures, local data storage, and API integration.',
     difficultyLevel: 'Intermediate',
     modules: [
       Module(
-        moduleId: 'os_intermediate_ch1',
-        title: 'Process, Memory, and Device Management',
+        moduleId: 'mobile_dev_intermediate_ch1',
+        title: 'UI/UX Design, Data Storage & API Integration',
         difficultyLevel: 'Intermediate',
         summary: '''
-This module explains how operating systems manage multiple tasks and system resources.
+This module focuses on practical mobile application development concepts that improve usability, data handling, and app connectivity.
 
 Topics include:
-• Definition of a process and program execution
-• Process Control Block (PCB) and process states
-• CPU scheduling algorithms (FCFS, SJF, Round Robin)
-• Memory management concepts such as paging and virtual memory
-• Page replacement algorithms
-• File system organization and storage management
-• Device drivers and interrupt handling
-• Importance of efficient resource management in modern operating systems
+• UI/UX design principles for mobile applications  
+• Visual hierarchy and user-centered interface design  
+• Navigation patterns such as tab bars and bottom navigation  
+• Local data storage using Shared Preferences and SQLite  
+• API integration for accessing external services  
+• JSON data formats used in API communication  
+• Asynchronous operations and callbacks to keep apps responsive  
+
+These topics help developers build functional, user-friendly, and responsive mobile applications.
 ''',
         content:
-            'This module provides a deeper understanding of operating system internals, including how processes are scheduled, how memory is allocated and extended using virtual memory, how files are organized on storage devices, and how hardware devices communicate with the operating system using drivers and interrupts.',
-        youtubeUrl: 'https://youtu.be/RozoeWzT7IM',
+            'An intermediate-level exploration of UI/UX design, navigation patterns, local data storage, API integration, and asynchronous programming in mobile applications.',
+        
+        youtubeUrl: 'https://youtu.be/ODpB9-MCa5s?si=SGx4Hy3zsc-XxMVK',
+        
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=12ZkbjH5-UYHEJ0-rjIaqXf6EzEV3YmsE',
+            'https://drive.google.com/uc?export=download&id=14S0EzumAtKpE-iLRsjlAsLojkXxyGvys',
       ),
     ],
   ),

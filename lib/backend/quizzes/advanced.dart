@@ -1,117 +1,117 @@
 import 'models.dart';
 
-class AdvancedOSQuiz {
+class AdvancedMobileDevQuiz {
   static List<QuizQuestion> questions = [
+
     QuizQuestion(
-      question: 'Concurrency in an operating system refers to:',
+      question: 'Mobile application architecture patterns such as MVC and MVVM help developers by:',
       choices: [
-        'Running only one process at a time',
-        'Multiple processes or threads executing simultaneously',
-        'Shutting down unused programs',
-        'Storing files on multiple disks',
+        'Increasing device storage space',
+        'Organizing code into clear layers for easier maintenance and testing',
+        'Guaranteeing faster internet speeds',
+        'Automatically generating app designs',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A race condition occurs when:',
+      question: 'Clean Architecture is characterized by:',
       choices: [
-        'Two users log in at the same time',
-        'Processes access shared data without proper synchronization',
-        'The CPU overheats',
-        'Memory allocation fails',
+        'Keeping all logic inside one file',
+        'Clear separation between UI, business logic, and data layers',
+        'Allowing UI elements direct access to databases',
+        'Eliminating the need for testing',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A semaphore or mutex is used to:',
+      question: 'A common method for identifying performance issues in mobile apps is:',
       choices: [
-        'Speed up file transfers',
-        'Manage exclusive access to shared resources',
-        'Replace virtual memory',
-        'Detect viruses',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'A deadlock occurs when:',
-      choices: [
-        'The system reboots unexpectedly',
-        'Processes wait indefinitely for resources held by each other',
-        'A file cannot be found',
-        'A user opens too many windows',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question:
-          'Which method aims to avoid deadlocks by checking resource requests before granting them?',
-      choices: [
-        'Monolithic scheduling',
-        'Banker\'s Algorithm',
-        'FIFO replacement',
-        'Paging',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'A distributed operating system is designed to:',
-      choices: [
-        'Run on a single machine only',
-        'Make multiple computers function as one coordinated system',
-        'Replace all hardware drivers',
-        'Block network access',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Remote Procedure Call (RPC) allows:',
-      choices: [
-        'A program to execute a procedure on another machine as if it were local',
-        'Only one process to run at a time',
-        'Disk errors to be automatically corrected',
-        'Files to delete themselves',
+        'Using profiling tools provided by Android Studio or Xcode',
+        'Guessing based on user reports',
+        'Restarting the app repeatedly',
+        'Disabling animations',
       ],
       correctIndex: 0,
     ),
 
     QuizQuestion(
-      question:
-          'OS security mechanisms such as ACLs and permissions are used to:',
+      question: 'Memory leaks in mobile applications occur when:',
       choices: [
-        'Increase file size',
-        'Control access to system resources',
-        'Speed up CPU cycles',
-        'Disable background processes',
+        'An app stores too many images',
+        'Memory is allocated but not properly released',
+        'The device has low storage space',
+        'The app uses a dark theme',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A monolithic kernel is characterized by:',
+      question: 'Secure API communication often requires:',
       choices: [
-        'Keeping most OS services in user space',
-        'Having all major OS components in one large program',
-        'Requiring no device drivers',
-        'Being slower than all other designs',
+        'Sending data without encryption',
+        'Using HTTPS and proper authentication tokens',
+        'Removing user verification',
+        'Avoiding server communication completely',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A microkernel improves system reliability by:',
+      question: 'Which of the following is a secure coding practice?',
       choices: [
-        'Combining all services directly inside the kernel',
-        'Limiting the kernel to essential functions and moving other services to user space',
-        'Removing hardware support modules',
-        'Increasing virtual memory automatically',
+        'Accepting all user input without validation',
+        'Storing passwords in plain text',
+        'Encrypting sensitive data stored on the device',
+        'Ignoring outdated libraries',
+      ],
+      correctIndex: 2,
+    ),
+
+    QuizQuestion(
+      question: 'Backend integration allows mobile apps to:',
+      choices: [
+        'Run offline-only applications',
+        'Communicate with servers and synchronize user data',
+        'Remove the need for mobile UI',
+        'Replace local storage entirely',
       ],
       correctIndex: 1,
     ),
+
+    QuizQuestion(
+      question: 'Unit testing in mobile applications focuses on:',
+      choices: [
+        'Testing entire user flows',
+        'Verifying individual functions or components',
+        'Simulating app deployment',
+        'Checking app store compliance',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'UI testing is important because it:',
+      choices: [
+        'Ensures that buttons, screens, and navigation behave correctly',
+        'Replaces backend services',
+        'Automatically fixes performance issues',
+        'Tests the speed of cloud servers',
+      ],
+      correctIndex: 0,
+    ),
+
+    QuizQuestion(
+      question: 'Deployment to the Google Play Store or Apple App Store typically requires:',
+      choices: [
+        'Publishing without any review',
+        'Meeting platform guidelines, providing screenshots, and completing app metadata',
+        'Uploading only the source code',
+        'Removing all security features',
+      ],
+      correctIndex: 1,
+    ),
+
   ];
 }
