@@ -2,37 +2,38 @@ import '../course_models.dart';
 
 final List<Course> intermediateCourses = [
   Course(
-    courseId: 'cybersecurity_intermediate_clean',
-    title: 'Cybersecurity Fundamentals – Intermediate',
+    courseId: 'it_pm_intermediate_clean',
+    title: 'IT Project Management – Intermediate',
     description:
-        'Intermediate module covering network security, encryption, threat actors, security policies, and incident response.',
+        'Intermediate module focusing on project planning, scheduling, risk management, communication, and monitoring.',
     difficultyLevel: 'Intermediate',
     modules: [
       Module(
-        moduleId: 'cybersecurity_intermediate_ch1',
-        title: 'Network Security, Encryption & Incident Response',
+        moduleId: 'it_pm_intermediate_ch1',
+        title: 'Project Planning, Scheduling & Risk Management',
         difficultyLevel: 'Intermediate',
         summary: '''
-This module expands cybersecurity knowledge by focusing on how organizations protect networks and respond to security incidents.
+This module builds on basic IT Project Management concepts by focusing on detailed planning, control, and coordination of projects.
 
 Topics include:
-• Network security fundamentals and the role of firewalls  
-• Intrusion Detection Systems (IDS) for monitoring suspicious activity  
-• Encryption basics including symmetric and asymmetric encryption  
-• Threat actors such as cybercriminals and insider threats  
-• Security policies and organizational controls  
-• Incident response phases including preparation, detection, containment, and recovery  
-• Importance of post-incident analysis  
+• Project planning and scope definition  
+• Importance of clear scope and preventing scope creep  
+• Work Breakdown Structure (WBS) for task organization  
+• Project scheduling and time management  
+• Gantt charts and task dependencies  
+• Project risk identification and risk management processes  
+• Communication planning and stakeholder management  
+• Monitoring and controlling project progress  
 
-These topics help learners understand how layered security defenses protect systems and data.
+These topics help ensure IT projects are delivered on time, within budget, and with stakeholder support.
 ''',
         content:
-            'An intermediate-level study of network security, encryption methods, threat actors, security policies, and structured incident response processes.',
-        // 
-        youtubeUrl: 'https://youtu.be/rz0RL4Xue-A?si=O_wTT5IoV4pI9cKq',
-        // 
+            'An intermediate-level study of IT Project Management covering planning techniques, scheduling tools, risk management, communication strategies, and project monitoring.',
+        
+        youtubeUrl: 'https://youtu.be/kXkVV7PFWgE?si=YTohgcJmLUF4ygF1',
+        
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=11U34EsrOFuHRM2j7eQGY9HJgj0ZWCHfg',
+            'https://drive.google.com/uc?export=download&id=17mw4VALW0yfS-97h7u28Gfe91I0OcKNL',
       ),
     ],
   ),

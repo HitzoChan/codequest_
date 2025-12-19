@@ -1,114 +1,114 @@
 import 'models.dart';
 
-class IntermediateCybersecurityQuiz {
+class IntermediateITPMQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'A firewall is primarily used to:',
+      question: 'Project planning primarily focuses on:',
       choices: [
-        'Store passwords securely',
-        'Filter network traffic and block unauthorized access',
-        'Repair damaged hardware',
-        'Speed up internet browsing',
+        'Executing tasks immediately',
+        'Defining what work will be done and how it will be completed',
+        'Closing the project',
+        'Hiring new employees',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'IDS (Intrusion Detection System) is used to:',
+      question: 'Scope definition is important because it:',
       choices: [
-        'Automatically delete malware',
-        'Monitor network activity and alert when suspicious behavior is detected',
-        'Replace antivirus software',
-        'Encrypt all data in the network',
+        'Increases project cost',
+        'Prevents scope creep and unclear objectives',
+        'Eliminates project risks',
+        'Replaces scheduling',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Symmetric encryption uses:',
+      question: 'A Work Breakdown Structure (WBS) is used to:',
       choices: [
-        'A pair of public and private keys',
-        'A single shared key for both encryption and decryption',
-        'No keys at all',
-        'Biometrics for authentication',
+        'Combine tasks into one large activity',
+        'Break a project into smaller, manageable tasks',
+        'Assign budgets automatically',
+        'Monitor employee attendance',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Asymmetric encryption differs because it:',
+      question: 'Which tool visually shows tasks, timelines, and dependencies?',
       choices: [
-        'Uses only passwords',
-        'Uses two keys: one public and one private',
-        'Does not protect data during transmission',
-        'Works only on local networks',
+        'Risk register',
+        'Gantt chart',
+        'Source code repository',
+        'Database schema',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Cybercriminals are threat actors typically motivated by:',
+      question: 'Project scheduling helps teams by:',
       choices: [
-        'Entertainment',
-        'Financial gain',
-        'Environmental concerns',
-        'System maintenance',
+        'Ignoring deadlines',
+        'Organizing tasks and managing time effectively',
+        'Removing task dependencies',
+        'Avoiding documentation',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Insider threats occur when:',
+      question: 'A project risk is:',
       choices: [
-        'A hacker breaks in from another country',
-        'Someone inside the organization misuses access or accidentally causes harm',
-        'A server runs out of storage',
-        'A user creates strong passwords',
+        'A guaranteed problem',
+        'A potential event that could negatively affect the project',
+        'A completed task',
+        'A budget report',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Security policies exist to:',
+      question: 'Risk management involves:',
       choices: [
-        'Reduce the number of employees',
-        'Provide rules that guide safe use of organizational systems',
-        'Prevent users from browsing the internet',
-        'Replace firewalls and antivirus software',
+        'Ignoring possible issues',
+        'Identifying, analyzing, and planning responses to risks',
+        'Eliminating all risks permanently',
+        'Increasing project scope',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Incident response begins with which phase?',
+      question: 'Communication plans are used to:',
       choices: [
-        'Containment',
-        'Detection',
-        'Preparation',
-        'Recovery',
-      ],
-      correctIndex: 2,
-    ),
-
-    QuizQuestion(
-      question: 'The goal of containment during incident response is to:',
-      choices: [
-        'Punish the attacker',
-        'Limit damage and prevent the attack from spreading',
-        'Restore all data immediately',
-        'Upgrade all hardware',
+        'Limit information sharing',
+        'Define how project information is shared with stakeholders',
+        'Replace team meetings',
+        'Eliminate reports',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Post-incident analysis is important because it:',
+      question: 'Monitoring and controlling a project involves:',
       choices: [
-        'Ensures the attack never happened',
-        'Helps identify lessons learned and prevents future incidents',
-        'Rewrites all security policies',
-        'Removes encryption from the system',
+        'Writing new requirements',
+        'Tracking progress and taking corrective actions when needed',
+        'Closing the project early',
+        'Assigning new roles',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Effective stakeholder management helps:',
+      choices: [
+        'Increase project confusion',
+        'Maintain trust and support throughout the project',
+        'Remove accountability',
+        'Avoid project updates',
       ],
       correctIndex: 1,
     ),

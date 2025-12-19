@@ -1,114 +1,114 @@
 import 'models.dart';
 
-class AdvancedCybersecurityQuiz {
+class AdvancedITPMQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'An Advanced Persistent Threat (APT) is best described as:',
+      question: 'Agile project management primarily emphasizes:',
       choices: [
-        'A short-term attack that causes immediate shutdown',
-        'A long-term, targeted attack designed to stay hidden',
-        'A type of physical security breach',
-        'A simple malware infection',
+        'Fixed plans and strict documentation',
+        'Flexibility, collaboration, and iterative delivery',
+        'Completing all work at once',
+        'Eliminating stakeholder involvement',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A zero-day exploit targets:',
+      question: 'In Scrum, a sprint is:',
       choices: [
-        'Software vulnerabilities that have already been patched',
-        'Hardware devices only',
-        'A vulnerability that is unknown to vendors and has no fix yet',
-        'End users who forget their passwords',
-      ],
-      correctIndex: 2,
-    ),
-
-    QuizQuestion(
-      question: 'A Man-in-the-Middle (MITM) attack involves:',
-      choices: [
-        'Encrypting files without permission',
-        'Intercepting communication between two parties',
-        'Using stolen hardware',
-        'Preventing users from logging out',
+        'A long-term project plan',
+        'A short, time-boxed development cycle',
+        'A quality review session',
+        'A risk assessment document',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Hashing is primarily used for:',
+      question: 'Kanban focuses mainly on:',
       choices: [
-        'Reversing encrypted data',
-        'Protecting data integrity by generating a one-way fixed-size output',
-        'Storing full copies of files',
-        'Speeding up internet traffic',
+        'Assigning roles',
+        'Visualizing work and limiting work-in-progress',
+        'Reducing project scope',
+        'Eliminating deadlines',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A digital signature helps verify:',
+      question: 'Quality assurance in IT projects is concerned with:',
       choices: [
-        'File size',
-        'The authenticity and integrity of a message',
-        'The number of users in a network',
-        'Which device is fastest',
+        'Fixing defects after delivery',
+        'Ensuring processes are followed to meet quality standards',
+        'Reducing team size',
+        'Increasing development speed',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Zero Trust Architecture assumes that:',
+      question: 'Effective project leadership requires:',
       choices: [
-        'All users inside the network are trustworthy',
-        'No user or device is trusted by default',
-        'Firewalls are unnecessary',
-        'Passwords do not need to be secure',
+        'Technical skills only',
+        'Strong communication, motivation, and decision-making skills',
+        'Avoiding conflict at all costs',
+        'Ignoring team feedback',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A SIEM system is used to:',
+      question: 'Change management helps IT projects by:',
       choices: [
-        'Provide free antivirus updates',
-        'Collect and analyze security logs for threat detection',
-        'Manage employee schedules',
-        'Format storage devices',
+        'Allowing unlimited changes',
+        'Controlling and evaluating changes to minimize disruption',
+        'Preventing any updates',
+        'Eliminating documentation',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Ethical hacking involves:',
+      question: 'A post-implementation review is conducted to:',
       choices: [
-        'Breaking into systems illegally',
-        'Testing systems for vulnerabilities with authorization',
-        'Removing all encryption from a network',
-        'Interrupting user activities',
+        'Restart the project',
+        'Analyze lessons learned and project performance',
+        'Assign blame',
+        'Extend the project timeline',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'The first phase of a penetration test is typically:',
+      question: 'Project closure ensures that:',
       choices: [
-        'Reporting',
-        'Exploitation',
-        'Reconnaissance',
-        'Cleanup',
+        'All resources remain assigned',
+        'Deliverables are accepted and the project is formally completed',
+        'New requirements are added',
+        'Testing begins',
       ],
-      correctIndex: 2,
+      correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'The NIST Cybersecurity Framework includes which of the following functions?',
+      question: 'Agile teams deliver value by:',
       choices: [
-        'Scan, Report, Clean',
-        'Identify, Protect, Detect, Respond, Recover',
-        'Encrypt, Patch, Install',
-        'Analyze, Recycle, Reboot',
+        'Waiting until the end of the project',
+        'Delivering small, usable increments regularly',
+        'Avoiding stakeholder feedback',
+        'Using only documentation',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Advanced IT project management skills are important because they:',
+      choices: [
+        'Apply only to managers',
+        'Enable leadership of complex and changing IT projects',
+        'Remove the need for technical teams',
+        'Eliminate project risks entirely',
       ],
       correctIndex: 1,
     ),
