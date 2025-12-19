@@ -1,114 +1,114 @@
 import 'models.dart';
 
-class AdvancedITPMQuiz {
+class AdvancedAIQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'Agile project management primarily emphasizes:',
+      question: 'Deep learning differs from basic machine learning because it:',
       choices: [
-        'Fixed plans and strict documentation',
-        'Flexibility, collaboration, and iterative delivery',
-        'Completing all work at once',
-        'Eliminating stakeholder involvement',
+        'Uses only small datasets',
+        'Relies on multi-layered neural networks',
+        'Does not require training',
+        'Works without algorithms',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'In Scrum, a sprint is:',
+      question: 'Neural networks are inspired by:',
       choices: [
-        'A long-term project plan',
-        'A short, time-boxed development cycle',
-        'A quality review session',
-        'A risk assessment document',
+        'Computer hardware design',
+        'The structure of the human brain',
+        'Internet architecture',
+        'Database systems',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Kanban focuses mainly on:',
+      question: 'Hidden layers in a neural network are used to:',
       choices: [
-        'Assigning roles',
-        'Visualizing work and limiting work-in-progress',
-        'Reducing project scope',
-        'Eliminating deadlines',
+        'Store raw data',
+        'Learn complex patterns and features',
+        'Replace training data',
+        'Display outputs',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Quality assurance in IT projects is concerned with:',
+      question: 'An epoch in deep learning refers to:',
       choices: [
-        'Fixing defects after delivery',
-        'Ensuring processes are followed to meet quality standards',
-        'Reducing team size',
-        'Increasing development speed',
+        'A single neuron',
+        'One complete pass of training data through the model',
+        'A testing phase',
+        'A deployment step',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Effective project leadership requires:',
+      question: 'Gradient descent is used to:',
       choices: [
-        'Technical skills only',
-        'Strong communication, motivation, and decision-making skills',
-        'Avoiding conflict at all costs',
-        'Ignoring team feedback',
+        'Increase model errors',
+        'Optimize model parameters by minimizing loss',
+        'Encrypt AI models',
+        'Transfer data',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Change management helps IT projects by:',
+      question: 'TensorFlow and PyTorch are examples of:',
       choices: [
-        'Allowing unlimited changes',
-        'Controlling and evaluating changes to minimize disruption',
-        'Preventing any updates',
-        'Eliminating documentation',
+        'Operating systems',
+        'AI frameworks and libraries',
+        'Programming languages',
+        'Databases',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A post-implementation review is conducted to:',
+      question: 'Overfitting occurs when a model:',
       choices: [
-        'Restart the project',
-        'Analyze lessons learned and project performance',
-        'Assign blame',
-        'Extend the project timeline',
+        'Performs well on new data',
+        'Learns training data too closely and fails to generalize',
+        'Has too little data',
+        'Trains too quickly',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Project closure ensures that:',
+      question: 'Deploying AI models involves:',
       choices: [
-        'All resources remain assigned',
-        'Deliverables are accepted and the project is formally completed',
-        'New requirements are added',
-        'Testing begins',
+        'Storing them offline only',
+        'Integrating trained models into real applications or services',
+        'Removing evaluation processes',
+        'Ignoring performance monitoring',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Agile teams deliver value by:',
+      question: 'Ethical AI emphasizes:',
       choices: [
-        'Waiting until the end of the project',
-        'Delivering small, usable increments regularly',
-        'Avoiding stakeholder feedback',
-        'Using only documentation',
+        'Faster execution only',
+        'Fairness, transparency, and accountability',
+        'Eliminating human involvement',
+        'Maximum automation at any cost',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Advanced IT project management skills are important because they:',
+      question: 'Explainable AI (XAI) focuses on:',
       choices: [
-        'Apply only to managers',
-        'Enable leadership of complex and changing IT projects',
-        'Remove the need for technical teams',
-        'Eliminate project risks entirely',
+        'Making AI systems faster',
+        'Making AI decisions understandable to humans',
+        'Removing neural networks',
+        'Hiding model logic',
       ],
       correctIndex: 1,
     ),

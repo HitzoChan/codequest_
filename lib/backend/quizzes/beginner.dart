@@ -1,114 +1,114 @@
 import 'models.dart';
 
-class BeginnerITPMQuiz {
+class BeginnerAIQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'IT Project Management is mainly concerned with:',
+      question: 'Artificial Intelligence (AI) refers to:',
       choices: [
-        'Writing computer programs only',
-        'Planning, organizing, and controlling IT projects',
-        'Fixing hardware problems',
-        'Designing websites',
+        'Programming computers to work only offline',
+        'Creating systems that can perform tasks requiring human intelligence',
+        'Designing computer hardware',
+        'Writing simple software programs',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A project is best described as:',
+      question: 'An example of AI used in daily life is:',
       choices: [
-        'A continuous daily activity',
-        'A temporary effort with a specific goal',
-        'A personal task without a deadline',
-        'An ongoing business operation',
+        'Manual calculators',
+        'Voice assistants like Siri or Google Assistant',
+        'Printed books',
+        'USB flash drives',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Which of the following is an example of an IT project?',
+      question: 'Early AI systems mainly relied on:',
       choices: [
-        'Daily system monitoring',
-        'Creating a mobile application',
-        'Routine data entry',
-        'Regular email checking',
+        'Large datasets and neural networks',
+        'Rule-based logic and symbolic reasoning',
+        'Cloud computing',
+        'Social media data',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Why do many IT projects fail?',
+      question: 'Narrow AI is best described as:',
       choices: [
-        'Too many technical tools',
-        'Poor planning and unclear requirements',
-        'Too much documentation',
-        'High-quality teamwork',
+        'AI that can perform any human task',
+        'AI designed for specific tasks only',
+        'AI with emotions and consciousness',
+        'AI that replaces humans completely',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'The project life cycle begins with:',
+      question: 'General AI refers to:',
       choices: [
-        'Execution',
-        'Planning',
-        'Initiation',
-        'Closing',
+        'AI systems currently used in smartphones',
+        'A theoretical AI capable of performing any intellectual task like a human',
+        'Simple automation tools',
+        'Hardware-based intelligence',
+      ],
+      correctIndex: 1,
+    ),
+
+    QuizQuestion(
+      question: 'Which of the following is a core component of an AI system?',
+      choices: [
+        'Monitor',
+        'Keyboard',
+        'Data',
+        'Printer',
       ],
       correctIndex: 2,
     ),
 
     QuizQuestion(
-      question: 'Which role is responsible for coordinating tasks and managing the project?',
+      question: 'AI models are created by:',
       choices: [
-        'Stakeholder',
-        'Developer',
-        'Project Manager',
-        'End User',
-      ],
-      correctIndex: 2,
-    ),
-
-    QuizQuestion(
-      question: 'Project stakeholders are:',
-      choices: [
-        'Only programmers',
-        'People who have an interest in the project’s outcome',
-        'Hardware components',
-        'Software tools',
+        'Ignoring data',
+        'Applying algorithms to data',
+        'Writing text documents',
+        'Installing applications',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'The three main project constraints are:',
+      question: 'A recommendation system is commonly used by:',
       choices: [
-        'Quality, risk, communication',
-        'Scope, time, cost',
-        'Budget, hardware, software',
-        'Speed, accuracy, security',
+        'Text editors',
+        'Streaming and e-commerce platforms',
+        'Calculators',
+        'Operating systems only',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'If the project scope increases, what is most likely to be affected?',
+      question: 'One limitation of artificial intelligence is that it:',
       choices: [
-        'Only documentation',
-        'Time and/or cost',
-        'User interface design only',
-        'Nothing changes',
+        'Can work without data',
+        'May produce biased results based on data',
+        'Understands human emotions fully',
+        'Never makes mistakes',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Learning IT Project Management is useful because:',
+      question: 'Learning AI fundamentals is important because:',
       choices: [
-        'Only managers benefit from it',
-        'It helps improve teamwork, planning, and project success',
-        'It replaces technical skills',
-        'It is used only in large companies',
+        'AI is rarely used today',
+        'It helps understand modern and future technologies',
+        'It replaces all programming knowledge',
+        'Only researchers need AI knowledge',
       ],
       correctIndex: 1,
     ),

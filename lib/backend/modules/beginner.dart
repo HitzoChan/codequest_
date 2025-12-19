@@ -2,38 +2,37 @@
 
 final List<Course> beginnerCourses = [
   Course(
-    courseId: 'it_pm_beginner_clean',
-    title: 'IT Project Management – Beginner',
+    courseId: 'ai_beginner_clean',
+    title: 'Artificial Intelligence Fundamentals – Beginner',
     description:
-        'Beginner module introducing IT project management concepts, project fundamentals, roles, and constraints.',
+        'Beginner module introducing artificial intelligence concepts, types of AI, core components, applications, and limitations.',
     difficultyLevel: 'Beginner',
     modules: [
       Module(
-        moduleId: 'it_pm_beginner_ch1',
-        title: 'Introduction to IT Project Management',
+        moduleId: 'ai_beginner_ch1',
+        title: 'Introduction to Artificial Intelligence',
         difficultyLevel: 'Beginner',
         summary: '''
-This module introduces the basic concepts of IT Project Management and why it is important in the IT industry.
+This module introduces the basic concepts of Artificial Intelligence (AI) and how intelligent systems work.
 
 Topics include:
-• Definition and purpose of IT Project Management  
-• What a project is and how it differs from daily operations  
-• Examples of IT projects such as software and application development  
-• Common reasons why IT projects fail  
-• The project life cycle and its main phases  
-• Roles and responsibilities in IT projects  
-• Project stakeholders and their interests  
-• The three main project constraints: scope, time, and cost  
+• Definition of Artificial Intelligence  
+• History and evolution of AI  
+• Types of AI: Narrow AI and General AI  
+• Core components of AI systems such as data, algorithms, and models  
+• Common AI applications like voice assistants and recommendation systems  
+• Benefits and limitations of artificial intelligence  
+• Importance of learning AI fundamentals  
 
-These topics provide a foundation for understanding how IT projects are planned, managed, and successfully completed.
+These topics help learners understand how AI systems simulate human intelligence and impact daily life.
 ''',
         content:
-            'A beginner-level overview of IT Project Management covering project fundamentals, life cycle phases, roles, stakeholders, and basic project constraints.',
+            'A beginner-level overview of artificial intelligence covering definitions, types of AI, core concepts, applications, and limitations.',
         
-        youtubeUrl: 'https://youtu.be/ThDdHETxA-g?si=dIycRR6xyZ3pp39m',
-        
+        youtubeUrl: 'https://youtu.be/ad79nYk2keg?si=S7EjrwYhqCifkdgl',
+
         pdfUrl:
-            'https://drive.google.com/uc?export=download&id=1GeRaERLXXxmiuCrBUmVNWh54ZPMMQg9T',
+            'https://drive.google.com/uc?export=download&id=1wTBA1j1G7t0ZoxLf9Kn44iAXrkVY28HY',
       ),
     ],
   ),

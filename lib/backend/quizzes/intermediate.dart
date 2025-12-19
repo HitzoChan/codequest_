@@ -1,114 +1,114 @@
 import 'models.dart';
 
-class IntermediateITPMQuiz {
+class IntermediateAIQuiz {
   static List<QuizQuestion> questions = [
 
     QuizQuestion(
-      question: 'Project planning primarily focuses on:',
+      question: 'Machine learning allows AI systems to:',
       choices: [
-        'Executing tasks immediately',
-        'Defining what work will be done and how it will be completed',
-        'Closing the project',
-        'Hiring new employees',
+        'Follow fixed rules only',
+        'Learn patterns from data and improve over time',
+        'Work without any data',
+        'Replace all human decisions',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Scope definition is important because it:',
+      question: 'Which type of machine learning uses labeled data?',
       choices: [
-        'Increases project cost',
-        'Prevents scope creep and unclear objectives',
-        'Eliminates project risks',
-        'Replaces scheduling',
+        'Unsupervised learning',
+        'Reinforcement learning',
+        'Supervised learning',
+        'Random learning',
+      ],
+      correctIndex: 2,
+    ),
+
+    QuizQuestion(
+      question: 'Unsupervised learning is mainly used to:',
+      choices: [
+        'Predict known outcomes',
+        'Discover hidden patterns or groupings in data',
+        'Control hardware devices',
+        'Encrypt information',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A Work Breakdown Structure (WBS) is used to:',
+      question: 'Reinforcement learning works by:',
       choices: [
-        'Combine tasks into one large activity',
-        'Break a project into smaller, manageable tasks',
-        'Assign budgets automatically',
-        'Monitor employee attendance',
+        'Memorizing datasets',
+        'Learning through rewards and penalties',
+        'Using labeled training data only',
+        'Eliminating trial and error',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Which tool visually shows tasks, timelines, and dependencies?',
+      question: 'Data preparation includes:',
       choices: [
-        'Risk register',
-        'Gantt chart',
-        'Source code repository',
-        'Database schema',
+        'Ignoring missing values',
+        'Cleaning, transforming, and organizing data',
+        'Running algorithms without data',
+        'Removing all data errors automatically',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Project scheduling helps teams by:',
+      question: 'Why is data quality important in AI systems?',
       choices: [
-        'Ignoring deadlines',
-        'Organizing tasks and managing time effectively',
-        'Removing task dependencies',
-        'Avoiding documentation',
+        'Poor data improves accuracy',
+        'High-quality data leads to better model performance',
+        'Data quality has no effect on AI',
+        'Models do not depend on data',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'A project risk is:',
+      question: 'Model evaluation is done to:',
       choices: [
-        'A guaranteed problem',
-        'A potential event that could negatively affect the project',
-        'A completed task',
-        'A budget report',
+        'Increase training time',
+        'Measure how well a model performs on new data',
+        'Remove algorithms',
+        'Store data permanently',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Risk management involves:',
+      question: 'Splitting data into training and testing sets helps:',
       choices: [
-        'Ignoring possible issues',
-        'Identifying, analyzing, and planning responses to risks',
-        'Eliminating all risks permanently',
-        'Increasing project scope',
+        'Reduce data size',
+        'Evaluate how well the model generalizes',
+        'Increase memory usage',
+        'Eliminate the need for algorithms',
       ],
       correctIndex: 1,
     ),
 
     QuizQuestion(
-      question: 'Communication plans are used to:',
+      question: 'Which is a common machine learning algorithm?',
       choices: [
-        'Limit information sharing',
-        'Define how project information is shared with stakeholders',
-        'Replace team meetings',
-        'Eliminate reports',
+        'Decision tree',
+        'Web server',
+        'Firewall',
+        'Router',
       ],
-      correctIndex: 1,
+      correctIndex: 0,
     ),
 
     QuizQuestion(
-      question: 'Monitoring and controlling a project involves:',
+      question: 'Ethical issues in machine learning include:',
       choices: [
-        'Writing new requirements',
-        'Tracking progress and taking corrective actions when needed',
-        'Closing the project early',
-        'Assigning new roles',
-      ],
-      correctIndex: 1,
-    ),
-
-    QuizQuestion(
-      question: 'Effective stakeholder management helps:',
-      choices: [
-        'Increase project confusion',
-        'Maintain trust and support throughout the project',
-        'Remove accountability',
-        'Avoid project updates',
+        'Faster processing speeds',
+        'Data bias and privacy concerns',
+        'Improved accuracy',
+        'Larger datasets',
       ],
       correctIndex: 1,
     ),
