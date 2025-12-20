@@ -175,6 +175,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
+    final logoSize = screenWidth * 0.14;
     final cardMaxWidth = screenWidth < 500 ? screenWidth * 0.9 : 480.0;
 
     return Scaffold(
@@ -220,7 +221,18 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     const SizedBox(height: 25.0),
 
-                    const SizedBox(height: 20.0),
+                    // ---------------------------------------------------------
+                    // LOGOS WITH GLOW EFFECT
+                    // ---------------------------------------------------------
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        _glowLogo("assets/images/university_logo.png", logoSize),
+                        _glowLogo("assets/images/cas_logo.png", logoSize),
+                      ],
+                    ),
+
+                    const SizedBox(height: 40.0),
 
                     // ---------------------------------------------------------
                     // UPDATED WELCOME TEXT WITH TWO SIZES
@@ -442,6 +454,29 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  // ====================================================================
+  // LOGO WITH GLOW
+  // ====================================================================
+  Widget _glowLogo(String path, double size) {
+    return Container(
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.white.withValues(alpha: 0.6),
+            blurRadius: 18.0,
+            spreadRadius: 2.0,
+          )
+        ],
+      ),
+      child: Image.asset(
+        path,
+        width: size,
+        height: size,
+        fit: BoxFit.contain,
       ),
     );
   }
